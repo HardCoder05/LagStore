@@ -21,15 +21,7 @@ DROP SCHEMA IF EXISTS `TA` ;
 CREATE SCHEMA IF NOT EXISTS `TA`;
 USE `TA` ;
 
--- -----------------------------------------------------
--- Table `TA`.`Biblioteca`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TA`.`Biblioteca` (
-  `idBiblioteca` INT NOT NULL AUTO_INCREMENT,
-  `ingresoTotal` DOUBLE NULL DEFAULT NULL,
-  `cantidadDeJuegos` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`idBiblioteca`)
-  )ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
 -- Table `TA`.`Usuario`
@@ -40,16 +32,27 @@ CREATE TABLE IF NOT EXISTS `TA`.`Usuario` (
   `email` VARCHAR(100) NULL DEFAULT NULL,
   `contrasena` VARCHAR(100) NULL DEFAULT NULL,
   `fechaRegistro` DATE NULL DEFAULT NULL,
-  `telefono` INT NULL DEFAULT NULL,
+  `telefono` VARCHAR(12),
   `fotoDePerfil` BLOB NULL DEFAULT NULL,
   `activo` TINYINT(1) NULL DEFAULT NULL,
   `biblioteca_idBiblioteca` INT NOT NULL,
-  `rol_idrol` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`biblioteca_idBiblioteca`) REFERENCES `TA`.`Biblioteca` (`idBiblioteca`),
-  FOREIGN KEY (`rol_idrol`) REFERENCES `TA`.`Rol` (`idRol`)
+  `nombreRol` ENUM('Jugador', 'Administrador', 'Desarrollador') NOT NULL,
+  PRIMARY KEY (`id`)
   )ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `TA`.`Biblioteca`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TA`.`Biblioteca` (
+  `idBiblioteca` INT NOT NULL AUTO_INCREMENT,
+  `ingresoTotal` DOUBLE NULL DEFAULT NULL,
+  `cantidadDeJuegos` INT NULL DEFAULT NULL,
+  `activo` TINYINT(1) NULL DEFAULT NULL,
+  `usuario_idUsuario` INT NOT NULL,
+  foreign key(`usuario_idUsuario`) REFERENCES `TA`.`Usuario` (`id`),
+  PRIMARY KEY (`idBiblioteca`)
+  )ENGINE = InnoDB;
+  
 -- -----------------------------------------------------
 -- Table `TA`.`Administrador`
 -- -----------------------------------------------------
@@ -73,30 +76,11 @@ CREATE TABLE IF NOT EXISTS `TA`.`Jugador` (
 
 
 -- -----------------------------------------------------
--- Table `TA`.`Genero`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TA`.`Genero` (
-  `idGenero` INT NOT NULL AUTO_INCREMENT,
-  `nombreGenero` ENUM('Accion', 'Rol', 'Estrategia', 'Shooter (FPS/TPS)', 'Simulación', 'Deportes', 'Carreras') NULL DEFAULT NULL,
-  PRIMARY KEY (`idGenero`)
-  )ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `TA`.`ModeloNegocio`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TA`.`ModeloNegocio` (
-  `idModeloNegocio` INT NOT NULL AUTO_INCREMENT,
-  `modelo` ENUM('Free_to_play', 'Paga', 'Suscripcion') NULL DEFAULT NULL,
-  PRIMARY KEY (`idModeloNegocio`)
-  )ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `TA`.`Desarrollador`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TA`.`Desarrollador` (
   `idDesarrollador` INT NOT NULL,
-  `numeroCuenta` INT NULL DEFAULT NULL,
+  `numeroCuenta` VARCHAR(20),
   `ingresoTotal` DOUBLE NULL DEFAULT NULL,
   PRIMARY KEY (`idDesarrollador`),
   FOREIGN KEY (`idDesarrollador`) REFERENCES `TA`.`Usuario` (`id`)
@@ -118,13 +102,12 @@ CREATE TABLE IF NOT EXISTS `TA`.`Juego` (
   `requisitosRecomendados` TEXT NULL DEFAULT NULL,
   `espacioDisco` DOUBLE NULL DEFAULT NULL,
   `fechaUltimaActualizacion` DATE NULL DEFAULT NULL,
-  `genero_idGenero` INT NOT NULL,
-  `modeloNegocio_idModeloNegocio` INT NOT NULL,
   `desarrollador_idDesarrollador` INT NOT NULL,
+  `activo` TINYINT(1) NULL DEFAULT NULL,
+  `nombreGenero` ENUM('Accion', 'Rol', 'Estrategia', 'Shooter (FPS/TPS)', 'Simulación', 'Deportes', 'Carreras') NOT NULL,
+  `modelo` ENUM('Free_to_play', 'Paga', 'Suscripcion') NOT NULL,
   PRIMARY KEY (`idJuego`),
-    FOREIGN KEY (`genero_idGenero`) REFERENCES `TA`.`Genero` (`idGenero`),
-    FOREIGN KEY (`modeloNegocio_idModeloNegocio`) REFERENCES `TA`.`ModeloNegocio` (`idModeloNegocio`),
-    FOREIGN KEY (`desarrollador_idDesarrollador`) REFERENCES `TA`.`Desarrollador` (`idDesarrollador`)
+	FOREIGN KEY (`desarrollador_idDesarrollador`) REFERENCES `TA`.`Desarrollador` (`idDesarrollador`)
     )ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -136,6 +119,7 @@ CREATE TABLE IF NOT EXISTS `TA`.`Calificacion` (
   `fidJuego` INT NULL DEFAULT NULL,
   `fechaPuntuacion` DATE NULL DEFAULT NULL,
   `puntaje` INT NULL DEFAULT NULL,
+  `activo` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`idCalificacion`),
   FOREIGN KEY (`fidJugador`) REFERENCES `TA`.`Jugador` (`idJugador`),
   FOREIGN KEY (`fidJuego`) REFERENCES `TA`.`Juego` (`idJuego`)
@@ -149,6 +133,7 @@ CREATE TABLE IF NOT EXISTS `TA`.`CarroCompra` (
   `totalEstimado` DOUBLE NULL DEFAULT NULL,
   `jugador_idJugador` INT NOT NULL,
   `idCarroCompra` INT NOT NULL,
+  `activo` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`idCarroCompra`),
   FOREIGN KEY (`jugador_idJugador`) REFERENCES `TA`.`Jugador` (`idJugador`)
   )ENGINE = InnoDB;
@@ -160,6 +145,7 @@ CREATE TABLE IF NOT EXISTS `TA`.`Cartera` (
   `saldoActual` DOUBLE NULL DEFAULT NULL,
   `jugador_idJugador` INT NOT NULL,
   `idCartera` INT NOT NULL,
+  `activo` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`idCartera`),
   FOREIGN KEY (`jugador_idJugador`) REFERENCES `TA`.`Jugador` (`idJugador`)
   )ENGINE = InnoDB;
@@ -175,19 +161,10 @@ CREATE TABLE IF NOT EXISTS `TA`.`JuegoAdquirido` (
   `ultimaSesion` DATE NULL DEFAULT NULL,
   `tiempoJuego` DOUBLE NULL DEFAULT NULL,
   `actualizado` TINYINT(1) NULL DEFAULT NULL,
+  `activo` TINYINT(1) NULL DEFAULT NULL,
     FOREIGN KEY (`fidBiblioteca`) REFERENCES `TA`.`Biblioteca` (`idBiblioteca`),
     FOREIGN KEY (`fidJuego`) REFERENCES `TA`.`Juego` (`idJuego`)
     )ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `TA`.`MetodoPago`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TA`.`MetodoPago` (
-  `idMetodo` INT NOT NULL AUTO_INCREMENT,
-  `nombreMetodo` ENUM('Visa', 'Mastercard', 'PagoEfectivo', 'PayValido') NULL DEFAULT NULL,
-  PRIMARY KEY (`idMetodo`)
-  )ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `TA`.`Recarga`
@@ -196,10 +173,10 @@ CREATE TABLE IF NOT EXISTS `TA`.`Recarga` (
   `idRecarga` INT NOT NULL AUTO_INCREMENT,
   `fechaRecarga` DATE NULL DEFAULT NULL,
   `monto` DOUBLE NULL DEFAULT NULL,
-  `metodoPago_idMetodo` INT NOT NULL,
   `cartera_IdCartera` INT NOT NULL,
+  `activo` TINYINT(1) NULL DEFAULT NULL,
+  `nombreMetodo` ENUM('Visa', 'Mastercard', 'PagoEfectivo', 'PayValido') NOT NULL,
   PRIMARY KEY (`idRecarga`),
-  FOREIGN KEY (`metodoPago_idMetodo`) REFERENCES `TA`.`MetodoPago` (`idMetodo`),
   FOREIGN KEY (`cartera_IdCartera`) REFERENCES `TA`.`Cartera` (`idCartera`)
 )ENGINE = InnoDB;
 
@@ -208,17 +185,17 @@ CREATE TABLE IF NOT EXISTS `TA`.`Recarga` (
 -- Table `TA`.`Reseña`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TA`.`Reseña` (
-  `fidJugador` INT NULL DEFAULT NULL,
-  `fidJuego` INT NULL DEFAULT NULL,
-  `calificacion` INT NULL DEFAULT NULL,
-  `comentario` TEXT NULL DEFAULT NULL,
-  `fechaPublicacion` DATE NULL DEFAULT NULL,
-  `autor` INT NULL DEFAULT NULL,
-  `idJuego` INT NULL DEFAULT NULL,
-  `calificacion_IdCalificacion` INT NOT NULL,
-    FOREIGN KEY (`autor`) REFERENCES `TA`.`Jugador` (`idJugador`),
-    FOREIGN KEY (`fidJuego`) REFERENCES `TA`.`Juego` (`idJuego`),
-    FOREIGN KEY (`calificacion_IdCalificacion`) REFERENCES `TA`.`Calificacion` (`idCalificacion`)
+  idResena INT NOT NULL AUTO_INCREMENT,
+  fidJugador INT NOT NULL,
+  fidJuego INT NOT NULL,
+  comentario TEXT NULL,
+  fechaPublicacion DATE NULL,
+  calificacion_IdCalificacion INT NOT NULL,
+  activo TINYINT(1) DEFAULT 1,
+  PRIMARY KEY (idResena),
+  FOREIGN KEY (fidJugador) REFERENCES TA.Jugador (idJugador),
+  FOREIGN KEY (fidJuego) REFERENCES TA.Juego (idJuego),
+  FOREIGN KEY (calificacion_IdCalificacion) REFERENCES TA.Calificacion (idCalificacion)
 )ENGINE = InnoDB;
 
 
@@ -234,19 +211,39 @@ CREATE TABLE IF NOT EXISTS `TA`.`CarroCompraXJuego` (
 )ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `TA`.`Rol`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TA`.`Rol` (
-  `idRol` INT NOT NULL,
-  `nombreRol` ENUM('Jugador', 'Administrador', 'Desarrollador'),
-  PRIMARY KEY (`idRol`)
-)ENGINE = InnoDB;
 
-INSERT INTO `TA`.`Rol`(idRol,nombreRol) VALUES(1,'Jugador');
-INSERT INTO `TA`.`Rol`(idRol,nombreRol) VALUES(2,'Administrador');
-INSERT INTO `TA`.`Rol`(idRol,nombreRol) VALUES(3,'Desarrollador');
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+/*DROP PROCEDURE IF EXISTS INSERTAR_DESARROLLADOR;
+DELIMITER $
+CREATE PROCEDURE INSERTAR_DESARROLLADOR(
+    IN _idDesarrollador INT,
+    IN _nombreCuenta VARCHAR(200),
+    IN _ingresosTotal DOUBLE,
+    
+    IN _nombre VARCHAR(100),
+    IN _email VARCHAR(100),
+    IN _contrasena VARCHAR(100),
+    IN _fechaRegistro DATE,
+    IN _telefono VARCHAR(12),
+    IN _fotoPerfil BLOB,
+    IN _activo TINYINT(1),
+    IN _nombreRol ENUM('Usuario', 'Admin')
+)
+BEGIN
+    INSERT INTO Desarrollador(idDesarrollador, nombreCuenta, ingresosTotal)
+    VALUES (_idDesarrollador, _nombreCuenta, _ingresosTotal);
+END $
+
+DELIMITER $;
+*/
+
+
+
+
+
 
