@@ -2,6 +2,8 @@ package pe.edu.pucp.lagstore.gestjuegos.model;
 
 import java.util.Date;
 
+import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
+
 public class Juego {
     private int idJuego;
     private String titulo;
@@ -14,8 +16,9 @@ public class Juego {
     private String requisitosRecomendados;
     private double espacioDisco;
     private Date fechaUltimaActualizacion;
-    private Genero genero;
-    private ModeloNegocio modeloNegocio;
+    private int idGenero;
+    private int idModeloNegocio;
+    private Desarrollador desarrollador;
 
     public Juego() {}
 
@@ -52,9 +55,12 @@ public class Juego {
     public Date getFechaUltimaActualizacion() { return fechaUltimaActualizacion; }
     public void setFechaUltimaActualizacion(Date fechaUltimaActualizacion) { this.fechaUltimaActualizacion = fechaUltimaActualizacion; }
 
-    public Genero getGenero() { return genero; }
-    public void setGenero(Genero genero) { this.genero = genero; }
+    public int getIdGenero() { return idGenero; }
+    public void setIdGenero(int idGenero) { this.idGenero = idGenero; }
 
-    public ModeloNegocio getModeloNegocio() { return modeloNegocio; }
-    public void setModeloNegocio(ModeloNegocio modeloNegocio) { this.modeloNegocio = modeloNegocio; }
+    public int getIdModeloNegocio() { return idModeloNegocio; }
+    public void setIdModeloNegocio(int idModeloNegocio) { this.idModeloNegocio = idModeloNegocio; }
+
+    public Desarrollador getDesarrollador() { return desarrollador; }
+    public void setDesarrollador(Desarrollador desarrollador) { this.desarrollador = desarrollador; }
 }

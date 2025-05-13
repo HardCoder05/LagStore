@@ -4,10 +4,17 @@
  */
 package pe.edu.pucp.lagstore.gestionjuegos.dao;
 
+import java.util.ArrayList;
+
+import pe.edu.pucp.lagstore.gestjuegos.model.Genero;
+
 /**
  *
  * @author Luis Rios
  */
 public interface GeneroDAO {
-    
+    int insertar(Genero genero);
+    int modificar(Genero genero);
+    int eliminar(int idGenero);
+    ArrayList<Genero> listarTodos();
 }

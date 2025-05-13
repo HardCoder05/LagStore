@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `TA`.`Jugador` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TA`.`Genero` (
   `idGenero` INT NOT NULL AUTO_INCREMENT,
-  `nombreGenero` ENUM('Accion', 'Rol', 'Estrategia', 'Shooter (FPS/TPS)', 'Simulación', 'Deportes', 'Carreras') NULL DEFAULT NULL,
+  `nombreGenero` ENUM('ACCCION', 'ROL', 'ESTRATEGIA', 'SHOOTER', 'SIMULACION', 'DEPORTES', 'CARRERAS') NULL DEFAULT NULL,
   PRIMARY KEY (`idGenero`)
   )ENGINE = InnoDB;
 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `TA`.`Genero` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TA`.`ModeloNegocio` (
   `idModeloNegocio` INT NOT NULL AUTO_INCREMENT,
-  `modelo` ENUM('Free_to_play', 'Paga', 'Suscripcion') NULL DEFAULT NULL,
+  `modelo` ENUM('FREE_TO_PLAY', 'PAGA', 'SUSCRIPCION') NULL DEFAULT NULL,
   PRIMARY KEY (`idModeloNegocio`)
   )ENGINE = InnoDB;
 

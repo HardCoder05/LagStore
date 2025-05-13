@@ -3,11 +3,20 @@ package pe.edu.pucp.lagstore.gestjuegos.model;
 import java.util.Date;
 
 public class JuegoAdquirido {
+    private Biblioteca biblioteca;
     private Juego juego;
     private Date fechaAdquisicion;
     private Date ultimaSesion;
     private double tiempoJuego;
     private boolean actualizado;
+
+    public Biblioteca getBiblioteca() {
+        return biblioteca;
+    }
+
+    public void setBiblioteca(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca;
+    }
 
     public Juego getJuego() {
         return juego;
