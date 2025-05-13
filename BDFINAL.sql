@@ -35,7 +35,6 @@ CREATE TABLE IF NOT EXISTS `TA`.`Usuario` (
   `telefono` VARCHAR(12),
   `fotoDePerfil` BLOB NULL DEFAULT NULL,
   `activo` TINYINT(1) NULL DEFAULT NULL,
-  `biblioteca_idBiblioteca` INT NOT NULL,
   `nombreRol` ENUM('Jugador', 'Administrador', 'Desarrollador') NOT NULL,
   PRIMARY KEY (`id`)
   )ENGINE = InnoDB;
@@ -218,7 +217,7 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
-/*DROP PROCEDURE IF EXISTS INSERTAR_DESARROLLADOR;
+DROP PROCEDURE IF EXISTS INSERTAR_DESARROLLADOR;
 DELIMITER $
 CREATE PROCEDURE INSERTAR_DESARROLLADOR(
     IN _idDesarrollador INT,
@@ -232,18 +231,14 @@ CREATE PROCEDURE INSERTAR_DESARROLLADOR(
     IN _telefono VARCHAR(12),
     IN _fotoPerfil BLOB,
     IN _activo TINYINT(1),
-    IN _nombreRol ENUM('Usuario', 'Admin')
+    IN _nombreRol VARCHAR(20)
 )
 BEGIN
+	INSERT INTO Usuario(nombre, email, contrasena, fechaRegistro, telefono, fotoPerfil, activo,nombreRol)
+    VALUES (_nombre, _email, _contrasena, _fechaRegistro, _telefono, _fotoPerfil, _activo,_nombreRol);
+    SET __idDesarrollador = @@last_insert_id;
     INSERT INTO Desarrollador(idDesarrollador, nombreCuenta, ingresosTotal)
     VALUES (_idDesarrollador, _nombreCuenta, _ingresosTotal);
 END $
 
 DELIMITER $;
-*/
-
-
-
-
-
-
