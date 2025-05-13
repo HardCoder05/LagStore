@@ -34,7 +34,7 @@ public class Principal {
     public static void main(String[] args)throws Exception{
         //test1();
         //test2();
-        test3();
+        test3(); //Test con el CRUD de pe.edu.pucp.lagstore.compra
         //test_metodosPago();
            
     }

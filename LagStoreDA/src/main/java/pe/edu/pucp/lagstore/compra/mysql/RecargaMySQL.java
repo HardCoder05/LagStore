@@ -27,29 +27,40 @@ public class RecargaMySQL implements RecargaDAO {
             con = DBManager.getInstance().getConnection();
             con.setAutoCommit(false);
 
-            String sql = "INSERT INTO " + TABLA +
-                         " (fechaRecarga, monto, metodoPago_idMetodo, cartera_idCartera, activo) " +
-                         "VALUES (?,?,?,?,1)";
+         
+            String sql = "SELECT idMetodo FROM MetodoPago WHERE nombreMetodo = ?";
             pst = con.prepareStatement(sql);
-            pst.setDate  (1, new java.sql.Date(recarga.getFechaRecarga().getTime()));
+            pst.setString(1, recarga.getMetodoPago().name());   // Usa 'Visa', 'Mastercard', etc.
+            rs = pst.executeQuery();
+            int idMetodo = 0;
+            if (rs.next()) {
+                idMetodo = rs.getInt("idMetodo");
+            } else {
+                throw new SQLException("No se encontró MetodoPago: " + recarga.getMetodoPago().name());
+            }
+
+      
+            sql = "INSERT INTO Recarga (fechaRecarga, monto, metodoPago_idMetodo, cartera_idCartera, activo) " +
+                  "VALUES (?, ?, ?, ?, 1)";
+            pst = con.prepareStatement(sql);
+            pst.setDate(1, new java.sql.Date(recarga.getFechaRecarga().getTime()));
             pst.setDouble(2, recarga.getMonto());
-            pst.setInt   (3, recarga.getMetodoPago().ordinal());
-            pst.setInt   (4, recarga.getCartera().getIdCartera());
+            pst.setInt(3, idMetodo);
+            pst.setInt(4, recarga.getCartera().getIdCartera());
             pst.executeUpdate();
 
             sql = "SELECT @@last_insert_id AS id";
             pst = con.prepareStatement(sql);
-            rs  = pst.executeQuery();
+            rs = pst.executeQuery();
             if (rs.next()) {
                 idGenerado = rs.getInt("id");
                 recarga.setIdRecarga(idGenerado);
             }
 
-            //Actualizar el saldo de la cartera
             sql = "UPDATE Cartera SET saldoActual = saldoActual + ? WHERE idCartera = ?";
             pst = con.prepareStatement(sql);
             pst.setDouble(1, recarga.getMonto());
-            pst.setInt   (2, recarga.getCartera().getIdCartera());
+            pst.setInt(2, recarga.getCartera().getIdCartera());
             pst.executeUpdate();
 
             con.commit();
