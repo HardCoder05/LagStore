@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `TA`.`Biblioteca` (
   `idBiblioteca` INT NOT NULL AUTO_INCREMENT,
   `ingresoTotal` DOUBLE NULL DEFAULT NULL,
   `cantidadDeJuegos` INT NULL DEFAULT NULL,
+  `activo` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`idBiblioteca`)
   )ENGINE = InnoDB;
 
@@ -121,6 +122,7 @@ CREATE TABLE IF NOT EXISTS `TA`.`Juego` (
   `genero_idGenero` INT NOT NULL,
   `modeloNegocio_idModeloNegocio` INT NOT NULL,
   `desarrollador_idDesarrollador` INT NOT NULL,
+  `activo` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`idJuego`),
     FOREIGN KEY (`genero_idGenero`) REFERENCES `TA`.`Genero` (`idGenero`),
     FOREIGN KEY (`modeloNegocio_idModeloNegocio`) REFERENCES `TA`.`ModeloNegocio` (`idModeloNegocio`),

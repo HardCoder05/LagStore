@@ -19,6 +19,7 @@ public class Juego {
     private int idGenero;
     private int idModeloNegocio;
     private Desarrollador desarrollador;
+    private int activo;
 
     public Juego() {}
 
@@ -63,4 +64,7 @@ public class Juego {
 
     public Desarrollador getDesarrollador() { return desarrollador; }
     public void setDesarrollador(Desarrollador desarrollador) { this.desarrollador = desarrollador; }
+
+    public int getActivo() { return activo; }
+    public void setActivo(int activo) { this.activo = activo; }
 }

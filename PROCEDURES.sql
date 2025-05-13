@@ -14,15 +14,16 @@ CREATE PROCEDURE INSERTAR_JUEGO(
     IN _fechaUltimaActualizacion DATE,
     IN _idGenero INT,
     IN _idModeloNegocio INT,
-    IN _idDesarrollador INT
+    IN _idDesarrollador INT,
+    IN _activo INT
 )
 BEGIN
     INSERT INTO juego (titulo, descripcion, precio, version, imagenJuego, fechaLanzamiento,
                        requisitosMinimos, requisitosRecomendados, espacioDisco,
-                       fechaUltimaActualizacion, idGenero, idModeloNegocio, idDesarrollador)
+                       fechaUltimaActualizacion, idGenero, idModeloNegocio, idDesarrollador, activo)
     VALUES (_titulo, _descripcion, _precio, _version, _imagen, _fechaLanzamiento,
             _requisitosMinimos, _requisitosRecomendados, _espacioDisco,
-            _fechaUltimaActualizacion, _idGenero, _idModeloNegocio, _idDesarrollador);
+            _fechaUltimaActualizacion, _idGenero, _idModeloNegocio, _idDesarrollador, _activo);
 
     SET _idJuego = LAST_INSERT_ID();
 END //
@@ -65,13 +66,13 @@ END //
 DELIMITER //
 CREATE PROCEDURE ELIMINAR_JUEGO(IN _idJuego INT)
 BEGIN
-    DELETE FROM juego WHERE idJuego = _idJuego;
+    UPDATE juego SET activo = 0 WHERE idJuego = _idJuego;
 END //
 
 DELIMITER //
 CREATE PROCEDURE LISTAR_JUEGOS_TODOS()
 BEGIN
-    SELECT * FROM juego;
+    SELECT * FROM juego WHERE activo = 1;
 END //
 
 DELIMITER //

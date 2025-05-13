@@ -10,6 +10,7 @@ public class Biblioteca {
     private int cantidadDeJuegos;
     private Usuario usuario;
     private List<JuegoAdquirido> juegos;
+    private int activo;
     
     public Biblioteca(){
     }
@@ -66,6 +67,14 @@ public class Biblioteca {
     public void setJuegos(List<JuegoAdquirido> juegos) {
         this.juegos = juegos;
         this.cantidadDeJuegos = juegos.size();
+    }
+
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
 
     @Override

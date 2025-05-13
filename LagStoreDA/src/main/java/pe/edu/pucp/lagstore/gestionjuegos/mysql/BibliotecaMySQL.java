@@ -20,8 +20,8 @@ public class BibliotecaMySQL implements BibliotecaDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            String sql = "INSERT INTO Biblioteca(ingresoTotal,cantidadDeJuegos) "
-                        +"VALUES('"+biblioteca.getIngresoTotal() +"','"+biblioteca.getCantidadDeJuegos()+"')";
+            String sql = "INSERT INTO Biblioteca(ingresoTotal,cantidadDeJuegos,activo) "
+                        +"VALUES('"+biblioteca.getIngresoTotal() +"','"+biblioteca.getCantidadDeJuegos()+",'1')";
             st = con.createStatement();
             resultado = st.executeUpdate(sql);
             
@@ -63,11 +63,28 @@ public class BibliotecaMySQL implements BibliotecaDAO{
     }
 
     @Override
+    public int eliminar(int idBiblioteca) {
+        int resultado = 0;
+        try{
+            con = DBManager.getInstance().getConnection();
+            String sql = "UPDATE Biblioteca SET activo = 0 WHERE idBiblioteca = " + idBiblioteca;
+            st = con.createStatement();
+            resultado = st.executeUpdate(sql);
+            System.out.println("Se ha eliminado la biblioteca...");
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return resultado;
+    }
+
+    @Override
     public ArrayList<Biblioteca> listarTodas() {
         ArrayList<Biblioteca> biblioteca = new ArrayList<>();
         try{
             con = DBManager.getInstance().getConnection();
-            String sql = "SELECT * FROM Biblioteca";
+            String sql = "SELECT * FROM Biblioteca WHERE activo = 1";
             st = con.createStatement();
             rs = st.executeQuery(sql);
             System.out.println("Se esta imprimiendo los ids");

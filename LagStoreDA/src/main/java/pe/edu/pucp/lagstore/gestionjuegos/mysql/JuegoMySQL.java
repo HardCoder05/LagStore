@@ -34,6 +34,7 @@ public class JuegoMySQL implements JuegoDAO{
         parametrosEntrada.put(12, juego.getIdGenero());
         parametrosEntrada.put(13, juego.getIdModeloNegocio());
         parametrosEntrada.put(14, juego.getDesarrollador().getIdDesarrollador());
+        parametrosEntrada.put(15, 1);
 
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_JUEGO", parametrosEntrada, parametrosSalida);
         juego.setIdJuego((int) parametrosSalida.get(1));
@@ -98,6 +99,7 @@ public class JuegoMySQL implements JuegoDAO{
                 juego.setIdGenero(rs.getInt("idGenero"));
                 juego.setIdModeloNegocio(rs.getInt("idModeloNegocio"));
                 juego.setDesarrollador(new DesarrolladorMySQL().obtenerPorId(rs.getInt("idDesarrollador")));
+                juego.setActivo(1);
                 juegos.add(juego);
             }
         } catch (SQLException ex) {
@@ -133,6 +135,7 @@ public class JuegoMySQL implements JuegoDAO{
                 juego.setIdGenero(rs.getInt("idGenero"));
                 juego.setIdModeloNegocio(rs.getInt("idModeloNegocio"));
                 juego.setDesarrollador(new DesarrolladorMySQL().obtenerPorId(rs.getInt("idDesarrollador")));
+                juego.setActivo(rs.getInt("activo"));
             }
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
