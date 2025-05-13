@@ -1,16 +1,16 @@
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\compra\model\CarroCompra.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\compra\model\Cartera.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\compra\model\MetodoPago.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\compra\model\Recarga.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\gestjuegos\model\Biblioteca.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\gestjuegos\model\Genero.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\gestjuegos\model\Juego.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\gestjuegos\model\JuegoAdquirido.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\gestjuegos\model\ModeloNegocio.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\gestusuarios\model\Administrador.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\gestusuarios\model\Desarrollador.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\gestusuarios\model\Jugador.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\gestusuarios\model\Rol.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\gestusuarios\model\Usuario.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\valoracion\model\Calificacion.java
-E:\ARCHIVOS\25-1\PROGRAMACION 3\TA\final\LagStoreDomain\src\main\java\pe\edu\pucp\lagstore\valoracion\model\Resena.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/compra/model/CarroCompra.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/compra/model/Cartera.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/compra/model/MetodoPago.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/compra/model/Recarga.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/gestjuegos/model/Biblioteca.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/gestjuegos/model/Genero.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/gestjuegos/model/Juego.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/gestjuegos/model/JuegoAdquirido.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/gestjuegos/model/ModeloNegocio.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/gestusuarios/model/Administrador.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/gestusuarios/model/Desarrollador.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/gestusuarios/model/Jugador.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/gestusuarios/model/Rol.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/gestusuarios/model/Usuario.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/valoracion/model/Calificacion.java
+/Users/jeanpool/Universidad/2025.1/Pro3/TA/GitHub/LagStore/LagStoreDomain/src/main/java/pe/edu/pucp/lagstore/valoracion/model/Resena.java

@@ -1,7 +1,21 @@
 package pe.edu.pucp.lagstore.main;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
+import pe.edu.pucp.lagstore.compra.dao.CarroCompraDAO;
+import pe.edu.pucp.lagstore.compra.dao.CarteraDAO;
+import pe.edu.pucp.lagstore.compra.dao.MetodoPagoDAO;
+import pe.edu.pucp.lagstore.compra.dao.RecargaDAO;
+import pe.edu.pucp.lagstore.compra.model.CarroCompra;
+import pe.edu.pucp.lagstore.compra.model.Cartera;
+import pe.edu.pucp.lagstore.compra.model.MetodoPago;
+import pe.edu.pucp.lagstore.compra.model.Recarga;
+import pe.edu.pucp.lagstore.compra.mysql.CarroCompraMySQL;
+import pe.edu.pucp.lagstore.compra.mysql.CarteraMySQL;
+import pe.edu.pucp.lagstore.compra.mysql.MetodoPagoMySQL;
+import pe.edu.pucp.lagstore.compra.mysql.RecargaMySQL;
 import pe.edu.pucp.lagstore.gestionjuegos.dao.BibliotecaDAO;
 import pe.edu.pucp.lagstore.gestionjuegos.mysql.BibliotecaMySQL;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.DesarrolladorDAO;
@@ -18,7 +32,14 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
 
 public class Principal {
     public static void main(String[] args)throws Exception{
-        
+        //test1();
+        //test2();
+        test3();
+        //test_metodosPago();
+           
+    }
+    
+    private static void test1() throws ParseException {
         //1.JUGADOR
         //inserto una biblioteca
         Biblioteca b1=new Biblioteca(20.1,3);
@@ -170,7 +191,136 @@ public class Principal {
         daoBiblioteca.modificar(biblioteca.get(0));
         // obtener por ID
         daoBiblioteca.obtenerPorId(2);
-        
     }
     
+    private static void test2() throws ParseException {
+        Biblioteca b1=new Biblioteca(0.0,0);
+        BibliotecaDAO daoBiblioteca= new BibliotecaMySQL();
+        daoBiblioteca.insertar(b1);
+        Biblioteca b2=new Biblioteca(0.0,0);
+        daoBiblioteca.insertar(b2);
+
+        //inserto un nuevo jugador
+        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+        Jugador j1=new Jugador("Marcelo","789","marcelo@outlook.com",sdf.parse("2025-05-13"),9616945,"ImagenX",1,
+                               b1,1,"marcelo2403");
+        Jugador j2=new Jugador("Fernando ","753","fernando@outlook.com",sdf.parse("2025-05-13"),852322,"ImagenX",1,
+                               b2,1,"fernando23");
+
+        JugadorDAO daoJugador=new JugadorMySQL();
+        daoJugador.insertar(j1);
+        daoJugador.insertar(j2);
+
+        //listar jugadores
+        ArrayList<Jugador>jugadores = daoJugador.listarTodas();
+        for(Jugador j : jugadores){
+            System.out.println(j);
+        }
+    }
+    
+    
+    private static void test3() throws ParseException {
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+    // DAOs
+    BibliotecaDAO daoBiblioteca = new BibliotecaMySQL();
+    JugadorDAO daoJugador = new JugadorMySQL();
+    CarteraDAO daoCartera = new CarteraMySQL();
+    CarroCompraDAO daoCarro = new CarroCompraMySQL();
+    RecargaDAO daoRecarga = new RecargaMySQL();
+    MetodoPagoDAO daoMetodoPago = new MetodoPagoMySQL();
+
+    // Insertar bibliotecas
+    Biblioteca b1 = new Biblioteca(0.0, 0);
+    daoBiblioteca.insertar(b1);
+    Biblioteca b2 = new Biblioteca(0.0, 0);
+    daoBiblioteca.insertar(b2);
+
+    // Insertar jugadores
+    Jugador j1 = new Jugador("Menphis", "789", "Menphis@outlook.com", sdf.parse("2025-05-13"), 9616945, "ImagenX", 1,
+                             b1, 1, "Menphis22");
+    Jugador j2 = new Jugador("Krëic", "753", "Krëic@outlook.com", sdf.parse("2025-05-13"), 852322, "ImagenX", 1,
+                             b2, 1, "Krëic23");
+
+    daoJugador.insertar(j1);
+    daoJugador.insertar(j2);
+
+    // Insertar carteras para jugadores
+    Cartera cartera1 = new Cartera();
+    cartera1.setSaldoActual(0.0);
+    cartera1.setActivo(1);
+    cartera1.setJugador(j1);
+    daoCartera.insertar(cartera1);
+
+    Cartera cartera2 = new Cartera();
+    cartera2.setSaldoActual(0.0);
+    cartera2.setActivo(1);
+    cartera2.setJugador(j2);
+    daoCartera.insertar(cartera2);
+
+    // Insertar MetodoPago ejemplo (Visa)
+    daoMetodoPago.insertar(MetodoPago.Visa);
+    daoMetodoPago.insertar(MetodoPago.Mastercard);
+    daoMetodoPago.insertar(MetodoPago.PagoEfectivo);
+    daoMetodoPago.insertar(MetodoPago.PayValido);
+
+    // Insertar recargas para carteras
+    Recarga recarga1 = new Recarga();
+    recarga1.setFechaRecarga(new Date());
+    recarga1.setMonto(50.0);
+    recarga1.setMetodoPago(MetodoPago.Visa);
+    recarga1.setActivo(1);
+    recarga1.setCartera(cartera1);
+    daoRecarga.insertar(recarga1);
+
+    Recarga recarga2 = new Recarga();
+    recarga2.setFechaRecarga(new Date());
+    recarga2.setMonto(75.0);
+    recarga2.setMetodoPago(MetodoPago.Visa);
+    recarga2.setActivo(1);
+    recarga2.setCartera(cartera2);
+    daoRecarga.insertar(recarga2);
+
+    // Insertar carros de compra para jugadores
+    CarroCompra carro1 = new CarroCompra();
+    carro1.setTotalEstimado(0.0);
+    carro1.setActivo(1);
+    carro1.setJugador(j1);
+    carro1.setJuegos(new ArrayList<>());
+    daoCarro.insertar(carro1);
+
+    CarroCompra carro2 = new CarroCompra();
+    carro2.setTotalEstimado(0.0);
+    carro2.setActivo(1);
+    carro2.setJugador(j2);
+    carro2.setJuegos(new ArrayList<>());
+    daoCarro.insertar(carro2);
+
+    // Mostrar jugadores insertados
+    ArrayList<Jugador> jugadores = daoJugador.listarTodas();
+    for (Jugador j : jugadores) {
+        System.out.println(j);
+    }
+
+    System.out.println("Prueba completa: Bibliotecas, Jugadores, Carteras, Recargas y Carros de Compra insertados.");
 }
+    
+    
+    private static void test_metodosPago() throws ParseException{
+        /*
+        Ejecutar esto en la BD antes de probr el test por primera vez:     
+            SET FOREIGN_KEY_CHECKS = 0;
+            TRUNCATE TABLE MetodoPago;
+            SET FOREIGN_KEY_CHECKS = 1;
+        */
+        MetodoPagoDAO daoMetodoPago = new MetodoPagoMySQL();
+        for (MetodoPago metodo : MetodoPago.values()) {
+            daoMetodoPago.insertar(metodo);
+        }
+
+        
+    }
+}
+
+
+
