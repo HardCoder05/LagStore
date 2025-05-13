@@ -21,7 +21,6 @@ DROP SCHEMA IF EXISTS `TA` ;
 CREATE SCHEMA IF NOT EXISTS `TA`;
 USE `TA` ;
 
-<<<<<<< HEAD
 -- -----------------------------------------------------
 -- Table `TA`.`Biblioteca`
 -- -----------------------------------------------------
@@ -32,9 +31,6 @@ CREATE TABLE IF NOT EXISTS `TA`.`Biblioteca` (
   `activo` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`idBiblioteca`)
   )ENGINE = InnoDB;
-=======
-
->>>>>>> f08bb3eede93b146e41088539ad157beda177eea
 
 -- -----------------------------------------------------
 -- Table `TA`.`Usuario`
@@ -88,7 +84,6 @@ CREATE TABLE IF NOT EXISTS `TA`.`Jugador` (
 
 
 -- -----------------------------------------------------
-<<<<<<< HEAD
 -- Table `TA`.`Genero`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TA`.`Genero` (
@@ -108,8 +103,6 @@ CREATE TABLE IF NOT EXISTS `TA`.`ModeloNegocio` (
 
 
 -- -----------------------------------------------------
-=======
->>>>>>> f08bb3eede93b146e41088539ad157beda177eea
 -- Table `TA`.`Desarrollador`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TA`.`Desarrollador` (
@@ -138,11 +131,6 @@ CREATE TABLE IF NOT EXISTS `TA`.`Juego` (
   `fechaUltimaActualizacion` DATE NULL DEFAULT NULL,
   `desarrollador_idDesarrollador` INT NOT NULL,
   `activo` TINYINT(1) NULL DEFAULT NULL,
-<<<<<<< HEAD
-=======
-  `nombreGenero` ENUM('Accion', 'Rol', 'Estrategia', 'Shooter (FPS/TPS)', 'Simulación', 'Deportes', 'Carreras') NOT NULL,
-  `modelo` ENUM('Free_to_play', 'Paga', 'Suscripcion') NOT NULL,
->>>>>>> f08bb3eede93b146e41088539ad157beda177eea
   PRIMARY KEY (`idJuego`),
 	FOREIGN KEY (`desarrollador_idDesarrollador`) REFERENCES `TA`.`Desarrollador` (`idDesarrollador`)
     )ENGINE = InnoDB;
