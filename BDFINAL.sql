@@ -282,7 +282,7 @@ CREATE PROCEDURE TA.ELIMINAR_DESARROLLADOR(
     IN _idDesarrollador INT
 )
 BEGIN
-	UPDATE Desarrollador SET activo=0 WHERE idDesarrollador=idDesarrollador;
+	UPDATE Usuario SET activo=0 WHERE id=_idDesarrollador;
 END $$
 
 DELIMITER $$
@@ -361,7 +361,7 @@ CREATE PROCEDURE TA.ELIMINAR_ADMINISTRADOR(
     IN _idAdministrador INT
 )
 BEGIN
-	UPDATE Administrador SET activo=0 WHERE idAdministrador=idAdministrador;
+	UPDATE Usuario SET activo=0 WHERE id=_idAdministrador;
 END $$
 
 DELIMITER $$
@@ -390,7 +390,9 @@ CALL TA.OBTENER_X_ID_ADMINISTRADOR(
 
 CALL TA.LISTAR_ADMINISTRADOR(
 	);
-
+CALL TA.ELIMINAR_ADMINISTRADOR(
+	20
+	);
 
 DELIMITER $;
 
@@ -407,7 +409,7 @@ CALL TA.INSERTAR_ADMINISTRADOR(
 );
 
 CALL TA.MODIFICAR_ADMINISTRADOR(
-    1,                      -- _idAdministrador
+    20,                      -- _idAdministrador
     'Supervisor',           -- _rol
     'Luis Ramírez',         -- _nombre
     'luis@example.com',     -- _email
