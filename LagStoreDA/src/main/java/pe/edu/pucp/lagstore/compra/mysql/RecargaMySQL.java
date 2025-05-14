@@ -1,183 +1,120 @@
 package pe.edu.pucp.lagstore.compra.mysql;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import pe.edu.pucp.lagstore.compra.dao.RecargaDAO;
-import pe.edu.pucp.lagstore.compra.model.Recarga;
-import pe.edu.pucp.lagstore.compra.model.MetodoPago;
 import pe.edu.pucp.lagstore.compra.model.Cartera;
+import pe.edu.pucp.lagstore.compra.model.MetodoPago;
+import pe.edu.pucp.lagstore.compra.model.Recarga;
 import pe.edu.pucp.lagstore.config.DBManager;
 
 public class RecargaMySQL implements RecargaDAO {
 
-    private static final String TABLA = "Recarga";
-
-    private Connection        con;
-    private PreparedStatement pst;
-    private ResultSet         rs;
-
+    private ResultSet rs;
 
     @Override
     public int insertar(Recarga recarga) {
-        int idGenerado = 0;
-        try {
-            con = DBManager.getInstance().getConnection();
-            con.setAutoCommit(false);
+        Map<Integer, Object> parametrosSalida = new HashMap<>();
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosSalida.put(1, java.sql.Types.INTEGER); 
+        parametrosEntrada.put(2, new java.sql.Date(recarga.getFechaRecarga().getTime()));
+        parametrosEntrada.put(3, recarga.getMonto());
+        parametrosEntrada.put(4, recarga.getMetodoPago().name());  
+        parametrosEntrada.put(5, recarga.getCartera().getIdCartera());
 
-         
-            String sql = "SELECT idMetodo FROM MetodoPago WHERE nombreMetodo = ?";
-            pst = con.prepareStatement(sql);
-            pst.setString(1, recarga.getMetodoPago().name());   // Usa 'Visa', 'Mastercard', etc.
-            rs = pst.executeQuery();
-            int idMetodo = 0;
-            if (rs.next()) {
-                idMetodo = rs.getInt("idMetodo");
-            } else {
-                throw new SQLException("No se encontró MetodoPago: " + recarga.getMetodoPago().name());
-            }
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_RECARGA", parametrosEntrada, parametrosSalida);
+        recarga.setIdRecarga((int) parametrosSalida.get(1));
 
-      
-            sql = "INSERT INTO Recarga (fechaRecarga, monto, metodoPago_idMetodo, cartera_idCartera, activo) " +
-                  "VALUES (?, ?, ?, ?, 1)";
-            pst = con.prepareStatement(sql);
-            pst.setDate(1, new java.sql.Date(recarga.getFechaRecarga().getTime()));
-            pst.setDouble(2, recarga.getMonto());
-            pst.setInt(3, idMetodo);
-            pst.setInt(4, recarga.getCartera().getIdCartera());
-            pst.executeUpdate();
-
-            sql = "SELECT @@last_insert_id AS id";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
-            if (rs.next()) {
-                idGenerado = rs.getInt("id");
-                recarga.setIdRecarga(idGenerado);
-            }
-
-            sql = "UPDATE Cartera SET saldoActual = saldoActual + ? WHERE idCartera = ?";
-            pst = con.prepareStatement(sql);
-            pst.setDouble(1, recarga.getMonto());
-            pst.setInt(2, recarga.getCartera().getIdCartera());
-            pst.executeUpdate();
-
-            con.commit();
-            System.out.println("Se registró Recarga con ID " + idGenerado);
-        } catch (SQLException ex) {
-            try { if (con != null) con.rollback(); } catch (SQLException ignored) {}
-            System.out.println(ex.getMessage());
-            idGenerado = 0;
-        } finally { cerrar(); }
-        return idGenerado;
+        System.out.println("Se registró Recarga");
+        return recarga.getIdRecarga();
     }
 
-    
     @Override
     public int modificar(Recarga recarga) {
-        int resultado = 0;
-        try {
-            con = DBManager.getInstance().getConnection();
-            String sql = "UPDATE " + TABLA +
-                         " SET fechaRecarga = ?, monto = ?, metodoPago_idMetodo = ?, " +
-                         "     cartera_idCartera = ? " +
-                         " WHERE idRecarga = ? AND activo = 1";
-            pst = con.prepareStatement(sql);
-            pst.setDate  (1, new java.sql.Date(recarga.getFechaRecarga().getTime()));
-            pst.setDouble(2, recarga.getMonto());
-            pst.setInt   (3, recarga.getMetodoPago().ordinal());
-            pst.setInt   (4, recarga.getCartera().getIdCartera());
-            pst.setInt   (5, recarga.getIdRecarga());
-            resultado = pst.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally { cerrar(); }
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, recarga.getIdRecarga());
+        parametrosEntrada.put(2, new java.sql.Date(recarga.getFechaRecarga().getTime()));
+        parametrosEntrada.put(3, recarga.getMonto());
+        parametrosEntrada.put(4, recarga.getMetodoPago().name());
+        parametrosEntrada.put(5, recarga.getCartera().getIdCartera());
+
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_RECARGA", parametrosEntrada, null);
+        System.out.println("Se modificó Recarga");
         return resultado;
     }
-
 
     @Override
     public int eliminar(int idRecarga) {
-        int resultado = 0;
-        try {
-            con = DBManager.getInstance().getConnection();
-            String sql = "UPDATE " + TABLA + " SET activo = 0 WHERE idRecarga = ?";
-            pst = con.prepareStatement(sql);
-            pst.setInt(1, idRecarga);
-            resultado = pst.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally { cerrar(); }
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idRecarga);
+
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_RECARGA", parametrosEntrada, null);
+        System.out.println("Se eliminó Recarga");
         return resultado;
     }
-
 
     @Override
     public ArrayList<Recarga> listarTodas() {
         ArrayList<Recarga> lista = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_RECARGAS", null);
+        System.out.println("Leyendo lista de Recargas...");
         try {
-            con = DBManager.getInstance().getConnection();
-            String sql = "SELECT idRecarga, fechaRecarga, monto, metodoPago_idMetodo, " +
-                         "       cartera_idCartera, activo " +
-                         "FROM " + TABLA;
-            pst = con.prepareStatement(sql);
-            rs  = pst.executeQuery();
             while (rs.next()) {
-                Recarga r = new Recarga();
-                r.setIdRecarga  (rs.getInt("idRecarga"));
-                r.setFechaRecarga(rs.getDate("fechaRecarga"));
-                r.setMonto      (rs.getDouble("monto"));
-                r.setMetodoPago (MetodoPago.values()[rs.getInt("metodoPago_idMetodo")]);
+                Recarga recarga = new Recarga();
+                recarga.setIdRecarga(rs.getInt("idRecarga"));
+                recarga.setFechaRecarga(rs.getDate("fechaRecarga"));
+                recarga.setMonto(rs.getDouble("monto"));
 
-                Cartera c = new Cartera();
-                c.setIdCartera(rs.getInt("cartera_idCartera"));
-                r.setCartera(c);
+                String metodo = rs.getString("nombreMetodo");
+                recarga.setMetodoPago(MetodoPago.valueOf(metodo));
 
-                r.setActivo     (rs.getInt("activo"));
-                lista.add(r);
+                Cartera cartera = new Cartera();
+                cartera.setIdCartera(rs.getInt("cartera_idCartera"));
+                recarga.setCartera(cartera);
+
+                recarga.setActivo(rs.getInt("activo"));
+                lista.add(recarga);
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally { cerrar(); }
+            System.out.println("Error al listar Recargas: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
         return lista;
     }
 
     @Override
     public Recarga obtenerPorId(int idRecarga) {
         Recarga recarga = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idRecarga);
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_RECARGA_POR_ID", parametrosEntrada);
+        System.out.println("Buscando Recarga por ID...");
         try {
-            con = DBManager.getInstance().getConnection();
-
-            String sql = "SELECT idRecarga, fechaRecarga, monto, " +
-                         "       metodoPago_idMetodo, cartera_idCartera, activo " +
-                         "FROM Recarga WHERE idRecarga = ?";
-            pst = con.prepareStatement(sql);
-            pst.setInt(1, idRecarga);
-
-            rs = pst.executeQuery();
             if (rs.next()) {
                 recarga = new Recarga();
-                recarga.setIdRecarga   (rs.getInt   ("idRecarga"));
-                recarga.setFechaRecarga(rs.getDate  ("fechaRecarga"));
-                recarga.setMonto       (rs.getDouble("monto"));
-                recarga.setMetodoPago  (MetodoPago.values()[
-                                         rs.getInt("metodoPago_idMetodo")]);
+                recarga.setIdRecarga(rs.getInt("idRecarga"));
+                recarga.setFechaRecarga(rs.getDate("fechaRecarga"));
+                recarga.setMonto(rs.getDouble("monto"));
+
+                String metodo = rs.getString("nombreMetodo");
+                recarga.setMetodoPago(MetodoPago.valueOf(metodo));
 
                 Cartera cartera = new Cartera();
                 cartera.setIdCartera(rs.getInt("cartera_idCartera"));
                 recarga.setCartera(cartera);
 
-                recarga.setActivo      (rs.getInt("activo"));
+                recarga.setActivo(rs.getInt("activo"));
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Error al obtener Recarga: " + ex.getMessage());
         } finally {
-            try { if (con != null) con.close(); } catch (SQLException ignored) {}
+            DBManager.getInstance().cerrarConexion();
         }
-        return recarga;  
-    }
-    private void cerrar() {
-        try { if (con != null) con.close(); } catch (SQLException ignored) {}
+        return recarga;
     }
 }
