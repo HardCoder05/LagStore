@@ -9,7 +9,9 @@ import java.util.Map;
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionjuegos.dao.JuegoDAO;
 import pe.edu.pucp.lagstore.gestionusuarios.mysql.DesarrolladorMySQL;
+import pe.edu.pucp.lagstore.gestjuegos.model.Genero;
 import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
+import pe.edu.pucp.lagstore.gestjuegos.model.ModeloNegocio;
 
 
 public class JuegoMySQL implements JuegoDAO{
@@ -31,8 +33,8 @@ public class JuegoMySQL implements JuegoDAO{
         parametrosEntrada.put(9, juego.getRequisitosRecomendados());
         parametrosEntrada.put(10, juego.getEspacioDisco());
         parametrosEntrada.put(11, juego.getFechaUltimaActualizacion());
-        parametrosEntrada.put(12, juego.getIdGenero());
-        parametrosEntrada.put(13, juego.getIdModeloNegocio());
+        parametrosEntrada.put(12, juego.getGenero().toString());
+        parametrosEntrada.put(13, juego.getModeloNegocio().toString());
         parametrosEntrada.put(14, juego.getDesarrollador().getIdDesarrollador());
         parametrosEntrada.put(15, 1);
 
@@ -57,8 +59,8 @@ public class JuegoMySQL implements JuegoDAO{
         parametrosEntrada.put(9, juego.getRequisitosRecomendados());
         parametrosEntrada.put(10, juego.getEspacioDisco());
         parametrosEntrada.put(11, juego.getFechaUltimaActualizacion());
-        parametrosEntrada.put(12, juego.getIdGenero());
-        parametrosEntrada.put(13, juego.getIdModeloNegocio());
+        parametrosEntrada.put(12, juego.getGenero().toString());
+        parametrosEntrada.put(13, juego.getModeloNegocio().toString());
         parametrosEntrada.put(14, juego.getDesarrollador().getIdDesarrollador());
 
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_JUEGO", parametrosEntrada, null);
@@ -96,8 +98,8 @@ public class JuegoMySQL implements JuegoDAO{
                 juego.setRequisitosRecomendados(rs.getString("requisitosRecomendados"));
                 juego.setEspacioDisco(rs.getDouble("espacioDisco"));
                 juego.setFechaUltimaActualizacion(rs.getDate("fechaUltimaActualizacion"));
-                juego.setIdGenero(rs.getInt("idGenero"));
-                juego.setIdModeloNegocio(rs.getInt("idModeloNegocio"));
+                juego.setGenero(Genero.valueOf(rs.getString("genero")));
+                juego.setModeloNegocio(ModeloNegocio.valueOf(rs.getString("modeloNegocio")));
                 juego.setDesarrollador(new DesarrolladorMySQL().obtenerPorId(rs.getInt("idDesarrollador")));
                 juego.setActivo(1);
                 juegos.add(juego);
@@ -132,8 +134,8 @@ public class JuegoMySQL implements JuegoDAO{
                 juego.setRequisitosRecomendados(rs.getString("requisitosRecomendados"));
                 juego.setEspacioDisco(rs.getDouble("espacioDisco"));
                 juego.setFechaUltimaActualizacion(rs.getDate("fechaUltimaActualizacion"));
-                juego.setIdGenero(rs.getInt("idGenero"));
-                juego.setIdModeloNegocio(rs.getInt("idModeloNegocio"));
+                juego.setGenero(Genero.valueOf(rs.getString("genero")));
+                juego.setModeloNegocio(ModeloNegocio.valueOf(rs.getString("modeloNegocio")));
                 juego.setDesarrollador(new DesarrolladorMySQL().obtenerPorId(rs.getInt("idDesarrollador")));
                 juego.setActivo(rs.getInt("activo"));
             }

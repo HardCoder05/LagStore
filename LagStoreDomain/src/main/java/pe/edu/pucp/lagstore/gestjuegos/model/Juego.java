@@ -16,8 +16,8 @@ public class Juego {
     private String requisitosRecomendados;
     private double espacioDisco;
     private Date fechaUltimaActualizacion;
-    private int idGenero;
-    private int idModeloNegocio;
+    private Genero genero;
+    private ModeloNegocio modeloNegocio;
     private Desarrollador desarrollador;
     private int activo;
 
@@ -56,11 +56,11 @@ public class Juego {
     public Date getFechaUltimaActualizacion() { return fechaUltimaActualizacion; }
     public void setFechaUltimaActualizacion(Date fechaUltimaActualizacion) { this.fechaUltimaActualizacion = fechaUltimaActualizacion; }
 
-    public int getIdGenero() { return idGenero; }
-    public void setIdGenero(int idGenero) { this.idGenero = idGenero; }
+    public Genero getGenero() { return genero; }
+    public void setGenero(Genero genero) { this.genero = genero; }
 
-    public int getIdModeloNegocio() { return idModeloNegocio; }
-    public void setIdModeloNegocio(int idModeloNegocio) { this.idModeloNegocio = idModeloNegocio; }
+    public ModeloNegocio getModeloNegocio() { return modeloNegocio; }
+    public void setModeloNegocio(ModeloNegocio modeloNegocio) { this.modeloNegocio = modeloNegocio; }
 
     public Desarrollador getDesarrollador() { return desarrollador; }
     public void setDesarrollador(Desarrollador desarrollador) { this.desarrollador = desarrollador; }

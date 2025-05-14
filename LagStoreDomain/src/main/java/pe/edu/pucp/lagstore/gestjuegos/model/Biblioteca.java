@@ -5,7 +5,6 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
 
 public class Biblioteca {
     private int idBiblioteca;
-    //private int numeroCuenta;
     private double ingresoTotal;
     private int cantidadDeJuegos;
     private Usuario usuario;
@@ -35,14 +34,6 @@ public class Biblioteca {
     public void setIdBiblioteca(int idBiblioteca) {
         this.idBiblioteca = idBiblioteca;
     }
-
-    /*public int getNumeroCuenta() {
-        return numeroCuenta;
-    }
-
-    public void setNumeroCuenta(int numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
-    }*/
 
     public double getIngresoTotal() {
         return ingresoTotal;

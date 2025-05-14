@@ -21,16 +21,7 @@ DROP SCHEMA IF EXISTS `TA` ;
 CREATE SCHEMA IF NOT EXISTS `TA`;
 USE `TA` ;
 
--- -----------------------------------------------------
--- Table `TA`.`Biblioteca`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TA`.`Biblioteca` (
-  `idBiblioteca` INT NOT NULL AUTO_INCREMENT,
-  `ingresoTotal` DOUBLE NULL DEFAULT NULL,
-  `cantidadDeJuegos` INT NULL DEFAULT NULL,
-  `activo` TINYINT(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`idBiblioteca`)
-  )ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
 -- Table `TA`.`Usuario`
@@ -84,25 +75,6 @@ CREATE TABLE IF NOT EXISTS `TA`.`Jugador` (
 
 
 -- -----------------------------------------------------
--- Table `TA`.`Genero`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TA`.`Genero` (
-  `idGenero` INT NOT NULL AUTO_INCREMENT,
-  `nombreGenero` ENUM('ACCCION', 'ROL', 'ESTRATEGIA', 'SHOOTER', 'SIMULACION', 'DEPORTES', 'CARRERAS') NULL DEFAULT NULL,
-  PRIMARY KEY (`idGenero`)
-  )ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `TA`.`ModeloNegocio`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TA`.`ModeloNegocio` (
-  `idModeloNegocio` INT NOT NULL AUTO_INCREMENT,
-  `modelo` ENUM('FREE_TO_PLAY', 'PAGA', 'SUSCRIPCION') NULL DEFAULT NULL,
-  PRIMARY KEY (`idModeloNegocio`)
-  )ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `TA`.`Desarrollador`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TA`.`Desarrollador` (
@@ -131,6 +103,8 @@ CREATE TABLE IF NOT EXISTS `TA`.`Juego` (
   `fechaUltimaActualizacion` DATE NULL DEFAULT NULL,
   `desarrollador_idDesarrollador` INT NOT NULL,
   `activo` TINYINT(1) NULL DEFAULT NULL,
+  `nombreGenero` ENUM('Accion', 'Rol', 'Estrategia', 'Shooter (FPS/TPS)', 'Simulación', 'Deportes', 'Carreras') NOT NULL,
+  `modelo` ENUM('Free_to_play', 'Paga', 'Suscripcion') NOT NULL,
   PRIMARY KEY (`idJuego`),
 	FOREIGN KEY (`desarrollador_idDesarrollador`) REFERENCES `TA`.`Desarrollador` (`idDesarrollador`)
     )ENGINE = InnoDB;

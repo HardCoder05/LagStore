@@ -1,131 +1,100 @@
 package pe.edu.pucp.lagstore.gestionjuegos.mysql;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionjuegos.dao.BibliotecaDAO;
 import pe.edu.pucp.lagstore.gestjuegos.model.Biblioteca;
 
-
-public class BibliotecaMySQL implements BibliotecaDAO{
-    private Connection con;
-    private Statement st;
+public class BibliotecaMySQL implements BibliotecaDAO {
     private ResultSet rs;
-    private PreparedStatement pst;
+
     @Override
     public int insertar(Biblioteca biblioteca) {
-        int resultado = 0;
-        try{
-            con = DBManager.getInstance().getConnection();
-            String sql = "INSERT INTO Biblioteca(ingresoTotal,cantidadDeJuegos,activo) "
-                        +"VALUES('"+biblioteca.getIngresoTotal() +"','"+biblioteca.getCantidadDeJuegos()+",'1')";
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql);
-            
-            sql = "SELECT @@last_insert_id AS id";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
-            rs.next();
-            biblioteca.setIdBiblioteca(rs.getInt("id"));
-            System.out.println("Se ha registrado en tabla biblioteca...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){
-                System.out.println(ex.getMessage());
-            }
-        }
-        return resultado;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        Map<Integer, Object> parametrosSalida = new HashMap<>();
+
+        parametrosSalida.put(1, Types.INTEGER);
+        parametrosEntrada.put(2, biblioteca.getIngresoTotal());
+        parametrosEntrada.put(3, biblioteca.getCantidadDeJuegos());
+        parametrosEntrada.put(4, biblioteca.getUsuario().getIdUsuario());
+
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_BIBLIOTECA", parametrosEntrada, parametrosSalida);
+        biblioteca.setIdBiblioteca((int) parametrosSalida.get(1));
+        System.out.println("Se ha registrado la biblioteca correctamente.");
+        return biblioteca.getIdBiblioteca();
     }
 
     @Override
     public int modificar(Biblioteca biblioteca) {
-        int resultado = 0;
-        try{
-            //Establecer una conexion con la BD
-            con = DBManager.getInstance().getConnection();
-            //Ejecutamos alguna sentencia SQL
-            String sql = "UPDATE Biblioteca SET cantidadDeJuegos = '" + biblioteca.getCantidadDeJuegos()+ "' WHERE" + " idBiblioteca = " + biblioteca.getIdBiblioteca();
-            System.out.println("Se ha actualizado la biblioteca...");
-            System.out.println("Id biblioteca: "+biblioteca.getIdBiblioteca()+ " nueva cantidad: "+biblioteca.getCantidadDeJuegos());
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql);
-            
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, biblioteca.getIdBiblioteca());
+        parametrosEntrada.put(2, biblioteca.getIngresoTotal());
+        parametrosEntrada.put(3, biblioteca.getCantidadDeJuegos());
+
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_BIBLIOTECA", parametrosEntrada, null);
+        System.out.println("Se ha modificado la biblioteca correctamente.");
         return resultado;
     }
 
     @Override
     public int eliminar(int idBiblioteca) {
-        int resultado = 0;
-        try{
-            con = DBManager.getInstance().getConnection();
-            String sql = "UPDATE Biblioteca SET activo = 0 WHERE idBiblioteca = " + idBiblioteca;
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql);
-            System.out.println("Se ha eliminado la biblioteca...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idBiblioteca);
+
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_BIBLIOTECA", parametrosEntrada, null);
+        System.out.println("Se ha eliminado la biblioteca correctamente.");
         return resultado;
     }
 
     @Override
     public ArrayList<Biblioteca> listarTodas() {
-        ArrayList<Biblioteca> biblioteca = new ArrayList<>();
-        try{
-            con = DBManager.getInstance().getConnection();
-            String sql = "SELECT * FROM Biblioteca WHERE activo = 1";
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            System.out.println("Se esta imprimiendo los ids");
-            while(rs.next()){
-                Biblioteca biblio  = new Biblioteca();
-                biblio.setIdBiblioteca(rs.getInt("idBiblioteca"));
-                biblio.setCantidadDeJuegos(rs.getInt("cantidadDeJuegos"));
-                biblio.setIngresoTotal(rs.getDouble("ingresoTotal"));
-                biblioteca.add(biblio);
+        ArrayList<Biblioteca> bibliotecas = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_BIBLIOTECAS_TODAS", null);
+        System.out.println("Lectura de bibliotecas...");
+
+        try {
+            while (rs.next()) {
+                Biblioteca biblioteca = new Biblioteca();
+                biblioteca.setIdBiblioteca(rs.getInt("idBiblioteca"));
+                biblioteca.setIngresoTotal(rs.getDouble("ingresoTotal"));
+                biblioteca.setCantidadDeJuegos(rs.getInt("cantidadDeJuegos"));
+                bibliotecas.add(biblioteca);
             }
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{rs.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
         }
-        return biblioteca;
+        return bibliotecas;
     }
 
     @Override
     public Biblioteca obtenerPorId(int id) {
-        Biblioteca biblio = new Biblioteca();
-        try{
-            con = DBManager.getInstance().getConnection();
-            String sql = "SELECT * FROM Biblioteca WHERE idBiblioteca = " + id;
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            System.out.println("Se esta obteniendo id");
-            while(rs.next()){
-                biblio.setIdBiblioteca(rs.getInt("idBiblioteca"));
-                biblio.setIngresoTotal(rs.getDouble("ingresoTotal"));
-                biblio.setCantidadDeJuegos(rs.getInt("cantidadDeJuegos"));
+        Biblioteca biblioteca = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_BIBLIOTECA_X_ID", parametrosEntrada);
+        System.out.println("Lectura de biblioteca por ID...");
+
+        try {
+            if (rs.next()) {
+                biblioteca = new Biblioteca();
+                biblioteca.setIdBiblioteca(rs.getInt("idBiblioteca"));
+                biblioteca.setIngresoTotal(rs.getDouble("ingresoTotal"));
+                biblioteca.setCantidadDeJuegos(rs.getInt("cantidadDeJuegos"));
             }
-            System.out.println(biblio);
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{rs.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
         }
-        return biblio;
+        return biblioteca;
     }
-    
 }
+

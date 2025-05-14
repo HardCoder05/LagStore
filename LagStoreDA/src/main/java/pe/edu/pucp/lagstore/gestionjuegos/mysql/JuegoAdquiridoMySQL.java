@@ -22,6 +22,7 @@ public class JuegoAdquiridoMySQL implements JuegoAdquiridoDAO{
         inParams.put(4, juegoAdquirido.getUltimaSesion());
         inParams.put(5, juegoAdquirido.getTiempoJuego());
         inParams.put(6, juegoAdquirido.isActualizado());
+        inParams.put(7,1);
 
         return DBManager.getInstance().ejecutarProcedimiento("INSERTAR_JUEGO_ADQUIRIDO", inParams, null);    
     }
@@ -62,6 +63,7 @@ public class JuegoAdquiridoMySQL implements JuegoAdquiridoDAO{
                 ja.setUltimaSesion(rs.getDate("ultimaSesion"));
                 ja.setTiempoJuego(rs.getDouble("tiempoJuego"));
                 ja.setActualizado(rs.getBoolean("actualizado"));
+                ja.setActivo(1);
 
                 juegos.add(ja);
             }
@@ -92,6 +94,7 @@ public class JuegoAdquiridoMySQL implements JuegoAdquiridoDAO{
                 ja.setUltimaSesion(rs.getDate("ultimaSesion"));
                 ja.setTiempoJuego(rs.getDouble("tiempoJuego"));
                 ja.setActualizado(rs.getBoolean("actualizado"));
+                ja.setActivo(rs.getInt("activo"));
             }
         } catch (SQLException ex) {
             System.out.println("ERROR al obtener juego adquirido por ID: " + ex.getMessage());

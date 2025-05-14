@@ -1,3 +1,77 @@
+--- Prepara los drops para cada procedimiento
+DROP PROCEDURE IF EXISTS INSERTAR_BIBLIOTECA;
+DROP PROCEDURE IF EXISTS MODIFICAR_BIBLIOTECA;
+DROP PROCEDURE IF EXISTS ELIMINAR_BIBLIOTECA;
+DROP PROCEDURE IF EXISTS LISTAR_BIBLIOTECAS_TODAS;
+DROP PROCEDURE IF EXISTS OBTENER_BIBLIOTECA_X_ID;
+DROP PROCEDURE IF EXISTS INSERTAR_JUEGO;
+DROP PROCEDURE IF EXISTS MODIFICAR_JUEGO;
+DROP PROCEDURE IF EXISTS ELIMINAR_JUEGO;
+DROP PROCEDURE IF EXISTS LISTAR_JUEGOS_TODOS;
+DROP PROCEDURE IF EXISTS OBTENER_JUEGO_X_ID;
+DROP PROCEDURE IF EXISTS INSERTAR_JUEGO_ADQUIRIDO;
+DROP PROCEDURE IF EXISTS MODIFICAR_JUEGO_ADQUIRIDO;
+DROP PROCEDURE IF EXISTS ELIMINAR_JUEGO_ADQUIRIDO;
+DROP PROCEDURE IF EXISTS LISTAR_JUEGOS_ADQUIRIDOS_TODOS;
+DROP PROCEDURE IF EXISTS OBTENER_JUEGO_ADQUIRIDO_POR_ID;
+
+
+-- Para Biblioteca
+DELIMITER //
+CREATE PROCEDURE INSERTAR_BIBLIOTECA (
+    OUT _idBiblioteca INT,
+    IN p_ingresoTotal DOUBLE,
+    IN p_cantidadDeJuegos INT,
+    IN p_usuario_idUsuario INT
+)
+BEGIN
+    INSERT INTO Biblioteca (ingresoTotal, cantidadDeJuegos, activo, usuario_idUsuario)
+    VALUES (p_ingresoTotal, p_cantidadDeJuegos, 1, p_usuario_idUsuario);
+    
+    SET _idBiblioteca = LAST_INSERT_ID();
+END //
+
+DELIMITER //
+CREATE PROCEDURE MODIFICAR_BIBLIOTECA (
+    IN p_idBiblioteca INT,
+    IN p_cantidadDeJuegos INT,
+    IN p_ingresoTotal DOUBLE
+)
+BEGIN
+    UPDATE Biblioteca
+    SET cantidadDeJuegos = p_cantidadDeJuegos ,
+        ingresoTotal = p_ingresoTotal
+    WHERE idBiblioteca = p_idBiblioteca;
+END //
+
+DELIMITER //
+CREATE PROCEDURE ELIMINAR_BIBLIOTECA (
+    IN p_idBiblioteca INT
+)
+BEGIN
+    UPDATE Biblioteca
+    SET activo = 0
+    WHERE idBiblioteca = p_idBiblioteca;
+END //
+
+DELIMITER //
+CREATE PROCEDURE LISTAR_BIBLIOTECAS_TODAS()
+BEGIN
+    SELECT *
+    FROM Biblioteca
+    WHERE activo = 1;
+END //
+
+DELIMITER //
+CREATE PROCEDURE OBTENER_BIBLIOTECA_X_ID (
+    IN p_idBiblioteca INT
+)
+BEGIN
+    SELECT *
+    FROM Biblioteca
+    WHERE idBiblioteca = p_idBiblioteca;
+END //
+
 -- Para Juego
 DELIMITER //
 CREATE PROCEDURE INSERTAR_JUEGO(
@@ -12,25 +86,24 @@ CREATE PROCEDURE INSERTAR_JUEGO(
     IN _requisitosRecomendados TEXT,
     IN _espacioDisco DOUBLE,
     IN _fechaUltimaActualizacion DATE,
-    IN _idGenero INT,
-    IN _idModeloNegocio INT,
+    IN _nombreGenero ENUM('ACCION', 'ROL', 'ESTRATEGIA', 'SHOOTER', 'SIMULACION', 'DEPORTES', 'CARRERAS'),
+    IN _modelo ENUM('FREE_TO_PLAY', 'PAGA', 'SUSCRIPCION'),
     IN _idDesarrollador INT,
     IN _activo INT
 )
 BEGIN
-    INSERT INTO juego (titulo, descripcion, precio, version, imagenJuego, fechaLanzamiento,
+    INSERT INTO Juego (titulo, descripcion, precio, version, imagenJuego, fechaLanzamiento,
                        requisitosMinimos, requisitosRecomendados, espacioDisco,
-                       fechaUltimaActualizacion, idGenero, idModeloNegocio, idDesarrollador, activo)
+                       fechaUltimaActualizacion, nombreGenero, modelo, idDesarrollador, activo)
     VALUES (_titulo, _descripcion, _precio, _version, _imagen, _fechaLanzamiento,
             _requisitosMinimos, _requisitosRecomendados, _espacioDisco,
-            _fechaUltimaActualizacion, _idGenero, _idModeloNegocio, _idDesarrollador, _activo);
+            _fechaUltimaActualizacion, _nombreGenero, _modelo, _idDesarrollador, _activo);
 
     SET _idJuego = LAST_INSERT_ID();
 END //
 
-DDELIMITER //
+DELIMITER //
 CREATE PROCEDURE MODIFICAR_JUEGO(
-    IN _idJuego INT,
     IN _titulo VARCHAR(100),
     IN _descripcion TEXT,
     IN _precio DECIMAL(10,2),
@@ -41,12 +114,12 @@ CREATE PROCEDURE MODIFICAR_JUEGO(
     IN _requisitosRecomendados TEXT,
     IN _espacioDisco DOUBLE,
     IN _fechaUltimaActualizacion DATE,
-    IN _idGenero INT,
-    IN _idModeloNegocio INT,
-    IN _idDesarrollador INT
+    IN _nombreGenero ENUM('ACCION', 'ROL', 'ESTRATEGIA', 'SHOOTER', 'SIMULACION', 'DEPORTES', 'CARRERAS'),
+    IN _modelo ENUM('FREE_TO_PLAY', 'PAGA', 'SUSCRIPCION'),
+    IN _idDesarrollador INT,
 )
 BEGIN
-    UPDATE juego
+    UPDATE Juego
     SET titulo = _titulo,
         descripcion = _descripcion,
         precio = _precio,
@@ -57,8 +130,8 @@ BEGIN
         requisitosRecomendados = _requisitosRecomendados,
         espacioDisco = _espacioDisco,
         fechaUltimaActualizacion = _fechaUltimaActualizacion,
-        idGenero = _idGenero,
-        idModeloNegocio = _idModeloNegocio,
+        nombreGenero = _nombreGenero,
+        modelo = _modelo,
         idDesarrollador = _idDesarrollador
     WHERE idJuego = _idJuego;
 END //
@@ -66,19 +139,19 @@ END //
 DELIMITER //
 CREATE PROCEDURE ELIMINAR_JUEGO(IN _idJuego INT)
 BEGIN
-    UPDATE juego SET activo = 0 WHERE idJuego = _idJuego;
+    UPDATE Juego SET activo = 0 WHERE idJuego = _idJuego;
 END //
 
 DELIMITER //
 CREATE PROCEDURE LISTAR_JUEGOS_TODOS()
 BEGIN
-    SELECT * FROM juego WHERE activo = 1;
+    SELECT * FROM Juego WHERE activo = 1;
 END //
 
 DELIMITER //
 CREATE PROCEDURE OBTENER_JUEGO_X_ID(IN _idJuego INT)
 BEGIN
-    SELECT * FROM juego WHERE idJuego = _idJuego;
+    SELECT * FROM Juego WHERE idJuego = _idJuego;
 END //
 
 
@@ -90,11 +163,12 @@ CREATE PROCEDURE INSERTAR_JUEGO_ADQUIRIDO(
     IN _fechaAdquisicion DATE,
     IN _ultimaSesion DATE,
     IN _tiempoJuego DOUBLE,
-    IN _actualizado BOOLEAN
+    IN _actualizado BOOLEAN,
+    IN _activo INT
 )
 BEGIN
-    INSERT INTO juego_adquirido (fidBiblioteca, fidJuego, fechaAdquisicion, ultimaSesion, tiempoJuego, actualizado)
-    VALUES (_idBiblioteca, _idJuego, _fechaAdquisicion, _ultimaSesion, _tiempoJuego, _actualizado);
+    INSERT INTO JuegoAdquirido (fidBiblioteca, fidJuego, fechaAdquisicion, ultimaSesion, tiempoJuego, actualizado, activo)
+    VALUES (_idBiblioteca, _idJuego, _fechaAdquisicion, _ultimaSesion, _tiempoJuego, _actualizado, _activo);
 END //
 
 DELIMITER //
@@ -107,7 +181,7 @@ CREATE PROCEDURE MODIFICAR_JUEGO_ADQUIRIDO(
     IN _actualizado BOOLEAN
 )
 BEGIN
-    UPDATE juego_adquirido
+    UPDATE JuegoAdquirido
     SET fechaAdquisicion = _fechaAdquisicion,
         ultimaSesion = _ultimaSesion,
         tiempoJuego = _tiempoJuego,
@@ -118,85 +192,21 @@ END //
 DELIMITER //
 CREATE PROCEDURE ELIMINAR_JUEGO_ADQUIRIDO(IN _idJuego INT)
 BEGIN
-    DELETE FROM juego_adquirido WHERE fidJuego = _idJuego;
+    UPDATE JuegoAdquirido SET activo = 0 WHERE fidJuego = _idJuego;
 END //
 
 DELIMITER //
 CREATE PROCEDURE LISTAR_JUEGOS_ADQUIRIDOS_TODOS()
 BEGIN
-    SELECT * FROM juego_adquirido;
+    SELECT * FROM JuegoAdquirido WHERE activo = 1;
 END //
 
 DELIMITER //
 CREATE PROCEDURE OBTENER_JUEGO_ADQUIRIDO_POR_ID(IN _idJuego INT)
 BEGIN
-    SELECT * FROM juego_adquirido WHERE fidJuego = _idJuego;
+    SELECT * FROM JuegoAdquirido WHERE fidJuego = _idJuego;
 END //
 
 
--- Para Genero
-DELIMITER //
-CREATE PROCEDURE INSERTAR_GENERO (
-    IN _nombreGenero ENUM('ACCCION', 'ROL', 'ESTRATEGIA', 'SHOOTER', 'SIMULACION', 'DEPORTES', 'CARRERAS')
-)
-BEGIN
-    INSERT INTO Genero(nombreGenero) VALUES (_nombreGenero);
-END //
-
-DELIMITER //
-CREATE PROCEDURE MODIFICAR_GENERO (
-    IN _idGenero INT,
-    IN _nombreGenero ENUM('ACCCION', 'ROL', 'ESTRATEGIA', 'SHOOTER', 'SIMULACION', 'DEPORTES', 'CARRERAS')
-)
-BEGIN
-    UPDATE Genero SET nombreGenero = _nombreGenero WHERE idGenero = _idGenero;
-END //
-
-DELIMITER //
-CREATE PROCEDURE ELIMINAR_GENERO (
-    IN _idGenero INT
-)
-BEGIN
-    DELETE FROM Genero WHERE idGenero = _idGenero;
-END //
-
-DELIMITER //
-CREATE PROCEDURE LISTAR_GENEROS_TODOS ()
-BEGIN
-    SELECT * FROM Genero;
-END //
-
-
--- Para ModeloNegocio
-DELIMITER //
-CREATE PROCEDURE INSERTAR_MODELO_NEGOCIO (
-    IN _modelo ENUM('FREE_TO_PLAY', 'PAGA', 'SUSCRIPCION')
-)
-BEGIN
-    INSERT INTO ModeloNegocio(modelo) VALUES (_modelo);
-END //
-
-DELIMITER //
-CREATE PROCEDURE MODIFICAR_MODELO_NEGOCIO (
-    IN _idModeloNegocio INT,
-    IN _modelo ENUM('FREE_TO_PLAY', 'PAGA', 'SUSCRIPCION')
-)
-BEGIN
-    UPDATE ModeloNegocio SET modelo = _modelo WHERE idModeloNegocio = _idModeloNegocio;
-END //
-
-DELIMITER //
-CREATE PROCEDURE ELIMINAR_MODELO_NEGOCIO (
-    IN _idModeloNegocio INT
-)
-BEGIN
-    DELETE FROM ModeloNegocio WHERE idModeloNegocio = _idModeloNegocio;
-END //
-
-DELIMITER //
-CREATE PROCEDURE LISTAR_MODELOS_NEGOCIO_TODOS ()
-BEGIN
-    SELECT * FROM ModeloNegocio;
-END //
 
 

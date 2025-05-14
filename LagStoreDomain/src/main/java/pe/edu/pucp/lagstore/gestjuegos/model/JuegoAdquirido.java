@@ -9,6 +9,7 @@ public class JuegoAdquirido {
     private Date ultimaSesion;
     private double tiempoJuego;
     private boolean actualizado;
+    private int activo;
 
     public Biblioteca getBiblioteca() {
         return biblioteca;
@@ -56,5 +57,13 @@ public class JuegoAdquirido {
 
     public void setActualizado(boolean actualizado) {
         this.actualizado = actualizado;
+    }
+
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
 }
