@@ -32,11 +32,15 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
 public class Principal {
     public static void main(String[] args)throws Exception{
         
+        
+           
+    }
+    
+    private static void test_Compras() throws ParseException{
         test_metodosPago(); //los metodos de pago se insertan en la BD
         test4(); // se prueba el funcionamiento de Cartera
         test5(); // se prueba el funcionamiento de Recarga
         test6(); // se prueba el funcionamiento de CarroCompra
-           
     }
     
     
@@ -185,57 +189,57 @@ public class Principal {
 }
     
     private static void test6() {
-    CarroCompraDAO daoCarro = new CarroCompraMySQL();
+        CarroCompraDAO daoCarro = new CarroCompraMySQL();
 
-    //Crear CarroCompra
-    CarroCompra carro = new CarroCompra();
-    carro.setTotalEstimado(120.00);
+        //Crear CarroCompra
+        CarroCompra carro = new CarroCompra();
+        carro.setTotalEstimado(120.00);
 
-    
-    JugadorDAO daoJugador = new JugadorMySQL();
-    Jugador jugador = daoJugador.obtenerPorId(16);
-    carro.setJugador(jugador);
 
-    int idInsertado = daoCarro.insertar(carro);
-    System.out.println("CarroCompra creado con ID: " + idInsertado);
+        JugadorDAO daoJugador = new JugadorMySQL();
+        Jugador jugador = daoJugador.obtenerPorId(16);
+        carro.setJugador(jugador);
 
-    //Obtener por ID
-    CarroCompra carroObtenido = daoCarro.obtenerPorId(idInsertado);
-    System.out.println("Obtenido: ID=" + carroObtenido.getIdCarroCompra() +
-                       ", Total=" + carroObtenido.getTotalEstimado() +
-                       ", JugadorID=" + carroObtenido.getJugador().getIdJugador() +
-                       ", Activo=" + carroObtenido.getActivo());
+        int idInsertado = daoCarro.insertar(carro);
+        System.out.println("CarroCompra creado con ID: " + idInsertado);
 
-    //Modificar
-    carroObtenido.setTotalEstimado(200.00);
-    daoCarro.modificar(carroObtenido);
-    System.out.println("CarroCompra modificado.");
+        //Obtener por ID
+        CarroCompra carroObtenido = daoCarro.obtenerPorId(idInsertado);
+        System.out.println("Obtenido: ID=" + carroObtenido.getIdCarroCompra() +
+                           ", Total=" + carroObtenido.getTotalEstimado() +
+                           ", JugadorID=" + carroObtenido.getJugador().getIdJugador() +
+                           ", Activo=" + carroObtenido.getActivo());
 
-    //Consultar de nuevo
-    CarroCompra carroModificado = daoCarro.obtenerPorId(idInsertado);
-    System.out.println("Modificado: ID=" + carroModificado.getIdCarroCompra() +
-                       ", Total=" + carroModificado.getTotalEstimado() +
-                       ", Activo=" + carroModificado.getActivo());
+        //Modificar
+        carroObtenido.setTotalEstimado(200.00);
+        daoCarro.modificar(carroObtenido);
+        System.out.println("CarroCompra modificado.");
 
-    //Eliminar 
-    daoCarro.eliminar(idInsertado);
-    System.out.println("CarroCompra eliminado (soft-delete).");
+        //Consultar de nuevo
+        CarroCompra carroModificado = daoCarro.obtenerPorId(idInsertado);
+        System.out.println("Modificado: ID=" + carroModificado.getIdCarroCompra() +
+                           ", Total=" + carroModificado.getTotalEstimado() +
+                           ", Activo=" + carroModificado.getActivo());
 
-    //Consultar eliminado
-    CarroCompra carroEliminado = daoCarro.obtenerPorId(idInsertado);
-    System.out.println("Eliminado: ID=" + carroEliminado.getIdCarroCompra() +
-                       ", Total=" + carroEliminado.getTotalEstimado() +
-                       ", Activo=" + carroEliminado.getActivo());
-    //Listar todos
-    ArrayList<CarroCompra> lista = daoCarro.listarTodas();
-    System.out.println("\nListado de todos los CarroCompra:");
-    for (CarroCompra c : lista) {
-        System.out.println("ID=" + c.getIdCarroCompra() +
-                           ", Total=" + c.getTotalEstimado() +
-                           ", JugadorID=" + c.getJugador().getIdJugador() +
-                           ", Activo=" + c.getActivo());
+        //Eliminar 
+        daoCarro.eliminar(idInsertado);
+        System.out.println("CarroCompra eliminado (soft-delete).");
+
+        //Consultar eliminado
+        CarroCompra carroEliminado = daoCarro.obtenerPorId(idInsertado);
+        System.out.println("Eliminado: ID=" + carroEliminado.getIdCarroCompra() +
+                           ", Total=" + carroEliminado.getTotalEstimado() +
+                           ", Activo=" + carroEliminado.getActivo());
+        //Listar todos
+        ArrayList<CarroCompra> lista = daoCarro.listarTodas();
+        System.out.println("\nListado de todos los CarroCompra:");
+        for (CarroCompra c : lista) {
+            System.out.println("ID=" + c.getIdCarroCompra() +
+                               ", Total=" + c.getTotalEstimado() +
+                               ", JugadorID=" + c.getJugador().getIdJugador() +
+                               ", Activo=" + c.getActivo());
+        }
     }
-}
 }
 
 
