@@ -3,7 +3,6 @@ package pe.edu.pucp.lagstore.compra.model;
 
 import java.util.ArrayList;
 import pe.edu.pucp.lagstore.compra.dao.CarteraDAO;
-import pe.edu.pucp.lagstore.compra.mysql.CarroCompraMySQL;
 import pe.edu.pucp.lagstore.compra.mysql.CarteraMySQL;
 
 /**
