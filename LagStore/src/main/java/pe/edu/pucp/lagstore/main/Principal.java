@@ -34,7 +34,9 @@ import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
 import pe.edu.pucp.lagstore.gestjuegos.model.JuegoAdquirido;
 import pe.edu.pucp.lagstore.gestjuegos.model.ModeloNegocio;
 import pe.edu.pucp.lagstore.gestusuarios.model.Administrador;
+import pe.edu.pucp.lagstore.gestusuarios.model.AdministradorBO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
+import pe.edu.pucp.lagstore.gestusuarios.model.DesarrolladorBO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
 import pe.edu.pucp.lagstore.gestusuarios.model.JugadorBO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
@@ -46,7 +48,7 @@ import pe.edu.pucp.lagstore.valoracion.model.ResenaBO;
 
 public class Principal {
     public static void main(String[] args)throws Exception{
-        //test_jugadores();//se usan metodos de jugadores
+//        test_jugadores();//se usan metodos de jugadores
 //        test_desarrolladores();//se usan metodos de jugadores
 //        test_administradores();//se usan metodos de administradores
         
@@ -55,12 +57,12 @@ public class Principal {
 //        test_juegoAdquiridos();
  //       test_Recarga();
  //       test_Calificacion();
-        test_Resena();
+//        test_Resena();
         
     }
     
     private static void test_jugadores()throws ParseException{
-        JugadorDAO daoJugador=new JugadorMySQL();
+        JugadorBO jugadorBO=new JugadorBO();
         SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
         //1.JUGADOR
 //        inserto un nuevo jugador
@@ -68,9 +70,9 @@ public class Principal {
         Jugador j2=new Jugador("cubas ","cubas@hotmail.com","753",sdf.parse("2025-04-20"),"852322","ImagenX","gohanGol");
         Jugador j3=new Jugador("Alesandro ","alesandro@hotmail.com","741",sdf.parse("2025-04-20"),"227423","ImagenX","ales50");
         Jugador j4=new Jugador("Luis ","luis@hotmail.com","785",sdf.parse("2025-04-20"),"785222","ImagenX","luis20");
-        daoJugador.insertar(j1);daoJugador.insertar(j2);daoJugador.insertar(j3);daoJugador.insertar(j4);
+        jugadorBO.insertar(j1);jugadorBO.insertar(j2);jugadorBO.insertar(j3);jugadorBO.insertar(j4);
 //        listar jugadores
-        ArrayList<Jugador>jugadores = daoJugador.listarTodos();
+        ArrayList<Jugador>jugadores = jugadorBO.listarJugadores();
         for(Jugador j : jugadores){
             System.out.println(j);
         }
@@ -84,20 +86,20 @@ public class Principal {
         jugadorAModificar.setFechaRegistro(sdf.parse("2025-01-01"));
         jugadorAModificar.setTelefono("999111222");
         jugadorAModificar.setFotoDePerfil("FFF"); 
-        daoJugador.modificar(jugadorAModificar);
+        jugadorBO.modificar(jugadorAModificar);
         //volvemos a listar para ver la modificacion
-        jugadores=daoJugador.listarTodos();
+        jugadores=jugadorBO.listarJugadores();
         for(Jugador j : jugadores){
             System.out.println(j);
         }
         //eliminar jugador
-        daoJugador.eliminar(3);
+        jugadorBO.eliminar(200);
         // obtener por ID
-        System.out.println(daoJugador.obtenerPorId(3));
+        jugadorBO.obtenerPorId(201);
     }
     
     private static void test_desarrolladores()throws ParseException{
-        DesarrolladorDAO daoDesarrollador=new DesarrolladorMySQL();
+        DesarrolladorBO desarrolladorBO=new DesarrolladorBO();
         SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
 //        2.DESARROLLADOR
 //        insertamos desarrolladores
@@ -105,9 +107,9 @@ public class Principal {
         Desarrollador d2=new Desarrollador("Polar","polar@hotmail.com","444",sdf.parse("2025-04-24"),"991474587","ImagenX","191-555-002",4500.50);
         Desarrollador d3=new Desarrollador("Rex","rex@hotmail.com","666",sdf.parse("2025-04-24"),"992784711","ImagenX","152-200-001",3500.50);
         Desarrollador d4=new Desarrollador("Leocho","leo@hotmail.com","777",sdf.parse("2025-04-24"),"961694521","ImagenX","122-400-911",2500.50);
-        daoDesarrollador.insertar(d1);daoDesarrollador.insertar(d2);daoDesarrollador.insertar(d3);daoDesarrollador.insertar(d4);
+        desarrolladorBO.insertar(d1);desarrolladorBO.insertar(d2);desarrolladorBO.insertar(d3);desarrolladorBO.insertar(d4);
         //listar desarrolladores
-        ArrayList<Desarrollador>desarrolladores = daoDesarrollador.listarTodos();
+        ArrayList<Desarrollador>desarrolladores = desarrolladorBO.listarDesarrolladores();
         for(Desarrollador d : desarrolladores){
             System.out.println(d);
         }
@@ -122,15 +124,15 @@ public class Principal {
         desarroMod.setFechaRegistro(sdf.parse("2025-01-01"));
         desarroMod.setTelefono("999111222");
         desarroMod.setFotoDePerfil("FFF"); 
-        daoDesarrollador.modificar(desarroMod);
+        desarrolladorBO.modificar(desarroMod);
         //eliminar desarrollador
-        daoDesarrollador.eliminar(100);
+        desarrolladorBO.eliminar(100);
         // obtener por ID
-        daoDesarrollador.obtenerPorId(100);
+        desarrolladorBO.obtenerPorId(101);
     }
     
     private static void test_administradores()throws ParseException{
-        AdministradorDAO daoAdministrador=new AdministradorMySQL();
+        AdministradorBO administradorBO=new AdministradorBO();
         SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
         //3.ADMINISTRADOR
         //insertamos administrador
@@ -138,15 +140,15 @@ public class Principal {
         Administrador a2=new Administrador("Juan","jjt@hotmail.com","852",sdf.parse("2025-04-24"),"78522","ImagenX","CON_PERMISO");  
         Administrador a3=new Administrador("Luis","tllt@hotmail.com","75321",sdf.parse("2025-04-24"),"9632587","ImagenX","CON_PERMISO");  
         Administrador a4=new Administrador("Johar","johar@hotmail.com","9852",sdf.parse("2025-04-24"),"91324546","ImagenX","CON_PERMISO");  
-        daoAdministrador.insertar(a1);daoAdministrador.insertar(a2);daoAdministrador.insertar(a3);daoAdministrador.insertar(a4);
+        administradorBO.insertar(a1);administradorBO.insertar(a2);administradorBO.insertar(a3);administradorBO.insertar(a4);
         //listar Administrador
-        ArrayList<Administrador>administradores = daoAdministrador.listarTodos();
+        ArrayList<Administrador>administradores = administradorBO.listarAdministradores();
         for(Administrador a : administradores){
             System.out.println(a);
         }
         
         //Eliminar Administrador
-        daoAdministrador.eliminar(92);
+        administradorBO.eliminar(92);
         
         //Modificar Administrador
         Administrador admiModif=new Administrador();
@@ -159,18 +161,18 @@ public class Principal {
         admiModif.setFotoDePerfil("FFF");
         admiModif.setRolAdministrativo("Nuevo rol aplicado");
         
-        daoAdministrador.modificar(admiModif);
+        administradorBO.modificar(admiModif);
         
         
         //volvemos a listar para ver la modificacion
-        administradores=daoAdministrador.listarTodos();
+        administradores=administradorBO.listarAdministradores();
         for(Administrador a : administradores){
             System.out.println(a);
         }
         //eliminar desarrollador
-        daoAdministrador.eliminar(11);
+        administradorBO.eliminar(11);
         // obtener por ID
-        daoAdministrador.obtenerPorId(12);
+        administradorBO.obtenerPorId(225);
         
         
 

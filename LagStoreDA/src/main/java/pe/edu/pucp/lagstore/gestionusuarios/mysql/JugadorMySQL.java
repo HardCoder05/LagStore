@@ -91,43 +91,33 @@ public class JugadorMySQL implements JugadorDAO{
     }
 
     @Override
-    public Jugador obtenerPorId(int id) {
-            ArrayList<Jugador> jugadores = new ArrayList<>();
+    public Jugador obtenerPorId(int idJugador) {
+            Jugador jugador = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idJugador);
 
-            // Crear un mapa para pasar los parámetros de entrada al procedimiento almacenado
-            Map<Integer, Object> parametrosEntrada = new HashMap<>();
-            parametrosEntrada.put(1, id);  // Asegúrate de pasar el ID al procedimiento almacenado
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_X_ID_JUGADOR", parametrosEntrada);
+        System.out.println("Buscando Jugador por ID...");
+        try {
+            if (rs.next()) {
+                jugador = new Jugador();
+                jugador.setIdJugador(idJugador);
+                jugador.setNombre(rs.getString(1));
+                jugador.setEmail(rs.getString(2));
+                jugador.setContrasena(rs.getString(3));
+                jugador.setFechaRegistro(rs.getDate(4));
+                jugador.setTelefono(rs.getString(5));
+                jugador.setFotoDePerfil(rs.getString(6));
+                jugador.setNickname(rs.getString(7));
 
-            // Ejecutar el procedimiento almacenado y obtener el ResultSet
-            rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_X_ID_JUGADOR", parametrosEntrada);
-
-            System.out.println("Lectura de jugadores...");
-
-            try {
-                    while (rs.next()) {
-                            Jugador j = new Jugador();
-                            j.setIdJugador(rs.getInt(1));
-                            j.setNombre(rs.getString(2));
-                            j.setEmail(rs.getString(3));
-                            j.setContrasena(rs.getString(4));
-                            j.setFechaRegistro(rs.getDate(5));
-                            j.setTelefono(rs.getString(6));
-                            j.setFotoDePerfil(rs.getString(7));
-                            j.setNickname(rs.getString(8));
-                            jugadores.add(j);
-                    }
-            } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
-            } finally {
-                    DBManager.getInstance().cerrarConexion();
+                System.out.println(jugador);
             }
-
-            // Asegurarse de que la lista no esté vacía antes de intentar acceder al primer elemento
-            if (!jugadores.isEmpty()) {
-                    return jugadores.get(0);  // Obtener el primer jugador de la lista
-            } else {
-                    return null;  // Si no se encontró el jugador, retornar null
-            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener Jugador: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return jugador;
     }
 
     

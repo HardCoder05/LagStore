@@ -32,4 +32,7 @@ public class AdministradorBO {
     public ArrayList<Administrador> listarAdministradores(){
         return daoAdministrador.listarTodos();
     }
+    public Administrador obtenerPorId(int idAdministrador){
+        return daoAdministrador.obtenerPorId(idAdministrador);
+    }
 }

@@ -34,4 +34,8 @@ public class JugadorBO {
     public ArrayList<Jugador> listarJugadores(){
         return daoJugador.listarTodos();
     }
+    
+    public Jugador obtenerPorId(int idJugador){
+        return daoJugador.obtenerPorId(idJugador);
+    }
 }

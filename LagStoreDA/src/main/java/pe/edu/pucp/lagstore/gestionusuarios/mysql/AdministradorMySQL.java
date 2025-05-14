@@ -88,8 +88,32 @@ public class AdministradorMySQL implements AdministradorDAO{
     }
 
     @Override
-    public Administrador obtenerPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Administrador obtenerPorId(int idAdministrador) {
+         Administrador administrador = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idAdministrador);
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_X_ID_ADMINISTRADOR", parametrosEntrada);
+        System.out.println("Buscando Administrador por ID...");
+        try {
+            if (rs.next()) {
+                administrador = new Administrador();
+                administrador.setIdAdministrador(idAdministrador);
+                administrador.setNombre(rs.getString(1));
+                administrador.setEmail(rs.getString(2));
+                administrador.setContrasena(rs.getString(3));
+                administrador.setFechaRegistro(rs.getDate(4));
+                administrador.setTelefono(rs.getString(5));
+                administrador.setFotoDePerfil(rs.getString(6));
+                administrador.setRolAdministrativo(rs.getString(7));
+                System.out.println(administrador);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener Administrador: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return administrador;
     }
     
 }

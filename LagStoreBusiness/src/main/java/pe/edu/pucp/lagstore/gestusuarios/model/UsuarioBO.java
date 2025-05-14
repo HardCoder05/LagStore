@@ -34,4 +34,8 @@ public class UsuarioBO {
     public ArrayList<Usuario> listarUsuarios(){
         return daoUsuario.listarTodos();
     }
+    
+    public Usuario obtenerPorId(int idUsuario){
+        return daoUsuario.obtenerPorId(idUsuario);
+    }
 }

@@ -34,4 +34,7 @@ public class DesarrolladorBO {
     public ArrayList<Desarrollador> listarDesarrolladores(){
         return daoDesarrollador.listarTodos();
     }
+    public Desarrollador obtenerPorId(int idDesarrollador){
+        return daoDesarrollador.obtenerPorId(idDesarrollador);
+    }
 }
