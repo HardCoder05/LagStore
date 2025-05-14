@@ -34,13 +34,16 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
 
 public class Principal {
     public static void main(String[] args)throws Exception{
-//        test_jugadores();//se usan metodos de jugadores
+        test_jugadores();//se usan metodos de jugadores
 //        test_desarrolladores();//se usan metodos de jugadores
 //        test_administradores();//se usan metodos de administradores
         
 //        test_bibliotecas();
 //        test_juegos();
 //        test_juegoAdquiridos();
+
+
+          test_Cartera();
     }
     
     private static void test_jugadores()throws ParseException{
@@ -276,7 +279,7 @@ public class Principal {
 
     }
     
-        private static void test_Compras() throws ParseException{
+    private static void test_Compras() throws ParseException{
         //test_metodosPago(); //los metodos de pago se insertan en la BD
         test_Cartera(); // se prueba el funcionamiento de Cartera
         test_Recarga(); // se prueba el funcionamiento de Recarga
@@ -290,17 +293,17 @@ public class Principal {
         Cartera cartera = new Cartera();
         cartera.setSaldoActual(100.50);
         
-        Biblioteca b1=new Biblioteca(20.1,3);
-        BibliotecaBO BOBiblioteca= new BibliotecaBO();
-        BOBiblioteca.insertar(b1);
         
         SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
-        // ⚠️ Debes reemplazar con un jugador válido existente en tu BD
+        //
+        JugadorBO BOJugador = new JugadorBO();
         Jugador jugador=new Jugador("Mario Bros","mario@hotmail.com","789",sdf.parse("2025-04-20"),"969627718","ImagenX","Mario&Luiggi");
-        jugador.setIdJugador(1);   // ← Cambia este ID según tu BD
+        int idJug = BOJugador.insertar(jugador);
+        jugador.setIdJugador(idJug);   //
         cartera.setJugador(jugador);
 
         int idInsertado = BOCartera.insertar(cartera);
+        cartera.setIdCartera(idInsertado);
         System.out.println("Cartera creada con ID: " + idInsertado);
 
         //Obtener por ID
@@ -357,7 +360,7 @@ public class Principal {
 
         //Se usa una cartera esada en el test4()
         CarteraBO BOCartera = new CarteraBO();
-        Cartera cartera = BOCartera.obtenerPorId(1);
+        Cartera cartera = BOCartera.obtenerPorId(2);
         
         // ID existente de Cartera
         recarga.setCartera(cartera);
@@ -421,10 +424,11 @@ public class Principal {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         JugadorBO BOJugador = new JugadorBO();
-        Jugador jugador=new Jugador("Luiggi Bros","luggi@hotmail.com","789",sdf.parse("2025-04-20"),"969627718","ImagenX","Mario&Luiggi");
+        Jugador jugador= new Jugador("Luiggi Bros","luggi@hotmail.com","789",sdf.parse("2025-04-20"),"969627718","ImagenX","Mario&Luiggi");
         carro.setJugador(jugador);
 
         int idInsertado = BOCarro.insertar(carro);
+        carro.setIdCarroCompra(idInsertado);
         System.out.println("CarroCompra creado con ID: " + idInsertado);
 
         //Obtener por ID
