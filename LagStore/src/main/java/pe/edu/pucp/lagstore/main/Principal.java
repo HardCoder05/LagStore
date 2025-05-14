@@ -1,5 +1,7 @@
 package pe.edu.pucp.lagstore.main;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import pe.edu.pucp.lagstore.gestionjuegos.dao.BibliotecaDAO;
@@ -11,166 +13,120 @@ import pe.edu.pucp.lagstore.gestionusuarios.mysql.AdministradorMySQL;
 import pe.edu.pucp.lagstore.gestionusuarios.mysql.DesarrolladorMySQL;
 import pe.edu.pucp.lagstore.gestionusuarios.mysql.JugadorMySQL;
 import pe.edu.pucp.lagstore.gestjuegos.model.Biblioteca;
+import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
 import pe.edu.pucp.lagstore.gestusuarios.model.Administrador;
 import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
+import pe.edu.pucp.lagstore.valoracion.dao.CalificacionDAO;
+import pe.edu.pucp.lagstore.valoracion.dao.ResenaDAO;
+import pe.edu.pucp.lagstore.valoracion.model.Calificacion;
+import pe.edu.pucp.lagstore.valoracion.model.Resena;
+import pe.edu.pucp.lagstore.valoracion.mysql.CalificacionMySQL;
+import pe.edu.pucp.lagstore.valoracion.mysql.ResenaMySQL;
 
 
 public class Principal {
     public static void main(String[] args)throws Exception{
+        CalificacionDAO calificacionDAO = new CalificacionMySQL();
+
+        // === CREAR OBJETOS PARA LA PRUEBA ===
+        Jugador jugador = new Jugador();
+        jugador.setIdJugador(2); // Ya debe existir
+
+        Juego juego = new Juego();
+        juego.setIdJuego(2); // Ya debe existir
+
+        // === INSERTAR UNA NUEVA CALIFICACIÓN ===
+        Calificacion nuevaCalificacion = new Calificacion();
+        nuevaCalificacion.setAutor(jugador);
+        nuevaCalificacion.setJuego(juego);
+        nuevaCalificacion.setFechaPuntuacion(Date.valueOf(LocalDate.now()));
+        nuevaCalificacion.setPuntuacion(5);
+        nuevaCalificacion.setActivo(1);
+
+        int idCalificacionInsertada = calificacionDAO.insertar(nuevaCalificacion);
+        System.out.println("Calificación insertada con ID: " + idCalificacionInsertada);
+
         
         //1.JUGADOR
-        //inserto una biblioteca
-        Biblioteca b1=new Biblioteca(20.1,3);
-        BibliotecaDAO daoBiblioteca= new BibliotecaMySQL();
-        daoBiblioteca.insertar(b1);
-        Biblioteca b2=new Biblioteca(15.3,2);
-        daoBiblioteca.insertar(b2);
-        Biblioteca b3=new Biblioteca(80.0,6);
-        daoBiblioteca.insertar(b3);
-        Biblioteca b4=new Biblioteca(50.3,4);
-        daoBiblioteca.insertar(b4);
-        //inserto un nuevo jugador
-        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
-        Jugador j1=new Jugador("Miguel","789","miguel@hotmail.com",sdf.parse("2025-04-20"),9616945,"ImagenX",1,
-                               b1,1,"miguel123");
-        Jugador j2=new Jugador("cubas ","753","cubas@hotmail.com",sdf.parse("2025-04-20"),852322,"ImagenX",1,
-                               b2,1,"gohanGol");
-        Jugador j3=new Jugador("Alesandro ","741","alesandro@hotmail.com",sdf.parse("2025-04-20"),227423,"ImagenX",1,
-                               b3,1,"ales50");
-        Jugador j4=new Jugador("Luis ","785","luis@hotmail.com",sdf.parse("2025-04-20"),785222,"ImagenX",1,
-                               b4,1,"luis20");
-        JugadorDAO daoJugador=new JugadorMySQL();
-        daoJugador.insertar(j1);
-        daoJugador.insertar(j2);
-        daoJugador.insertar(j3);
-        daoJugador.insertar(j4);
-        //listar jugadores
-        ArrayList<Jugador>jugadores = daoJugador.listarTodas();
-        for(Jugador j : jugadores){
-            System.out.println(j);
-        }
-        //modificar jugador
-        jugadores.get(0).setNickname("miguelNuevo");
-        daoJugador.modificar(jugadores.get(0));
-        //volvemos a listar para ver la modificacion
-        jugadores=daoJugador.listarTodas();
-        for(Jugador j : jugadores){
-            System.out.println(j);
-        }
-        //eliminar jugador
-        daoJugador.eliminar(1);
-        // obtener por ID
-        daoJugador.obtenerPorId(3);
-    
-        
-        //2.DESARROLLADOR
-        //Creo las bibliotecas de cada desarrollador
-        Biblioteca b5=new Biblioteca(10.2,3);
-        daoBiblioteca.insertar(b5);
-        Biblioteca b6=new Biblioteca(11.5,4);
-        daoBiblioteca.insertar(b6);
-        Biblioteca b7=new Biblioteca(12.5,5);
-        daoBiblioteca.insertar(b7);
-        Biblioteca b8=new Biblioteca(13.0,2);
-        daoBiblioteca.insertar(b8);
-       
-        //inserto desarrolladores
-        //insertamos desarrollador
-        Desarrollador d1=new Desarrollador("Gustavo","555","gusgus@hotmail.com",sdf.parse("2025-04-24"),9619084,"ImagenX",1,
-                                            b5,3,191500,5500.50);
-        Desarrollador d2=new Desarrollador("Polar","444","polar@hotmail.com",sdf.parse("2025-04-24"),9914745,"ImagenX",1,
-                                            b6,3,191555,4500.50);
-        Desarrollador d3=new Desarrollador("Rex","666","rex@hotmail.com",sdf.parse("2025-04-24"),9927847,"ImagenX",1,
-                                            b7,3,152200,3500.50);
-        Desarrollador d4=new Desarrollador("Leocho","777","leo@hotmail.com",sdf.parse("2025-04-24"),9616945,"ImagenX",1,
-                                            b8,3,122400,2500.50);
-        DesarrolladorDAO daoDesarrollador=new DesarrolladorMySQL();
-        daoDesarrollador.insertar(d1);
-        daoDesarrollador.insertar(d2);
-        daoDesarrollador.insertar(d3);
-        daoDesarrollador.insertar(d4);
-        //listar desarrolladores
-        ArrayList<Desarrollador>desarrolladores = daoDesarrollador.listarTodas();
-        for(Desarrollador d : desarrolladores){
-            System.out.println(d);
-        }
-        //modificar desarrollador
-        desarrolladores.get(0).setIngresoTotal(2500.25);
-        daoDesarrollador.modificar(desarrolladores.get(0));
-        //volvemos a listar para ver la modificacion
-        desarrolladores=daoDesarrollador.listarTodas();
-        for(Desarrollador d : desarrolladores){
-            System.out.println(d);
-        }
-        //eliminar desarrollador
-        daoDesarrollador.eliminar(5);
-        // obtener por ID
-        daoDesarrollador.obtenerPorId(8);
         
         
-        //3.ADMINISTRADOR
-        //Creo las bibliotecas de cada ADMINISTRADOR
-        Biblioteca b9=new Biblioteca(16.4,3);
-        daoBiblioteca.insertar(b9);
-        Biblioteca b10=new Biblioteca(18.6,3);
-        daoBiblioteca.insertar(b10);
-        Biblioteca b11=new Biblioteca(15.0,2);
-        daoBiblioteca.insertar(b11);
-        Biblioteca b12=new Biblioteca(48.6,4);
-        daoBiblioteca.insertar(b12);
-        //insertamos administrador
-        Administrador a1=new Administrador("Tito","111","tit@hotmail.com",sdf.parse("2025-04-24"),91324546,"ImagenX",1,
-                                            b9,2,"General");
-        Administrador a2=new Administrador("Loki","666","luck@hotmail.com",sdf.parse("2025-04-24"),9917321,"ImagenX",1,
-                                            b10,2,"De contenido");
-        Administrador a3=new Administrador("Saitama","666","onepunch@hotmail.com",sdf.parse("2025-04-24"),9884512,"ImagenX",1,
-                                            b11,2,"De base de datos");
-        Administrador a4=new Administrador("Garfield","000","gar@hotmail.com",sdf.parse("2025-04-24"),9874526,"ImagenX",1,
-                                            b12,2,"De sistemas");
-        AdministradorDAO daoAdministrador=new AdministradorMySQL();
-        daoAdministrador.insertar(a1);
-        daoAdministrador.insertar(a2);
-        daoAdministrador.insertar(a3);
-        daoAdministrador.insertar(a4);
-        //listar desarrolladores
-        ArrayList<Administrador>administradores = daoAdministrador.listarTodas();
-        for(Administrador a : administradores){
-            System.out.println(a);
+        
+        ResenaDAO resenaDAO = new ResenaMySQL();
+        // === CREAR OBJETOS PARA LA PRUEBA ===
+
+        Calificacion calificacion = new Calificacion();
+        calificacion.setIdCalificacion(1); // Ya debería estar insertada
+
+        // === INSERTAR UNA NUEVA RESEÑA ===
+        Resena nuevaResena = new Resena();
+        nuevaResena.setAutor(jugador);
+        nuevaResena.setJuego(juego);
+        nuevaResena.setComentario("¡Juego increible!");
+        nuevaResena.setFechaPublicacion(Date.valueOf(LocalDate.now()));
+        nuevaResena.setCalificacion(calificacion);
+        nuevaResena.setActivo(1);
+
+        int idResenaInsertada = resenaDAO.insertar(nuevaResena);
+        System.out.println("Resena insertada con ID: " + idResenaInsertada);
+
+        ////////////////////MODIFICAR///////////////////////////
+        ///CALIFICACION//////////////////////////////////////////
+        nuevaCalificacion.setIdCalificacion(idCalificacionInsertada);
+        nuevaCalificacion.setPuntuacion(2); // Nueva puntuación
+        int modResultado = calificacionDAO.modificar(nuevaCalificacion);
+        System.out.println("Resultado de modificacion: " + modResultado);
+        ///RESEÑA///////////////////////////////////////////////
+        nuevaResena.setIdResena(idResenaInsertada);
+        nuevaResena.setComentario("Juego increible, mejorado con actualizaciones.");
+        nuevaResena.setActivo(1);
+        int resultadoMod = resenaDAO.modificar(nuevaResena);
+        System.out.println("Resultado de modificacion: " + resultadoMod);
+        ////////////////////LISTAR///////////////////////////
+        //////CALIFICACION//////////////////////////////////////////
+        ArrayList<Calificacion> calificaciones = calificacionDAO.listarTodas();
+        System.out.println("\n Lista de calificaciones activas:");
+        for (Calificacion c : calificaciones) {
+            System.out.println("ID: " + c.getIdCalificacion() +
+                               ", Puntaje: " + c.getPuntuacion() +
+                               ", Fecha: " + c.getFechaPuntuacion() +
+                               ", Jugador ID: " + c.getAutor().getIdJugador() +
+                               ", Juego ID: " + c.getJuego().getIdJuego());
         }
-        //modificar desarrollador
-        administradores.get(0).setRolAdministrativo("rol Nuevo");
-        daoAdministrador.modificar(administradores.get(0));
-        //volvemos a listar para ver la modificacion
-        administradores=daoAdministrador.listarTodas();
-        for(Administrador a : administradores){
-            System.out.println(a);
+        //////RESEÑA/////////////////////////////////////////////////
+         ArrayList<Resena> resenas = resenaDAO.listarTodas();
+        System.out.println("\n Lista de resenas activas:");
+        for (Resena r : resenas){
+            System.out.println("ID: " + r.getIdResena() +
+                               ", Comentario: " + r.getComentario() +
+                               ", Fecha: " + r.getFechaPublicacion() +
+                               ", Calificacion ID: " + r.getCalificacion().getIdCalificacion() +
+                               ", Autor ID: " + r.getAutor().getIdJugador() +
+                               ", Juego ID: " + r.getJuego().getIdJuego());
         }
-        //eliminar desarrollador
-        daoAdministrador.eliminar(11);
-        // obtener por ID
-        daoAdministrador.obtenerPorId(12);
-        
-        
-         //biblioteca
-        Biblioteca b13=new Biblioteca(20.50,4);
-        Biblioteca b14=new Biblioteca(55.50,7);
-        BibliotecaDAO daoBiblioteca2= new BibliotecaMySQL();
-        
-        //inserto un nueva biblioteca
-        daoBiblioteca.insertar(b13);
-        daoBiblioteca.insertar(b14);
-        //listar jugadores
-        ArrayList<Biblioteca>biblioteca = daoBiblioteca.listarTodas();
-        for(Biblioteca j : biblioteca){
-            System.out.println(j);
+        ////////////////////OBTENER POR ID///////////////////////////
+        //////CALIFICACION//////////////////////////////////////////
+        Calificacion buscadaC = calificacionDAO.obtenerPorId(idCalificacionInsertada);
+        if (buscadaC != null) {
+            System.out.println("\n Calificación obtenida:");
+            System.out.println("Puntaje: " + buscadaC.getPuntuacion());
+        } else {
+            System.out.println("No se encontró la calificación.");
         }
-        //modificar jugador
-        biblioteca.get(0).setCantidadDeJuegos(3);
-        daoBiblioteca.modificar(biblioteca.get(0));
-        // obtener por ID
-        daoBiblioteca.obtenerPorId(2);
-        
+        /////RESEÑA//////////////////////////////////////////////
+        Resena buscadaR = resenaDAO.obtenerPorId(idResenaInsertada);
+        if (buscadaR != null) {
+            System.out.println("\n Reseña obtenida por ID:");
+            System.out.println("Comentario: " + buscadaR.getComentario());
+        } else {
+            System.out.println("No se encontró la reseña con ID: " + idResenaInsertada);
+        }
+           ////////////////////ELIMINAR///////////////////////////
+        //////CALIFICACION//////////////////////////////////////////
+        int elimResultado = calificacionDAO.eliminar(idCalificacionInsertada);
+        System.out.println("Resultado de eliminación: " + elimResultado);
+        //////RESEÑA//////////////////////////////////////////
+        int resultadoElim = resenaDAO.eliminar(idResenaInsertada);
+        System.out.println("Resultado de eliminación: " + resultadoElim);
     }
-    
 }
