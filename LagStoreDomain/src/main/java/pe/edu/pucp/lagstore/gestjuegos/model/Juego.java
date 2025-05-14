@@ -23,6 +23,26 @@ public class Juego {
 
     public Juego() {}
 
+    public Juego(String titulo, String descripcion, double precio, double version, String imagenJuego,
+                 Date fechaLanzamiento, String requisitosMinimos, String requisitosRecomendados,
+                 double espacioDisco, Date fechaUltimaActualizacion, Genero genero,
+                 ModeloNegocio modeloNegocio, Desarrollador desarrollador) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.version = version;
+        this.imagenJuego = imagenJuego;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.requisitosMinimos = requisitosMinimos;
+        this.requisitosRecomendados = requisitosRecomendados;
+        this.espacioDisco = espacioDisco;
+        this.fechaUltimaActualizacion = fechaUltimaActualizacion;
+        this.genero = genero;
+        this.modeloNegocio = modeloNegocio;
+        this.desarrollador = desarrollador;
+        this.activo = 1;
+    }
+
     public int getIdJuego() { return idJuego; }
     public void setIdJuego(int idJuego) { this.idJuego = idJuego; }
 

@@ -7,15 +7,11 @@ C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\compra\mysql\MetodoPagoMySQL.java
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\compra\mysql\RecargaMySQL.java
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\dao\BibliotecaDAO.java
-C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\dao\GeneroDAO.java
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\dao\JuegoAdquiridoDAO.java
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\dao\JuegoDAO.java
-C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\dao\ModeloNegocioDAO.java
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\mysql\BibliotecaMySQL.java
-C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\mysql\GeneroMySQL.java
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\mysql\JuegoAdquiridoMySQL.java
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\mysql\JuegoMySQL.java
-C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\mysql\ModeloNegocioMySQL.java
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\dao\AdministradorDAO.java
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\dao\DesarrolladorDAO.java
 C:\Users\rio88\OneDrive\Escritorio\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\dao\JugadorDAO.java

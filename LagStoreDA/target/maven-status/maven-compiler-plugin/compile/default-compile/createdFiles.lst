@@ -7,11 +7,9 @@ pe\edu\pucp\lagstore\gestionusuarios\mysql\DesarrolladorMySQL.class
 pe\edu\pucp\lagstore\valoracion\mysql\ResenaMySQL.class
 pe\edu\pucp\lagstore\compra\dao\RecargaDAO.class
 pe\edu\pucp\lagstore\valoracion\dao\ResenaDAO.class
-pe\edu\pucp\lagstore\gestionjuegos\dao\ModeloNegocioDAO.class
 pe\edu\pucp\lagstore\gestionjuegos\mysql\JuegoMySQL.class
 pe\edu\pucp\lagstore\valoracion\mysql\CalificacionMySQL.class
 pe\edu\pucp\lagstore\gestionjuegos\dao\JuegoDAO.class
-pe\edu\pucp\lagstore\gestionjuegos\dao\GeneroDAO.class
 pe\edu\pucp\lagstore\gestionusuarios\dao\JugadorDAO.class
 pe\edu\pucp\lagstore\compra\dao\CarroCompraDAO.class
 pe\edu\pucp\lagstore\gestionusuarios\dao\UsuarioDAO.class
@@ -21,12 +19,10 @@ pe\edu\pucp\lagstore\gestionusuarios\dao\RolDAO.class
 pe\edu\pucp\lagstore\compra\mysql\CarroCompraMySQL.class
 pe\edu\pucp\lagstore\valoracion\dao\CalificacionDAO.class
 pe\edu\pucp\lagstore\compra\mysql\RecargaMySQL.class
-pe\edu\pucp\lagstore\gestionjuegos\mysql\ModeloNegocioMySQL.class
 pe\edu\pucp\lagstore\gestionjuegos\dao\BibliotecaDAO.class
 pe\edu\pucp\lagstore\gestionjuegos\dao\JuegoAdquiridoDAO.class
 pe\edu\pucp\lagstore\compra\dao\MetodoPagoDAO.class
 pe\edu\pucp\lagstore\gestionusuarios\dao\AdministradorDAO.class
 pe\edu\pucp\lagstore\gestionusuarios\mysql\AdministradorMySQL.class
 pe\edu\pucp\lagstore\compra\mysql\MetodoPagoMySQL.class
-pe\edu\pucp\lagstore\gestionjuegos\mysql\GeneroMySQL.class
 pe\edu\pucp\lagstore\gestionusuarios\mysql\UsuarioMySQL.class

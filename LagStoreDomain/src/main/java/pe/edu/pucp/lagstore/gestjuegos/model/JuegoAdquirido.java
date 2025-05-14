@@ -11,6 +11,27 @@ public class JuegoAdquirido {
     private boolean actualizado;
     private int activo;
 
+    public JuegoAdquirido() {
+        this.biblioteca = new Biblioteca();
+        this.juego = new Juego();
+        this.fechaAdquisicion = new Date();
+        this.ultimaSesion = new Date();
+        this.tiempoJuego = 0;
+        this.actualizado = false;
+        this.activo = 1;
+    }
+
+    public JuegoAdquirido(Biblioteca biblioteca, Juego juego, Date fechaAdquisicion, Date ultimaSesion,
+                          double tiempoJuego, boolean actualizado) {
+        this.biblioteca = biblioteca;
+        this.juego = juego;
+        this.fechaAdquisicion = fechaAdquisicion;
+        this.ultimaSesion = ultimaSesion;
+        this.tiempoJuego = tiempoJuego;
+        this.actualizado = actualizado;
+        this.activo = 1;
+    }
+
     public Biblioteca getBiblioteca() {
         return biblioteca;
     }
