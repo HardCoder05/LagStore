@@ -10,6 +10,10 @@ public class Cartera {
     private ArrayList<Recarga> historial;
     private int activo;
     public Jugador jugador;
+    
+    public Cartera(){
+        activo=1;
+    }
 
     public int getIdCartera() {
         return idCartera;
