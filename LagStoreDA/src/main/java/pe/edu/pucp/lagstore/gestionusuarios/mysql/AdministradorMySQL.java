@@ -37,7 +37,7 @@ public class AdministradorMySQL implements AdministradorDAO{
     @Override
     public int modificar(Administrador administrador) {
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
-        parametrosEntrada.put(1,administrador.getIdUsuario());
+        parametrosEntrada.put(1,administrador.getIdAdministrador());
         parametrosEntrada.put(2, administrador.getRolAdministrativo());
         parametrosEntrada.put(3, administrador.getNombre());
         parametrosEntrada.put(4, administrador.getEmail());
@@ -67,14 +67,14 @@ public class AdministradorMySQL implements AdministradorDAO{
         try{
             while(rs.next()){
                 Administrador a = new Administrador();
-                a.setIdUsuario(rs.getInt(1));
-                a.setRolAdministrativo(rs.getString(2));
-                a.setNombre(rs.getString(3));
-                a.setEmail(rs.getString(4));
-                a.setContrasena(rs.getString(5));
-                a.setFechaRegistro(rs.getDate(6));
-                a.setTelefono(rs.getString(7));
-                a.setFotoDePerfil(rs.getString(8));
+                a.setIdAdministrador(rs.getInt(1));
+                a.setNombre(rs.getString(2));    
+                a.setEmail(rs.getString(3));
+                a.setContrasena(rs.getString(4));
+                a.setFechaRegistro(rs.getDate(5));
+                a.setTelefono(rs.getString(6));
+                a.setFotoDePerfil(rs.getString(7));
+                a.setRolAdministrativo(rs.getString(8));
                 administradores.add(a);
             }
         }catch(SQLException ex){

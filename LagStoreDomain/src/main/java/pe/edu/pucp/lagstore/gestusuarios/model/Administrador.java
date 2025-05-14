@@ -10,7 +10,7 @@ public class Administrador extends Usuario {
     
     public Administrador(){}
 
-    public Administrador(String nombre,String email,String contrasena,Date fechaRegistro,String telefono, String fotoDePerfil,int activo,int idRol,String rolAdministrativo) {
+    public Administrador(String nombre,String email,String contrasena,Date fechaRegistro,String telefono, String fotoDePerfil,String rolAdministrativo) {
         super(nombre, contrasena, email, fechaRegistro, telefono, fotoDePerfil);
         this.rolAdministrativo = rolAdministrativo;
         
