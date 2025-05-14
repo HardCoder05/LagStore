@@ -4,10 +4,16 @@
  */
 package pe.edu.pucp.lagstore.gestionjuegos.dao;
 
+import java.util.ArrayList;
+import pe.edu.pucp.lagstore.gestjuegos.model.JuegoAdquirido;
 /**
  *
  * @author Luis Rios
  */
 public interface JuegoAdquiridoDAO {
-    
+    int insertar(JuegoAdquirido juegoAdquirido);
+    int modificar(JuegoAdquirido juegoAdquirido);
+    int eliminar (int idJuegoAdquirido);
+    ArrayList<JuegoAdquirido>listarTodos();
+    JuegoAdquirido obtenerPorId(int idJuegoAdquirido);
 }

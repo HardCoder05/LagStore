@@ -4,10 +4,18 @@
  */
 package pe.edu.pucp.lagstore.gestionjuegos.dao;
 
+import java.util.ArrayList;
+
+import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
+
 /**
  *
  * @author Luis Rios
  */
 public interface JuegoDAO {
-    
+    int insertar(Juego juego);
+    int modificar(Juego juego);
+    int eliminar(int idJuego);
+    ArrayList<Juego>listarTodos();
+    Juego obtenerPorId(int id);
 }
