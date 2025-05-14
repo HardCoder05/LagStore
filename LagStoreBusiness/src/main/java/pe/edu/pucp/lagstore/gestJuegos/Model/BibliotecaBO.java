@@ -37,4 +37,7 @@ public class BibliotecaBO {
         return daoBiblioteca.listarTodas();
     }
     
+    public Biblioteca obtenerPorId(int idBiblioteca){
+        return daoBiblioteca.obtenerPorId(idBiblioteca);
+    }
 }

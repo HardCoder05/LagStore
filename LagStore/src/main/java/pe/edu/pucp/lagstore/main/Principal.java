@@ -2,27 +2,35 @@ package pe.edu.pucp.lagstore.main;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.DesarrolladorDAO;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.JugadorDAO;
+import pe.edu.pucp.lagstore.gestJuegos.Model.BibliotecaBO;
+import pe.edu.pucp.lagstore.gestJuegos.Model.JuegoAdquiridoBO;
+import pe.edu.pucp.lagstore.gestJuegos.Model.JuegoBO;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.AdministradorDAO;
 import pe.edu.pucp.lagstore.gestionusuarios.mysql.AdministradorMySQL;
 import pe.edu.pucp.lagstore.gestionusuarios.mysql.DesarrolladorMySQL;
 import pe.edu.pucp.lagstore.gestionusuarios.mysql.JugadorMySQL;
+import pe.edu.pucp.lagstore.gestjuegos.model.Biblioteca;
+import pe.edu.pucp.lagstore.gestjuegos.model.Genero;
+import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
+import pe.edu.pucp.lagstore.gestjuegos.model.JuegoAdquirido;
+import pe.edu.pucp.lagstore.gestjuegos.model.ModeloNegocio;
 import pe.edu.pucp.lagstore.gestusuarios.model.Administrador;
 import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
+import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
 
 
 public class Principal {
     public static void main(String[] args)throws Exception{
-        test_jugadores();//se usan metodos de jugadores
-        test_desarrolladores();//se usan metodos de jugadores
+//        test_jugadores();//se usan metodos de jugadores
+//        test_desarrolladores();//se usan metodos de jugadores
 //        test_administradores();//se usan metodos de administradores
         
-        
-        
+//        test_bibliotecas();
+//        test_juegos();
+//        test_juegoAdquiridos();
     }
     
     private static void test_jugadores()throws ParseException{
@@ -139,6 +147,122 @@ public class Principal {
         daoAdministrador.obtenerPorId(12);
         
         
+
+    }
+
+    public static void test_bibliotecas()throws ParseException{
+        Biblioteca biblioteca1 = new Biblioteca(20.50,4);
+        Usuario usuario = new Usuario();
+        usuario.setIdUsuario(5);
+        biblioteca1.setUsuario(usuario);
+        
+        Biblioteca biblioteca2 = new Biblioteca(55.50,7);
+        biblioteca2.setUsuario(usuario);
+
+        BibliotecaBO bibliotecaBO = new BibliotecaBO();
+        
+        //inserto un nueva biblioteca
+        bibliotecaBO.insertar(biblioteca1);
+        bibliotecaBO.insertar(biblioteca2);
+
+        //listar bibliotecas
+        ArrayList<Biblioteca>biblioteca = bibliotecaBO.listarBibliotecas();
+        for(Biblioteca j : biblioteca){
+            System.out.println(j);
+        }
+
+        //modificar biblioteca
+        biblioteca.get(0).setCantidadDeJuegos(3);
+        bibliotecaBO.modificar(biblioteca.get(0));
+
+        // obtener por ID
+        Biblioteca biblio = bibliotecaBO.obtenerPorId(2);
+        System.out.println(biblio);
+
+        //eliminar biblioteca
+        bibliotecaBO.eliminar(2);
+    }
+
+    public static void test_juegos() throws ParseException{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Desarrollador d1 = new Desarrollador("Gustavo","gusgus@hotmail.com","555",sdf.parse("2025-04-24"),"961908444","ImagenX","191-500-200",5500.50);
+
+        Juego juego1 = new Juego("League of Legends","Juego de estrategia",0.0,1.0,"ImagenX",
+                               sdf.parse("2025-04-20"),"Requisitos minimos","Requisitos recomendados",
+                               10.0,sdf.parse("2025-04-20"),Genero.ESTRATEGIA, ModeloNegocio.FREE_TO_PLAY,
+                               d1);
+
+        JuegoBO juegoBO = new JuegoBO();
+        juegoBO.insertar(juego1);
+
+        //Listar todos los juegos
+        ArrayList<Juego> juegos = juegoBO.listarTodos();
+        for(Juego j : juegos){
+            System.out.println(j);
+        }
+
+        //Modificar un juego
+        juegos.get(0).setTitulo("League of Legends Modificado");
+        juegoBO.modificar(juegos.get(0));
+        //Listar nuevamente para ver la modificacion
+        juegos = juegoBO.listarTodos();
+        for(Juego j : juegos){
+            System.out.println(j);
+        }
+
+        //Eliminar un juego
+        juegoBO.eliminar(juegos.get(0).getIdJuego());
+
+        //Listar nuevamente para ver la eliminacion
+        juegos = juegoBO.listarTodos();
+
+        for(Juego j : juegos){
+            System.out.println(j);
+        }
+
+        // Obtener un juego por ID
+        Juego juegoObtenido = juegoBO.obtenerPorId(juegos.get(0).getIdJuego());
+        System.out.println("Juego obtenido por ID: " + juegoObtenido);
+    }
+
+    public static void test_juegoAdquiridos() throws ParseException{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Desarrollador d1 = new Desarrollador("Gustavo","gusgus@hotmail.com","555",sdf.parse("2025-04-24"),"961908444","ImagenX","191-500-200",5500.50);
+        Biblioteca b1 = new Biblioteca(20.50,4);
+        Juego juego1 = new Juego("League of Legends","Juego de estrategia",0.0,1.0,"ImagenX",
+                               sdf.parse("2025-04-20"),"Requisitos minimos","Requisitos recomendados",
+                               10.0,sdf.parse("2025-04-20"),Genero.ESTRATEGIA, ModeloNegocio.FREE_TO_PLAY,
+                               d1);
+
+        //inserto un nuevo juego adquirido
+        JuegoAdquirido juegoAdquirido1 = new JuegoAdquirido(b1, juego1, sdf.parse("2025-04-20"), sdf.parse("2025-04-20"), 55, true);
+        
+        JuegoAdquiridoBO juegoAdquiridoBO = new JuegoAdquiridoBO();
+        //Insertar juego adquirido
+        juegoAdquiridoBO.insertar(juegoAdquirido1);
+        //Listar todos los juegos adquiridos
+        ArrayList<JuegoAdquirido> juegosAdquiridos = juegoAdquiridoBO.listarTodos();
+        for(JuegoAdquirido ja : juegosAdquiridos){
+            System.out.println(ja);
+        }
+        //Modificar un juego adquirido
+        juegosAdquiridos.get(0).setTiempoJuego(100);
+        juegoAdquiridoBO.modificar(juegosAdquiridos.get(0));
+        //Listar nuevamente para ver la modificacion
+        juegosAdquiridos = juegoAdquiridoBO.listarTodos();
+        for(JuegoAdquirido ja : juegosAdquiridos){
+            System.out.println(ja);
+        }
+        //Eliminar un juego adquirido
+        juegoAdquiridoBO.eliminar(juegosAdquiridos.get(0).getJuego().getIdJuego());
+        //Listar nuevamente para ver la eliminacion
+        juegosAdquiridos = juegoAdquiridoBO.listarTodos();
+        for(JuegoAdquirido ja : juegosAdquiridos){
+            System.out.println(ja);
+        }
+        // Obtener un juego adquirido por ID
+        JuegoAdquirido juegoAdquiridoObtenido = juegoAdquiridoBO.obtenerPorId(juegosAdquiridos.get(0).getJuego().getIdJuego());
+        System.out.println("Juego adquirido obtenido por ID: " + juegoAdquiridoObtenido);
 
     }
     
