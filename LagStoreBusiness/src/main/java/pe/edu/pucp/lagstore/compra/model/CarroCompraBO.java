@@ -30,4 +30,7 @@ public class CarroCompraBO {
     public ArrayList<CarroCompra>listaCarroCompra(){
         return daoCarroCompra.listarTodas();
     }
+    public CarroCompra obtenerPorId(int id){
+        return daoCarroCompra.obtenerPorId(id);
+    }
 }

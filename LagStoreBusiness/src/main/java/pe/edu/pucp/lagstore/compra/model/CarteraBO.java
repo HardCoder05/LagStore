@@ -26,4 +26,7 @@ public class CarteraBO {
     public ArrayList<Cartera>listaCartera(){
         return daoCartera.listarTodas();
     }
+    public Cartera obtenerPorId(int id){
+        return daoCartera.obtenerPorId(id);
+    }
 }

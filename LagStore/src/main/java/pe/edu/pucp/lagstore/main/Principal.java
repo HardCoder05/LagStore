@@ -2,6 +2,15 @@ package pe.edu.pucp.lagstore.main;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import pe.edu.pucp.lagstore.compra.dao.RecargaDAO;
+import pe.edu.pucp.lagstore.compra.model.CarroCompra;
+import pe.edu.pucp.lagstore.compra.model.CarroCompraBO;
+import pe.edu.pucp.lagstore.compra.model.Cartera;
+import pe.edu.pucp.lagstore.compra.model.CarteraBO;
+import pe.edu.pucp.lagstore.compra.model.MetodoPago;
+import pe.edu.pucp.lagstore.compra.model.Recarga;
+import pe.edu.pucp.lagstore.compra.model.RecargaBO;
+import pe.edu.pucp.lagstore.compra.mysql.RecargaMySQL;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.DesarrolladorDAO;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.JugadorDAO;
 import pe.edu.pucp.lagstore.gestJuegos.Model.BibliotecaBO;
@@ -19,6 +28,7 @@ import pe.edu.pucp.lagstore.gestjuegos.model.ModeloNegocio;
 import pe.edu.pucp.lagstore.gestusuarios.model.Administrador;
 import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
+import pe.edu.pucp.lagstore.gestusuarios.model.JugadorBO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
 
 
@@ -264,6 +274,195 @@ public class Principal {
         JuegoAdquirido juegoAdquiridoObtenido = juegoAdquiridoBO.obtenerPorId(juegosAdquiridos.get(0).getJuego().getIdJuego());
         System.out.println("Juego adquirido obtenido por ID: " + juegoAdquiridoObtenido);
 
+    }
+    
+        private static void test_Compras() throws ParseException{
+        //test_metodosPago(); //los metodos de pago se insertan en la BD
+        test_Cartera(); // se prueba el funcionamiento de Cartera
+        test_Recarga(); // se prueba el funcionamiento de Recarga
+        test_CarroCompra(); // se prueba el funcionamiento de CarroCompra
+    }
+    
+    
+    private static void test_Cartera() throws ParseException{
+        CarteraBO BOCartera = new CarteraBO();
+     
+        Cartera cartera = new Cartera();
+        cartera.setSaldoActual(100.50);
+        
+        Biblioteca b1=new Biblioteca(20.1,3);
+        BibliotecaBO BOBiblioteca= new BibliotecaBO();
+        BOBiblioteca.insertar(b1);
+        
+        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+        // ⚠️ Debes reemplazar con un jugador válido existente en tu BD
+        Jugador jugador=new Jugador("Mario Bros","mario@hotmail.com","789",sdf.parse("2025-04-20"),"969627718","ImagenX","Mario&Luiggi");
+        jugador.setIdJugador(1);   // ← Cambia este ID según tu BD
+        cartera.setJugador(jugador);
+
+        int idInsertado = BOCartera.insertar(cartera);
+        System.out.println("Cartera creada con ID: " + idInsertado);
+
+        //Obtener por ID
+        Cartera carteraObtenida = BOCartera.obtenerPorId(idInsertado);
+        System.out.println("Obtenida: ID=" + carteraObtenida.getIdCartera() +
+                           ", Saldo=" + carteraObtenida.getSaldoActual() +
+                           ", JugadorID=" + carteraObtenida.getJugador().getIdJugador() +
+                           ", Activo=" + carteraObtenida.getActivo());
+
+       //Modificar la cartera
+        carteraObtenida.setSaldoActual(200.00);
+        carteraObtenida.getJugador().setIdJugador(1);   // (opcional) cambiar jugador si quieres
+        BOCartera.modificar(carteraObtenida);
+        System.out.println("Cartera modificada.");
+
+        //Consultando de nuevo
+        Cartera carteraModificada = BOCartera.obtenerPorId(idInsertado);
+        System.out.println("Modificada: ID=" + carteraModificada.getIdCartera() +
+                           ", Saldo=" + carteraModificada.getSaldoActual() +
+                           ", JugadorID=" + carteraModificada.getJugador().getIdJugador() +
+                           ", Activo=" + carteraModificada.getActivo());
+
+        // Eliminar 
+        BOCartera.eliminar(idInsertado);
+        System.out.println("Cartera eliminada (soft-delete).");
+
+        //Consultar eliminada
+        Cartera carteraEliminada = BOCartera.obtenerPorId(idInsertado);
+        System.out.println("Eliminada: ID=" + carteraEliminada.getIdCartera() +
+                           ", Saldo=" + carteraEliminada.getSaldoActual() +
+                           ", JugadorID=" + carteraEliminada.getJugador().getIdJugador() +
+                           ", Activo=" + carteraEliminada.getActivo());
+
+        //Listar todas las carteras
+        ArrayList<Cartera> lista = BOCartera.listaCartera();
+        System.out.println("\nListado de todas las carteras:");
+        for (Cartera c : lista) {
+            System.out.println("ID=" + c.getIdCartera() +
+                               ", Saldo=" + c.getSaldoActual() +
+                               ", JugadorID=" + c.getJugador().getIdJugador() +
+                               ", Activo=" + c.getActivo());
+        }
+    }
+    
+    private static void test_Recarga() throws ParseException {
+
+        RecargaBO BORecarga = new RecargaBO();
+
+        //Crear Recarga
+        Recarga recarga = new Recarga();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        recarga.setFechaRecarga(sdf.parse("2025-05-13"));
+        recarga.setMonto(50.00);
+
+        //Se usa una cartera esada en el test4()
+        CarteraBO BOCartera = new CarteraBO();
+        Cartera cartera = BOCartera.obtenerPorId(1);
+        
+        // ID existente de Cartera
+        recarga.setCartera(cartera);
+
+        recarga.setMetodoPago(MetodoPago.Mastercard); // Usa enum (Visa, Mastercard, etc.)
+
+        int idInsertado = BORecarga.insertar(recarga);
+        System.out.println("Recarga creada con ID: " + idInsertado);
+
+        //Obtener por ID
+        Recarga recargaObtenida = BORecarga.obtenerPorId(idInsertado);
+        System.out.println("Obtenida: ID=" + recargaObtenida.getIdRecarga() +
+                        ", Monto=" + recargaObtenida.getMonto() +
+                        ", CarteraID=" + recargaObtenida.getCartera().getIdCartera() +
+                        ", MetodoPago=" + recargaObtenida.getMetodoPago() +
+                        ", Activo=" + recargaObtenida.getActivo());
+
+        //Modificar
+        recargaObtenida.setMonto(89.99);
+        recargaObtenida.setMetodoPago(MetodoPago.PagoEfectivo);
+        BORecarga.modificar(recargaObtenida);
+        System.out.println("Recarga modificada.");
+
+        //Consultar de nuevo
+        Recarga recargaModificada = BORecarga.obtenerPorId(idInsertado);
+        System.out.println("Modificada: ID=" + recargaModificada.getIdRecarga() +
+                        ", Monto=" + recargaModificada.getMonto() +
+                        ", MetodoPago=" + recargaModificada.getMetodoPago() +
+                        ", Activo=" + recargaModificada.getActivo());
+
+        //Eliminar 
+        BORecarga.eliminar(idInsertado);
+        System.out.println("Recarga eliminada (soft-delete).");
+
+        //Consultar eliminada
+        Recarga recargaEliminada = BORecarga.obtenerPorId(idInsertado);
+        System.out.println("Eliminada: ID=" + recargaEliminada.getIdRecarga() +
+                        ", Monto=" + recargaEliminada.getMonto() +
+                        ", MetodoPago=" + recargaEliminada.getMetodoPago() +
+                        ", Activo=" + recargaEliminada.getActivo());
+
+        //Listar todas
+        ArrayList<Recarga> lista = BORecarga.listaCarroRecarga();
+        System.out.println("\nListado de todas las recargas:");
+        for (Recarga r : lista) {
+            System.out.println("ID=" + r.getIdRecarga() +
+                            ", Monto=" + r.getMonto() +
+                            ", MetodoPago=" + r.getMetodoPago() +
+                            ", CarteraID=" + r.getCartera().getIdCartera() +
+                            ", Activo=" + r.getActivo());
+        }
+}
+    
+    private static void test_CarroCompra()throws ParseException {
+        
+        CarroCompraBO BOCarro = new CarroCompraBO();
+
+        //Crear CarroCompra
+        CarroCompra carro = new CarroCompra();
+        carro.setTotalEstimado(120.00);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        JugadorBO BOJugador = new JugadorBO();
+        Jugador jugador=new Jugador("Luiggi Bros","luggi@hotmail.com","789",sdf.parse("2025-04-20"),"969627718","ImagenX","Mario&Luiggi");
+        carro.setJugador(jugador);
+
+        int idInsertado = BOCarro.insertar(carro);
+        System.out.println("CarroCompra creado con ID: " + idInsertado);
+
+        //Obtener por ID
+        CarroCompra carroObtenido = BOCarro.obtenerPorId(idInsertado);
+        System.out.println("Obtenido: ID=" + carroObtenido.getIdCarroCompra() +
+                           ", Total=" + carroObtenido.getTotalEstimado() +
+                           ", JugadorID=" + carroObtenido.getJugador().getIdJugador() +
+                           ", Activo=" + carroObtenido.getActivo());
+
+        //Modificar
+        carroObtenido.setTotalEstimado(200.00);
+        BOCarro.modificar(carroObtenido);
+        System.out.println("CarroCompra modificado.");
+
+        //Consultar de nuevo
+        CarroCompra carroModificado = BOCarro.obtenerPorId(idInsertado);
+        System.out.println("Modificado: ID=" + carroModificado.getIdCarroCompra() +
+                           ", Total=" + carroModificado.getTotalEstimado() +
+                           ", Activo=" + carroModificado.getActivo());
+
+        //Eliminar 
+        BOCarro.eliminar(idInsertado);
+        System.out.println("CarroCompra eliminado (soft-delete).");
+
+        //Consultar eliminado
+        CarroCompra carroEliminado = BOCarro.obtenerPorId(idInsertado);
+        System.out.println("Eliminado: ID=" + carroEliminado.getIdCarroCompra() +
+                           ", Total=" + carroEliminado.getTotalEstimado() +
+                           ", Activo=" + carroEliminado.getActivo());
+        //Listar todos
+        ArrayList<CarroCompra> lista = BOCarro.listaCarroCompra();
+        System.out.println("\nListado de todos los CarroCompra:");
+        for (CarroCompra c : lista) {
+            System.out.println("ID=" + c.getIdCarroCompra() +
+                               ", Total=" + c.getTotalEstimado() +
+                               ", JugadorID=" + c.getJugador().getIdJugador() +
+                               ", Activo=" + c.getActivo());
+        }
     }
     
 }

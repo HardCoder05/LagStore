@@ -29,4 +29,8 @@ public class RecargaBO {
     public ArrayList<Recarga>listaCarroRecarga(){
         return daoRecarga.listarTodas();
     }
+    
+    public Recarga obtenerPorId(int id){
+        return daoRecarga.obtenerPorId(id);
+    }
 }
