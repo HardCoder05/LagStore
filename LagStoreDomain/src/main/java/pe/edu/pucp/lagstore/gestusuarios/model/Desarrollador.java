@@ -4,13 +4,12 @@ import java.util.Date;
 
 public class Desarrollador extends Usuario {
     private int idDesarrollador;
-    private int numeroCuenta;
+    private String numeroCuenta;
     private double ingresoTotal;
     
     public Desarrollador(){}
     public Desarrollador(String nombre,String email ,String contrasena, 
-                         Date fechaRegistro, String telefono, String fotoDePerfil,int activo,int idRol,
-                   int numeroCuenta,double ingresoTotal) {
+                         Date fechaRegistro, String telefono, String fotoDePerfil,String numeroCuenta,double ingresoTotal) {
         super(nombre, contrasena, email, fechaRegistro, telefono, fotoDePerfil);
         this.numeroCuenta = numeroCuenta;
         this.ingresoTotal = ingresoTotal;
@@ -24,11 +23,11 @@ public class Desarrollador extends Usuario {
         this.idDesarrollador = idDesarrollador;
     }
     
-    public int getNumeroCuenta() {
+    public String getNumeroCuenta() {
         return numeroCuenta;
     }
     
-    public void setNumeroCuenta(int numeroCuenta) {
+    public void setNumeroCuenta(String numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
 

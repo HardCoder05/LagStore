@@ -19,20 +19,13 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
 
 public class Principal {
     public static void main(String[] args)throws Exception{
-        
-        //1.JUGADOR
         JugadorDAO daoJugador=new JugadorMySQL();
+        DesarrolladorDAO daoDesarrollador=new DesarrolladorMySQL();
+        AdministradorDAO daoAdministrador=new AdministradorMySQL();
         SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
-        //inserto una biblioteca
-        /*Biblioteca b1=new Biblioteca(20.1,3);
-        BibliotecaDAO daoBiblioteca= new BibliotecaMySQL();
-        daoBiblioteca.insertar(b1);
-        Biblioteca b2=new Biblioteca(15.3,2);
-        daoBiblioteca.insertar(b2);
-        Biblioteca b3=new Biblioteca(80.0,6);
-        daoBiblioteca.insertar(b3);
-        Biblioteca b4=new Biblioteca(50.3,4);
-        daoBiblioteca.insertar(b4);*/
+        //1.JUGADOR
+//        JugadorDAO daoJugador=new JugadorMySQL();
+//        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
         //inserto un nuevo jugador
         /*
         Jugador j1=new Jugador("Miguel","miguel@hotmail.com","789",sdf.parse("2025-04-20"),"969627718","ImagenX","miguel123");
@@ -53,7 +46,7 @@ public class Principal {
 //        Jugador jugadorAModificar=new Jugador();
 //        jugadorAModificar.setIdJugador(60);
 //        jugadorAModificar.setNickname("OTRO NUEVO");
-//       jugadorAModificar.setNombre("NAME NEW");
+//        jugadorAModificar.setNombre("NAME NEW");
 //        jugadorAModificar.setEmail("aaaa@htomail.com");
 //        jugadorAModificar.setContrasena("nuevaContra");
 //        jugadorAModificar.setFechaRegistro(sdf.parse("2025-01-01"));
@@ -72,48 +65,43 @@ public class Principal {
     
         
         //2.DESARROLLADOR
-        //Creo las bibliotecas de cada desarrollador
-//        Biblioteca b5=new Biblioteca(10.2,3);
-//        daoBiblioteca.insertar(b5);
-//        Biblioteca b6=new Biblioteca(11.5,4);
-//        daoBiblioteca.insertar(b6);
-//        Biblioteca b7=new Biblioteca(12.5,5);
-//        daoBiblioteca.insertar(b7);
-//        Biblioteca b8=new Biblioteca(13.0,2);
-//        daoBiblioteca.insertar(b8);
-       
         //inserto desarrolladores
         //insertamos desarrollador
-//        Desarrollador d1=new Desarrollador("Gustavo","555","gusgus@hotmail.com",sdf.parse("2025-04-24"),9619084,"ImagenX",1,
-//                                            b5,3,191500,5500.50);
-//        Desarrollador d2=new Desarrollador("Polar","444","polar@hotmail.com",sdf.parse("2025-04-24"),9914745,"ImagenX",1,
-//                                            b6,3,191555,4500.50);
-//        Desarrollador d3=new Desarrollador("Rex","666","rex@hotmail.com",sdf.parse("2025-04-24"),9927847,"ImagenX",1,
-//                                            b7,3,152200,3500.50);
-//        Desarrollador d4=new Desarrollador("Leocho","777","leo@hotmail.com",sdf.parse("2025-04-24"),9616945,"ImagenX",1,
-//                                            b8,3,122400,2500.50);
-//        DesarrolladorDAO daoDesarrollador=new DesarrolladorMySQL();
+//        Desarrollador d1=new Desarrollador("Gustavo","gusgus@hotmail.com","555",sdf.parse("2025-04-24"),"961908444","ImagenX","191-500-200",5500.50);
+//        Desarrollador d2=new Desarrollador("Polar","polar@hotmail.com","444",sdf.parse("2025-04-24"),"991474587","ImagenX","191-555-002",4500.50);
+//        Desarrollador d3=new Desarrollador("Rex","rex@hotmail.com","666",sdf.parse("2025-04-24"),"992784711","ImagenX","152-200-001",3500.50);
+//        Desarrollador d4=new Desarrollador("Leocho","leo@hotmail.com","777",sdf.parse("2025-04-24"),"961694521","ImagenX","122-400-911",2500.50);
+////        
 //        daoDesarrollador.insertar(d1);
 //        daoDesarrollador.insertar(d2);
 //        daoDesarrollador.insertar(d3);
 //        daoDesarrollador.insertar(d4);
 //        //listar desarrolladores
-//        ArrayList<Desarrollador>desarrolladores = daoDesarrollador.listarTodas();
-//        for(Desarrollador d : desarrolladores){
-//            System.out.println(d);
-//        }
+        ArrayList<Desarrollador>desarrolladores = daoDesarrollador.listarTodos();
+        for(Desarrollador d : desarrolladores){
+            System.out.println(d);
+        }
 //        //modificar desarrollador
-//        desarrolladores.get(0).setIngresoTotal(2500.25);
-//        daoDesarrollador.modificar(desarrolladores.get(0));
-//        //volvemos a listar para ver la modificacion
-//        desarrolladores=daoDesarrollador.listarTodas();
-//        for(Desarrollador d : desarrolladores){
-//            System.out.println(d);
-//        }
-//        //eliminar desarrollador
-//        daoDesarrollador.eliminar(5);
-//        // obtener por ID
-//        daoDesarrollador.obtenerPorId(8);
+        Desarrollador desarroMod=new Desarrollador();
+        desarroMod.setIdDesarrollador(100);
+        desarroMod.setNumeroCuenta("999-111-999");
+        desarroMod.setIngresoTotal(1005.50);
+        desarroMod.setNombre("NAME NEW");
+        desarroMod.setEmail("aaaa@htomail.com");
+        desarroMod.setContrasena("nuevaContra");
+        desarroMod.setFechaRegistro(sdf.parse("2025-01-01"));
+        desarroMod.setTelefono("999111222");
+        desarroMod.setFotoDePerfil("FFF"); 
+        daoDesarrollador.modificar(desarroMod);
+        //volvemos a listar para ver la modificacion
+        desarrolladores=daoDesarrollador.listarTodos();
+        for(Desarrollador d : desarrolladores){
+            System.out.println(d);
+        }
+        //eliminar desarrollador
+        daoDesarrollador.eliminar(100);
+        // obtener por ID
+        daoDesarrollador.obtenerPorId(100);
         
         
         //3.ADMINISTRADOR
@@ -135,7 +123,7 @@ public class Principal {
 //        Administrador a3=new Administrador("Luis","tllt@hotmail.com","75321",sdf.parse("2025-04-24"),"9632587","ImagenX","CON_PERMISO");  
 //        Administrador a4=new Administrador("Johar","johar@hotmail.com","9852",sdf.parse("2025-04-24"),"91324546","ImagenX","CON_PERMISO");  
 //        
-        AdministradorDAO daoAdministrador=new AdministradorMySQL();
+//        
 //        daoAdministrador.insertar(a1);
 //        daoAdministrador.insertar(a2);
 //        daoAdministrador.insertar(a3);
@@ -143,26 +131,26 @@ public class Principal {
 
 
         //listar Administrador
-        ArrayList<Administrador>administradores = daoAdministrador.listarTodos();
-        for(Administrador a : administradores){
-            System.out.println(a);
-        }
+//        ArrayList<Administrador>administradores = daoAdministrador.listarTodos();
+//        for(Administrador a : administradores){
+//            System.out.println(a);
+//        }
         
         //Eliminar Administrador
         //daoAdministrador.eliminar(92);
         
         //Modificar Administrador
-        Administrador admiModif=new Administrador();
-        admiModif.setIdAdministrador(94);
-        admiModif.setNombre("NAME NEW");
-        admiModif.setEmail("aaaa@htomail.com");
-        admiModif.setContrasena("nuevaContra");
-        admiModif.setFechaRegistro(sdf.parse("2025-01-01"));
-        admiModif.setTelefono("999111222");
-        admiModif.setFotoDePerfil("FFF");
-        admiModif.setRolAdministrativo("Nuevo rol aplicado");
-        
-        daoAdministrador.modificar(admiModif);
+//        Administrador admiModif=new Administrador();
+//        admiModif.setIdAdministrador(94);
+//        admiModif.setNombre("NAME NEW");
+//        admiModif.setEmail("aaaa@htomail.com");
+//        admiModif.setContrasena("nuevaContra");
+//        admiModif.setFechaRegistro(sdf.parse("2025-01-01"));
+//        admiModif.setTelefono("999111222");
+//        admiModif.setFotoDePerfil("FFF");
+//        admiModif.setRolAdministrativo("Nuevo rol aplicado");
+//        
+//        daoAdministrador.modificar(admiModif);
         
         
 //        //modificar desarrollador
