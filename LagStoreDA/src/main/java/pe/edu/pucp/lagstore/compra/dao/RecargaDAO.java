@@ -1,13 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
-package pe.edu.pucp.lagstore.compra.dao;
 
+package pe.edu.pucp.lagstore.compra.dao;
+import java.util.ArrayList;
+import pe.edu.pucp.lagstore.compra.model.Recarga;
 /**
  *
- * @author Luis Rios
+ * @author Jean Pool
  */
 public interface RecargaDAO {
-    
+    int insertar(Recarga recarga);
+    int modificar(Recarga recarga);
+    int eliminar(int idRecarga);
+    ArrayList<Recarga>listarTodas();
+    Recarga obtenerPorId(int idRecarga);
 }

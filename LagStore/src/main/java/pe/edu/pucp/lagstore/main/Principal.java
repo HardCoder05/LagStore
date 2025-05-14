@@ -1,16 +1,31 @@
 package pe.edu.pucp.lagstore.main;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import pe.edu.pucp.lagstore.gestJuegos.Model.JuegoAdquiridoBO;
 import pe.edu.pucp.lagstore.gestJuegos.Model.JuegoBO;
+import pe.edu.pucp.lagstore.compra.dao.CarroCompraDAO;
+import pe.edu.pucp.lagstore.compra.dao.CarteraDAO;
+import pe.edu.pucp.lagstore.compra.dao.MetodoPagoDAO;
+import pe.edu.pucp.lagstore.compra.dao.RecargaDAO;
+import pe.edu.pucp.lagstore.compra.model.CarroCompra;
+import pe.edu.pucp.lagstore.compra.model.Cartera;
+import pe.edu.pucp.lagstore.compra.model.MetodoPago;
+import pe.edu.pucp.lagstore.compra.model.Recarga;
+import pe.edu.pucp.lagstore.compra.mysql.CarroCompraMySQL;
+
+import pe.edu.pucp.lagstore.compra.mysql.CarteraMySQL;
+
+
+import pe.edu.pucp.lagstore.compra.mysql.MetodoPagoMySQL;
+import pe.edu.pucp.lagstore.compra.mysql.RecargaMySQL;
+
 import pe.edu.pucp.lagstore.gestionjuegos.dao.BibliotecaDAO;
 import pe.edu.pucp.lagstore.gestionjuegos.mysql.BibliotecaMySQL;
-import pe.edu.pucp.lagstore.gestionusuarios.dao.DesarrolladorDAO;
+
 import pe.edu.pucp.lagstore.gestionusuarios.dao.JugadorDAO;
-import pe.edu.pucp.lagstore.gestionusuarios.dao.AdministradorDAO;
-import pe.edu.pucp.lagstore.gestionusuarios.mysql.AdministradorMySQL;
-import pe.edu.pucp.lagstore.gestionusuarios.mysql.DesarrolladorMySQL;
+
 import pe.edu.pucp.lagstore.gestionusuarios.mysql.JugadorMySQL;
 import pe.edu.pucp.lagstore.gestjuegos.model.Biblioteca;
 import pe.edu.pucp.lagstore.gestjuegos.model.Genero;
@@ -25,81 +40,24 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
 public class Principal {
     public static void main(String[] args)throws Exception{
         
-        //1.JUGADOR
-        //inserto una biblioteca
-        Biblioteca b1=new Biblioteca(20.1,3);
-        BibliotecaDAO daoBiblioteca= new BibliotecaMySQL();
-        daoBiblioteca.insertar(b1);
-        Biblioteca b2=new Biblioteca(15.3,2);
-        daoBiblioteca.insertar(b2);
-        Biblioteca b3=new Biblioteca(80.0,6);
-        daoBiblioteca.insertar(b3);
-        Biblioteca b4=new Biblioteca(50.3,4);
-        daoBiblioteca.insertar(b4);
-        //inserto un nuevo jugador
-        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
-        Jugador j1=new Jugador("Miguel","789","miguel@hotmail.com",sdf.parse("2025-04-20"),9616945,"ImagenX",1,
-                               b1,1,"miguel123");
-        Jugador j2=new Jugador("cubas ","753","cubas@hotmail.com",sdf.parse("2025-04-20"),852322,"ImagenX",1,
-                               b2,1,"gohanGol");
-        Jugador j3=new Jugador("Alesandro ","741","alesandro@hotmail.com",sdf.parse("2025-04-20"),227423,"ImagenX",1,
-                               b3,1,"ales50");
-        Jugador j4=new Jugador("Luis ","785","luis@hotmail.com",sdf.parse("2025-04-20"),785222,"ImagenX",1,
-                               b4,1,"luis20");
-        JugadorDAO daoJugador=new JugadorMySQL();
-        daoJugador.insertar(j1);
-        daoJugador.insertar(j2);
-        daoJugador.insertar(j3);
-        daoJugador.insertar(j4);
-        //listar jugadores
-        ArrayList<Jugador>jugadores = daoJugador.listarTodas();
-        for(Jugador j : jugadores){
-            System.out.println(j);
-        }
-        //modificar jugador
-        jugadores.get(0).setNickname("miguelNuevo");
-        daoJugador.modificar(jugadores.get(0));
-        //volvemos a listar para ver la modificacion
-        jugadores=daoJugador.listarTodas();
-        for(Jugador j : jugadores){
-            System.out.println(j);
-        }
-        //eliminar jugador
-        daoJugador.eliminar(1);
-        // obtener por ID
-        daoJugador.obtenerPorId(3);
+        test_metodosPago(); //los metodos de pago se insertan en la BD
+        test4(); // se prueba el funcionamiento de Cartera
+        test5(); // se prueba el funcionamiento de Recarga
+        test6(); // se prueba el funcionamiento de CarroCompra
+           
+    }
     
-        
-        //2.DESARROLLADOR
-        //Creo las bibliotecas de cada desarrollador
-        Biblioteca b5=new Biblioteca(10.2,3);
-        daoBiblioteca.insertar(b5);
-        Biblioteca b6=new Biblioteca(11.5,4);
-        daoBiblioteca.insertar(b6);
-        Biblioteca b7=new Biblioteca(12.5,5);
-        daoBiblioteca.insertar(b7);
-        Biblioteca b8=new Biblioteca(13.0,2);
-        daoBiblioteca.insertar(b8);
-       
-        //inserto desarrolladores
-        //insertamos desarrollador
-        Desarrollador d1=new Desarrollador("Gustavo","555","gusgus@hotmail.com",sdf.parse("2025-04-24"),9619084,"ImagenX",1,
-                                            b5,3,191500,5500.50);
-        Desarrollador d2=new Desarrollador("Polar","444","polar@hotmail.com",sdf.parse("2025-04-24"),9914745,"ImagenX",1,
-                                            b6,3,191555,4500.50);
-        Desarrollador d3=new Desarrollador("Rex","666","rex@hotmail.com",sdf.parse("2025-04-24"),9927847,"ImagenX",1,
-                                            b7,3,152200,3500.50);
-        Desarrollador d4=new Desarrollador("Leocho","777","leo@hotmail.com",sdf.parse("2025-04-24"),9616945,"ImagenX",1,
-                                            b8,3,122400,2500.50);
-        DesarrolladorDAO daoDesarrollador=new DesarrolladorMySQL();
-        daoDesarrollador.insertar(d1);
-        daoDesarrollador.insertar(d2);
-        daoDesarrollador.insertar(d3);
-        daoDesarrollador.insertar(d4);
-        //listar desarrolladores
-        ArrayList<Desarrollador>desarrolladores = daoDesarrollador.listarTodas();
-        for(Desarrollador d : desarrolladores){
-            System.out.println(d);
+    
+    private static void test_metodosPago() throws ParseException{
+        /*
+        Ejecutar esto en la BD antes de probr el test por primera vez:     
+            SET FOREIGN_KEY_CHECKS = 0;
+            TRUNCATE TABLE MetodoPago;
+            SET FOREIGN_KEY_CHECKS = 1;
+        */
+        MetodoPagoDAO daoMetodoPago = new MetodoPagoMySQL();
+        for (MetodoPago metodo : MetodoPago.values()) {
+            daoMetodoPago.insertar(metodo);
         }
         //modificar desarrollador
         desarrolladores.get(0).setIngresoTotal(2500.25);
@@ -247,4 +205,188 @@ public class Principal {
         System.out.println("Juego adquirido obtenido por ID: " + juegoAdquiridoObtenido);
     }
     
+    
+    private static void test4() throws ParseException{
+        CarteraDAO daoCartera = new CarteraMySQL();
+
+        
+        Cartera cartera = new Cartera();
+        cartera.setSaldoActual(100.50);
+        
+        Biblioteca b1=new Biblioteca(20.1,3);
+        BibliotecaDAO daoBiblioteca= new BibliotecaMySQL();
+        daoBiblioteca.insertar(b1);
+        
+        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+        // ⚠️ Debes reemplazar con un jugador válido existente en tu BD
+        Jugador jugador = new Jugador("Pepe", "800", "pepe@outlook.com", sdf.parse("2025-05-13"), 9616945, "ImagenX", 1,
+                             b1, 1, "Menphis22");
+        jugador.setIdJugador(1);   // ← Cambia este ID según tu BD
+        cartera.setJugador(jugador);
+
+        int idInsertado = daoCartera.insertar(cartera);
+        System.out.println("Cartera creada con ID: " + idInsertado);
+
+        //Obtener por ID
+        Cartera carteraObtenida = daoCartera.obtenerPorId(idInsertado);
+        System.out.println("Obtenida: ID=" + carteraObtenida.getIdCartera() +
+                           ", Saldo=" + carteraObtenida.getSaldoActual() +
+                           ", JugadorID=" + carteraObtenida.getJugador().getIdJugador() +
+                           ", Activo=" + carteraObtenida.getActivo());
+
+       //Modificar la cartera
+        carteraObtenida.setSaldoActual(200.00);
+        carteraObtenida.getJugador().setIdJugador(1);   // (opcional) cambiar jugador si quieres
+        daoCartera.modificar(carteraObtenida);
+        System.out.println("Cartera modificada.");
+
+        //Consultando de nuevo
+        Cartera carteraModificada = daoCartera.obtenerPorId(idInsertado);
+        System.out.println("Modificada: ID=" + carteraModificada.getIdCartera() +
+                           ", Saldo=" + carteraModificada.getSaldoActual() +
+                           ", JugadorID=" + carteraModificada.getJugador().getIdJugador() +
+                           ", Activo=" + carteraModificada.getActivo());
+
+        // Eliminar 
+        daoCartera.eliminar(idInsertado);
+        System.out.println("Cartera eliminada (soft-delete).");
+
+        //Consultar eliminada
+        Cartera carteraEliminada = daoCartera.obtenerPorId(idInsertado);
+        System.out.println("Eliminada: ID=" + carteraEliminada.getIdCartera() +
+                           ", Saldo=" + carteraEliminada.getSaldoActual() +
+                           ", JugadorID=" + carteraEliminada.getJugador().getIdJugador() +
+                           ", Activo=" + carteraEliminada.getActivo());
+
+        //Listar todas las carteras
+        ArrayList<Cartera> lista = daoCartera.listarTodas();
+        System.out.println("\nListado de todas las carteras:");
+        for (Cartera c : lista) {
+            System.out.println("ID=" + c.getIdCartera() +
+                               ", Saldo=" + c.getSaldoActual() +
+                               ", JugadorID=" + c.getJugador().getIdJugador() +
+                               ", Activo=" + c.getActivo());
+        }
+    }
+    
+    private static void test5() throws ParseException {
+    RecargaDAO daoRecarga = new RecargaMySQL();
+
+    //Crear Recarga
+    Recarga recarga = new Recarga();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    recarga.setFechaRecarga(sdf.parse("2025-05-13"));
+    recarga.setMonto(50.00);
+
+    //Se usa una cartera esada en el test4()
+    CarteraDAO daoCartera = new CarteraMySQL();
+    Cartera cartera = daoCartera.obtenerPorId(5);
+    
+    // ID existente de Cartera
+    recarga.setCartera(cartera);
+
+    recarga.setMetodoPago(MetodoPago.Mastercard); // Usa enum (Visa, Mastercard, etc.)
+
+    int idInsertado = daoRecarga.insertar(recarga);
+    System.out.println("Recarga creada con ID: " + idInsertado);
+
+    //Obtener por ID
+    Recarga recargaObtenida = daoRecarga.obtenerPorId(idInsertado);
+    System.out.println("Obtenida: ID=" + recargaObtenida.getIdRecarga() +
+                       ", Monto=" + recargaObtenida.getMonto() +
+                       ", CarteraID=" + recargaObtenida.getCartera().getIdCartera() +
+                       ", MetodoPago=" + recargaObtenida.getMetodoPago() +
+                       ", Activo=" + recargaObtenida.getActivo());
+
+    //Modificar
+    recargaObtenida.setMonto(89.99);
+    recargaObtenida.setMetodoPago(MetodoPago.PagoEfectivo);
+    daoRecarga.modificar(recargaObtenida);
+    System.out.println("Recarga modificada.");
+
+    //Consultar de nuevo
+    Recarga recargaModificada = daoRecarga.obtenerPorId(idInsertado);
+    System.out.println("Modificada: ID=" + recargaModificada.getIdRecarga() +
+                       ", Monto=" + recargaModificada.getMonto() +
+                       ", MetodoPago=" + recargaModificada.getMetodoPago() +
+                       ", Activo=" + recargaModificada.getActivo());
+
+    //Eliminar 
+    daoRecarga.eliminar(idInsertado);
+    System.out.println("Recarga eliminada (soft-delete).");
+
+    //Consultar eliminada
+    Recarga recargaEliminada = daoRecarga.obtenerPorId(idInsertado);
+    System.out.println("Eliminada: ID=" + recargaEliminada.getIdRecarga() +
+                       ", Monto=" + recargaEliminada.getMonto() +
+                       ", MetodoPago=" + recargaEliminada.getMetodoPago() +
+                       ", Activo=" + recargaEliminada.getActivo());
+
+    //Listar todas
+    ArrayList<Recarga> lista = daoRecarga.listarTodas();
+    System.out.println("\nListado de todas las recargas:");
+    for (Recarga r : lista) {
+        System.out.println("ID=" + r.getIdRecarga() +
+                           ", Monto=" + r.getMonto() +
+                           ", MetodoPago=" + r.getMetodoPago() +
+                           ", CarteraID=" + r.getCartera().getIdCartera() +
+                           ", Activo=" + r.getActivo());
+    }
 }
+    
+    private static void test6() {
+    CarroCompraDAO daoCarro = new CarroCompraMySQL();
+
+    //Crear CarroCompra
+    CarroCompra carro = new CarroCompra();
+    carro.setTotalEstimado(120.00);
+
+    
+    JugadorDAO daoJugador = new JugadorMySQL();
+    Jugador jugador = daoJugador.obtenerPorId(16);
+    carro.setJugador(jugador);
+
+    int idInsertado = daoCarro.insertar(carro);
+    System.out.println("CarroCompra creado con ID: " + idInsertado);
+
+    //Obtener por ID
+    CarroCompra carroObtenido = daoCarro.obtenerPorId(idInsertado);
+    System.out.println("Obtenido: ID=" + carroObtenido.getIdCarroCompra() +
+                       ", Total=" + carroObtenido.getTotalEstimado() +
+                       ", JugadorID=" + carroObtenido.getJugador().getIdJugador() +
+                       ", Activo=" + carroObtenido.getActivo());
+
+    //Modificar
+    carroObtenido.setTotalEstimado(200.00);
+    daoCarro.modificar(carroObtenido);
+    System.out.println("CarroCompra modificado.");
+
+    //Consultar de nuevo
+    CarroCompra carroModificado = daoCarro.obtenerPorId(idInsertado);
+    System.out.println("Modificado: ID=" + carroModificado.getIdCarroCompra() +
+                       ", Total=" + carroModificado.getTotalEstimado() +
+                       ", Activo=" + carroModificado.getActivo());
+
+    //Eliminar 
+    daoCarro.eliminar(idInsertado);
+    System.out.println("CarroCompra eliminado (soft-delete).");
+
+    //Consultar eliminado
+    CarroCompra carroEliminado = daoCarro.obtenerPorId(idInsertado);
+    System.out.println("Eliminado: ID=" + carroEliminado.getIdCarroCompra() +
+                       ", Total=" + carroEliminado.getTotalEstimado() +
+                       ", Activo=" + carroEliminado.getActivo());
+    //Listar todos
+    ArrayList<CarroCompra> lista = daoCarro.listarTodas();
+    System.out.println("\nListado de todos los CarroCompra:");
+    for (CarroCompra c : lista) {
+        System.out.println("ID=" + c.getIdCarroCompra() +
+                           ", Total=" + c.getTotalEstimado() +
+                           ", JugadorID=" + c.getJugador().getIdJugador() +
+                           ", Activo=" + c.getActivo());
+    }
+}
+}
+
+
+

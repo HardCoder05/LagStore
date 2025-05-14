@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
-package pe.edu.pucp.lagstore.compra.dao;
 
+package pe.edu.pucp.lagstore.compra.dao;
+import pe.edu.pucp.lagstore.compra.model.MetodoPago;
+import java.util.ArrayList;
 /**
  *
- * @author Luis Rios
+ * @author Jean Pool
  */
 public interface MetodoPagoDAO {
-    
+    int insertar(MetodoPago metodo);
+    int modificar(MetodoPago metodo);
+    int eliminar(int metodo);
+    ArrayList<MetodoPago>listarTodas();
 }
