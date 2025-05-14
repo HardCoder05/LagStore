@@ -1,6 +1,8 @@
 package pe.edu.pucp.lagstore.main;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import pe.edu.pucp.lagstore.compra.dao.CarroCompraDAO;
 import pe.edu.pucp.lagstore.compra.dao.CarteraDAO;
@@ -36,6 +38,10 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
 import pe.edu.pucp.lagstore.gestusuarios.model.JugadorBO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
+import pe.edu.pucp.lagstore.valoracion.model.Calificacion;
+import pe.edu.pucp.lagstore.valoracion.model.CalificacionBO;
+import pe.edu.pucp.lagstore.valoracion.model.Resena;
+import pe.edu.pucp.lagstore.valoracion.model.ResenaBO;
 
 
 public class Principal {
@@ -47,8 +53,10 @@ public class Principal {
 //        test_bibliotecas();
 //        test_juegos();
 //        test_juegoAdquiridos();
-        test_Recarga();
-
+ //       test_Recarga();
+ //       test_Calificacion();
+        test_Resena();
+        
     }
     
     private static void test_jugadores()throws ParseException{
@@ -504,7 +512,104 @@ public class Principal {
                     ", Activo=" + c.getActivo());
         }
     }
-    
+       public static void test_Calificacion()throws ParseException{
+        CalificacionBO calificacionBO = new CalificacionBO();
+        // Crear objetos necesarios
+        Jugador jugador = new Jugador();
+        jugador.setIdJugador(2); // Debe existir
+
+        Juego juego = new Juego();
+        juego.setIdJuego(2); // Debe existir
+
+        // Insertar calificación
+        Calificacion nuevaCalificacion = new Calificacion();
+        nuevaCalificacion.setAutor(jugador);
+        nuevaCalificacion.setJuego(juego);
+        nuevaCalificacion.setFechaPuntuacion(Date.valueOf(LocalDate.now()));
+        nuevaCalificacion.setPuntuacion(5);
+        nuevaCalificacion.setActivo(1);
+
+        int idInsertado = calificacionBO.insertar(nuevaCalificacion);
+        System.out.println("Calificacion insertada con ID: " + idInsertado);
+
+        // Modificar calificación
+        nuevaCalificacion.setIdCalificacion(idInsertado);
+        nuevaCalificacion.setPuntuacion(3);
+        int modResultado = calificacionBO.modificar(nuevaCalificacion);
+        System.out.println("Resultado de modificacion: " + modResultado);
+
+        // Listar calificaciones
+        ArrayList<Calificacion> calificaciones = calificacionBO.listarBibliotecas();
+        System.out.println("\nLista de calificaciones activas:");
+        for (Calificacion c : calificaciones) {
+            System.out.println("ID: " + c.getIdCalificacion() +
+                               ", Puntaje: " + c.getPuntuacion() +
+                               ", Jugador ID: " + c.getAutor().getIdJugador() +
+                               ", Juego ID: " + c.getJuego().getIdJuego());
+        }
+
+        // Obtener por ID
+        Calificacion calificacion = calificacionBO.obtenerPorId(idInsertado);
+        if (calificacion != null) {
+            System.out.println("\nCalificacion obtenida: Puntaje = " + calificacion.getPuntuacion());
+        }
+
+        // Eliminar calificación
+        int elimResultado = calificacionBO.eliminar(idInsertado);
+        System.out.println("Resultado de eliminacion: " + elimResultado);
+    }
+     public static void test_Resena()throws ParseException{
+         ResenaBO resenaBO = new ResenaBO();
+
+        // Crear objetos necesarios
+        Jugador jugador = new Jugador();
+        jugador.setIdJugador(2); // Debe existir
+
+        Juego juego = new Juego();
+        juego.setIdJuego(2); // Debe existir
+
+        Calificacion calificacion = new Calificacion();
+        calificacion.setIdCalificacion(1); // Debe existir
+
+        // Insertar reseña
+        Resena nuevaResena = new Resena();
+        nuevaResena.setAutor(jugador);
+        nuevaResena.setJuego(juego);
+        nuevaResena.setComentario("¡Muy divertido!");
+        nuevaResena.setFechaPublicacion(Date.valueOf(LocalDate.now()));
+        nuevaResena.setCalificacion(calificacion);
+        nuevaResena.setActivo(1);
+
+        int idInsertado = resenaBO.insertar(nuevaResena);
+        System.out.println("Reseña insertada con ID: " + idInsertado);
+
+        // Modificar reseña
+        nuevaResena.setIdResena(idInsertado);
+        nuevaResena.setComentario("¡Muy divertido y desafiante!");
+        int resultadoMod = resenaBO.modificar(nuevaResena);
+        System.out.println("Resultado de modificacion: " + resultadoMod);
+
+        // Listar reseñas
+        ArrayList<Resena> resenas = resenaBO.listarBibliotecas();
+        System.out.println("\nLista de resenas activas:");
+        for (Resena r : resenas) {
+            System.out.println("ID: " + r.getIdResena() +
+                               ", Comentario: " + r.getComentario() +
+                               ", Calificacion ID: " + r.getCalificacion().getIdCalificacion() +
+                               ", Jugador ID: " + r.getAutor().getIdJugador() +
+                               ", Juego ID: " + r.getJuego().getIdJuego());
+        }
+
+        // Obtener por ID
+        Resena resena = resenaBO.obtenerPorId(idInsertado);
+        if (resena != null) {
+            System.out.println("\nResena obtenida: Comentario = " + resena.getComentario());
+        }
+
+        // Eliminar reseña
+        int resultadoElim = resenaBO.eliminar(idInsertado);
+        System.out.println("Resultado de eliminacion: " + resultadoElim);
+     }
     
 }
 

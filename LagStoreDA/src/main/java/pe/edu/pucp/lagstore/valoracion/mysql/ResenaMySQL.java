@@ -78,11 +78,11 @@ public class ResenaMySQL implements ResenaDAO{
                 resena.setActivo(rs.getInt("activo"));
                 // Jugador (autor)
                 Jugador autor = new Jugador();
-                autor.setIdJugador(rs.getInt("fid_jugador"));
+                autor.setIdJugador(rs.getInt("fidJugador"));
                 resena.setAutor(autor);
                 // Juego
                 Juego juego = new Juego();
-                juego.setIdJuego(rs.getInt("fid_juego"));
+                juego.setIdJuego(rs.getInt("fidJuego"));
                 resena.setJuego(juego);
                 resenas.add(resena);
             }
@@ -115,11 +115,11 @@ public class ResenaMySQL implements ResenaDAO{
                 resena.setActivo(rs.getInt("activo"));
                 // Jugador (autor)
                 Jugador autor = new Jugador();
-                autor.setIdJugador(rs.getInt("fid_jugador"));
+                autor.setIdJugador(rs.getInt("fidJugador"));
                 resena.setAutor(autor);
                 // Juego
                 Juego juego = new Juego();
-                juego.setIdJuego(rs.getInt("fid_juego"));
+                juego.setIdJuego(rs.getInt("fidJuego"));
                 resena.setJuego(juego);
             }
         }catch(SQLException ex){
