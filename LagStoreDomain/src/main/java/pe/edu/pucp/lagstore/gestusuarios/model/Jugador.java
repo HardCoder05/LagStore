@@ -17,13 +17,14 @@ public class Jugador extends Usuario {
     
     public Jugador(){}
 
-    public Jugador(String nombre, String contrasena, 
-                   String email, Date fechaRegistro, int telefono, String fotoDePerfil,int activo,Biblioteca biblioteca,int idRol,String nickname) {
-        super(nombre, contrasena, email, fechaRegistro, telefono, fotoDePerfil,activo,biblioteca,idRol);
+   
+    
+    public Jugador(String nombre,String email,String contrasena,Date fechaRegistro,String telefono, 
+                   String fotoDePerfil,String nickname) {
+        super(nombre, email,contrasena, fechaRegistro, telefono, fotoDePerfil);
         this.nickname = nickname;
         
     }
-
     
     
     public int getIdJugador() {

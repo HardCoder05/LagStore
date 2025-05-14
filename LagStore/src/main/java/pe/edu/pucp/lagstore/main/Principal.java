@@ -2,6 +2,7 @@ package pe.edu.pucp.lagstore.main;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 import pe.edu.pucp.lagstore.gestionjuegos.dao.BibliotecaDAO;
 import pe.edu.pucp.lagstore.gestionjuegos.mysql.BibliotecaMySQL;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.DesarrolladorDAO;
@@ -20,8 +21,10 @@ public class Principal {
     public static void main(String[] args)throws Exception{
         
         //1.JUGADOR
+        JugadorDAO daoJugador=new JugadorMySQL();
+        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
         //inserto una biblioteca
-        Biblioteca b1=new Biblioteca(20.1,3);
+        /*Biblioteca b1=new Biblioteca(20.1,3);
         BibliotecaDAO daoBiblioteca= new BibliotecaMySQL();
         daoBiblioteca.insertar(b1);
         Biblioteca b2=new Biblioteca(15.3,2);
@@ -29,41 +32,45 @@ public class Principal {
         Biblioteca b3=new Biblioteca(80.0,6);
         daoBiblioteca.insertar(b3);
         Biblioteca b4=new Biblioteca(50.3,4);
-        daoBiblioteca.insertar(b4);
+        daoBiblioteca.insertar(b4);*/
         //inserto un nuevo jugador
-        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
-        Jugador j1=new Jugador("Miguel","789","miguel@hotmail.com",sdf.parse("2025-04-20"),9616945,"ImagenX",1,
-                               b1,1,"miguel123");
-        Jugador j2=new Jugador("cubas ","753","cubas@hotmail.com",sdf.parse("2025-04-20"),852322,"ImagenX",1,
-                               b2,1,"gohanGol");
-        Jugador j3=new Jugador("Alesandro ","741","alesandro@hotmail.com",sdf.parse("2025-04-20"),227423,"ImagenX",1,
-                               b3,1,"ales50");
-        Jugador j4=new Jugador("Luis ","785","luis@hotmail.com",sdf.parse("2025-04-20"),785222,"ImagenX",1,
-                               b4,1,"luis20");
-        JugadorDAO daoJugador=new JugadorMySQL();
+        /*
+        Jugador j1=new Jugador("Miguel","miguel@hotmail.com","789",sdf.parse("2025-04-20"),"969627718","ImagenX","miguel123");
+        Jugador j2=new Jugador("cubas ","cubas@hotmail.com","753",sdf.parse("2025-04-20"),"852322","ImagenX","gohanGol");
+        Jugador j3=new Jugador("Alesandro ","alesandro@hotmail.com","741",sdf.parse("2025-04-20"),"227423","ImagenX","ales50");
+        Jugador j4=new Jugador("Luis ","luis@hotmail.com","785",sdf.parse("2025-04-20"),"785222","ImagenX","luis20");
+        
         daoJugador.insertar(j1);
         daoJugador.insertar(j2);
         daoJugador.insertar(j3);
-        daoJugador.insertar(j4);
+        daoJugador.insertar(j4);*/
         //listar jugadores
         ArrayList<Jugador>jugadores = daoJugador.listarTodas();
         for(Jugador j : jugadores){
             System.out.println(j);
         }
         //modificar jugador
-        jugadores.get(0).setNickname("miguelNuevo");
-        daoJugador.modificar(jugadores.get(0));
+        Jugador jugadorAModificar=new Jugador();
+        jugadorAModificar.setIdJugador(60);
+        jugadorAModificar.setNickname("OTRO NUEVO");
+        jugadorAModificar.setNombre("NAME NEW");
+        jugadorAModificar.setEmail("aaaa@htomail.com");
+        jugadorAModificar.setContrasena("nuevaContra");
+        jugadorAModificar.setFechaRegistro(sdf.parse("2025-01-01"));
+        jugadorAModificar.setTelefono("999111222");
+        jugadorAModificar.setFotoDePerfil("FFF");
+        daoJugador.modificar(jugadorAModificar);
         //volvemos a listar para ver la modificacion
-        jugadores=daoJugador.listarTodas();
+        /*jugadores=daoJugador.listarTodas();
         for(Jugador j : jugadores){
             System.out.println(j);
-        }
+        }*/
         //eliminar jugador
-        daoJugador.eliminar(1);
+        daoJugador.eliminar(3);
         // obtener por ID
-        daoJugador.obtenerPorId(3);
+        System.out.println(daoJugador.obtenerPorId(3));
     
-        
+        /*
         //2.DESARROLLADOR
         //Creo las bibliotecas de cada desarrollador
         Biblioteca b5=new Biblioteca(10.2,3);
@@ -170,7 +177,7 @@ public class Principal {
         daoBiblioteca.modificar(biblioteca.get(0));
         // obtener por ID
         daoBiblioteca.obtenerPorId(2);
-        
+        */
     }
     
 }

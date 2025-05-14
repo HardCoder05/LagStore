@@ -1,151 +1,93 @@
 package pe.edu.pucp.lagstore.gestionusuarios.mysql;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.AdministradorDAO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Administrador;
 
 public class AdministradorMySQL implements AdministradorDAO{
-
     private Connection con;
-    private PreparedStatement pst;
     private ResultSet rs;
-    private Statement st;
-    
     @Override
     public int insertar(Administrador administrador) {
-        int resultado = 0;
-        try{
-            con = DBManager.getInstance().getConnection();
-            String sql = "INSERT INTO Usuario(nombre,contrasena,email,fechaRegistro,telefono,"
-                    + "fotoDePerfil,activo,biblioteca_idBiblioteca,rol_idrol)"
-                    + "VALUES(?,?,?,?,?,?,?,?,?)";
-            pst = con.prepareStatement(sql);
-            pst.setString(1, administrador.getNombre());
-            pst.setString(2, administrador.getContrasena());
-            pst.setString(3, administrador.getEmail());
-            pst.setDate(4, new java.sql.Date(administrador.getFechaRegistro().getTime()));
-            pst.setInt(5,administrador.getTelefono());
-            pst.setString(6, administrador.getFotoDePerfil());
-            pst.setInt(7,administrador.getActivo());
-            pst.setInt(8,administrador.getBiblioteca().getIdBiblioteca());
-            pst.setInt(9,2);
-            pst.executeUpdate();
-            
-            sql = "SELECT @@last_insert_id AS id";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
-            rs.next();
-            administrador.setIdUsuario(rs.getInt("id"));
-            administrador.setIdAdministrador(rs.getInt("id"));
-            sql = "INSERT INTO Administrador(idAdministrador,rol)"
-                    + " VALUES(?,?)";
-            pst = con.prepareStatement(sql);
-            pst.setInt(1, administrador.getIdAdministrador());
-            pst.setString(2, administrador.getRolAdministrativo());
-            pst.executeUpdate();
-            resultado = administrador.getIdUsuario();
-            System.out.println("Se ha registrado el administrador...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){
-                System.out.println(ex.getMessage());
-            }
-        }
-        return resultado;
+        Map<Integer,Object> parametrosSalida = new HashMap<>();   
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosSalida.put(1, Types.INTEGER);
+        parametrosEntrada.put(2, administrador.getRolAdministrativo());
+        parametrosEntrada.put(3, administrador.getNombre());
+        parametrosEntrada.put(4, administrador.getEmail());
+        parametrosEntrada.put(5, administrador.getContrasena());
+        parametrosEntrada.put(6, new Date(administrador.getFechaRegistro().getTime()));
+        parametrosEntrada.put(7, administrador.getTelefono());
+        parametrosEntrada.put(8, administrador.getFotoDePerfil());
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ADMINISTRADOR", parametrosEntrada, parametrosSalida);
+        administrador.setIdUsuario((int) parametrosSalida.get(1));
+        System.out.println("Se ha realizado el registro del administrador");
+        return administrador.getIdUsuario();
     }
 
     @Override
     public int modificar(Administrador administrador) {
-        int resultado = 0;
-        try{
-            //Establecer una conexion con la BD
-            con = DBManager.getInstance().getConnection();
-            //Ejecutamos alguna sentencia SQL
-            String sql = "UPDATE Administrador SET rol = '" + administrador.getRolAdministrativo()+ "' WHERE" + " idAdministrador = " + administrador.getIdAdministrador();
-            System.out.println(administrador.getRolAdministrativo()+" "+administrador.getIdAdministrador());
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql);
-            System.out.println("Se ha actualizado el administrador...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1,administrador.getIdUsuario());
+        parametrosEntrada.put(2, administrador.getRolAdministrativo());
+        parametrosEntrada.put(3, administrador.getNombre());
+        parametrosEntrada.put(4, administrador.getEmail());
+        parametrosEntrada.put(5, administrador.getContrasena());
+        parametrosEntrada.put(6, new Date(administrador.getFechaRegistro().getTime()));
+        parametrosEntrada.put(7, administrador.getTelefono());
+        parametrosEntrada.put(8, administrador.getFotoDePerfil());
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ADMINISTRADOR", parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion del administrador");
         return resultado;
     }
 
     @Override
     public int eliminar(int idAdministrador) {
-        int resultado = 0;
-        try{
-            //Establecer una conexion con la BD
-            con = DBManager.getInstance().getConnection();
-            //Ejecutamos alguna sentencia SQL
-            String sql = "UPDATE Usuario SET activo = 0 WHERE" + " id = " + idAdministrador;
-            //System.out.println(jugador.getNickname()+" "+jugador.getIdJugador());
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql);
-            System.out.println("Se ha actualizado el jugador...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idAdministrador);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_ADMINISTRADOR", parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion del administrador");
         return resultado;
     }
 
     @Override
-    public ArrayList<Administrador> listarTodas() {
+    public ArrayList<Administrador> listarTodos() {
         ArrayList<Administrador> administradores = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ADMINISTRADOR", null);
+        System.out.println("Lectura de administradores...");
         try{
-            con = DBManager.getInstance().getConnection();
-            String sql = "SELECT * FROM Administrador";
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            System.out.println("Se esta imprimiendo los ids");
             while(rs.next()){
-                Administrador administrador = new Administrador();
-                administrador.setIdAdministrador(rs.getInt("idAdministrador"));
-                administrador.setRolAdministrativo(rs.getString("rol"));
-                administradores.add(administrador);
+                Administrador a = new Administrador();
+                a.setIdUsuario(rs.getInt(1));
+                a.setRolAdministrativo(rs.getString(2));
+                a.setNombre(rs.getString(3));
+                a.setEmail(rs.getString(4));
+                a.setContrasena(rs.getString(5));
+                a.setFechaRegistro(rs.getDate(6));
+                a.setTelefono(rs.getString(7));
+                a.setFotoDePerfil(rs.getString(8));
+                administradores.add(a);
             }
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
         }finally{
-            try{rs.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+            DBManager.getInstance().cerrarConexion();
         }
-        return administradores; 
+        return administradores;
     }
 
     @Override
     public Administrador obtenerPorId(int id) {
-        Administrador administrador = new Administrador();
-        try{
-            con = DBManager.getInstance().getConnection();
-            String sql = "SELECT * FROM Administrador WHERE idAdministrador = " + id;
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            System.out.println("Se esta obteniendo id");
-            while(rs.next()){
-                //Jugador jugador = new Jugador();
-                administrador.setIdAdministrador(rs.getInt("idAdministrador"));
-                administrador.setRolAdministrativo(rs.getString("rol"));
-            }
-            System.out.println(administrador);
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{rs.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
-        return administrador; 
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
