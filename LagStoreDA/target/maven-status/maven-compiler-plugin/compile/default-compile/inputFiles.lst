@@ -6,6 +6,7 @@ C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreD
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\compra\mysql\CarteraMySQL.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\compra\mysql\MetodoPagoMySQL.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\compra\mysql\RecargaMySQL.java
+C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\DAO\ICrud.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\dao\BibliotecaDAO.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\dao\GeneroDAO.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionjuegos\dao\JuegoAdquiridoDAO.java
@@ -19,12 +20,10 @@ C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreD
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\dao\AdministradorDAO.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\dao\DesarrolladorDAO.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\dao\JugadorDAO.java
-C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\dao\RolDAO.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\dao\UsuarioDAO.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\mysql\AdministradorMySQL.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\mysql\DesarrolladorMySQL.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\mysql\JugadorMySQL.java
-C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\mysql\RolMySQL.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\gestionusuarios\mysql\UsuarioMySQL.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\valoracion\dao\CalificacionDAO.java
 C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\GitHubTA\LagStore\LagStoreDA\src\main\java\pe\edu\pucp\lagstore\valoracion\dao\ResenaDAO.java
