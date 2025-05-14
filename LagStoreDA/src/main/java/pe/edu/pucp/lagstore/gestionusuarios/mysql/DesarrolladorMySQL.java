@@ -64,7 +64,7 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
     }
 
     @Override
-    public ArrayList<Desarrollador> listarTodas() {
+    public ArrayList<Desarrollador> listarTodos() {
         ArrayList<Desarrollador> desarrolladores = new ArrayList<>();
         try{
             con = DBManager.getInstance().getConnection();

@@ -45,7 +45,7 @@ public class Principal {
         daoJugador.insertar(j3);
         daoJugador.insertar(j4);*/
         //listar jugadores
-//        ArrayList<Jugador>jugadores = daoJugador.listarTodas();
+//        ArrayList<Jugador>jugadores = daoJugador.listar();
 //        for(Jugador j : jugadores){
 //            System.out.println(j);
 //        }

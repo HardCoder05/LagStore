@@ -65,7 +65,7 @@ public class JugadorMySQL implements JugadorDAO{
     }
 
     @Override
-    public ArrayList<Jugador> listarTodas() {
+    public ArrayList<Jugador> listarTodos() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_JUGADOR", null);
         System.out.println("Lectura de jugadores...");
