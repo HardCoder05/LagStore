@@ -1,17 +1,16 @@
 package pe.edu.pucp.lagstore.gestusuarios.model;
 import java.util.Date;
-import pe.edu.pucp.lagstore.gestjuegos.model.Biblioteca;
+
 
 public class Desarrollador extends Usuario {
     private int idDesarrollador;
-    private int numeroCuenta;
+    private String numeroCuenta;
     private double ingresoTotal;
     
     public Desarrollador(){}
-    public Desarrollador(String nombre, String contrasena, 
-                   String email, Date fechaRegistro, int telefono, String fotoDePerfil,int activo,Biblioteca biblioteca,int idRol,
-                   int numeroCuenta,double ingresoTotal) {
-        super(nombre, contrasena, email, fechaRegistro, telefono, fotoDePerfil,activo,biblioteca,idRol);
+    public Desarrollador(String nombre,String email ,String contrasena, 
+                         Date fechaRegistro, String telefono, String fotoDePerfil,String numeroCuenta,double ingresoTotal) {
+        super(nombre, contrasena, email, fechaRegistro, telefono, fotoDePerfil);
         this.numeroCuenta = numeroCuenta;
         this.ingresoTotal = ingresoTotal;
     }
@@ -24,11 +23,11 @@ public class Desarrollador extends Usuario {
         this.idDesarrollador = idDesarrollador;
     }
     
-    public int getNumeroCuenta() {
+    public String getNumeroCuenta() {
         return numeroCuenta;
     }
     
-    public void setNumeroCuenta(int numeroCuenta) {
+    public void setNumeroCuenta(String numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
 

@@ -1,10 +1,14 @@
 package pe.edu.pucp.lagstore.gestionusuarios.mysql;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.JugadorDAO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
@@ -18,135 +22,114 @@ public class JugadorMySQL implements JugadorDAO{
     
     @Override
     public int insertar(Jugador jugador) {
-        int resultado = 0;
-        try{
-            con = DBManager.getInstance().getConnection();
-            String sql = "INSERT INTO Usuario(nombre,contrasena,email,fechaRegistro,telefono,"
-                    + "fotoDePerfil,activo,biblioteca_idBiblioteca,rol_idrol)"
-                    + "VALUES(?,?,?,?,?,?,?,?,?)";
-            pst = con.prepareStatement(sql);
-            pst.setString(1, jugador.getNombre());
-            pst.setString(2, jugador.getContrasena());
-            pst.setString(3, jugador.getEmail());
-            pst.setDate(4, new java.sql.Date(jugador.getFechaRegistro().getTime()));
-            pst.setInt(5,jugador.getTelefono());
-            pst.setString(6, jugador.getFotoDePerfil());
-            pst.setInt(7,jugador.getActivo());
-            pst.setInt(8,jugador.getBiblioteca().getIdBiblioteca());
-            pst.setInt(9,1);
-            pst.executeUpdate();
-            
-            sql = "SELECT @@last_insert_id AS id";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
-            rs.next();
-            jugador.setIdUsuario(rs.getInt("id"));
-            jugador.setIdJugador(rs.getInt("id"));
-            sql = "INSERT INTO Jugador(idJugador,nickname)"
-                    + " VALUES(?,?)";
-            pst = con.prepareStatement(sql);
-            pst.setInt(1, jugador.getIdUsuario());
-            pst.setString(2, jugador.getNickname());
-            pst.executeUpdate();
-            resultado = jugador.getIdUsuario();
-            System.out.println("Se ha registrado el jugador...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){
-                System.out.println(ex.getMessage());
-            }
-        }
-        return resultado;
+        Map<Integer,Object> parametrosSalida = new HashMap<>();   
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosSalida.put(1, Types.INTEGER);
+        parametrosEntrada.put(2, jugador.getNombre());
+        parametrosEntrada.put(3, jugador.getEmail());
+        parametrosEntrada.put(4, jugador.getContrasena());
+        parametrosEntrada.put(5, jugador.getFechaRegistro());
+        parametrosEntrada.put(6, jugador.getTelefono());
+        parametrosEntrada.put(7, jugador.getFotoDePerfil());
+        parametrosEntrada.put(8, jugador.getNickname());
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_JUGADOR", parametrosEntrada, parametrosSalida);
+        jugador.setIdJugador((int) parametrosSalida.get(1));
+        System.out.println("Se ha realizado el registro del jugador");
+        
+        return jugador.getIdUsuario();
     }
 
     @Override
     public int modificar(Jugador jugador) {
-        int resultado = 0;
-        try{
-            //Establecer una conexion con la BD
-            con = DBManager.getInstance().getConnection();
-            //Ejecutamos alguna sentencia SQL
-            String sql = "UPDATE Jugador SET nickname = '" + jugador.getNickname()+ "' WHERE" + " idJugador = " + jugador.getIdJugador();
-            System.out.println(jugador.getNickname()+" "+jugador.getIdJugador());
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql);
-            System.out.println("Se ha actualizado el jugador...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1,jugador.getIdJugador());
+        parametrosEntrada.put(2, jugador.getNickname());
+        parametrosEntrada.put(3, jugador.getNombre());
+        parametrosEntrada.put(4, jugador.getEmail());
+        parametrosEntrada.put(5, jugador.getContrasena());
+        parametrosEntrada.put(6, new Date(jugador.getFechaRegistro().getTime()));
+        parametrosEntrada.put(7, jugador.getTelefono());
+        parametrosEntrada.put(8, jugador.getFotoDePerfil());
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_JUGADOR", parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion del jugador");
         return resultado;
     }
 
     @Override
     public int eliminar(int idJugador) {
-        int resultado = 0;
-        try{
-            //Establecer una conexion con la BD
-            con = DBManager.getInstance().getConnection();
-            //Ejecutamos alguna sentencia SQL
-            String sql = "UPDATE Usuario SET activo = 0 WHERE" + " id = " + idJugador;
-            //System.out.println(jugador.getNickname()+" "+jugador.getIdJugador());
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql);
-            System.out.println("Se ha actualizado el jugador...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idJugador);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_JUGADOR", parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion del jugador");
         return resultado;
     }
 
     @Override
-    public ArrayList<Jugador> listarTodas() {
+    public ArrayList<Jugador> listarTodos() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_JUGADOR", null);
+        System.out.println("Lectura de jugadores...");
         try{
-            con = DBManager.getInstance().getConnection();
-            String sql = "SELECT * FROM Jugador";
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            System.out.println("Se esta imprimiendo los ids");
             while(rs.next()){
-                Jugador jugador = new Jugador();
-                jugador.setIdJugador(rs.getInt("idJugador"));
-                jugador.setNickname(rs.getString("nickname"));
-                jugadores.add(jugador);
+                Jugador j = new Jugador();
+                j.setIdJugador(rs.getInt(1));
+                j.setNombre(rs.getString(2));
+                j.setEmail(rs.getString(3));
+                j.setContrasena(rs.getString(4));
+                j.setFechaRegistro(rs.getDate(5));
+                j.setTelefono(rs.getString(6));
+                j.setFotoDePerfil(rs.getString(7));
+                j.setNickname(rs.getString(8));
+                jugadores.add(j);
             }
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
         }finally{
-            try{rs.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+            DBManager.getInstance().cerrarConexion();
         }
         return jugadores; 
     }
 
     @Override
     public Jugador obtenerPorId(int id) {
-        Jugador jugador = new Jugador();
-        try{
-            con = DBManager.getInstance().getConnection();
-            String sql = "SELECT * FROM Jugador WHERE idJugador = " + id;
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            System.out.println("Se esta obteniendo id");
-            while(rs.next()){
-                //Jugador jugador = new Jugador();
-                jugador.setIdJugador(rs.getInt("idJugador"));
-                jugador.setNickname(rs.getString("nickname"));
+            ArrayList<Jugador> jugadores = new ArrayList<>();
+
+            // Crear un mapa para pasar los parámetros de entrada al procedimiento almacenado
+            Map<Integer, Object> parametrosEntrada = new HashMap<>();
+            parametrosEntrada.put(1, id);  // Asegúrate de pasar el ID al procedimiento almacenado
+
+            // Ejecutar el procedimiento almacenado y obtener el ResultSet
+            rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_X_ID_JUGADOR", parametrosEntrada);
+
+            System.out.println("Lectura de jugadores...");
+
+            try {
+                    while (rs.next()) {
+                            Jugador j = new Jugador();
+                            j.setIdJugador(rs.getInt(1));
+                            j.setNombre(rs.getString(2));
+                            j.setEmail(rs.getString(3));
+                            j.setContrasena(rs.getString(4));
+                            j.setFechaRegistro(rs.getDate(5));
+                            j.setTelefono(rs.getString(6));
+                            j.setFotoDePerfil(rs.getString(7));
+                            j.setNickname(rs.getString(8));
+                            jugadores.add(j);
+                    }
+            } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+            } finally {
+                    DBManager.getInstance().cerrarConexion();
             }
-            System.out.println(jugador);
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{rs.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
-        return jugador; 
+
+            // Asegurarse de que la lista no esté vacía antes de intentar acceder al primer elemento
+            if (!jugadores.isEmpty()) {
+                    return jugadores.get(0);  // Obtener el primer jugador de la lista
+            } else {
+                    return null;  // Si no se encontró el jugador, retornar null
+            }
     }
+
     
 
     

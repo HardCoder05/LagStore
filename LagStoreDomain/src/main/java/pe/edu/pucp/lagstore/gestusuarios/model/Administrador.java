@@ -1,7 +1,7 @@
 package pe.edu.pucp.lagstore.gestusuarios.model;
 
 import java.util.Date;
-import pe.edu.pucp.lagstore.gestjuegos.model.Biblioteca;
+
 
 
 public class Administrador extends Usuario {
@@ -10,8 +10,8 @@ public class Administrador extends Usuario {
     
     public Administrador(){}
 
-    public Administrador(String nombre, String contrasena,String email, Date fechaRegistro, int telefono, String fotoDePerfil,int activo,Biblioteca biblioteca,int idRol,String rolAdministrativo) {
-        super(nombre, contrasena, email, fechaRegistro, telefono, fotoDePerfil,activo,biblioteca,idRol);
+    public Administrador(String nombre,String email,String contrasena,Date fechaRegistro,String telefono, String fotoDePerfil,String rolAdministrativo) {
+        super(nombre, contrasena, email, fechaRegistro, telefono, fotoDePerfil);
         this.rolAdministrativo = rolAdministrativo;
         
     }
