@@ -17,9 +17,7 @@ public class AdministradorMySQL implements AdministradorDAO{
     private Connection con;
     private ResultSet rs;
 
-    public AdministradorMySQL() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
     @Override
     public int insertar(Administrador administrador) {
         Map<Integer,Object> parametrosSalida = new HashMap<>();   
