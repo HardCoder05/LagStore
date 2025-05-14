@@ -8,11 +8,5 @@ public interface CalificacionDAO {
     int modificar(Calificacion calificacion);
     int eliminar(int idCalificacion);
     ArrayList<Calificacion>listarTodas();
-    
-    //para que no salga en rojo referenciar
-    //click derecho en dependencies
-    //add dependecy y elegimos el
-    //LagStoreDomain e importamos 
-    
-    
+    Calificacion obtenerPorId(int idCalificacion);
 }

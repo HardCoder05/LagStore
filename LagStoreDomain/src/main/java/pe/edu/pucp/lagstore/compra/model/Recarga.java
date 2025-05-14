@@ -7,6 +7,10 @@ public class Recarga {
     private Date fechaRecarga;
     private double monto;
     private MetodoPago metodoPago;
+    public Cartera cartera;
+    
+    private int activo;
+    
     
     public int getIdRecarga() {
         return idRecarga;
@@ -38,5 +42,33 @@ public class Recarga {
 
     public void setMetodoPago(MetodoPago metodoPago) {
         this.metodoPago = metodoPago;
+    }
+
+    /**
+     * @return the activo
+     */
+    public int getActivo() {
+        return activo;
+    }
+
+    /**
+     * @param activo the activo to set
+     */
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
+
+    /**
+     * @return the cartera
+     */
+    public Cartera getCartera() {
+        return cartera;
+    }
+
+    /**
+     * @param cartera the cartera to set
+     */
+    public void setCartera(Cartera cartera) {
+        this.cartera = cartera;
     }
 }

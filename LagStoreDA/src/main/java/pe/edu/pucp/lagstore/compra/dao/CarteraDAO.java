@@ -1,13 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
-package pe.edu.pucp.lagstore.compra.dao;
 
+package pe.edu.pucp.lagstore.compra.dao;
+import java.util.ArrayList;
+import pe.edu.pucp.lagstore.compra.model.Cartera;
 /**
  *
- * @author Luis Rios
+ * @author Jean Pool
  */
 public interface CarteraDAO {
-    
+    int insertar(Cartera cartera);
+    int modificar(Cartera cartera);
+    int eliminar(int idCartera);
+    ArrayList<Cartera>listarTodas();
+    Cartera obtenerPorId(int idCartera);
 }

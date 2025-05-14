@@ -95,40 +95,33 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
     }
 
     @Override
-    public Desarrollador obtenerPorId(int id) {
-        ArrayList<Desarrollador> desarrolladores = new ArrayList<>();
-            // Crear un mapa para pasar los parámetros de entrada al procedimiento almacenado
-            Map<Integer, Object> parametrosEntrada = new HashMap<>();
-            parametrosEntrada.put(1, id);  // Asegúrate de pasar el ID al procedimiento almacenado
-            // Ejecutar el procedimiento almacenado y obtener el ResultSet
-            rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_X_ID_DESARROLLADOR", parametrosEntrada);
-            System.out.println("Lectura de desarrolladores...");
-            try {
-                    while (rs.next()) {
-                            Desarrollador d = new Desarrollador();
-                            d.setIdDesarrollador(rs.getInt(1));
-                            d.setNombre(rs.getString(2));
-                            d.setEmail(rs.getString(3));
-                            d.setContrasena(rs.getString(4));
-                            d.setFechaRegistro(rs.getDate(5));
-                            d.setTelefono(rs.getString(6));
-                            d.setFotoDePerfil(rs.getString(7));
-                            d.setNumeroCuenta(rs.getString(8));
-                            d.setIngresoTotal(rs.getDouble(9));
-                            desarrolladores.add(d);
-                    }
-            } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
-            } finally {
-                    DBManager.getInstance().cerrarConexion();
-            }
+    public Desarrollador obtenerPorId(int idDesarrollador) {
+        Desarrollador desarrollador = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idDesarrollador);
 
-            // Asegurarse de que la lista no esté vacía antes de intentar acceder al primer elemento
-            if (!desarrolladores.isEmpty()) {
-                    return desarrolladores.get(0);  // Obtener el primer jugador de la lista
-            } else {
-                    return null;  // Si no se encontró el jugador, retornar null
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_X_ID_DESARROLLADOR", parametrosEntrada);
+        System.out.println("Buscando Desarrollador por ID...");
+        try {
+            if (rs.next()) {
+                desarrollador = new Desarrollador();
+                desarrollador.setIdDesarrollador(idDesarrollador);
+                desarrollador.setNombre(rs.getString(1));
+                desarrollador.setEmail(rs.getString(2));
+                desarrollador.setContrasena(rs.getString(3));
+                desarrollador.setFechaRegistro(rs.getDate(4));
+                desarrollador.setTelefono(rs.getString(5));
+                desarrollador.setFotoDePerfil(rs.getString(6));
+                desarrollador.setNumeroCuenta(rs.getString(7));
+                desarrollador.setIngresoTotal(rs.getDouble(8));
+                System.out.println(desarrollador);
             }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener Desarrollador: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return desarrollador;
     }
     
 }

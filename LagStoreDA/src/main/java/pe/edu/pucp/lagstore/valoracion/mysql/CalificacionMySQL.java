@@ -3,7 +3,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import pe.edu.pucp.lagstore.config.DBManager;
+import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
+import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
 //import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.valoracion.dao.CalificacionDAO;
 import pe.edu.pucp.lagstore.valoracion.model.Calificacion;
@@ -17,93 +23,109 @@ public class CalificacionMySQL implements CalificacionDAO{
     
     @Override
     public int insertar(Calificacion calificacion) {
-        int resultado=0;
-        try{
-            //Establecer una conexion con la BD
-            //DESCOMENTAR ESTO PARA PROBAR
-            //con = DBManager.getInstance().getConnection();
-            //Ejecutamos alguna sentencia SQL
-            String sql = "INSERT INTO calificacion(fechaPuntuacion,puntaje,activo) "
-                    +    "VALUES('"+calificacion.getFechaPuntuacion()+"','"+calificacion.getPuntuacion()+"')";
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql);
-            System.out.println("Se ha insertado una calificacion...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            //Cerramos la conexión.
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
-        return resultado;
+       Map<Integer,Object> parametrosSalida = new HashMap<>();
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosSalida.put(1, Types.INTEGER);//deberia ser el id de Resena
+        parametrosEntrada.put(2, calificacion.getAutor().getIdJugador());//no se si falta casteo
+        parametrosEntrada.put(3, calificacion.getJuego().getIdJuego());
+        parametrosEntrada.put(4,calificacion.getFechaPuntuacion());
+        parametrosEntrada.put(5,calificacion.getPuntuacion());
+        parametrosEntrada.put(6,calificacion.getActivo());
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_CALIFICACION", parametrosEntrada, parametrosSalida);
+        calificacion.setIdCalificacion((int) parametrosSalida.get(1));//SE RESCATA EL ID
+        System.out.println("Se ha realizado el registro de la calificacion");
+        return calificacion.getIdCalificacion();
     }
     
     @Override
     public int modificar(Calificacion calificacion) {
-        int resultado = 0;
-        try{
-            //Establecer una conexion con la BD
-            //DESCOMENTAR ESTO PARA PROBAR
-            //con = DBManager.getInstance().getConnection();
-            //Ejecutamos alguna sentencia SQL
-            String sql = "UPDATE calificacion SET puntuacion = '" +calificacion.getPuntuacion()+ "' WHERE" + " idCalificacion = " + calificacion.getIdCalificacion();
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql);
-            System.out.println("Se ha actualizado la calificacion...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, calificacion.getIdCalificacion());
+        parametrosEntrada.put(2, calificacion.getAutor().getIdJugador());
+        parametrosEntrada.put(3, calificacion.getJuego().getIdJuego());
+        parametrosEntrada.put(4, calificacion.getFechaPuntuacion());
+        parametrosEntrada.put(5, calificacion.getPuntuacion());
+        parametrosEntrada.put(6, calificacion.getActivo());
+
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_CALIFICACION", parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion de la calificacion");
         return resultado;
     }
 
     @Override
     public int eliminar(int idCalificacion) {
-        int resultado = 0;
-        try{
-            //Establecer una conexion con la BD
-            //DESCOMENTAR ESTO PARA PROBAR
-            //con = DBManager.getInstance().getConnection();
-            
-            //Ejecutamos alguna sentencia SQL
-            
-            String sql = "UPDATE area SET puntuacion=0, fechaPuntuacion = '0000-00-00' WHERE" + " id_area = " + idCalificacion;
-            
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql);
-            System.out.println("Se ha eliminado una calificacion...");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idCalificacion);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_CALIFICACION", parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion de la calificacion");
         return resultado;
-        
     }
 
     @Override
     public ArrayList<Calificacion> listarTodas() {
         ArrayList<Calificacion> calificaciones = new ArrayList<>();
-        try{
-            //DESCOMENTAR ESTO PARA PROBAR
-            //con = DBManager.getInstance().getConnection();
-            String sql = "SELECT id_area, nombre FROM area WHERE" + " activa = 1";
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-            while(rs.next()){
-                Calificacion calificacion = new Calificacion();
+    rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_CALIFICACIONES_TODAS", null);
+    System.out.println("Lectura de calificaciones...");
+
+    try {
+        while (rs.next()) {
+            Calificacion calificacion = new Calificacion();
+            calificacion.setIdCalificacion(rs.getInt("idCalificacion"));
+            calificacion.setFechaPuntuacion(rs.getDate("fechaPuntuacion"));
+            calificacion.setPuntuacion(rs.getInt("puntaje"));
+            calificacion.setActivo(rs.getInt("activo"));
+
+            Jugador autor = new Jugador();
+            autor.setIdJugador(rs.getInt("fidJugador"));
+            calificacion.setAutor(autor);
+
+            Juego juego = new Juego();
+            juego.setIdJuego(rs.getInt("fidJuego"));
+            calificacion.setJuego(juego);
+
+            calificaciones.add(calificacion);
+        }
+    } catch (SQLException ex) {
+        System.out.println("ERROR: " + ex.getMessage());
+    } finally {
+        DBManager.getInstance().cerrarConexion();
+    }
+
+    return calificaciones;
+    }
+
+    @Override
+    public Calificacion obtenerPorId(int idCalificacion) {
+        Calificacion calificacion = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idCalificacion);
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_CALIFICACION_X_ID", parametrosEntrada);
+        System.out.println("Lectura de calificacion...");
+
+        try {
+            if (rs.next()) {
+                calificacion = new Calificacion();
                 calificacion.setIdCalificacion(rs.getInt("idCalificacion"));
                 calificacion.setFechaPuntuacion(rs.getDate("fechaPuntuacion"));
-                calificacion.setPuntuacion(rs.getInt("puntuacion"));
-                calificaciones.add(calificacion);
+                calificacion.setPuntuacion(rs.getInt("puntaje"));
+                calificacion.setActivo(rs.getInt("activo"));
+
+                Jugador autor = new Jugador();
+                autor.setIdJugador(rs.getInt("fidJugador"));
+                calificacion.setAutor(autor);
+
+                Juego juego = new Juego();
+                juego.setIdJuego(rs.getInt("fidJuego"));
+                calificacion.setJuego(juego);
             }
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{rs.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
         }
-        return calificaciones;   
+
+        return calificacion;
     }
     
 }
