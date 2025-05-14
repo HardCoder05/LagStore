@@ -7,4 +7,5 @@ public interface ResenaDAO {
     int modificar(Resena resena);
     int eliminar(int idResena);
     ArrayList<Resena>listarTodas();
+    Resena obtenerPorId(int idResena);
 }
