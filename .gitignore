@@ -1,5 +1,19 @@
-/LagStoreBusiness/target/
-/LagStoreDomain/target/
-/LagStoreDA/target/
-/LagStore/target/
-/LagStoreDBManager/target/
+# Carpetas target generadas por Maven
+**/target/
+
+# Archivos compilados de Java
+*.class
+*.jar
+
+*.exe
+*.dll
+*.log
+
+# NetBeans folders
+**/nbproject/private/
+build/
+dist/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
