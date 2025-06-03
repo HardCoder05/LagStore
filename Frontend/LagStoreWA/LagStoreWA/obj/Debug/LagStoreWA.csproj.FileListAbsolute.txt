@@ -72,3 +72,4 @@ C:\Users\rio88\OneDrive\Escritorio\LagStore\Frontend\LagStoreWA\LagStoreWA\obj\D
 C:\Users\rio88\OneDrive\Escritorio\LagStore\Frontend\LagStoreWA\LagStoreWA\obj\Debug\LagStoreWA.csproj.Up2Date
 C:\Users\rio88\OneDrive\Escritorio\LagStore\Frontend\LagStoreWA\LagStoreWA\obj\Debug\LagStoreWA.dll
 C:\Users\rio88\OneDrive\Escritorio\LagStore\Frontend\LagStoreWA\LagStoreWA\obj\Debug\LagStoreWA.pdb
+C:\Users\jeanp\Documents\GitHub\LagStore\Frontend\LagStoreWA\LagStoreWA\obj\Debug\LagStoreWA.pdb

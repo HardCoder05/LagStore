@@ -48,6 +48,7 @@ public class Principal {
  //       test_Recarga();
  //       test_Calificacion();
 //        test_Resena();
+          test_Compras();
         
     }
     
