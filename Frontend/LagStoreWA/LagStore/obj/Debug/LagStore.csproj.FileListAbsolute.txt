@@ -1,0 +1,7 @@
+C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\ChuchinLab10\LagStore\Frontend\LagStoreSolucion\LagStoreSolucion\LagStore\bin\Debug\LagStore.exe.config
+C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\ChuchinLab10\LagStore\Frontend\LagStoreSolucion\LagStoreSolucion\LagStore\bin\Debug\LagStore.exe
+C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\ChuchinLab10\LagStore\Frontend\LagStoreSolucion\LagStoreSolucion\LagStore\bin\Debug\LagStore.pdb
+C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\ChuchinLab10\LagStore\Frontend\LagStoreSolucion\LagStoreSolucion\LagStore\obj\Debug\LagStore.csproj.AssemblyReference.cache
+C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\ChuchinLab10\LagStore\Frontend\LagStoreSolucion\LagStoreSolucion\LagStore\obj\Debug\LagStore.csproj.CoreCompileInputs.cache
+C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\ChuchinLab10\LagStore\Frontend\LagStoreSolucion\LagStoreSolucion\LagStore\obj\Debug\LagStore.exe
+C:\Users\Luis Rios\OneDrive\Documents\PROGRA3_2025-1\ChuchinLab10\LagStore\Frontend\LagStoreSolucion\LagStoreSolucion\LagStore\obj\Debug\LagStore.pdb

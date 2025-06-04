@@ -1,0 +1,9 @@
+http://localhost:8080/LagStoreWS/JugadorWS?Tester
+http://localhost:8080/LagStoreWS/JugadorWS?WSDL
+
+http://localhost:8080/LagStoreWS/DesarrolladorWS?Tester
+http://localhost:8080/LagStoreWS/DesarrolladorWS?WSDL
+
+
+para C#:
+http://localhost:8080/LagStoreWS/servicios.disco

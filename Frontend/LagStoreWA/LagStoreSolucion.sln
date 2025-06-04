@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LagStore", "LagStore\LagStore.csproj", "{B51D3E41-4C89-4A56-BA58-E326F795B011}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LagStoreWA", "LagStoreWA\LagStoreWA.csproj", "{1A329542-ED1C-43EE-9221-0DAF0EF486C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B51D3E41-4C89-4A56-BA58-E326F795B011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51D3E41-4C89-4A56-BA58-E326F795B011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51D3E41-4C89-4A56-BA58-E326F795B011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51D3E41-4C89-4A56-BA58-E326F795B011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A329542-ED1C-43EE-9221-0DAF0EF486C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A329542-ED1C-43EE-9221-0DAF0EF486C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A329542-ED1C-43EE-9221-0DAF0EF486C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A329542-ED1C-43EE-9221-0DAF0EF486C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {246FB29F-5F47-434E-906B-270897669DB0}
+	EndGlobalSection
+EndGlobal

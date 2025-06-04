@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Inicio" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="LagStoreWA.Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LagStore.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="LagStoreWA.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
     LagStore - Inicio
 </asp:Content>
