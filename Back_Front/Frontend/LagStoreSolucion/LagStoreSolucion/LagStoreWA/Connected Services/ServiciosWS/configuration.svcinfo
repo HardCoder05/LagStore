@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.BasicHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;DesarrolladorWSPortBinding&quot; /&gt;" bindingType="basicHttpBinding" name="DesarrolladorWSPortBinding" />
+    <binding digest="System.ServiceModel.Configuration.BasicHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;JugadorWSPortBinding&quot; /&gt;" bindingType="basicHttpBinding" name="JugadorWSPortBinding" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://localhost:8080/LagStoreWS/DesarrolladorWS&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;DesarrolladorWSPortBinding&quot; contract=&quot;ServiciosWS.DesarrolladorWS&quot; name=&quot;DesarrolladorWSPort&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://localhost:8080/LagStoreWS/DesarrolladorWS&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;DesarrolladorWSPortBinding&quot; contract=&quot;ServiciosWS.DesarrolladorWS&quot; name=&quot;DesarrolladorWSPort&quot; /&gt;" contractName="ServiciosWS.DesarrolladorWS" name="DesarrolladorWSPort" />
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://localhost:8080/LagStoreWS/JugadorWS&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;JugadorWSPortBinding&quot; contract=&quot;ServiciosWS.JugadorWS&quot; name=&quot;JugadorWSPort&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://localhost:8080/LagStoreWS/JugadorWS&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;JugadorWSPortBinding&quot; contract=&quot;ServiciosWS.JugadorWS&quot; name=&quot;JugadorWSPort&quot; /&gt;" contractName="ServiciosWS.JugadorWS" name="JugadorWSPort" />
+  </endpoints>
+</configurationSnapshot>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="9126a84c-2bf6-463c-b239-387d56d44dfa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/LagStoreWS/servicios.disco" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="servicios.disco" MetadataType="Disco" ID="52eaf3e5-83f1-40ba-a868-cba85bc94f73" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWS/servicios.disco" />
+    <MetadataFile FileName="DesarrolladorWS.wsdl" MetadataType="Wsdl" ID="8f4a673d-e547-4457-a611-95964b669fa6" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWS/DesarrolladorWS?WSDL" />
+    <MetadataFile FileName="JugadorWS.xsd" MetadataType="Schema" ID="6c496057-a582-4605-9d1c-37a6a2a97dbf" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWS/JugadorWS?xsd=1" />
+    <MetadataFile FileName="DesarrolladorWS.xsd" MetadataType="Schema" ID="c1aeb2f6-0d51-48d1-bd30-4fc402dc2dd0" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWS/DesarrolladorWS?xsd=1" />
+    <MetadataFile FileName="JugadorWS.wsdl" MetadataType="Wsdl" ID="8318c1ef-7c8c-4c96-a6f7-984160b67fcc" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWS/JugadorWS?WSDL" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

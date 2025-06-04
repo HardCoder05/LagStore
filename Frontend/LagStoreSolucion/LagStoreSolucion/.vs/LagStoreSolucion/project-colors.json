@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b51d3e41-4c89-4a56-ba58-e326f795b011": {
+      "ProjectGuid": "b51d3e41-4c89-4a56-ba58-e326f795b011",
+      "DisplayName": "LagStore",
+      "ColorIndex": 0
+    },
+    "1a329542-ed1c-43ee-9221-0daf0ef486c6": {
+      "ProjectGuid": "1a329542-ed1c-43ee-9221-0daf0ef486c6",
+      "DisplayName": "LagStoreWA",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
