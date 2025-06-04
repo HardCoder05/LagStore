@@ -11,7 +11,7 @@ public class CarroCompra {
     private List<Juego> juegos;
     private double totalEstimado;
     private int activo;
-    public Jugador jugador;
+    private Jugador jugador;
 
     public int getIdCarroCompra(){
         return idCarroCompra;

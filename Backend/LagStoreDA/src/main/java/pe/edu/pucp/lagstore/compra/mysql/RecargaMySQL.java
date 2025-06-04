@@ -117,4 +117,36 @@ public class RecargaMySQL implements RecargaDAO {
         }
         return recarga;
     }
+
+    @Override
+    public ArrayList<Recarga> listarAsociadas(int idCartera) {
+        ArrayList<Recarga> lista = new ArrayList<>();
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idCartera);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_RECARGAS_X_CARTERA", parametrosEntrada);
+        System.out.println("Leyendo lista de Recargas...");
+        try {
+            while (rs.next()) {
+                Recarga recarga = new Recarga();
+                recarga.setIdRecarga(rs.getInt("idRecarga"));
+                recarga.setFechaRecarga(rs.getDate("fechaRecarga"));
+                recarga.setMonto(rs.getDouble("monto"));
+
+                String metodo = rs.getString("nombreMetodo");
+                recarga.setMetodoPago(MetodoPago.valueOf(metodo));
+
+                Cartera cartera = new Cartera();
+                cartera.setIdCartera(rs.getInt("cartera_idCartera"));
+                recarga.setCartera(cartera);
+
+                recarga.setActivo(rs.getInt("activo"));
+                lista.add(recarga);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al listar Recargas asociadas al idCartera : " +idCartera+ "\n" + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return lista;   
+    }
 }

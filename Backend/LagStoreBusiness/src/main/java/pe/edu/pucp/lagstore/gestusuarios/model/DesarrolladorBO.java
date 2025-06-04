@@ -5,6 +5,7 @@
 package pe.edu.pucp.lagstore.gestusuarios.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.DesarrolladorDAO;
 import pe.edu.pucp.lagstore.gestionusuarios.mysql.DesarrolladorMySQL;
 
@@ -24,6 +25,9 @@ public class DesarrolladorBO {
     }
     
     public int modificar(Desarrollador desarrollador){
+        if(desarrollador.getFechaRegistro()==null){
+            desarrollador.setFechaRegistro(new Date());
+        }
         return daoDesarrollador.modificar(desarrollador);
     }
 

@@ -38,17 +38,18 @@ import pe.edu.pucp.lagstore.valoracion.model.ResenaBO;
 
 public class Principal {
     public static void main(String[] args)throws Exception{
-//        test_jugadores();//se usan metodos de jugadores
-//        test_desarrolladores();//se usan metodos de jugadores
+        //test_jugadores();//se usan metodos de jugadores
+        //test_desarrolladores();//se usan metodos de jugadores
 //        test_administradores();//se usan metodos de administradores
         
 //        test_bibliotecas();
 //        test_juegos();
 //        test_juegoAdquiridos();
- //       test_Recarga();
+        //test_Recarga();
+        //test_Cartera();
+        test_CarroCompra();
  //       test_Calificacion();
 //        test_Resena();
-          test_Compras();
         
     }
     
@@ -303,10 +304,11 @@ public class Principal {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         // Crear jugador y asignar ID real
-        Jugador jugador = new Jugador("Mario Bros", "mario@hotmail.com", "789",
+        Jugador jugador = new Jugador("Pele", "pele@hotmail.com", "789",
                 sdf.parse("2025-04-20"), "969627718", "ImagenX", "Mario&Luiggi");
         int idJug = BOJugador.insertar(jugador);
-        jugador.setIdJugador(idJug);
+        System.out.println("id : " +idJug);
+        jugador.setIdJugador(70);
 
         // Crear cartera para jugador
         Cartera cartera = new Cartera();
@@ -379,7 +381,7 @@ public class Principal {
         recarga.setMonto(50.00);
 
         // Obtener Cartera existente (cambia el ID si necesario)
-        int idCartera = 2; // ⚠️ Cambia este ID a uno válido en tu BD
+        int idCartera = 0; 
         Cartera cartera = BOCartera.obtenerPorId(idCartera);
         if (cartera == null) {
             System.out.println(" No se encontró cartera con ID: " + idCartera);
@@ -453,6 +455,7 @@ public class Principal {
         Jugador jugador = new Jugador("Luigi Bros", "luigi@hotmail.com", "789",
                 sdf.parse("2025-04-20"), "969627718", "ImagenX", "Luigi&Mario");
         int idJugador = BOJugador.insertar(jugador);
+        idJugador = 70;
         jugador.setIdJugador(idJugador);
 
         //  Crear CarroCompra para el jugador

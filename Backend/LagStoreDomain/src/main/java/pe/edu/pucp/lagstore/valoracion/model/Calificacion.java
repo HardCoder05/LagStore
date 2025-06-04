@@ -15,6 +15,7 @@ public class Calificacion {
     private Date fechaPuntuacion;
     private int puntuacion;
     private int activo;
+    
     public Calificacion(){};
     public int getIdCalificacion() {
         return idCalificacion;

@@ -1,29 +1,39 @@
 package pe.edu.pucp.lagstore.config;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.CallableStatement;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
-import java.util.Map;
 import java.util.Properties;
+import java.sql.CallableStatement;
+import java.sql.ResultSet;
+import java.sql.Types;
+import java.util.Base64;
+import java.util.Map;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 
-public class DBManager {
+public final class DBManager {
     //Patrón Singleton
     private static DBManager dbManager;
     
     private Properties datos;
     private final String hostname;
     private final String usuario;
-    private final String password;
+    private String password;
+    private final String clave;
     private final String database;
     private final String puerto;
     private final String url;
+    private final String tipoBD;
     private Connection con;
     private String rutaArchivo = "db.properties";
-    
     private ResultSet rs;
     
     private DBManager(){
@@ -38,21 +48,61 @@ public class DBManager {
         //Asignamos valores del archivo leido
         hostname = datos.getProperty("hostname");
         usuario = datos.getProperty("usuario");
-        password = datos.getProperty("password");
+        //password = datos.getProperty("password");
+        password = datos.getProperty("passwordencryptado");
+        clave = datos.getProperty("clave");
+        password = desencriptar(password,clave);
         puerto = datos.getProperty("puerto");
         database = datos.getProperty("database");
-        //Formamos la URL de conexión        
-        this.url = "jdbc:mysql://" + hostname + ":" + puerto + "/" + database;
+        tipoBD = datos.getProperty("tipoBD");
+        
+        if(tipoBD.equals("mysql"))
+            //Formamos la URL de conexión        
+            this.url = "jdbc:mysql://" + hostname + ":" + puerto + "/" + database + "?useSSL=false";
+        else 
+            this.url = "jdbc:sqlserver://" + hostname + 
+                    ";encrypt=false;trustServerCertificate=true;databaseName=" + database + 
+                    ";integratedSecurity=false;";
     }
     
-    public static DBManager getInstance(){
+    public String desencriptar(String textoEncriptado, String base64Key) {
+        String desencriptado = "";
+        try{
+            byte[] decodedKey = Base64.getDecoder().decode(base64Key);
+            SecretKeySpec secretKey = new SecretKeySpec(decodedKey, "AES");
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            byte[] descifrado = cipher.doFinal(Base64.getDecoder().decode(textoEncriptado));
+            desencriptado = new String(descifrado, "UTF-8");
+        }catch(UnsupportedEncodingException | InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException ex){
+            System.out.println(ex.getMessage());
+        }
+        return desencriptado;
+    }
+    
+    public static synchronized DBManager getInstance(){
         if(dbManager == null)
             dbManager = new DBManager();
         return dbManager;
     }
     
+    //Nos permite obtener una conexión con la BD
+    public Connection getConnection(){
+        try{
+            if(con == null || con.isClosed()){
+                if(tipoBD.equals("mysql"))
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                else if (tipoBD.equals("mssql"))
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                con = DriverManager.getConnection(url, usuario, password);
+                System.out.println("Se ha establecido la conexion con la BD...");
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return con;
+    }
     
-    //agregado
     public void cerrarConexion() {
         if(rs != null){
             try{
@@ -70,22 +120,7 @@ public class DBManager {
         }
     }
     
-    
-    //Nos permite obtener una conexión con la BD
-    public Connection getConnection(){
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(url, usuario, password);
-            System.out.println("Se ha establecido la conexion con la BD...");
-        }catch(ClassNotFoundException | SQLException ex){
-            System.out.println(ex.getMessage());
-        }
-        return con;
-    }
-    
-    
-    
-     //Métodos para llamadas a Procedimientos Almacenados
+    //Métodos para llamadas a Procedimientos Almacenados
     public int ejecutarProcedimiento(String nombreProcedimiento, Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) {
         int resultado = 0;
         try{
@@ -180,6 +215,61 @@ public class DBManager {
             parametrosSalida.put(posicion, value);
         }
     }
+    
+    //Para transacciones
+    
+    public void iniciarTransaccion() throws SQLException{
+        con = getConnection();
+        con.setAutoCommit(false);
+    }
+    
+    public void confirmarTransaccion() throws SQLException{
+        con.commit();
+    }
+    
+    public void cancelarTransaccion(){
+        try{
+            con.rollback();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            cerrarConexion();
+        }
+    }
+    
+    public CallableStatement formarLlamadaProcedimientoTransaccion(String nombreProcedimiento, Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) throws SQLException{
+        StringBuilder call = new StringBuilder("{call " + nombreProcedimiento + "(");
+        int cantParametrosEntrada = 0;
+        int cantParametrosSalida = 0;
+        if(parametrosEntrada!=null) cantParametrosEntrada = parametrosEntrada.size();
+        if(parametrosSalida!=null) cantParametrosSalida = parametrosSalida.size();
+        int numParams =  cantParametrosEntrada + cantParametrosSalida;
+        for (int i = 0; i < numParams; i++) {
+            call.append("?");
+            if (i < numParams - 1) {
+                call.append(",");
+            }
+        }
+        call.append(")}");
+        return con.prepareCall(call.toString());
+    }
+    
+    public int ejecutarProcedimientoTransaccion(String nombreProcedimiento, Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) throws SQLException{
+        int resultado;
+        
+        CallableStatement cst = formarLlamadaProcedimientoTransaccion(nombreProcedimiento, parametrosEntrada, parametrosSalida);
+        if (parametrosEntrada != null) {
+            registrarParametrosEntrada(cst, parametrosEntrada);
+        }
+        if (parametrosSalida != null) {
+            registrarParametrosSalida(cst, parametrosSalida);
+        }
+
+        resultado = cst.executeUpdate();
+
+        if (parametrosSalida != null)
+            obtenerValoresSalida(cst, parametrosSalida);
+
+        return resultado;
+    }
 }
-
-

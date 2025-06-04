@@ -6,11 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.DesarrolladorDAO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
@@ -21,6 +25,7 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
     private PreparedStatement pst;
     private ResultSet rs;
     private Statement st;
+    SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
     
     @Override
     public int insertar(Desarrollador desarrollador) {
@@ -30,7 +35,17 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
         parametrosEntrada.put(2, desarrollador.getNombre());
         parametrosEntrada.put(3, desarrollador.getEmail());
         parametrosEntrada.put(4, desarrollador.getContrasena());
-        parametrosEntrada.put(5, desarrollador.getFechaRegistro());
+        if(desarrollador.getFechaRegistro()==null){
+            try {
+                parametrosEntrada.put(5,sdf.parse("2025-06-04"));
+            } catch (ParseException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        else{
+            parametrosEntrada.put(5, desarrollador.getFechaRegistro());
+        }
+        
         parametrosEntrada.put(6, desarrollador.getTelefono());
         parametrosEntrada.put(7, desarrollador.getFotoDePerfil());
         parametrosEntrada.put(8, desarrollador.getNumeroCuenta());

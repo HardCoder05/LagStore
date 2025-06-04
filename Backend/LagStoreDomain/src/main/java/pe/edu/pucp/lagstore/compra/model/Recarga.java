@@ -7,7 +7,7 @@ public class Recarga {
     private Date fechaRecarga;
     private double monto;
     private MetodoPago metodoPago;
-    public Cartera cartera;
+    private Cartera cartera;
     
     private int activo;
     

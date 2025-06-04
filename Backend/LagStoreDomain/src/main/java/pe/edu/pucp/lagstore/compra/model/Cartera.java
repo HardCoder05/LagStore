@@ -9,7 +9,7 @@ public class Cartera {
     private double saldoActual;
     private ArrayList<Recarga> historial;
     private int activo;
-    public Jugador jugador;
+    private Jugador jugador;
     
     public Cartera(){
         activo=1;
