@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="780be81a-8464-41fa-aea6-1dd8f5735103" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/LagStoreWSL/archivo.disco" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="JuegoWS.wsdl" MetadataType="Wsdl" ID="1572fef8-c3f7-4597-acae-ae62fe12e3f8" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/JuegoWS?WSDL" />
+    <MetadataFile FileName="archivo.disco" MetadataType="Disco" ID="ca7ae3ee-ce81-4834-8201-38560fa03add" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/archivo.disco" />
+    <MetadataFile FileName="JuegoWS.xsd" MetadataType="Schema" ID="fed1a72b-34ec-436f-9b47-80a94f6e2716" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/JuegoWS?xsd=1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
