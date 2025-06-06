@@ -1,6 +1,6 @@
 package pe.edu.pucp.lagstore.gestusuarios.model;
 import java.util.Date;
-import pe.edu.pucp.lagstore.gestjuegos.model.Biblioteca;
+
 
 public class Usuario {
     private int idUsuario;
@@ -10,19 +10,23 @@ public class Usuario {
     private Date fechaRegistro;
     private String telefono;
     private String fotoDePerfil;
+    private Rol rol;
+    private int activo;
+    
     public Usuario(){
         
     }
-    public Usuario(String nombre,String email ,String contrasena, Date fechaRegistro,String telefono, String fotoDePerfil) {
+    
+    public Usuario(String nombre,String email ,String contrasena, 
+        Date fechaRegistro,String telefono, String fotoDePerfil) {
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.email = email;
         this.fechaRegistro = fechaRegistro;
         this.telefono = telefono;
         this.fotoDePerfil = fotoDePerfil;
+        this.activo = 1;
     }
-    
-    
     
     public int getIdUsuario() { return idUsuario; }
     public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
@@ -45,9 +49,21 @@ public class Usuario {
     public String getFotoDePerfil() { return fotoDePerfil; }
     public void setFotoDePerfil(String fotoDePerfil) { this.fotoDePerfil = fotoDePerfil; }
 
+    public Rol getRol() {
+        return rol;
+    }
 
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
 
-    
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
     
     
 }

@@ -11,6 +11,12 @@
   <message name="eliminarDesarrolladorResponse">
     <part name="parameters" element="tns:eliminarDesarrolladorResponse" />
   </message>
+  <message name="listarTodosDesarrolladores">
+    <part name="parameters" element="tns:listarTodosDesarrolladores" />
+  </message>
+  <message name="listarTodosDesarrolladoresResponse">
+    <part name="parameters" element="tns:listarTodosDesarrolladoresResponse" />
+  </message>
   <message name="insertarDesarrollador">
     <part name="parameters" element="tns:insertarDesarrollador" />
   </message>
@@ -23,12 +29,6 @@
   <message name="modificarDesarrolladorResponse">
     <part name="parameters" element="tns:modificarDesarrolladorResponse" />
   </message>
-  <message name="listarTodosDesarrolladores">
-    <part name="parameters" element="tns:listarTodosDesarrolladores" />
-  </message>
-  <message name="listarTodosDesarrolladoresResponse">
-    <part name="parameters" element="tns:listarTodosDesarrolladoresResponse" />
-  </message>
   <message name="obtenerDesarrolladorPorID">
     <part name="parameters" element="tns:obtenerDesarrolladorPorID" />
   </message>
@@ -40,6 +40,10 @@
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/eliminarDesarrolladorRequest" message="tns:eliminarDesarrollador" />
       <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/eliminarDesarrolladorResponse" message="tns:eliminarDesarrolladorResponse" />
     </operation>
+    <operation name="listarTodosDesarrolladores">
+      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresRequest" message="tns:listarTodosDesarrolladores" />
+      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresResponse" message="tns:listarTodosDesarrolladoresResponse" />
+    </operation>
     <operation name="insertarDesarrollador">
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorRequest" message="tns:insertarDesarrollador" />
       <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorResponse" message="tns:insertarDesarrolladorResponse" />
@@ -47,10 +51,6 @@
     <operation name="modificarDesarrollador">
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorRequest" message="tns:modificarDesarrollador" />
       <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorResponse" message="tns:modificarDesarrolladorResponse" />
-    </operation>
-    <operation name="listarTodosDesarrolladores">
-      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresRequest" message="tns:listarTodosDesarrolladores" />
-      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresResponse" message="tns:listarTodosDesarrolladoresResponse" />
     </operation>
     <operation name="obtenerDesarrolladorPorID">
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDRequest" message="tns:obtenerDesarrolladorPorID" />
@@ -68,6 +68,15 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="listarTodosDesarrolladores">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="insertarDesarrollador">
       <soap:operation soapAction="" />
       <input>
@@ -78,15 +87,6 @@
       </output>
     </operation>
     <operation name="modificarDesarrollador">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarTodosDesarrolladores">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

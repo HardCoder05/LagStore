@@ -32,12 +32,14 @@
   </xs:complexType>
   <xs:complexType name="usuario">
     <xs:sequence>
+      <xs:element name="activo" type="xs:int" />
       <xs:element minOccurs="0" name="contrasena" type="xs:string" />
       <xs:element minOccurs="0" name="email" type="xs:string" />
       <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime" />
       <xs:element minOccurs="0" name="fotoDePerfil" type="xs:string" />
       <xs:element name="idUsuario" type="xs:int" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="rol" type="tns:rol" />
       <xs:element minOccurs="0" name="telefono" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -59,16 +61,6 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarAdministrador">
-    <xs:sequence>
-      <xs:element name="idAdministrador" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarAdministradorResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="insertarAdministrador">
     <xs:sequence>
       <xs:element minOccurs="0" name="administrador" type="tns:administrador" />
@@ -79,4 +71,21 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="eliminarAdministrador">
+    <xs:sequence>
+      <xs:element name="idAdministrador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarAdministradorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="rol">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Jugador" />
+      <xs:enumeration value="Administrador" />
+      <xs:enumeration value="Desarrollador" />
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>
