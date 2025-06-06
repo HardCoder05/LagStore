@@ -22,12 +22,13 @@ public class AdministradorMySQL implements AdministradorDAO{
     public int insertar(Administrador administrador) {
         Map<Integer,Object> parametrosSalida = new HashMap<>();   
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        
         parametrosSalida.put(1, Types.INTEGER);
         parametrosEntrada.put(2, administrador.getRolAdministrativo());
         parametrosEntrada.put(3, administrador.getNombre());
         parametrosEntrada.put(4, administrador.getEmail());
         parametrosEntrada.put(5, administrador.getContrasena());
-        parametrosEntrada.put(6, new Date(administrador.getFechaRegistro().getTime()));
+        parametrosEntrada.put(6, administrador.getFechaRegistro());
         parametrosEntrada.put(7, administrador.getTelefono());
         parametrosEntrada.put(8, administrador.getFotoDePerfil());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ADMINISTRADOR", parametrosEntrada, parametrosSalida);

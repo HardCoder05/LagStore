@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://services.gestjuegos.lagstore.pucp.edu.pe/" targetNamespace="http://services.gestjuegos.lagstore.pucp.edu.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="insertarJuego" type="tns:insertarJuego" />
   <xs:element name="insertarJuegoResponse" type="tns:insertarJuegoResponse" />
   <xs:element name="listarJuegos" type="tns:listarJuegos" />

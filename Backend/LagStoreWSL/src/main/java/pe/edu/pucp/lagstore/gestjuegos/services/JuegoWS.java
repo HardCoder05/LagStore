@@ -16,7 +16,8 @@ import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
 import pe.edu.pucp.lagstore.gestjuegos.model.ModeloNegocio;
 
 
-@WebService(serviceName = "JuegoWS")//Se declara un servicio
+@WebService(serviceName = "JuegoWS", 
+    targetNamespace = "http://services.pucp.edu.pe")//Se declara un servicio
 public class JuegoWS {//Dentro se ponen los metodos
     private JuegoBO juegoBO;
     

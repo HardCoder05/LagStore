@@ -1,10 +1,10 @@
 package pe.edu.pucp.lagstore.gestionusuarios.mysql;
-import java.sql.Connection;
+
 import java.sql.Date;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Map;
@@ -15,10 +15,7 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
 
 public class JugadorMySQL implements JugadorDAO{
     
-    private Connection con;
-    private PreparedStatement pst;
     private ResultSet rs;
-    private Statement st;
     
     @Override
     public int insertar(Jugador jugador) {
@@ -32,11 +29,14 @@ public class JugadorMySQL implements JugadorDAO{
         parametrosEntrada.put(6, jugador.getTelefono());
         parametrosEntrada.put(7, jugador.getFotoDePerfil());
         parametrosEntrada.put(8, jugador.getNickname());
+        
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_JUGADOR", parametrosEntrada, parametrosSalida);
+        
         jugador.setIdJugador((int) parametrosSalida.get(1));
+        
         System.out.println("Se ha realizado el registro del jugador");
         
-        return jugador.getIdUsuario();
+        return jugador.getIdJugador();
     }
 
     @Override

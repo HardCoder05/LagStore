@@ -260,6 +260,18 @@ END $$
 -- CALL TA.LISTAR_JUGADOR();
 -- CALL TA.OBTENER_X_ID_JUGADOR(2);
 
+DELIMITER //
+CREATE PROCEDURE VERIFICAR_CUENTA_USUARIO (
+    IN p_email VARCHAR(100),
+    IN p_contrasena VARCHAR(100)
+)
+BEGIN
+    SELECT id
+    FROM Usuario
+    WHERE email = p_email AND contrasena = p_contrasena AND activo = 1;
+END //
+DELIMITER ;
+
 
 
 

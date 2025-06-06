@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eliminarDesarrollador" type="tns:eliminarDesarrollador" />
+  <xs:element name="eliminarDesarrolladorResponse" type="tns:eliminarDesarrolladorResponse" />
+  <xs:element name="insertarDesarrollador" type="tns:insertarDesarrollador" />
+  <xs:element name="insertarDesarrolladorResponse" type="tns:insertarDesarrolladorResponse" />
+  <xs:element name="listarTodosDesarrolladores" type="tns:listarTodosDesarrolladores" />
+  <xs:element name="listarTodosDesarrolladoresResponse" type="tns:listarTodosDesarrolladoresResponse" />
+  <xs:element name="modificarDesarrollador" type="tns:modificarDesarrollador" />
+  <xs:element name="modificarDesarrolladorResponse" type="tns:modificarDesarrolladorResponse" />
+  <xs:element name="obtenerDesarrolladorPorID" type="tns:obtenerDesarrolladorPorID" />
+  <xs:element name="obtenerDesarrolladorPorIDResponse" type="tns:obtenerDesarrolladorPorIDResponse" />
+  <xs:complexType name="eliminarDesarrollador">
+    <xs:sequence>
+      <xs:element name="idDesarrollador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarDesarrolladorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTodosDesarrolladores">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTodosDesarrolladoresResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:desarrollador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="desarrollador">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:usuario">
+        <xs:sequence>
+          <xs:element name="idDesarrollador" type="xs:int" />
+          <xs:element name="ingresoTotal" type="xs:double" />
+          <xs:element minOccurs="0" name="numeroCuenta" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contrasena" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fotoDePerfil" type="xs:string" />
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarDesarrollador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="desarrollador" type="tns:desarrollador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarDesarrolladorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDesarrolladorPorID">
+    <xs:sequence>
+      <xs:element name="idDesarrollador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDesarrolladorPorIDResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:desarrollador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarDesarrollador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="desarrollador" type="tns:desarrollador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarDesarrolladorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

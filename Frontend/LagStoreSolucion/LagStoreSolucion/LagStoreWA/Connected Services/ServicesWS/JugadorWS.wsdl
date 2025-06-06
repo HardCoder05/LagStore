@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.pucp.edu.pe" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="JugadorWS" targetNamespace="http://services.pucp.edu.pe" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/JugadorWS?xsd=1" namespace="http://services.pucp.edu.pe" />
+    </xsd:schema>
+  </types>
+  <message name="insertarJugador">
+    <part name="parameters" element="tns:insertarJugador" />
+  </message>
+  <message name="insertarJugadorResponse">
+    <part name="parameters" element="tns:insertarJugadorResponse" />
+  </message>
+  <message name="eliminarJugador">
+    <part name="parameters" element="tns:eliminarJugador" />
+  </message>
+  <message name="eliminarJugadorResponse">
+    <part name="parameters" element="tns:eliminarJugadorResponse" />
+  </message>
+  <message name="modificarJugador">
+    <part name="parameters" element="tns:modificarJugador" />
+  </message>
+  <message name="modificarJugadorResponse">
+    <part name="parameters" element="tns:modificarJugadorResponse" />
+  </message>
+  <message name="obtenerJugadorPorID">
+    <part name="parameters" element="tns:obtenerJugadorPorID" />
+  </message>
+  <message name="obtenerJugadorPorIDResponse">
+    <part name="parameters" element="tns:obtenerJugadorPorIDResponse" />
+  </message>
+  <message name="listarTodosJugadores">
+    <part name="parameters" element="tns:listarTodosJugadores" />
+  </message>
+  <message name="listarTodosJugadoresResponse">
+    <part name="parameters" element="tns:listarTodosJugadoresResponse" />
+  </message>
+  <portType name="JugadorWS">
+    <operation name="insertarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorRequest" message="tns:insertarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorResponse" message="tns:insertarJugadorResponse" />
+    </operation>
+    <operation name="eliminarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorRequest" message="tns:eliminarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorResponse" message="tns:eliminarJugadorResponse" />
+    </operation>
+    <operation name="modificarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorRequest" message="tns:modificarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorResponse" message="tns:modificarJugadorResponse" />
+    </operation>
+    <operation name="obtenerJugadorPorID">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/obtenerJugadorPorIDRequest" message="tns:obtenerJugadorPorID" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/obtenerJugadorPorIDResponse" message="tns:obtenerJugadorPorIDResponse" />
+    </operation>
+    <operation name="listarTodosJugadores">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/listarTodosJugadoresRequest" message="tns:listarTodosJugadores" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/listarTodosJugadoresResponse" message="tns:listarTodosJugadoresResponse" />
+    </operation>
+  </portType>
+  <binding name="JugadorWSPortBinding" type="tns:JugadorWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="insertarJugador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarJugador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarJugador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerJugadorPorID">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarTodosJugadores">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="JugadorWS">
+    <port name="JugadorWSPort" binding="tns:JugadorWSPortBinding">
+      <soap:address location="http://localhost:8080/LagStoreWSL/JugadorWS" />
+    </port>
+  </service>
+</definitions>

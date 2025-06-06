@@ -1,6 +1,5 @@
 package pe.edu.pucp.lagstore.gestionusuarios.mysql;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import pe.edu.pucp.lagstore.gestionusuarios.dao.UsuarioDAO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
 
 public class UsuarioMySQL implements UsuarioDAO{
-    private ResultSet lector;
+    private ResultSet rs;
 
     @Override
     public int insertar(Usuario modelo) {
@@ -37,27 +36,31 @@ public class UsuarioMySQL implements UsuarioDAO{
     public Usuario obtenerPorId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     @Override
     public int verificar(Usuario usuario) {
-        int resultado = 0;  
-        Map<Integer,Object> parametrosEntrada = new HashMap<>();
-        parametrosEntrada.put(0, usuario.getEmail());
-        parametrosEntrada.put(1, usuario.getContrasena());
-        lector =DBManager.getInstance().ejecutarProcedimientoLectura("VERIFICAR_CUENTA_USUARIO", parametrosEntrada);
-        try{
-            if(lector.next()){
-                resultado=lector.getInt("id");
+        int resultado = 0;
+        
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, usuario.getEmail());         // índice 1
+        parametrosEntrada.put(2, usuario.getContrasena());    // índice 2
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("VERIFICAR_CUENTA_USUARIO", parametrosEntrada);
+
+        try {
+            if (rs.next()) {
+                resultado = rs.getInt("id");  // Devuelve el ID del usuario si existe
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
-        }finally{
-            System.out.println("Se ha realizado el verificacion del usuario");
+        } finally {
+//            System.out.println("Se ha realizado la verificación del usuario");
             DBManager.getInstance().cerrarConexion();
         }
-        
-        return resultado;
+
+        return resultado; // Si no encontró al usuario, retorna 0
     }
+
     
     
     

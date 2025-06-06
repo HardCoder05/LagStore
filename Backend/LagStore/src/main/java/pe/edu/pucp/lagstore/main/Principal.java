@@ -38,8 +38,8 @@ import pe.edu.pucp.lagstore.valoracion.model.ResenaBO;
 
 public class Principal {
     public static void main(String[] args)throws Exception{
-        test_jugadores();//se usan metodos de jugadores
-        test_desarrolladores();//se usan metodos de jugadores
+//        test_jugadores();//se usan metodos de jugadores
+//        test_desarrolladores();//se usan metodos de jugadores
 //        test_administradores();//se usan metodos de administradores
         
 //        test_bibliotecas();
@@ -48,7 +48,11 @@ public class Principal {
  //       test_Recarga();
  //       test_Calificacion();
 //        test_Resena();
-        
+//        JugadorBO jugadorBO=new JugadorBO();
+//        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+//        Jugador j1=new Jugador("Pedroo","pedro@hotmail.com","789",sdf.parse("2025-04-20"),"969627718","ImagenX","pedro123");
+//        int resultado = jugadorBO.insertar(j1);
+//        System.out.println(resultado);
     }
     
     private static void test_jugadores()throws ParseException{
