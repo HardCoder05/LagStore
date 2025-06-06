@@ -109,6 +109,7 @@ public class JugadorMySQL implements JugadorDAO{
                 jugador.setTelefono(rs.getString(5));
                 jugador.setFotoDePerfil(rs.getString(6));
                 jugador.setNickname(rs.getString(7));
+                jugador.setActivo(1);
 
                 System.out.println(jugador);
             }

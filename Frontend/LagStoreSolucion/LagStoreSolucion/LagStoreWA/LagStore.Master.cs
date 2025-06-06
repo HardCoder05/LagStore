@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LagStoreWA.ServicesWS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,22 @@ namespace LagStoreWA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Usuario"] != null)
+            {
+                // Si el usuario está autenticado, mostrar su email y el enlace de cerrar sesión
+                var usu = (usuario)Session["Usuario"];
+                //lblUsuario.Text = $"Bienvenido, {usuario.email}";
+                lnkIniciarSesion.Visible = false;
+                liCerrarSesion.Visible = true;
+                liCrearCuenta.Visible = false; // Ocultar el enlace de crear cuenta si ya está autenticado
+            }
+            else
+            {
+                // Si no hay usuario autenticado, ocultar el nombre de usuario y mostrar el enlace de inicio de sesión
+                //lblUsuario.Text = "Bienvenido, invitado";
+                lnkIniciarSesion.Visible = true;
+                liCerrarSesion.Visible = false;
+            }
         }
         protected void lnkIniciarSesion_Click(object sender, EventArgs e)
         {

@@ -207,6 +207,7 @@
     <Content Include="InicioSesion.aspx" />
     <Content Include="ListarDesarrolladores.aspx" />
     <Content Include="ListarJugadores.aspx" />
+    <Content Include="PerfilUsuario.aspx" />
     <Content Include="RegistrarDesarrollador.aspx" />
     <Content Include="RegistrarJugador.aspx" />
     <Content Include="RegistroUsuario.aspx" />
@@ -305,6 +306,13 @@
     </Compile>
     <Compile Include="ListarJugadores.aspx.designer.cs">
       <DependentUpon>ListarJugadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PerfilUsuario.aspx.cs">
+      <DependentUpon>PerfilUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PerfilUsuario.aspx.designer.cs">
+      <DependentUpon>PerfilUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrarDesarrollador.aspx.cs">

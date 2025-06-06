@@ -43,6 +43,7 @@ namespace LagStoreWA
                     // Guardar el ID del usuario y email en sesión
                     Session["usuarioId"] = idUsuario;
                     Session["usuarioEmail"] = email;
+                    Session["Usuario"] = usuarioIngresado;
 
                     // Crear cookie de autenticación
                     FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(

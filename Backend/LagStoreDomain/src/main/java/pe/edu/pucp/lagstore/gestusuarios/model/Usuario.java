@@ -10,7 +10,7 @@ public class Usuario {
     private Date fechaRegistro;
     private String telefono;
     private String fotoDePerfil;
-    private Rol rol;
+    private Rol rolUsuario;
     private int activo;
     
     public Usuario(){
@@ -49,12 +49,12 @@ public class Usuario {
     public String getFotoDePerfil() { return fotoDePerfil; }
     public void setFotoDePerfil(String fotoDePerfil) { this.fotoDePerfil = fotoDePerfil; }
 
-    public Rol getRol() {
-        return rol;
+    public Rol getRolUsuario() {
+        return rolUsuario;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setRolUsuario(Rol rolUsuario) {
+        this.rolUsuario = rolUsuario;
     }
 
     public int getActivo() {
