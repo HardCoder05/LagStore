@@ -5,17 +5,23 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/DesarrolladorWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="insertarDesarrollador">
-    <part name="parameters" element="tns:insertarDesarrollador" />
-  </message>
-  <message name="insertarDesarrolladorResponse">
-    <part name="parameters" element="tns:insertarDesarrolladorResponse" />
-  </message>
   <message name="modificarDesarrollador">
     <part name="parameters" element="tns:modificarDesarrollador" />
   </message>
   <message name="modificarDesarrolladorResponse">
     <part name="parameters" element="tns:modificarDesarrolladorResponse" />
+  </message>
+  <message name="eliminarDesarrollador">
+    <part name="parameters" element="tns:eliminarDesarrollador" />
+  </message>
+  <message name="eliminarDesarrolladorResponse">
+    <part name="parameters" element="tns:eliminarDesarrolladorResponse" />
+  </message>
+  <message name="insertarDesarrollador">
+    <part name="parameters" element="tns:insertarDesarrollador" />
+  </message>
+  <message name="insertarDesarrolladorResponse">
+    <part name="parameters" element="tns:insertarDesarrolladorResponse" />
   </message>
   <message name="listarTodosDesarrolladores">
     <part name="parameters" element="tns:listarTodosDesarrolladores" />
@@ -29,20 +35,18 @@
   <message name="obtenerDesarrolladorPorIDResponse">
     <part name="parameters" element="tns:obtenerDesarrolladorPorIDResponse" />
   </message>
-  <message name="eliminarDesarrollador">
-    <part name="parameters" element="tns:eliminarDesarrollador" />
-  </message>
-  <message name="eliminarDesarrolladorResponse">
-    <part name="parameters" element="tns:eliminarDesarrolladorResponse" />
-  </message>
   <portType name="DesarrolladorWS">
-    <operation name="insertarDesarrollador">
-      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorRequest" message="tns:insertarDesarrollador" />
-      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorResponse" message="tns:insertarDesarrolladorResponse" />
-    </operation>
     <operation name="modificarDesarrollador">
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorRequest" message="tns:modificarDesarrollador" />
       <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorResponse" message="tns:modificarDesarrolladorResponse" />
+    </operation>
+    <operation name="eliminarDesarrollador">
+      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/eliminarDesarrolladorRequest" message="tns:eliminarDesarrollador" />
+      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/eliminarDesarrolladorResponse" message="tns:eliminarDesarrolladorResponse" />
+    </operation>
+    <operation name="insertarDesarrollador">
+      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorRequest" message="tns:insertarDesarrollador" />
+      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorResponse" message="tns:insertarDesarrolladorResponse" />
     </operation>
     <operation name="listarTodosDesarrolladores">
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresRequest" message="tns:listarTodosDesarrolladores" />
@@ -52,14 +56,10 @@
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDRequest" message="tns:obtenerDesarrolladorPorID" />
       <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDResponse" message="tns:obtenerDesarrolladorPorIDResponse" />
     </operation>
-    <operation name="eliminarDesarrollador">
-      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/eliminarDesarrolladorRequest" message="tns:eliminarDesarrollador" />
-      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/eliminarDesarrolladorResponse" message="tns:eliminarDesarrolladorResponse" />
-    </operation>
   </portType>
   <binding name="DesarrolladorWSPortBinding" type="tns:DesarrolladorWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarDesarrollador">
+    <operation name="modificarDesarrollador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -68,7 +68,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarDesarrollador">
+    <operation name="eliminarDesarrollador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarDesarrollador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -87,15 +96,6 @@
       </output>
     </operation>
     <operation name="obtenerDesarrolladorPorID">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="eliminarDesarrollador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
