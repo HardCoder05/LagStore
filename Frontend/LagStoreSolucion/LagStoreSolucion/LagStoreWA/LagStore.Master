@@ -1,0 +1,125 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LagStore.master.cs" Inherits="LagStoreWA.LagStore" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Fonts/css/all.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="Assets/logo.svg">
+
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/bootstrap.bundle.js"></script>
+    <script src="Scripts/jquery-3.7.1.js"></script>
+
+    <title>
+        <asp:ContentPlaceHolder ID="cph_Title" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+    <asp:ContentPlaceHolder ID="cph_Scripts" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1f2937;">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold text-white" href="#">
+                    <i class="fas fa-shopping-basket text-primary me-2"></i>LagStore
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="Home.aspx"><i class="fas fa-home me-1"></i>Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="CatalogoJuegos.aspx"><i class="fas fa-cube me-1"></i>Tienda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><i class="fas fa-shopping-basket me-1"></i>Biblioteca</a>
+                        </li>
+
+                        <li class="nav-item dropdown" runat="server" id="liGestion" Visible="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-tools me-1"></i>Gestión
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ListarDesarrolladores.aspx">Gestionar Desarrolladores</a></li>
+                                <li><a class="dropdown-item" href="ListarJugadores.aspx">Gestionar Jugadores</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item me-3 position-relative">
+                            <a class="nav-link text-white" href="#">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item me-3">
+                            <a class="nav-link text-white" href="PerfilUsuario.aspx">
+                                <i class="fas fa-user"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <asp:LinkButton id="lnkIniciarSesion" runat="server" CssClass="btn btn-primary" OnClick="lnkIniciarSesion_Click">
+                              <i class="fas fa-arrow-right-to-bracket me-1"></i>Iniciar sesión
+                            </asp:LinkButton>
+                        </li>
+                        <li class="nav-item" runat="server" id="liCrearCuenta">
+                            <a class="btn btn-outline-light" href="#"><i class="fas fa-user-plus me-1"></i>Crear cuenta</a>
+                        </li>
+                        <li class="nav-item me-2" runat="server" id="liCerrarSesion" visible="false">
+                            <asp:LinkButton ID="lnkCerrarSesion" runat="server" CssClass="btn btn-outline-danger" OnClick="lnkCerrarSesion_Click">
+                            <i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión
+                            </asp:LinkButton>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="container mt-4">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+
+        <footer class="text-white mt-5 pt-4 pb-3" style="background-color: #1f2937;">
+            <div class="container">
+                <div class="row">
+                    <!-- Logo y descripción -->
+                    <div class="col-md-6 mb-3">
+                        <h5 class="fw-bold">
+                            <i class="fas fa-shopping-basket text-primary me-2"></i>LagStore
+                        </h5>
+                        <p class="text-white">
+                            Tu tienda de videojuegos en línea. Encuentra los mejores juegos a precios increíbles.
+                        </p>
+                    </div>
+
+                    <!-- Enlaces -->
+                    <div class="col-md-3 offset-md-3 mb-3">
+                        <h6 class="fw-bold text-uppercase">Links</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="Home.aspx" class="text-white text-decoration-none">Inicio</a></li>
+                            <li><a href="#" class="text-white text-decoration-none">Tienda</a></li>
+                            <li><a href="#" class="text-white text-decoration-none">Biblioteca</a></li>
+                            <li><a href="#" class="text-white text-decoration-none">Perfil</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="border-secondary" />
+                <p class="text-center text-muted mb-0">&copy; 2025 LagStore. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>

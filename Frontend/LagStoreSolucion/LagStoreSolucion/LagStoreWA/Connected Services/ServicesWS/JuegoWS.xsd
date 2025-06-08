@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="insertarJuego" type="tns:insertarJuego" />
+  <xs:element name="insertarJuegoResponse" type="tns:insertarJuegoResponse" />
+  <xs:element name="listarJuegos" type="tns:listarJuegos" />
+  <xs:element name="listarJuegosConFiltro" type="tns:listarJuegosConFiltro" />
+  <xs:element name="listarJuegosConFiltroResponse" type="tns:listarJuegosConFiltroResponse" />
+  <xs:element name="listarJuegosResponse" type="tns:listarJuegosResponse" />
+  <xs:element name="obtenerJuegoPorId" type="tns:obtenerJuegoPorId" />
+  <xs:element name="obtenerJuegoPorIdResponse" type="tns:obtenerJuegoPorIdResponse" />
+  <xs:complexType name="listarJuegosConFiltro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="titulo" type="xs:string" />
+      <xs:element minOccurs="0" name="genero" type="tns:Genero" />
+      <xs:element minOccurs="0" name="modeloNegocio" type="tns:ModeloNegocio" />
+      <xs:element minOccurs="0" name="precioMin" type="xs:double" />
+      <xs:element minOccurs="0" name="precioMax" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarJuegosConFiltroResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:juego" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="juego">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:int" />
+      <xs:element minOccurs="0" name="desarrollador" type="tns:desarrollador" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element name="espacioDisco" type="xs:double" />
+      <xs:element minOccurs="0" name="fechaLanzamiento" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaUltimaActualizacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="genero" type="tns:Genero" />
+      <xs:element name="idJuego" type="xs:int" />
+      <xs:element minOccurs="0" name="imagen" type="xs:string" />
+      <xs:element minOccurs="0" name="modeloNegocio" type="tns:ModeloNegocio" />
+      <xs:element name="precio" type="xs:double" />
+      <xs:element minOccurs="0" name="requisitosMinimos" type="xs:string" />
+      <xs:element minOccurs="0" name="requisitosRecomendados" type="xs:string" />
+      <xs:element minOccurs="0" name="titulo" type="xs:string" />
+      <xs:element name="version" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="desarrollador">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:usuario">
+        <xs:sequence>
+          <xs:element name="idDesarrollador" type="xs:int" />
+          <xs:element name="ingresoTotal" type="xs:double" />
+          <xs:element minOccurs="0" name="numeroCuenta" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:int" />
+      <xs:element minOccurs="0" name="contrasena" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fotoDePerfil" type="xs:string" />
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="rolUsuario" type="tns:rol" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarJuegos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarJuegosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:juego" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarJuego">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="juego" type="tns:juego" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarJuegoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerJuegoPorId">
+    <xs:sequence>
+      <xs:element name="idJuego" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerJuegoPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:juego" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Genero">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Accion" />
+      <xs:enumeration value="Rol" />
+      <xs:enumeration value="Estrategia" />
+      <xs:enumeration value="Shooter" />
+      <xs:enumeration value="Simulacion" />
+      <xs:enumeration value="Deportes" />
+      <xs:enumeration value="Carreras" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ModeloNegocio">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Free_to_play" />
+      <xs:enumeration value="Paga" />
+      <xs:enumeration value="Suscripcion" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="rol">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Jugador" />
+      <xs:enumeration value="Administrador" />
+      <xs:enumeration value="Desarrollador" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
