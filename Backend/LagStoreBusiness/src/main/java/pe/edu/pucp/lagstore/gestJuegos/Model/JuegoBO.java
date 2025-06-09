@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 import pe.edu.pucp.lagstore.gestionjuegos.dao.JuegoDAO;
 import pe.edu.pucp.lagstore.gestionjuegos.mysql.JuegoMySQL;
+import pe.edu.pucp.lagstore.gestjuegos.model.Genero;
 import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
+import pe.edu.pucp.lagstore.gestjuegos.model.ModeloNegocio;
 
 /**
  *
@@ -41,4 +43,9 @@ public class JuegoBO {
         return daoJuego.listarTodos();
     }
     
+    public ArrayList<Juego> listarJuegosConFiltro(String titulo, 
+        Genero genero, ModeloNegocio modelo, Double precioMin, Double precioMax){
+        return daoJuego.listarJuegosConFiltro(titulo,genero, 
+            modelo,precioMin,precioMax);
+    }
 }

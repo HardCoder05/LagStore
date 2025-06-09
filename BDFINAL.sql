@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `TA`.`Juego` (
   `fechaUltimaActualizacion` DATE NULL DEFAULT NULL,
   `desarrollador_idDesarrollador` INT NOT NULL,
   `activo` TINYINT(1) NULL DEFAULT NULL,
-  `nombreGenero` ENUM('Accion', 'Rol', 'Estrategia', 'Shooter (FPS/TPS)', 'Simulación', 'Deportes', 'Carreras') NOT NULL,
+  `nombreGenero` ENUM('Accion', 'Rol', 'Estrategia', 'Shooter', 'Simulacion', 'Deportes', 'Carreras') NOT NULL,
   `modelo` ENUM('Free_to_play', 'Paga', 'Suscripcion') NOT NULL,
   PRIMARY KEY (`idJuego`),
 	FOREIGN KEY (`desarrollador_idDesarrollador`) REFERENCES `TA`.`Desarrollador` (`idDesarrollador`)
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `TA`.`Juego` (
 -- Table `TA`.`Calificacion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `TA`.`Calificacion` (
-  `idCalificacion` INT NOT NULL,
+  `idCalificacion` INT NOT NULL AUTO_INCREMENT,
   `fidJugador` INT NULL DEFAULT NULL,
   `fidJuego` INT NULL DEFAULT NULL,
   `fechaPuntuacion` DATE NULL DEFAULT NULL,
@@ -211,3 +211,8 @@ CREATE TABLE IF NOT EXISTS `TA`.`CarroCompraXJuego` (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+<<<<<<< HEAD
+=======
+USE TA;
+
+>>>>>>> main

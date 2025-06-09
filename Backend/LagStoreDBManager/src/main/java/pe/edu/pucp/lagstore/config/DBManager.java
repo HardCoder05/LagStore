@@ -26,8 +26,13 @@ public final class DBManager {
     private Properties datos;
     private final String hostname;
     private final String usuario;
+<<<<<<< HEAD
     private String password;
     private final String clave;
+=======
+    private final String password;
+//    private final String clave;
+>>>>>>> main
     private final String database;
     private final String puerto;
     private final String url;
@@ -48,10 +53,17 @@ public final class DBManager {
         //Asignamos valores del archivo leido
         hostname = datos.getProperty("hostname");
         usuario = datos.getProperty("usuario");
+<<<<<<< HEAD
         //password = datos.getProperty("password");
         password = datos.getProperty("passwordencryptado");
         clave = datos.getProperty("clave");
         password = desencriptar(password,clave);
+=======
+        password = datos.getProperty("password");
+//        password = datos.getProperty("passwordencryptado");
+//        clave = datos.getProperty("clave");
+//        password = desencriptar(password,clave);
+>>>>>>> main
         puerto = datos.getProperty("puerto");
         database = datos.getProperty("database");
         tipoBD = datos.getProperty("tipoBD");
@@ -176,6 +188,14 @@ public final class DBManager {
         for (Map.Entry<Integer, Object> entry : parametros.entrySet()) {
             Integer key = entry.getKey();
             Object value = entry.getValue();
+
+            if (value == null) {
+                // Si sabes de antemano el tipo de dato esperado por índice, puedes codificarlo aquí
+                // o mantener un Map<Integer, Integer> tiposSQL (clave=índice, valor=java.sql.Types.xxx)
+                cs.setNull(key, Types.VARCHAR); // Usa el tipo más común o crea lógica para detectarlo
+                continue;
+            }
+
             switch (value) {
                 case Integer entero -> cs.setInt(key, entero);
                 case String cadena -> cs.setString(key, cadena);
@@ -184,8 +204,9 @@ public final class DBManager {
                 case java.util.Date fecha -> cs.setDate(key, new java.sql.Date(fecha.getTime()));
                 case byte[] archivo -> cs.setBytes(key, archivo);
                 default -> {
+                    // Si llega un tipo inesperado, puedes loguear
+                    System.out.println("Tipo no manejado: " + value.getClass());
                 }
-                // Agregar más tipos según sea necesario
             }
         }
     }

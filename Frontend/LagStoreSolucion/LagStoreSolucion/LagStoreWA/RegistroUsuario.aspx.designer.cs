@@ -24,6 +24,7 @@ namespace LagStoreWA
         protected global::System.Web.UI.HtmlControls.HtmlForm formRegistro;
 
         /// <summary>
+<<<<<<< HEAD
         /// Control ddlTipoUsuario.
         /// </summary>
         /// <remarks>
@@ -33,6 +34,8 @@ namespace LagStoreWA
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoUsuario;
 
         /// <summary>
+=======
+>>>>>>> main
         /// Control txtNombre.
         /// </summary>
         /// <remarks>
@@ -69,13 +72,30 @@ namespace LagStoreWA
         protected global::System.Web.UI.WebControls.TextBox txtTelefono;
 
         /// <summary>
+<<<<<<< HEAD
         /// Control fuFotoPerfil.
+=======
+        /// Control txtFoto.
+>>>>>>> main
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.FileUpload fuFotoPerfil;
+=======
+        protected global::System.Web.UI.WebControls.TextBox txtFoto;
+
+        /// <summary>
+        /// Control ddlTipoUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoUsuario;
+>>>>>>> main
 
         /// <summary>
         /// Control pnlDesarrollador.

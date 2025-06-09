@@ -53,7 +53,11 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_DESARROLLADOR", parametrosEntrada, parametrosSalida);
         desarrollador.setIdDesarrollador((int) parametrosSalida.get(1));
         System.out.println("Se ha realizado el registro del Desarrollador");
+<<<<<<< HEAD
         return desarrollador.getIdUsuario();
+=======
+        return desarrollador.getIdDesarrollador();
+>>>>>>> main
     }
 
     @Override

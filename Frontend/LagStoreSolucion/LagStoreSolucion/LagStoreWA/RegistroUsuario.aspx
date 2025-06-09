@@ -17,6 +17,7 @@
             <div class="card p-4 w-100" style="max-width: 500px;">
                 <h3 class="card-title text-center mb-4">Registro de Usuario</h3>
 
+<<<<<<< HEAD
                 <div class="form-group mb-3">
                     <label for="ddlTipoUsuario">Tipo de usuario</label>
                     <asp:DropDownList ID="ddlTipoUsuario" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlTipoUsuario_SelectedIndexChanged">
@@ -26,6 +27,8 @@
                         <asp:ListItem Text="Administrador" Value="Administrador" />
                     </asp:DropDownList>
                 </div>
+=======
+>>>>>>> main
 
                 <div class="form-group mb-3">
                     <label for="txtNombre">Nombre completo</label>
@@ -47,9 +50,26 @@
                     <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" />
                 </div>
 
+<<<<<<< HEAD
                 <div class="form-group mb-3">
                     <label for="fuFotoPerfil">Foto de perfil</label>
                     <asp:FileUpload ID="fuFotoPerfil" runat="server" CssClass="form-control" />
+=======
+
+                <div class="form-group mb-3">
+                    <label for="txtFoto">Foto de perfil</label>
+                    <asp:TextBox ID="txtFoto" runat="server" CssClass="form-control" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="ddlTipoUsuario">Tipo de usuario</label>
+                    <asp:DropDownList ID="ddlTipoUsuario" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlTipoUsuario_SelectedIndexChanged">
+                        <asp:ListItem Text="Seleccionar" Value="" />
+                        <asp:ListItem Text="Desarrollador" Value="Desarrollador" />
+                        <asp:ListItem Text="Jugador" Value="Jugador" />
+                        <asp:ListItem Text="Administrador" Value="Administrador" />
+                    </asp:DropDownList>
+>>>>>>> main
                 </div>
 
                 <!-- Panel Desarrollador -->

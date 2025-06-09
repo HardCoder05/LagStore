@@ -49,6 +49,7 @@
             <i class="fas fa-search"></i>
         </button>
     </div>
+<<<<<<< HEAD
 
     <!-- Tabla para mostrar desarrolladores -->
     <asp:GridView ID="gvDesarrolladores" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover"
@@ -66,10 +67,42 @@
                     <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("Id") %>' 
                         CssClass="btn btn-eliminar btn-icon" OnClientClick="return confirm('¿Está seguro que desea eliminar este desarrollador?');" ToolTip="Eliminar">
                         <i class="fas fa-trash-alt"></i>
+=======
+    <!--Label para mensajes -->
+    <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" CssClass="mt-2 d-block"></asp:Label>
+
+    <!-- Tabla para mostrar desarrolladores -->
+    <asp:GridView ID="gvDesarrolladores" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover"
+        OnRowCommand="gvDesarrolladores_RowCommand" DataKeyNames="idDesarrollador">
+        <Columns>
+            <asp:BoundField DataField="idDesarrollador" HeaderText="ID" />
+            <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+            <asp:BoundField DataField="email" HeaderText="Email" />
+            <asp:BoundField DataField="telefono" HeaderText="Teléfono" />
+            <asp:BoundField DataField="numeroCuenta" HeaderText="Número de Cuenta" />
+            <asp:TemplateField HeaderText="Ingreso Total">
+                <ItemTemplate>
+                    S/ <%# Eval("ingresoTotal", "{0:N2}") %>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="text-center">
+                <ItemTemplate>
+                    <asp:LinkButton ID="btnModificar" runat="server" CommandName="Modificar" CommandArgument='<%# Eval("idDesarrollador") %>'
+                        CssClass="btn btn-modificar btn-icon me-2" ToolTip="Modificar">
+                    <i class="fas fa-edit"></i>
+                    </asp:LinkButton>
+                    <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("idDesarrollador") %>'
+                        CssClass="btn btn-eliminar btn-icon"  ToolTip="Eliminar">
+                    <i class="fas fa-trash-alt"></i>
+>>>>>>> main
                     </asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 </asp:Content>

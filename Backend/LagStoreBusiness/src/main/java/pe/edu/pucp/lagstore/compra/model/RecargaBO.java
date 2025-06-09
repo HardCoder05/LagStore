@@ -33,4 +33,9 @@ public class RecargaBO {
     public Recarga obtenerPorId(int id){
         return daoRecarga.obtenerPorId(id);
     }
+
+    public ArrayList<Recarga>listaRecargasAsociadas( int idCartera){
+        return daoRecarga.listarAsociadas(idCartera);
+    }
+
 }

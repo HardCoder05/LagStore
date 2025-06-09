@@ -5,7 +5,6 @@ import pe.edu.pucp.lagstore.valoracion.model.Calificacion;
 import  pe.edu.pucp.lagstore.valoracion.model.Resena;
 import java.util.ArrayList;
 import java.util.Date;
-import pe.edu.pucp.lagstore.gestjuegos.model.Biblioteca;
 
 public class Jugador extends Usuario {
     private int idJugador;

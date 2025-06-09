@@ -4,4 +4,8 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
 
 
 public interface UsuarioDAO extends ICrud<Usuario>{
+<<<<<<< HEAD
+=======
+    int verificar(Usuario usuario);
+>>>>>>> main
 }

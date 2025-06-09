@@ -12,7 +12,7 @@ public class Desarrollador extends Usuario {
                          Date fechaRegistro, String telefono, String fotoDePerfil,String numeroCuenta,double ingresoTotal) {
         super(nombre, contrasena, email, fechaRegistro, telefono, fotoDePerfil);
         this.numeroCuenta = numeroCuenta;
-        this.ingresoTotal = ingresoTotal;
+        this.ingresoTotal = ingresoTotal; 
     }
     
     public int getIdDesarrollador() {

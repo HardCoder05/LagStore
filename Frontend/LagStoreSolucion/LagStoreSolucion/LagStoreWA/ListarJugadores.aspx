@@ -49,6 +49,7 @@
         </button>
     </div>
 
+<<<<<<< HEAD
     <!-- Tabla para mostrar jugadores -->
     <asp:GridView ID="gvJugadores" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover"
         OnRowCommand="gvJugadores_RowCommand" DataKeyNames="Id">
@@ -65,6 +66,30 @@
                     <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("Id") %>' 
                         CssClass="btn btn-eliminar btn-icon" OnClientClick="return confirm('¿Está seguro que desea eliminar este jugador?');" ToolTip="Eliminar">
                         <i class="fas fa-trash-alt"></i>
+=======
+    <!--Label para mensajes -->
+    <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" CssClass="mt-2 d-block"></asp:Label>
+
+    <!-- Tabla para mostrar jugadores -->
+    <asp:GridView ID="gvJugadores" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover"
+        OnRowCommand="gvJugadores_RowCommand" DataKeyNames="idJugador">
+        <Columns>
+            <asp:BoundField DataField="idJugador" HeaderText="ID" />
+            <asp:BoundField DataField="nickname" HeaderText="Nickname" />
+            <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+            <asp:BoundField DataField="email" HeaderText="Email" />
+            <asp:BoundField DataField="telefono" HeaderText="Teléfono" />
+            <asp:BoundField DataField="fechaRegistro" HeaderText="Fecha de Registro" DataFormatString="{0:yyyy-MM-dd}" />
+            <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="text-center">
+                <ItemTemplate>
+                    <asp:LinkButton ID="btnModificar" runat="server" CommandName="Modificar" CommandArgument='<%# Eval("idJugador") %>'
+                        CssClass="btn btn-modificar btn-icon me-2" ToolTip="Modificar">
+                    <i class="fas fa-edit"></i>
+                    </asp:LinkButton>
+                    <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("idJugador") %>'
+                        CssClass="btn btn-eliminar btn-icon" ToolTip="Eliminar">
+                    <i class="fas fa-trash-alt"></i>
+>>>>>>> main
                     </asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>

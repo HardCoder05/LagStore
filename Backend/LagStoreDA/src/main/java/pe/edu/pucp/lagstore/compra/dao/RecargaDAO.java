@@ -12,4 +12,5 @@ public interface RecargaDAO {
     int eliminar(int idRecarga);
     ArrayList<Recarga>listarTodas();
     Recarga obtenerPorId(int idRecarga);
+    ArrayList<Recarga>listarAsociadas(int idCartera);
 }

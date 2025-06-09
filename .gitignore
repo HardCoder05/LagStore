@@ -17,3 +17,10 @@ dist/
 # Archivos del sistema operativo
 .DS_Store
 Thumbs.db
+
+# Directorios de visual studio code
+.vs/
+
+# Otros directorios de configuración
+bin/
+obj/

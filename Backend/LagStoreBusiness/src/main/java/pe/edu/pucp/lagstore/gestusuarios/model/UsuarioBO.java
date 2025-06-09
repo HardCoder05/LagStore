@@ -38,4 +38,7 @@ public class UsuarioBO {
     public Usuario obtenerPorId(int idUsuario){
         return daoUsuario.obtenerPorId(idUsuario);
     }
+    public int verificar(Usuario usuario){
+        return daoUsuario.verificar(usuario);
+    }
 }
