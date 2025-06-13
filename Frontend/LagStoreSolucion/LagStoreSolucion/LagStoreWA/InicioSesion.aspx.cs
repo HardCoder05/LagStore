@@ -12,6 +12,11 @@ namespace LagStoreWA
     public partial class InicioSesion : System.Web.UI.Page
     {
         private UsuarioWSClient usuarioWSClient;
+        private rol rolUsuario = rol.Jugador;
+        private JugadorWSClient jugadorWSClient = new JugadorWSClient();
+        private DesarrolladorWSClient desarrolladorWSClient = new DesarrolladorWSClient();
+        private AdministradorWSClient administradorWSClient = new AdministradorWSClient();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             usuarioWSClient = new UsuarioWSClient();
@@ -21,7 +26,6 @@ namespace LagStoreWA
             string email = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // Validaciones mínimas
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 lblMensaje.Text = "Por favor, ingrese su usuario y contraseña.";
@@ -40,19 +44,43 @@ namespace LagStoreWA
 
                 if (idUsuario > 0)
                 {
-                    // Guardar el ID del usuario y email en sesión
-                    Session["usuarioId"] = idUsuario;
-                    Session["usuarioEmail"] = email;
-                    Session["Usuario"] = usuarioIngresado;
+                    //// Obtener datos completos del usuario
+                    //usuario usuarioCompleto = usuarioWSClient.obte(idUsuario);
 
-                    // Crear cookie de autenticación
+                    //if (usuarioCompleto == null)
+                    //{
+                    //    lblMensaje.Text = "No se pudo cargar la información del usuario.";
+                    //    return;
+                    //}
+
+                    //// Guardar en sesión
+                    //Session["Usuario"] = usuarioCompleto;
+                    //Session["UsuarioEmail"] = email;
+
+                    Session["usuarioId"] = idUsuario;
+                    rolUsuario = usuarioWSClient.obtenerRol(idUsuario);
+                    Session["RolUsuario"] = rolUsuario;
+
+                    switch (rolUsuario)
+                    {
+                        case rol.Jugador:
+                            Session["Jugador"] = jugadorWSClient.obtenerJugadorPorID(idUsuario);
+                            break;
+                        case rol.Desarrollador:
+                            Session["Desarrollador"] = desarrolladorWSClient.obtenerDesarrolladorPorID(idUsuario);
+                            break;
+                        case rol.Administrador:
+                            Session["Administrador"] = administradorWSClient.obtenerAdministradorPorID(idUsuario);
+                            break;
+                        default:
+                            lblMensaje.Text = "Rol de usuario no reconocido.";
+                            return;
+                    }
+
+                    // Autenticación por cookie
                     FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
-                        1,
-                        email,
-                        DateTime.Now,
-                        DateTime.Now.AddMinutes(30),
-                        false,
-                        "rol=usuario" // Aquí podrías agregar más datos si quieres
+                        1, email, DateTime.Now, DateTime.Now.AddMinutes(30), false,
+                        $"id={idUsuario};rol={rolUsuario}"
                     );
 
                     string encryptedTicket = FormsAuthentication.Encrypt(ticket);
@@ -65,10 +93,7 @@ namespace LagStoreWA
 
                     // Redirección
                     string returnUrl = Request.QueryString["ReturnUrl"];
-                    if (!string.IsNullOrEmpty(returnUrl))
-                        Response.Redirect(returnUrl, true);
-                    else
-                        Response.Redirect("Home.aspx", true);
+                    Response.Redirect(string.IsNullOrEmpty(returnUrl) ? "Home.aspx" : returnUrl, true);
                 }
                 else
                 {
@@ -77,11 +102,10 @@ namespace LagStoreWA
             }
             catch (Exception ex)
             {
-                // Registro opcional de errores internos
                 lblMensaje.Text = "Ocurrió un error al iniciar sesión. Intente nuevamente.";
-                // Log error: ex.Message
+                // Log ex.Message si tienes logger
             }
-        
         }
+
     }
 }

@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/CarroCompraWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="eliminarCarroCompra">
-    <part name="parameters" element="tns:eliminarCarroCompra" />
+  <message name="insertarCarroCompra">
+    <part name="parameters" element="tns:insertarCarroCompra" />
   </message>
-  <message name="eliminarCarroCompraResponse">
-    <part name="parameters" element="tns:eliminarCarroCompraResponse" />
+  <message name="insertarCarroCompraResponse">
+    <part name="parameters" element="tns:insertarCarroCompraResponse" />
   </message>
   <message name="modificarCarroCompra">
     <part name="parameters" element="tns:modificarCarroCompra" />
@@ -17,29 +17,29 @@
   <message name="modificarCarroCompraResponse">
     <part name="parameters" element="tns:modificarCarroCompraResponse" />
   </message>
-  <message name="insertarCarroCompra">
-    <part name="parameters" element="tns:insertarCarroCompra" />
+  <message name="eliminarCarroCompra">
+    <part name="parameters" element="tns:eliminarCarroCompra" />
   </message>
-  <message name="insertarCarroCompraResponse">
-    <part name="parameters" element="tns:insertarCarroCompraResponse" />
+  <message name="eliminarCarroCompraResponse">
+    <part name="parameters" element="tns:eliminarCarroCompraResponse" />
   </message>
   <portType name="CarroCompraWS">
-    <operation name="eliminarCarroCompra">
-      <input wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraRequest" message="tns:eliminarCarroCompra" />
-      <output wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraResponse" message="tns:eliminarCarroCompraResponse" />
+    <operation name="insertarCarroCompra">
+      <input wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/insertarCarroCompraRequest" message="tns:insertarCarroCompra" />
+      <output wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/insertarCarroCompraResponse" message="tns:insertarCarroCompraResponse" />
     </operation>
     <operation name="modificarCarroCompra">
       <input wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/modificarCarroCompraRequest" message="tns:modificarCarroCompra" />
       <output wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/modificarCarroCompraResponse" message="tns:modificarCarroCompraResponse" />
     </operation>
-    <operation name="insertarCarroCompra">
-      <input wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/insertarCarroCompraRequest" message="tns:insertarCarroCompra" />
-      <output wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/insertarCarroCompraResponse" message="tns:insertarCarroCompraResponse" />
+    <operation name="eliminarCarroCompra">
+      <input wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraRequest" message="tns:eliminarCarroCompra" />
+      <output wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraResponse" message="tns:eliminarCarroCompraResponse" />
     </operation>
   </portType>
   <binding name="CarroCompraWSPortBinding" type="tns:CarroCompraWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="eliminarCarroCompra">
+    <operation name="insertarCarroCompra">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -57,7 +57,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarCarroCompra">
+    <operation name="eliminarCarroCompra">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.UsuarioDAO;
+import pe.edu.pucp.lagstore.gestusuarios.model.Rol;
 import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
 
 public class UsuarioMySQL implements UsuarioDAO{
@@ -61,7 +62,29 @@ public class UsuarioMySQL implements UsuarioDAO{
         return resultado; // Si no encontró al usuario, retorna 0
     }
 
-    
+    @Override
+    public Rol obtenerRol(int idUsuario) {
+        Rol rol = null;
+
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idUsuario);
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_ROL_X_ID", parametrosEntrada);
+
+        try {
+            if (rs.next()) {
+                String nombreRol = rs.getString("nombreRol");
+                rol = Rol.valueOf(nombreRol); // Convierte el texto al enum Rol
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR al obtener el rol: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+
+        return rol;
+    }
+
     
     
 }

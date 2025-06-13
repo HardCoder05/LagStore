@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administrador.aspx" />
+    <Content Include="Biblioteca.aspx" />
     <Content Include="CatalogoJuegos.aspx" />
     <None Include="Connected Services\ServicesWS\AdministradorWS.wsdl" />
     <None Include="Connected Services\ServicesWS\AdministradorWS.xsd">
@@ -265,6 +266,21 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.resena.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerRolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.rol.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerBibliotecaPorUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
     <None Include="Connected Services\ServicesWS\RecargaWS.xsd">
       <SubType>Designer</SubType>
@@ -375,6 +391,13 @@
     </Compile>
     <Compile Include="Administrador.aspx.designer.cs">
       <DependentUpon>Administrador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biblioteca.aspx.cs">
+      <DependentUpon>Biblioteca.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biblioteca.aspx.designer.cs">
+      <DependentUpon>Biblioteca.aspx</DependentUpon>
     </Compile>
     <Compile Include="CatalogoJuegos.aspx.cs">
       <DependentUpon>CatalogoJuegos.aspx</DependentUpon>

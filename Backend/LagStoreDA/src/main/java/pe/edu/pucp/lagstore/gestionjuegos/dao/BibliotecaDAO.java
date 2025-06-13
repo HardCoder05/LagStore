@@ -5,5 +5,5 @@ import pe.edu.pucp.lagstore.gestjuegos.model.Biblioteca;
 
 
 public interface BibliotecaDAO extends ICrud<Biblioteca> {
-    
+    Biblioteca obtenerBibliotecaPorUsuario(int idUsuario);
 }

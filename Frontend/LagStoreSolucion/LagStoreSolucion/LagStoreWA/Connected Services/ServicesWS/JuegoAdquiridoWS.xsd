@@ -4,8 +4,12 @@
   <xs:element name="eliminarJuegoAdquiridoResponse" type="tns:eliminarJuegoAdquiridoResponse" />
   <xs:element name="insertarJuegoAdquirido" type="tns:insertarJuegoAdquirido" />
   <xs:element name="insertarJuegoAdquiridoResponse" type="tns:insertarJuegoAdquiridoResponse" />
+  <xs:element name="listarJuegosAdquiridosPorBiblioteca" type="tns:listarJuegosAdquiridosPorBiblioteca" />
+  <xs:element name="listarJuegosAdquiridosPorBibliotecaResponse" type="tns:listarJuegosAdquiridosPorBibliotecaResponse" />
   <xs:element name="modificarJuegoAdquirido" type="tns:modificarJuegoAdquirido" />
   <xs:element name="modificarJuegoAdquiridoResponse" type="tns:modificarJuegoAdquiridoResponse" />
+  <xs:element name="obtenerJuegoAdquiridoPorBibliotecaYJuego" type="tns:obtenerJuegoAdquiridoPorBibliotecaYJuego" />
+  <xs:element name="obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse" type="tns:obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse" />
   <xs:element name="obtenerJuegoAdquiridoPorId" type="tns:obtenerJuegoAdquiridoPorId" />
   <xs:element name="obtenerJuegoAdquiridoPorIdResponse" type="tns:obtenerJuegoAdquiridoPorIdResponse" />
   <xs:complexType name="eliminarJuegoAdquirido">
@@ -100,6 +104,27 @@
   <xs:complexType name="obtenerJuegoAdquiridoPorIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:juegoAdquirido" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerJuegoAdquiridoPorBibliotecaYJuego">
+    <xs:sequence>
+      <xs:element name="idBiblioteca" type="xs:int" />
+      <xs:element name="idJuego" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:juegoAdquirido" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarJuegosAdquiridosPorBiblioteca">
+    <xs:sequence>
+      <xs:element name="idBiblioteca" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarJuegosAdquiridosPorBibliotecaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:juegoAdquirido" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarJuegoAdquirido">

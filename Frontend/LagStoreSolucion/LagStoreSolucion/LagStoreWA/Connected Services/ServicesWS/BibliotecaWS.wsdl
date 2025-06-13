@@ -5,23 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/BibliotecaWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="modificarBiblioteca">
-    <part name="parameters" element="tns:modificarBiblioteca" />
+  <message name="obtenerBibliotecaPorUsuario">
+    <part name="parameters" element="tns:obtenerBibliotecaPorUsuario" />
   </message>
-  <message name="modificarBibliotecaResponse">
-    <part name="parameters" element="tns:modificarBibliotecaResponse" />
-  </message>
-  <message name="obtenerBibliotecaPorId">
-    <part name="parameters" element="tns:obtenerBibliotecaPorId" />
-  </message>
-  <message name="obtenerBibliotecaPorIdResponse">
-    <part name="parameters" element="tns:obtenerBibliotecaPorIdResponse" />
-  </message>
-  <message name="insertarBiblioteca">
-    <part name="parameters" element="tns:insertarBiblioteca" />
-  </message>
-  <message name="insertarBibliotecaResponse">
-    <part name="parameters" element="tns:insertarBibliotecaResponse" />
+  <message name="obtenerBibliotecaPorUsuarioResponse">
+    <part name="parameters" element="tns:obtenerBibliotecaPorUsuarioResponse" />
   </message>
   <message name="eliminarBiblioteca">
     <part name="parameters" element="tns:eliminarBiblioteca" />
@@ -29,27 +17,49 @@
   <message name="eliminarBibliotecaResponse">
     <part name="parameters" element="tns:eliminarBibliotecaResponse" />
   </message>
+  <message name="insertarBiblioteca">
+    <part name="parameters" element="tns:insertarBiblioteca" />
+  </message>
+  <message name="insertarBibliotecaResponse">
+    <part name="parameters" element="tns:insertarBibliotecaResponse" />
+  </message>
+  <message name="obtenerBibliotecaPorId">
+    <part name="parameters" element="tns:obtenerBibliotecaPorId" />
+  </message>
+  <message name="obtenerBibliotecaPorIdResponse">
+    <part name="parameters" element="tns:obtenerBibliotecaPorIdResponse" />
+  </message>
+  <message name="modificarBiblioteca">
+    <part name="parameters" element="tns:modificarBiblioteca" />
+  </message>
+  <message name="modificarBibliotecaResponse">
+    <part name="parameters" element="tns:modificarBibliotecaResponse" />
+  </message>
   <portType name="BibliotecaWS">
-    <operation name="modificarBiblioteca">
-      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/modificarBibliotecaRequest" message="tns:modificarBiblioteca" />
-      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/modificarBibliotecaResponse" message="tns:modificarBibliotecaResponse" />
-    </operation>
-    <operation name="obtenerBibliotecaPorId">
-      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdRequest" message="tns:obtenerBibliotecaPorId" />
-      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdResponse" message="tns:obtenerBibliotecaPorIdResponse" />
-    </operation>
-    <operation name="insertarBiblioteca">
-      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
-      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
+    <operation name="obtenerBibliotecaPorUsuario">
+      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorUsuarioRequest" message="tns:obtenerBibliotecaPorUsuario" />
+      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorUsuarioResponse" message="tns:obtenerBibliotecaPorUsuarioResponse" />
     </operation>
     <operation name="eliminarBiblioteca">
       <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaRequest" message="tns:eliminarBiblioteca" />
       <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaResponse" message="tns:eliminarBibliotecaResponse" />
     </operation>
+    <operation name="insertarBiblioteca">
+      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
+      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
+    </operation>
+    <operation name="obtenerBibliotecaPorId">
+      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdRequest" message="tns:obtenerBibliotecaPorId" />
+      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdResponse" message="tns:obtenerBibliotecaPorIdResponse" />
+    </operation>
+    <operation name="modificarBiblioteca">
+      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/modificarBibliotecaRequest" message="tns:modificarBiblioteca" />
+      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/modificarBibliotecaResponse" message="tns:modificarBibliotecaResponse" />
+    </operation>
   </portType>
   <binding name="BibliotecaWSPortBinding" type="tns:BibliotecaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="modificarBiblioteca">
+    <operation name="obtenerBibliotecaPorUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -58,7 +68,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="obtenerBibliotecaPorId">
+    <operation name="eliminarBiblioteca">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +86,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarBiblioteca">
+    <operation name="obtenerBibliotecaPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarBiblioteca">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

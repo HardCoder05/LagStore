@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/UsuarioWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
+  <message name="obtenerRol">
+    <part name="parameters" element="tns:obtenerRol" />
+  </message>
+  <message name="obtenerRolResponse">
+    <part name="parameters" element="tns:obtenerRolResponse" />
+  </message>
   <message name="verificaUsuario">
     <part name="parameters" element="tns:verificaUsuario" />
   </message>
@@ -12,6 +18,10 @@
     <part name="parameters" element="tns:verificaUsuarioResponse" />
   </message>
   <portType name="UsuarioWS">
+    <operation name="obtenerRol">
+      <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/obtenerRolRequest" message="tns:obtenerRol" />
+      <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/obtenerRolResponse" message="tns:obtenerRolResponse" />
+    </operation>
     <operation name="verificaUsuario">
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/verificaUsuarioRequest" message="tns:verificaUsuario" />
       <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/verificaUsuarioResponse" message="tns:verificaUsuarioResponse" />
@@ -19,6 +29,15 @@
   </portType>
   <binding name="UsuarioWSPortBinding" type="tns:UsuarioWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="obtenerRol">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="verificaUsuario">
       <soap:operation soapAction="" />
       <input>

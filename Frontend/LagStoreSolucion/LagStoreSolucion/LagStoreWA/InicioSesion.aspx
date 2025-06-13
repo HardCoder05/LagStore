@@ -16,7 +16,7 @@
 
     <title>Inicio de Sesion</title>
 </head>
-<body>
+<body style="background: #1a1a2e; color: white;">
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card p-4" style="width: 100%; max-width: 400px;">
             <h3 class="card-title text-center mb-4">Inicio de Sesión</h3>

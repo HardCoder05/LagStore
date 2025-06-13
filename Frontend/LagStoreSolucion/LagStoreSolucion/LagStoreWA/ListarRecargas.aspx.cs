@@ -15,6 +15,12 @@ namespace LagStoreWA
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Jugador"] == null)
+            {
+                // Si no hay un jugador en sesión, redirigir a la página de inicio de sesión
+                Response.Redirect("InicioSesion.aspx");
+            }
+
             boJugador = new JugadorWSClient();
             boRecarga = new RecargaWSClient();
 

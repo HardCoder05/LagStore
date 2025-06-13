@@ -270,7 +270,18 @@ BEGIN
     FROM Usuario
     WHERE email = p_email AND contrasena = p_contrasena AND activo = 1;
 END //
-DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE OBTENER_ROL_X_ID (
+    IN p_idUsuario INT
+)
+BEGIN
+    SELECT nombreRol
+    FROM Usuario
+    WHERE id = p_idUsuario;
+END //
+
+
 
 
 

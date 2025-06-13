@@ -5,23 +5,17 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/CalificacionWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="obtenerCalificacionPorId">
-    <part name="parameters" element="tns:obtenerCalificacionPorId" />
-  </message>
-  <message name="obtenerCalificacionPorIdResponse">
-    <part name="parameters" element="tns:obtenerCalificacionPorIdResponse" />
-  </message>
   <message name="eliminarCalificacion">
     <part name="parameters" element="tns:eliminarCalificacion" />
   </message>
   <message name="eliminarCalificacionResponse">
     <part name="parameters" element="tns:eliminarCalificacionResponse" />
   </message>
-  <message name="modificarCalificacion">
-    <part name="parameters" element="tns:modificarCalificacion" />
+  <message name="obtenerCalificacionPorId">
+    <part name="parameters" element="tns:obtenerCalificacionPorId" />
   </message>
-  <message name="modificarCalificacionResponse">
-    <part name="parameters" element="tns:modificarCalificacionResponse" />
+  <message name="obtenerCalificacionPorIdResponse">
+    <part name="parameters" element="tns:obtenerCalificacionPorIdResponse" />
   </message>
   <message name="insertarCalificacion">
     <part name="parameters" element="tns:insertarCalificacion" />
@@ -29,35 +23,32 @@
   <message name="insertarCalificacionResponse">
     <part name="parameters" element="tns:insertarCalificacionResponse" />
   </message>
+  <message name="modificarCalificacion">
+    <part name="parameters" element="tns:modificarCalificacion" />
+  </message>
+  <message name="modificarCalificacionResponse">
+    <part name="parameters" element="tns:modificarCalificacionResponse" />
+  </message>
   <portType name="CalificacionWS">
-    <operation name="obtenerCalificacionPorId">
-      <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/obtenerCalificacionPorIdRequest" message="tns:obtenerCalificacionPorId" />
-      <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/obtenerCalificacionPorIdResponse" message="tns:obtenerCalificacionPorIdResponse" />
-    </operation>
     <operation name="eliminarCalificacion">
       <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/eliminarCalificacionRequest" message="tns:eliminarCalificacion" />
       <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/eliminarCalificacionResponse" message="tns:eliminarCalificacionResponse" />
     </operation>
-    <operation name="modificarCalificacion">
-      <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionRequest" message="tns:modificarCalificacion" />
-      <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionResponse" message="tns:modificarCalificacionResponse" />
+    <operation name="obtenerCalificacionPorId">
+      <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/obtenerCalificacionPorIdRequest" message="tns:obtenerCalificacionPorId" />
+      <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/obtenerCalificacionPorIdResponse" message="tns:obtenerCalificacionPorIdResponse" />
     </operation>
     <operation name="insertarCalificacion">
       <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/insertarCalificacionRequest" message="tns:insertarCalificacion" />
       <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/insertarCalificacionResponse" message="tns:insertarCalificacionResponse" />
     </operation>
+    <operation name="modificarCalificacion">
+      <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionRequest" message="tns:modificarCalificacion" />
+      <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionResponse" message="tns:modificarCalificacionResponse" />
+    </operation>
   </portType>
   <binding name="CalificacionWSPortBinding" type="tns:CalificacionWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="obtenerCalificacionPorId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="eliminarCalificacion">
       <soap:operation soapAction="" />
       <input>
@@ -67,7 +58,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarCalificacion">
+    <operation name="obtenerCalificacionPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -77,6 +68,15 @@
       </output>
     </operation>
     <operation name="insertarCalificacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarCalificacion">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -9,8 +9,8 @@ import java.util.Map;
 
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionjuegos.dao.BibliotecaDAO;
-import pe.edu.pucp.lagstore.gestionusuarios.mysql.UsuarioMySQL;
 import pe.edu.pucp.lagstore.gestjuegos.model.Biblioteca;
+import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
 
 public class BibliotecaMySQL implements BibliotecaDAO {
     private ResultSet rs;
@@ -99,5 +99,39 @@ public class BibliotecaMySQL implements BibliotecaDAO {
         }
         return biblioteca;
     }
+    
+    @Override
+    public Biblioteca obtenerBibliotecaPorUsuario(int idUsuario){
+        Biblioteca biblioteca = null;
+        
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        
+        parametrosEntrada.put(1, idUsuario);
+        
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_BIBLIOTECA_X_USUARIO", parametrosEntrada);
+        
+        System.out.println("Lectura de biblioteca por idUsuario...");
+
+        try {
+            if (rs.next()) {
+                biblioteca = new Biblioteca();
+                biblioteca.setIdBiblioteca(rs.getInt("idBiblioteca"));
+                biblioteca.setIngresoTotal(rs.getDouble("ingresoTotal"));
+                biblioteca.setCantidadDeJuegos(rs.getInt("cantidadDeJuegos"));
+                Usuario usu = new Usuario();
+                usu.setIdUsuario(idUsuario);
+                usu.setActivo(1);
+                biblioteca.setUsuario(usu);
+                biblioteca.setActivo(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        
+        return biblioteca;
+    }
+    
 }
 

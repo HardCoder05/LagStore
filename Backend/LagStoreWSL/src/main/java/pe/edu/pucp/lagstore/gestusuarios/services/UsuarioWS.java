@@ -7,6 +7,7 @@ package pe.edu.pucp.lagstore.gestusuarios.services;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import pe.edu.pucp.lagstore.gestusuarios.model.Rol;
 import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
 import pe.edu.pucp.lagstore.gestusuarios.model.UsuarioBO;
 
@@ -22,6 +23,20 @@ public class UsuarioWS {
         try{ 
             boUsuario = new UsuarioBO();
             resultado = boUsuario.verificar(usuario);
+        }catch(Exception e){
+            System.out.println(e.getMessage());            
+        }
+        
+        return resultado;
+    }
+    
+    @WebMethod(operationName = "obtenerRol")
+    public Rol obtenerRol(@WebParam(name = "idUsuario") int idUsuario){
+        Rol resultado = null;
+        
+        try{ 
+            boUsuario = new UsuarioBO();
+            resultado = boUsuario.obtenerRol(idUsuario);
         }catch(Exception e){
             System.out.println(e.getMessage());            
         }

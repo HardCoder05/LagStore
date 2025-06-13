@@ -8,6 +8,8 @@
   <xs:element name="modificarBibliotecaResponse" type="tns:modificarBibliotecaResponse" />
   <xs:element name="obtenerBibliotecaPorId" type="tns:obtenerBibliotecaPorId" />
   <xs:element name="obtenerBibliotecaPorIdResponse" type="tns:obtenerBibliotecaPorIdResponse" />
+  <xs:element name="obtenerBibliotecaPorUsuario" type="tns:obtenerBibliotecaPorUsuario" />
+  <xs:element name="obtenerBibliotecaPorUsuarioResponse" type="tns:obtenerBibliotecaPorUsuarioResponse" />
   <xs:complexType name="insertarBiblioteca">
     <xs:sequence>
       <xs:element minOccurs="0" name="biblioteca" type="tns:biblioteca" />
@@ -100,6 +102,16 @@
   <xs:complexType name="eliminarBibliotecaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerBibliotecaPorUsuario">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerBibliotecaPorUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:biblioteca" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarBiblioteca">

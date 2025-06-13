@@ -4,6 +4,7 @@
  */
 package pe.edu.pucp.lagstore.gestionjuegos.dao;
 
+import java.util.ArrayList;
 import pe.edu.pucp.lagstore.DAO.ICrud;
 import pe.edu.pucp.lagstore.gestjuegos.model.JuegoAdquirido;
 /**
@@ -11,5 +12,6 @@ import pe.edu.pucp.lagstore.gestjuegos.model.JuegoAdquirido;
  * @author Luis Rios
  */
 public interface JuegoAdquiridoDAO extends ICrud<JuegoAdquirido> {
-    
+    ArrayList<JuegoAdquirido> listarJuegosAdquiridosPorBiblioteca(int idBiblioteca);
+    JuegoAdquirido obtenerJuegoAdquiridoPorBibliotecaYJuego(int idBiblioteca,int idJuego);
 }

@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <title>Registro de usuario</title>
+
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/Fonts/css/all.css" rel="stylesheet" />
     <link href="Content/site.css" rel="stylesheet" />
@@ -9,9 +11,8 @@
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/bootstrap.bundle.js"></script>
     <script src="Scripts/jquery-3.7.1.js"></script>
-    
 </head>
-<body>
+<body style="background: #1a1a2e; color: white;">
     <form id="formRegistro" runat="server">
         <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="card p-4 w-100" style="max-width: 500px;">

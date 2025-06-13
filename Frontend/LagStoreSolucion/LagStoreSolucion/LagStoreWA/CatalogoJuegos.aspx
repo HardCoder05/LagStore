@@ -21,7 +21,7 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         .game-image {
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             width: 100%;
         }
@@ -41,6 +41,11 @@
             padding: 1.5rem;
             margin-bottom: 1rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        body{
+            background: #1a1a2e;
+            color: white;
         }
     </style>
 </asp:Content>

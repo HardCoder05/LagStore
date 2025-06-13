@@ -68,8 +68,19 @@ CREATE PROCEDURE OBTENER_BIBLIOTECA_X_ID (
 BEGIN
     SELECT *
     FROM Biblioteca
-    WHERE idBiblioteca = p_idBiblioteca;
+    WHERE idBiblioteca = p_idBiblioteca
+    AND activo = 1;
 END //
+
+DELIMITER //
+CREATE PROCEDURE OBTENER_BIBLIOTECA_X_USUARIO (
+  IN p_idUsuario INT
+)
+BEGIN
+  SELECT * FROM Biblioteca
+  WHERE usuario_idUsuario = p_idUsuario;
+END //
+
 
 -- Para Juego
 DELIMITER //
@@ -183,7 +194,39 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE OBTENER_JUEGO_X_ID(IN _idJuego INT)
 BEGIN
-    SELECT * FROM Juego WHERE idJuego = _idJuego;
+    SELECT 
+        j.idJuego,
+        j.titulo,
+        j.descripcion,
+        j.precio,
+        j.version,
+        j.imagenJuego,
+        j.fechaLanzamiento,
+        j.requisitosMinimos,
+        j.requisitosRecomendados,
+        j.espacioDisco,
+        j.fechaUltimaActualizacion,
+        j.nombreGenero,
+        j.modelo,
+        j.desarrollador_idDesarrollador,
+        j.activo,
+
+        -- Datos del desarrollador
+        u.id AS idUsuario,
+        u.nombre,
+        u.email,
+        u.contrasena,
+        u.fechaRegistro,
+        u.telefono,
+        u.fotoDePerfil,
+        d.numeroCuenta,
+        d.ingresoTotal
+
+    FROM Juego j
+    INNER JOIN Desarrollador d ON j.desarrollador_idDesarrollador = d.idDesarrollador
+    INNER JOIN Usuario u ON d.idDesarrollador = u.id
+    WHERE j.idJuego = _idJuego
+    AND j.activo = 1;
 END //
 
 
@@ -199,9 +242,27 @@ CREATE PROCEDURE INSERTAR_JUEGO_ADQUIRIDO(
     IN _activo INT
 )
 BEGIN
-    INSERT INTO JuegoAdquirido (fidBiblioteca, fidJuego, fechaAdquisicion, ultimaSesion, tiempoJuego, actualizado, activo)
-    VALUES (_idBiblioteca, _idJuego, _fechaAdquisicion, _ultimaSesion, _tiempoJuego, _actualizado, _activo);
+    DECLARE _precioJuego DOUBLE;
+
+    -- Obtener el precio del juego
+    SELECT precio INTO _precioJuego FROM Juego WHERE idJuego = _idJuego;
+
+    -- Insertar en la tabla JuegoAdquirido
+    INSERT INTO JuegoAdquirido (
+        fidBiblioteca, fidJuego, fechaAdquisicion, ultimaSesion, tiempoJuego, actualizado, activo
+    )
+    VALUES (
+        _idBiblioteca, _idJuego, _fechaAdquisicion, _ultimaSesion, _tiempoJuego, _actualizado, _activo
+    );
+
+    -- Actualizar ingresoTotal y cantidadDeJuegos en la Biblioteca
+    UPDATE Biblioteca
+    SET 
+        ingresoTotal = COALESCE(ingresoTotal, 0) + IFNULL(_precioJuego, 0),
+        cantidadDeJuegos = COALESCE(cantidadDeJuegos, 0) + 1
+    WHERE idBiblioteca = _idBiblioteca;
 END //
+
 
 DELIMITER //
 CREATE PROCEDURE MODIFICAR_JUEGO_ADQUIRIDO(
@@ -230,14 +291,131 @@ END //
 DELIMITER //
 CREATE PROCEDURE LISTAR_JUEGOS_ADQUIRIDOS_TODOS()
 BEGIN
-    SELECT * FROM JuegoAdquirido WHERE activo = 1;
+    SELECT 
+        ja.fidBiblioteca,
+        ja.fidJuego,
+        ja.fechaAdquisicion,
+        ja.ultimaSesion,
+        ja.tiempoJuego,
+        ja.actualizado,
+        ja.activo,
+
+        -- Datos del juego
+        j.idJuego,
+        j.titulo,
+        j.descripcion,
+        j.precio,
+        j.version,
+        j.imagenJuego,
+        j.fechaLanzamiento,
+        j.requisitosMinimos,
+        j.requisitosRecomendados,
+        j.espacioDisco,
+        j.fechaUltimaActualizacion,
+        j.nombreGenero,
+        j.modelo,
+        j.desarrollador_idDesarrollador,
+        j.activo AS juegoActivo,
+
+        -- Datos del desarrollador
+        u.id AS idUsuario,
+        u.nombre,
+        u.email,
+        u.contrasena,
+        u.fechaRegistro,
+        u.telefono,
+        u.fotoDePerfil,
+        d.numeroCuenta,
+        d.ingresoTotal
+
+    FROM JuegoAdquirido ja
+    INNER JOIN Juego j ON ja.fidJuego = j.idJuego
+    INNER JOIN Desarrollador d ON j.desarrollador_idDesarrollador = d.idDesarrollador
+    INNER JOIN Usuario u ON d.idDesarrollador = u.id
+    WHERE ja.activo = 1;
 END //
 
 DELIMITER //
 CREATE PROCEDURE OBTENER_JUEGO_ADQUIRIDO_POR_ID(IN _idJuego INT)
 BEGIN
-    SELECT * FROM JuegoAdquirido WHERE fidJuego = _idJuego;
+    SELECT 
+        ja.fidBiblioteca,
+        ja.fidJuego,
+        ja.fechaAdquisicion,
+        ja.ultimaSesion,
+        ja.tiempoJuego,
+        ja.actualizado,
+        ja.activo,
+
+        -- Datos del juego
+        j.idJuego,
+        j.titulo,
+        j.descripcion,
+        j.precio,
+        j.version,
+        j.imagenJuego,
+        j.fechaLanzamiento,
+        j.requisitosMinimos,
+        j.requisitosRecomendados,
+        j.espacioDisco,
+        j.fechaUltimaActualizacion,
+        j.nombreGenero,
+        j.modelo,
+        j.desarrollador_idDesarrollador,
+        j.activo AS juegoActivo,
+
+        -- Datos del desarrollador
+        u.id AS idUsuario,
+        u.nombre,
+        u.email,
+        u.contrasena,
+        u.fechaRegistro,
+        u.telefono,
+        u.fotoDePerfil,
+        d.numeroCuenta,
+        d.ingresoTotal
+
+    FROM  ja
+    INNER JOIN Juego j ON ja.fidJuego = j.idJuego
+    INNER JOIN Desarrollador d ON j.desarrollador_idDesarrollador = d.idDesarrollador
+    INNER JOIN Usuario u ON d.idDesarrollador = u.id
+    WHERE ja.fidJuego = _idJuego
+    AND ja.activo = 1;
 END //
+
+DELIMITER //
+CREATE PROCEDURE LISTAR_JUEGOS_ADQUIRIDOS_X_BIBLIOTECA (
+  IN p_idBiblioteca INT
+)
+BEGIN
+  SELECT ja.*, j.titulo, j.precio, j.modelo, j.nombreGenero, j.imagenJuego, j.idJuego
+  FROM JuegoAdquirido ja
+  INNER JOIN Juego j ON ja.fidJuego = j.idJuego AND j.activo = 1
+  WHERE ja.fidBiblioteca = p_idBiblioteca AND ja.activo = 1;
+END //
+
+DELIMITER //
+CREATE PROCEDURE OBTENER_JUEGO_ADQUIRIDO_POR_BIBLIOTECA_Y_JUEGO (
+  IN p_idBiblioteca INT,
+  IN p_idJuego INT
+)
+BEGIN
+  SELECT * FROM JuegoAdquirido
+  WHERE fidBiblioteca = p_idBiblioteca AND fidJuego = p_idJuego AND activo = 1;
+END //
+
+DELIMITER //
+CREATE PROCEDURE ELIMINAR_JUEGO_ADQUIRIDO_POR_BIBLIOTECA_Y_JUEGO (
+  IN p_idBiblioteca INT,
+  IN p_idJuego INT
+)
+BEGIN
+  UPDATE JuegoAdquirido
+  SET activo = 0
+  WHERE fidBiblioteca = p_idBiblioteca AND fidJuego = p_idJuego;
+END //
+
+
 
 
 

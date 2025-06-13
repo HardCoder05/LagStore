@@ -40,4 +40,14 @@ public class JuegoAdquiridoBO {
     public JuegoAdquirido obtenerPorId(int idJuegoAdquirido){
         return daoJuegoAdquirido.obtenerPorId(idJuegoAdquirido);
     }
+    
+    public ArrayList<JuegoAdquirido> listarJuegosAdquiridosPorBiblioteca(int idBiblioteca){
+        return daoJuegoAdquirido.listarJuegosAdquiridosPorBiblioteca(idBiblioteca);
+    }
+    
+    public JuegoAdquirido obtenerJuegoAdquiridoPorBibliotecaYJuego(int 
+        idBiblioteca,int idJuego){
+        return daoJuegoAdquirido.obtenerJuegoAdquiridoPorBibliotecaYJuego(idBiblioteca, idJuego);
+    }
+
 }

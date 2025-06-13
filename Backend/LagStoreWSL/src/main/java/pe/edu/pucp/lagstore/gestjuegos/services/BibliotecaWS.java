@@ -41,4 +41,10 @@ public class BibliotecaWS {
         bibliotecBO = new BibliotecaBO();
         return bibliotecBO.obtenerPorId(idBiblioteca);
     }
+    
+    @WebMethod(operationName = "obtenerBibliotecaPorUsuario")
+    public Biblioteca obtenerBibliotecaPorUsuario(@WebParam(name = "idUsuario") int idUsuario) {
+        bibliotecBO = new BibliotecaBO();
+        return bibliotecBO.obtenerBibliotecaPorUsuario(idUsuario);
+    }
 }

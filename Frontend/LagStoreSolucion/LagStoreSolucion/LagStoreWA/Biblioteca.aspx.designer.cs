@@ -11,79 +11,97 @@ namespace LagStoreWA
 {
 
 
-    public partial class Home
+    public partial class Biblioteca
     {
 
         /// <summary>
-        /// Control litBackgroundUrl.
+        /// Control lblTotalJuegos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litBackgroundUrl;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTotalJuegos;
 
         /// <summary>
-        /// Control lblTituloDestacado.
+        /// Control lblJuegosMostrados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTituloDestacado;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblJuegosMostrados;
 
         /// <summary>
-        /// Control lblGeneroDestacado.
+        /// Control lblTiempoTotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGeneroDestacado;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTiempoTotal;
 
         /// <summary>
-        /// Control lblDescripcionDestacada.
+        /// Control rblFiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcionDestacada;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblFiltro;
 
         /// <summary>
-        /// Control lblPrecioDestacado.
+        /// Control txtBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPrecioDestacado;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscar;
 
         /// <summary>
-        /// Control btnAgregarDestacado.
+        /// Control btnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarDestacado;
+        protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
-        /// Control btnVerDetallesDestacado.
+        /// Control btnLimpiarBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerDetallesDestacado;
+        protected global::System.Web.UI.WebControls.Button btnLimpiarBusqueda;
 
         /// <summary>
-        /// Control rptJuegosDestacados.
+        /// Control rptBiblioteca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptJuegosDestacados;
+        protected global::System.Web.UI.WebControls.Repeater rptBiblioteca;
+
+        /// <summary>
+        /// Control pnlMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlMensaje;
+
+        /// <summary>
+        /// Control lblMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
     }
 }

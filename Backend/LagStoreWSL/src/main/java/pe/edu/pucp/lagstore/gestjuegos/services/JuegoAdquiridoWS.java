@@ -4,6 +4,7 @@ package pe.edu.pucp.lagstore.gestjuegos.services;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import java.util.ArrayList;
 import pe.edu.pucp.lagstore.gestJuegos.Model.JuegoAdquiridoBO;
 import pe.edu.pucp.lagstore.gestjuegos.model.JuegoAdquirido;
 
@@ -38,5 +39,20 @@ public class JuegoAdquiridoWS {
     public JuegoAdquirido obtenerJuegoAdquiridoPorId(@WebParam(name = "idJuegoAdquirido") int idJuegoAdquirido) {
         juegoAdquiridoBO=new JuegoAdquiridoBO();
         return juegoAdquiridoBO.obtenerPorId(idJuegoAdquirido);
+    }
+    
+    @WebMethod(operationName = "listarJuegosAdquiridosPorBiblioteca")
+    public ArrayList<JuegoAdquirido> listarJuegosAdquiridosPorBiblioteca
+        (@WebParam(name = "idBiblioteca") int idBiblioteca) {
+        juegoAdquiridoBO = new JuegoAdquiridoBO();
+        return juegoAdquiridoBO.listarJuegosAdquiridosPorBiblioteca(idBiblioteca);
+    }
+    
+    @WebMethod(operationName = "obtenerJuegoAdquiridoPorBibliotecaYJuego")
+    public JuegoAdquirido obtenerJuegoAdquiridoPorBibliotecaYJuego
+        (@WebParam(name = "idBiblioteca") int idBiblioteca,
+        @WebParam(name = "idJuego") int idJuego) {
+        juegoAdquiridoBO = new JuegoAdquiridoBO();
+        return juegoAdquiridoBO.obtenerJuegoAdquiridoPorBibliotecaYJuego(idBiblioteca, idJuego);
     }
 }
