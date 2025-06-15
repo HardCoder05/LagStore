@@ -17,7 +17,7 @@ public class UsuarioWS {
     
     @WebMethod(operationName = "verificaUsuario")
     public int verificaUsuario(@WebParam(name = "usuario") Usuario usuario){
-        int resultado = 0;
+        int resultado =0;
         
         try{ 
             boUsuario = new UsuarioBO();
