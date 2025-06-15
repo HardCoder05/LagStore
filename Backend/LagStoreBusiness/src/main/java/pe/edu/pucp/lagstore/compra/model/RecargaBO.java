@@ -35,7 +35,7 @@ public class RecargaBO {
     }
 
     public ArrayList<Recarga>listaRecargasAsociadas( int idCartera){
-        return daoRecarga.listarAsociadas(idCartera);
+        return daoRecarga.listarTodas();
     }
 
 }

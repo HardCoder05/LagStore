@@ -1,13 +1,9 @@
 package pe.edu.pucp.lagstore.main;
 import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import pe.edu.pucp.lagstore.compra.model.CarroCompra;
 import pe.edu.pucp.lagstore.compra.model.CarroCompraBO;
@@ -16,7 +12,6 @@ import pe.edu.pucp.lagstore.compra.model.CarteraBO;
 import pe.edu.pucp.lagstore.compra.model.MetodoPago;
 import pe.edu.pucp.lagstore.compra.model.Recarga;
 import pe.edu.pucp.lagstore.compra.model.RecargaBO;
-import pe.edu.pucp.lagstore.config.DBManager;
 
 import pe.edu.pucp.lagstore.gestJuegos.Model.BibliotecaBO;
 import pe.edu.pucp.lagstore.gestJuegos.Model.JuegoAdquiridoBO;
@@ -43,13 +38,10 @@ import pe.edu.pucp.lagstore.valoracion.model.ResenaBO;
 
 public class Principal {
     public static void main(String[] args)throws Exception{
-        //test_jugadores();//se usan metodos de jugadores
+//        test_jugadores();//se usan metodos de jugadores
 //        test_desarrolladores();//se usan metodos de jugadores
 //        test_administradores();//se usan metodos de administradores
-          //test_Recarga();
-          //test_Cartera();
-
-       test_jugadores();
+        
 //        test_bibliotecas();
 //        test_juegos();
 //        test_juegoAdquiridos();
@@ -68,15 +60,27 @@ public class Principal {
         SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
         //1.JUGADOR
 //        inserto un nuevo jugador
-        
-        Jugador j4=new Jugador("pepepe ","pepetoro@hotmail.com","785",sdf.parse("2025-06-01"),"2020202","ImagenX","pepeToro");
-        jugadorBO.insertar(j4);
+        Jugador j1=new Jugador("Miguel","miguel@hotmail.com","789",sdf.parse("2025-04-20"),"969627718","ImagenX","miguel123");
+        Jugador j2=new Jugador("cubas ","cubas@hotmail.com","753",sdf.parse("2025-04-20"),"852322","ImagenX","gohanGol");
+        Jugador j3=new Jugador("Alesandro ","alesandro@hotmail.com","741",sdf.parse("2025-04-20"),"227423","ImagenX","ales50");
+        Jugador j4=new Jugador("Luis ","luis@hotmail.com","785",sdf.parse("2025-04-20"),"785222","ImagenX","luis20");
+        jugadorBO.insertar(j1);jugadorBO.insertar(j2);jugadorBO.insertar(j3);jugadorBO.insertar(j4);
 //        listar jugadores
         ArrayList<Jugador>jugadores = jugadorBO.listarJugadores();
         for(Jugador j : jugadores){
             System.out.println(j);
         }
-
+//        modificar jugador
+        Jugador jugadorAModificar=new Jugador();
+        jugadorAModificar.setIdJugador(60);
+        jugadorAModificar.setNickname("OTRO NUEVO");
+        jugadorAModificar.setNombre("NAME NEW");
+        jugadorAModificar.setEmail("aaaa@htomail.com");
+        jugadorAModificar.setContrasena("nuevaContra");
+        jugadorAModificar.setFechaRegistro(sdf.parse("2025-01-01"));
+        jugadorAModificar.setTelefono("999111222");
+        jugadorAModificar.setFotoDePerfil("FFF"); 
+        jugadorBO.modificar(jugadorAModificar);
         //volvemos a listar para ver la modificacion
         jugadores=jugadorBO.listarJugadores();
         for(Jugador j : jugadores){
@@ -305,7 +309,6 @@ public class Principal {
         Jugador jugador = new Jugador("Mario Bros", "mario@hotmail.com", "789",
                 sdf.parse("2025-04-20"), "969627718", "ImagenX", "Mario&Luiggi");
         int idJug = BOJugador.insertar(jugador);
-        
         jugador.setIdJugador(idJug);
 
         // Crear cartera para jugador
@@ -375,11 +378,11 @@ public class Principal {
         // Crear nueva Recarga
         Recarga recarga = new Recarga();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        recarga.setFechaRecarga(sdf.parse("2025-06-13"));
-        recarga.setMonto(59.99);
+        recarga.setFechaRecarga(sdf.parse("2025-05-13"));
+        recarga.setMonto(50.00);
 
         // Obtener Cartera existente (cambia el ID si necesario)
-        int idCartera = 0; // ⚠️ Cambia este ID a uno válido en tu BD
+        int idCartera = 2; // ⚠️ Cambia este ID a uno válido en tu BD
         Cartera cartera = BOCartera.obtenerPorId(idCartera);
         if (cartera == null) {
             System.out.println(" No se encontró cartera con ID: " + idCartera);
