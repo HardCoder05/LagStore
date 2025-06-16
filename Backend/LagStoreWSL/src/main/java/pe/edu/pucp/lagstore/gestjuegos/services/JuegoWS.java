@@ -83,4 +83,21 @@ public class JuegoWS {//Dentro se ponen los metodos
         
         return juegos;
     }
+    
+    /////////////////////////////////
+    @WebMethod(operationName = "listarJuegosPorDesarrollador")
+    public ArrayList<Juego> listarJuegosPorDesarrollador(@WebParam(name = "idDesarrollador") int idDesarrollador) {
+        ArrayList<Juego> juegos = new ArrayList<>();
+    
+        try {
+            juegoBO = new JuegoBO();
+            juegos = juegoBO.listarPorDesarrollador(idDesarrollador);
+ 
+        } catch (Exception ex) {
+            System.out.println("Error en listarJuegosPorDesarrollador (SOAP): " + ex.getMessage());
+        }
+    
+        return juegos;
+    }
+     
 }

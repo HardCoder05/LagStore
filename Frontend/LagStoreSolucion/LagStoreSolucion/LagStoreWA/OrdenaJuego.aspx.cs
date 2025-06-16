@@ -28,30 +28,53 @@ namespace LagStoreWA
         }
         private void CargarJuegos(string criterio)
         {
-            // Puedes usar sesión para obtener el ID del desarrollador logueado
-            // Suponiendo: Session["idDesarrollador"] contiene el ID
-            ////int idDesarrollador = (int)Session["idDesarrollador"];
+            // Verificar que el usuario esté logueado
 
-            ////var juegos = wsJuego.listarJuegosPorDesarrollador(idDesarrollador);
+            if (Session["id"] == null)
+            {
+                //Session["idDesarrollador"] = desarrollador.idDesarrollador;
+                //Response.Redirect("OrdenaJuego.aspx");
+            }
 
-            ////var listaOrdenada = juegos.AsQueryable();
+            int idDesarrollador = (int)Session["id"];
 
-            ////switch (criterio)
-            ////{
-            ////    case "precio":
-            ////        listaOrdenada = listaOrdenada.OrderBy(j => j.precio);
-            ////        break;
-            ////    case "calificacion":
-            ////        listaOrdenada = listaOrdenada.OrderByDescending(j => j.calificacionPromedio);
-            ////        break;
-            ////    case "fecha":
-            ////        listaOrdenada = listaOrdenada.OrderByDescending(j => j.fechaLanzamiento);
-            ////        break;
-            ////}
+            // Llamar al servicio web para obtener los juegos del desarrollador
+            var juegos = wsJuego.listarJuegosPorDesarrollador(idDesarrollador);
 
-            ////gvJuegos.DataSource = listaOrdenada.ToList();
-            ////gvJuegos.DataBind();
+            if (juegos == null || juegos.Length == 0)
+            {
+                gvJuegos.DataSource = null;
+                gvJuegos.DataBind();
+                lblMensaje.Text = "No se encontraron juegos publicados.";
+                return;
+            }
+
+            // Conversión a lista para aplicar ordenamientos
+            var lista = juegos.ToList();
+
+            // Aplicar el orden según criterio
+            switch (criterio)
+            {
+                case "precio":
+                    lista = lista.OrderBy(j => j.precio).ToList();
+                    break;
+
+                //case "calificacion":
+                //    // Si el servicio ya incluye calificaciónPromedio:
+                //    lista = lista.OrderByDescending(j => j.calificacionPromedio).ToList();
+                //    break;
+
+                case "fecha":
+                    lista = lista.OrderByDescending(j => j.fechaLanzamiento).ToList();
+                    break;
+            }
+
+            gvJuegos.DataSource = lista;
+            gvJuegos.DataBind();
         }
+
+
+
 
 
 

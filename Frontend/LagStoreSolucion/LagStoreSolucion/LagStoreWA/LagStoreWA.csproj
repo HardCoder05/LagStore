@@ -152,6 +152,9 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJugadorPorIDResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosPorDesarrolladorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicesWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

@@ -11,6 +11,12 @@
   <message name="listarJuegosConFiltroResponse">
     <part name="parameters" element="tns:listarJuegosConFiltroResponse" />
   </message>
+  <message name="listarJuegosPorDesarrollador">
+    <part name="parameters" element="tns:listarJuegosPorDesarrollador" />
+  </message>
+  <message name="listarJuegosPorDesarrolladorResponse">
+    <part name="parameters" element="tns:listarJuegosPorDesarrolladorResponse" />
+  </message>
   <message name="listarJuegos">
     <part name="parameters" element="tns:listarJuegos" />
   </message>
@@ -34,6 +40,10 @@
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroRequest" message="tns:listarJuegosConFiltro" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroResponse" message="tns:listarJuegosConFiltroResponse" />
     </operation>
+    <operation name="listarJuegosPorDesarrollador">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosPorDesarrolladorRequest" message="tns:listarJuegosPorDesarrollador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosPorDesarrolladorResponse" message="tns:listarJuegosPorDesarrolladorResponse" />
+    </operation>
     <operation name="listarJuegos">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosRequest" message="tns:listarJuegos" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosResponse" message="tns:listarJuegosResponse" />
@@ -50,6 +60,15 @@
   <binding name="JuegoWSPortBinding" type="tns:JuegoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="listarJuegosConFiltro">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarJuegosPorDesarrollador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

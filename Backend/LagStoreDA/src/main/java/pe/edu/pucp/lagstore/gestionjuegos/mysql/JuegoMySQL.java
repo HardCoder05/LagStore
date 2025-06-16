@@ -219,4 +219,56 @@ public class JuegoMySQL implements JuegoDAO{
         
         return juegos;
     }
+
+    @Override
+    public ArrayList<Juego> listarPorDesarrollador(int idDesarrollador) {
+            ArrayList<Juego> juegos = new ArrayList<>();
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idDesarrollador);
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_JUEGOS_POR_DESARROLLADOR", parametrosEntrada);
+        System.out.println("Lectura de juegos por desarrollador...");
+
+        try {
+            while (rs.next()) {
+                Juego juego = new Juego();
+                juego.setIdJuego(rs.getInt("idJuego"));
+                juego.setTitulo(rs.getString("titulo"));
+                juego.setDescripcion(rs.getString("descripcion"));
+                juego.setPrecio(rs.getDouble("precio"));
+                juego.setVersion(rs.getDouble("version"));
+                juego.setImagen(rs.getString("imagenJuego")); // si es BLOB convertido a Base64 en la app
+                juego.setFechaLanzamiento(rs.getDate("fechaLanzamiento"));
+                juego.setRequisitosMinimos(rs.getString("requisitosMinimos"));
+                juego.setRequisitosRecomendados(rs.getString("requisitosRecomendados"));
+                juego.setEspacioDisco(rs.getDouble("espacioDisco"));
+                juego.setFechaUltimaActualizacion(rs.getDate("fechaUltimaActualizacion"));
+                juego.setGenero(Genero.valueOf(rs.getString("nombreGenero")));
+                juego.setModeloNegocio(ModeloNegocio.valueOf(rs.getString("modelo")));
+                juego.setActivo(rs.getInt("activo"));
+
+                Desarrollador dev = new Desarrollador();
+                dev.setIdDesarrollador(rs.getInt("desarrollador_idDesarrollador"));
+                dev.setIdUsuario(rs.getInt("idUsuario"));
+                dev.setNombre(rs.getString("nombre"));
+                dev.setEmail(rs.getString("email"));
+                dev.setContrasena(rs.getString("contrasena"));
+                dev.setFechaRegistro(rs.getDate("fechaRegistro"));
+                dev.setTelefono(rs.getString("telefono"));
+                dev.setFotoDePerfil(rs.getString("fotoDePerfil"));
+                dev.setNumeroCuenta(rs.getString("numeroCuenta"));
+                dev.setIngresoTotal(rs.getDouble("ingresoTotal"));
+
+                juego.setDesarrollador(dev);
+                juegos.add(juego);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+
+        return juegos;
+    }
+    
 }

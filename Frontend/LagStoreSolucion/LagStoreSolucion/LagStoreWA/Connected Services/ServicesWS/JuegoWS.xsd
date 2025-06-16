@@ -5,6 +5,8 @@
   <xs:element name="listarJuegos" type="tns:listarJuegos" />
   <xs:element name="listarJuegosConFiltro" type="tns:listarJuegosConFiltro" />
   <xs:element name="listarJuegosConFiltroResponse" type="tns:listarJuegosConFiltroResponse" />
+  <xs:element name="listarJuegosPorDesarrollador" type="tns:listarJuegosPorDesarrollador" />
+  <xs:element name="listarJuegosPorDesarrolladorResponse" type="tns:listarJuegosPorDesarrolladorResponse" />
   <xs:element name="listarJuegosResponse" type="tns:listarJuegosResponse" />
   <xs:element name="obtenerJuegoPorId" type="tns:obtenerJuegoPorId" />
   <xs:element name="obtenerJuegoPorIdResponse" type="tns:obtenerJuegoPorIdResponse" />
@@ -81,6 +83,16 @@
   <xs:complexType name="insertarJuegoResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarJuegosPorDesarrollador">
+    <xs:sequence>
+      <xs:element name="idDesarrollador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarJuegosPorDesarrolladorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:juego" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="obtenerJuegoPorId">
