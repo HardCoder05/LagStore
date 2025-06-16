@@ -82,6 +82,14 @@ namespace LagStoreWA
                 // Obtener juegos adquiridos de la biblioteca
                 juegoAdquirido[] juegosAdquiridos = juegoAdquiridoWS.listarJuegosAdquiridosPorBiblioteca(bibliotecaUsuario.idBiblioteca);
 
+                if (juegosAdquiridos == null || juegosAdquiridos.Length == 0)
+                {
+                    MostrarMensaje("No hay juegos adquiridos en tu biblioteca.", "info");
+                    rptBiblioteca.DataSource = null;
+                    rptBiblioteca.DataBind();
+                    return;
+                }
+
                 // Aplicar filtro por estado
                 switch (filtro)
                 {
@@ -135,6 +143,14 @@ namespace LagStoreWA
                 if (bibliotecaUsuario != null)
                 {
                     juegoAdquirido[] todosJuegos = juegoAdquiridoWS.listarJuegosAdquiridosPorBiblioteca(bibliotecaUsuario.idBiblioteca);
+
+                    if (todosJuegos == null || todosJuegos.Length == 0)
+                    {
+                        lblTotalJuegos.InnerText = "0";
+                        lblJuegosMostrados.InnerText = "0";
+                        lblTiempoTotal.InnerText = "0 hrs";
+                        return;
+                    }
 
                     int totalJuegos = todosJuegos.Length;
                     int juegosMostrados = todosJuegos.Count(ja => ja.activo == 1);

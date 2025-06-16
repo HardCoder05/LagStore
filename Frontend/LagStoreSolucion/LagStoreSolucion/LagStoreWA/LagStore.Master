@@ -52,6 +52,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="ListarDesarrolladores.aspx">Gestionar Desarrolladores</a></li>
                                 <li><a class="dropdown-item" href="ListarJugadores.aspx">Gestionar Jugadores</a></li>
+                                <li><a class="dropdown-item" href="ListarJuegos.aspx">Gestionar Juegos</a></li>
                             </ul>
                         </li>
                     </ul>

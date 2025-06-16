@@ -333,10 +333,12 @@
     <Content Include="Home.aspx" />
     <Content Include="InicioSesion.aspx" />
     <Content Include="ListarDesarrolladores.aspx" />
+    <Content Include="ListarJuegos.aspx" />
     <Content Include="ListarJugadores.aspx" />
     <Content Include="ListarRecargas.aspx" />
     <Content Include="PerfilUsuario.aspx" />
     <Content Include="RegistrarDesarrollador.aspx" />
+    <Content Include="RegistrarJuego.aspx" />
     <Content Include="RegistrarJugador.aspx" />
     <Content Include="RegistroUsuario.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -439,6 +441,13 @@
     <Compile Include="ListarDesarrolladores.aspx.designer.cs">
       <DependentUpon>ListarDesarrolladores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ListarJuegos.aspx.cs">
+      <DependentUpon>ListarJuegos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListarJuegos.aspx.designer.cs">
+      <DependentUpon>ListarJuegos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListarJugadores.aspx.cs">
       <DependentUpon>ListarJugadores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -467,6 +476,13 @@
     </Compile>
     <Compile Include="RegistrarDesarrollador.aspx.designer.cs">
       <DependentUpon>RegistrarDesarrollador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarJuego.aspx.cs">
+      <DependentUpon>RegistrarJuego.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarJuego.aspx.designer.cs">
+      <DependentUpon>RegistrarJuego.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarJugador.aspx.cs">
       <DependentUpon>RegistrarJugador.aspx</DependentUpon>

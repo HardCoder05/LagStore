@@ -19,6 +19,7 @@
             margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
+
         .profile-avatar {
             width: 120px;
             height: 120px;
@@ -27,24 +28,43 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             object-fit: cover;
         }
+
         .profile-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.05); /* ligeramente translúcido */
+            backdrop-filter: blur(5px);            /* efecto de vidrio esmerilado */
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
+            color: white; /* para mantener contraste con fondo oscuro */
         }
+
         .profile-card:hover {
             transform: translateY(-2px);
         }
+
         .section-header {
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-            border-radius: 10px 10px 0 0;
-            padding: 1rem 1.5rem;
-            border-bottom: 2px solid #dee2e6;
+            background: linear-gradient(45deg, #2e2e4e, #3c3c5c);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
         }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #764ba2;
+            color: white;
+        }
+
         .form-floating {
             margin-bottom: 1rem;
         }
+
         .status-badge {
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -52,27 +72,33 @@
             text-transform: uppercase;
             font-size: 0.8rem;
         }
+
         .status-active {
             background: #d4edda;
             color: #155724;
         }
+
         .status-inactive {
             background: #f8d7da;
             color: #721c24;
         }
+
         .info-item {
             padding: 0.75rem 0;
             border-bottom: 1px solid #f0f0f0;
         }
+
         .info-item:last-child {
             border-bottom: none;
         }
+
         .password-strength {
             height: 5px;
             border-radius: 3px;
             margin-top: 0.5rem;
             transition: all 0.3s ease;
         }
+
         .strength-weak { background: #dc3545; }
         .strength-medium { background: #ffc107; }
         .strength-strong { background: #28a745; }
@@ -258,21 +284,21 @@
                             <div class="form-floating">
                                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" 
                                             placeholder="Nombre completo"></asp:TextBox>
-                                <label for="<%= txtNombre.ClientID %>">Nombre Completo</label>
+                                <label for="<%= txtNombre.ClientID %>" class="text-white-50">Nombre Completo</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" 
                                             TextMode="Email" placeholder="Email"></asp:TextBox>
-                                <label for="<%= txtEmail.ClientID %>">Email</label>
+                                <label for="<%= txtEmail.ClientID %>" class="text-white-50">Email</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" 
                                             placeholder="Teléfono"></asp:TextBox>
-                                <label for="<%= txtTelefono.ClientID %>">Teléfono</label>
+                                <label for="<%= txtTelefono.ClientID %>" class="text-white-50">Teléfono</label>
                             </div>
                         </div>
                     </div>
@@ -339,25 +365,25 @@
                 <div class="p-4">
                     <div class="info-item">
                         <div class="d-flex justify-content-between">
-                            <span class="text-muted">Rol:</span>
+                            <span class="text-white">Rol:</span>
                             <asp:Label ID="lblRolUsuario" runat="server" CssClass="fw-bold"></asp:Label>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="d-flex justify-content-between">
-                            <span class="text-muted">Estado:</span>
+                            <span class="text-white">Estado:</span>
                             <asp:Label ID="lblEstadoCuenta" runat="server"></asp:Label>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="d-flex justify-content-between">
-                            <span class="text-muted">ID Usuario:</span>
+                            <span class="text-white">ID Usuario:</span>
                             <asp:Label ID="lblIdUsuario" runat="server" CssClass="fw-bold"></asp:Label>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted">Último acceso:</span>
+                            <span class="text-white">Último acceso:</span>
                             <small class="text-end">
                                 <asp:Label ID="lblUltimoAcceso" runat="server"></asp:Label>
                             </small>
@@ -365,7 +391,7 @@
                     </div>
                     <div class="info-item" id="RolAdministrativo" runat="server" visible="false">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted">Rol administrativo:</span>
+                            <span class="text-white">Rol administrativo:</span>
                             <small class="text-end">
                                 <asp:Label ID="lblRolAdministrativo" runat="server"></asp:Label>
                             </small>
@@ -373,7 +399,7 @@
                     </div>
                     <div class="info-item" id="NumCuenta" runat="server" visible="false">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted">Numero de cuenta:</span>
+                            <span class="text-white">Numero de cuenta:</span>
                             <small class="text-end">
                                 <asp:Label ID="lblNumCuenta" runat="server"></asp:Label>
                             </small>
@@ -381,7 +407,7 @@
                     </div>
                     <div class="info-item" id="IngresoTotal" runat="server" visible="false">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted">Ingreso total:</span>
+                            <span class="text-white">Ingreso total:</span>
                             <small class="text-end">
                                 <asp:Label ID="lblIngresoTotal" runat="server"></asp:Label>
                             </small>

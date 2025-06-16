@@ -22,7 +22,7 @@ namespace LagStoreWA
                     Response.Redirect("Administrador.aspx");
                 }
 
-                CargarJuegoDestacado(6);
+                CargarJuegoDestacado(1);
                 CargarJuegos();
             }
         }
@@ -54,7 +54,7 @@ namespace LagStoreWA
             try
             {
                 var juegos = juegoWS.listarJuegos();
-                rptJuegosDestacados.DataSource = juegos.Skip(4).Take(2);
+                rptJuegosDestacados.DataSource = juegos.Skip(3).Take(4);
                 rptJuegosDestacados.DataBind();
             }
             catch (Exception ex)

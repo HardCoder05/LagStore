@@ -1,0 +1,102 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using LagStoreWA.ServicesWS;
+
+namespace LagStoreWA
+{
+    public partial class ListarJuegos : System.Web.UI.Page
+    {
+        private JuegoWSClient boJuego;
+        private BindingList<juego> juegos;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            boJuego = new JuegoWSClient();
+
+            if (!IsPostBack)
+            {
+                juegos = new BindingList<juego>(boJuego.listarJuegos());
+                gvJuegos.DataSource = juegos;
+                gvJuegos.DataBind();
+
+                var liGestion = this.Master.FindControl("liGestion") as HtmlGenericControl;
+                var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as LinkButton;
+                var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as HtmlGenericControl;
+                var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
+
+                if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
+                {
+                    liGestion.Visible = true;
+                    liCerrarSesion.Visible = true;
+                    lnkIniciarSesion.Visible = false;
+                    liCrearCuenta.Visible = false;
+                }
+            }
+        }
+
+        protected void btnBuscar_ServerClick(object sender, EventArgs e)
+        {
+            string textoBuscar = txtBuscar.Value.Trim();
+            boJuego = new JuegoWSClient();
+
+            if (!string.IsNullOrEmpty(textoBuscar))
+            {
+                try
+                {
+                    int idBuscar = int.Parse(textoBuscar);
+                    juego j = boJuego.obtenerJuegoPorId(idBuscar);
+
+                    if (j != null)
+                    {
+                        gvJuegos.DataSource = new List<juego> { j };
+                        gvJuegos.DataBind();
+                    }
+                    else
+                    {
+                        gvJuegos.DataSource = new List<juego>();
+                        gvJuegos.DataBind();
+                        MostrarMensaje($"No se encontró un juego con ID {idBuscar}");
+                    }
+                }
+                catch
+                {
+                    gvJuegos.DataSource = new List<juego>();
+                    gvJuegos.DataBind();
+                    MostrarMensaje("Error al buscar el juego. Asegúrese de ingresar un ID válido.");
+                }
+            }
+            else
+            {
+                juegos = new BindingList<juego>(boJuego.listarJuegos());
+                gvJuegos.DataSource = juegos;
+                gvJuegos.DataBind();
+            }
+        }
+
+        protected void gvJuegos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int idJuego = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "Modificar")
+            {
+                juego j = boJuego.obtenerJuegoPorId(idJuego);
+                Session["juegoSeleccionado"] = j;
+                Response.Redirect("RegistrarJuego.aspx?accion=modificar");
+            }
+            else if (e.CommandName == "Eliminar")
+            {
+                //boJuego.eliminar(idJuego);
+                Response.Redirect("ListarJuegos.aspx");
+            }
+        }
+
+        private void MostrarMensaje(string mensaje)
+        {
+            lblMensaje.Text = mensaje;
+        }
+    }
+}

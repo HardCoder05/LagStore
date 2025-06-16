@@ -2,8 +2,9 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS TA.INSERTAR_DESARROLLADOR$$
 
 DELIMITER $$
+DROP PROCEDURE IF EXISTS TA.INSERTAR_DESARROLLADOR$$
 CREATE PROCEDURE TA.INSERTAR_DESARROLLADOR(
-	OUT _idDesarrollador INT,
+    OUT _idDesarrollador INT,
     IN _nombre VARCHAR(100),
     IN _email VARCHAR(100),
     IN _contrasena VARCHAR(100),
@@ -14,11 +15,13 @@ CREATE PROCEDURE TA.INSERTAR_DESARROLLADOR(
     IN _ingresoTotal DOUBLE
 )
 BEGIN
-    INSERT INTO Usuario(nombre,email,contrasena,fechaRegistro,telefono,fotoDePerfil,activo,nombreRol)
-    VALUES(_nombre,_email,_contrasena,_fechaRegistro,_telefono,_fotoPerfil,1,"Desarrollador");
-    SET _idDesarrollador=@@last_insert_id;
-    INSERT INTO Desarrollador(idDesarrollador, numeroCuenta,ingresoTotal)
-    VALUES (_idDesarrollador, _numeroCuenta,_ingresoTotal);
+    INSERT INTO Usuario(nombre, email, contrasena, fechaRegistro, telefono, fotoDePerfil, activo, nombreRol)
+    VALUES (_nombre, _email, MD5(_contrasena), _fechaRegistro, _telefono, _fotoPerfil, 1, "Desarrollador");
+
+    SET _idDesarrollador = @@last_insert_id;
+
+    INSERT INTO Desarrollador(idDesarrollador, numeroCuenta, ingresoTotal)
+    VALUES (_idDesarrollador, _numeroCuenta, _ingresoTotal);
 END $$
 
 DELIMITER $$
@@ -89,9 +92,8 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS TA.INSERTAR_JUGADOR$$
-DELIMITER $
 CREATE PROCEDURE TA.INSERTAR_JUGADOR(
-	OUT _idJugador INT,
+    OUT _idJugador INT,
     IN _nombre VARCHAR(100),
     IN _email VARCHAR(100),
     IN _contrasena VARCHAR(100),
@@ -101,12 +103,14 @@ CREATE PROCEDURE TA.INSERTAR_JUGADOR(
     IN _nickname VARCHAR(50)
 )
 BEGIN
-    INSERT INTO Usuario(nombre,email,contrasena,fechaRegistro,telefono,fotoDePerfil,activo,nombreRol)
-    VALUES(_nombre,_email,_contrasena,_fechaRegistro,_telefono,_fotoPerfil,1,"Jugador");
-    SET _idJugador=@@last_insert_id;
+    INSERT INTO Usuario(nombre, email, contrasena, fechaRegistro, telefono, fotoDePerfil, activo, nombreRol)
+    VALUES (_nombre, _email, MD5(_contrasena), _fechaRegistro, _telefono, _fotoPerfil, 1, "Jugador");
+
+    SET _idJugador = @@last_insert_id;
+
     INSERT INTO Jugador(idJugador, nickname)
     VALUES (_idJugador, _nickname);
-END $
+END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS TA.MODIFICAR_JUGADOR$$
@@ -173,12 +177,10 @@ END $$
 -- ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS INSERTAR_ADMINISTRADOR$$
-DELIMITER $$
+DROP PROCEDURE IF EXISTS TA.INSERTAR_ADMINISTRADOR$$
 CREATE PROCEDURE TA.INSERTAR_ADMINISTRADOR(
     OUT _idAdministrador INT,
     IN _rol VARCHAR(50),
-    
     IN _nombre VARCHAR(100),
     IN _email VARCHAR(100),
     IN _contrasena VARCHAR(100),
@@ -187,9 +189,11 @@ CREATE PROCEDURE TA.INSERTAR_ADMINISTRADOR(
     IN _fotoPerfil BLOB
 )
 BEGIN
-	INSERT INTO Usuario(nombre, email, contrasena, fechaRegistro, telefono, fotoDePerfil, activo,nombreRol)
-    VALUES (_nombre, _email, _contrasena, _fechaRegistro, _telefono, _fotoPerfil, 1,"Administrador");
+    INSERT INTO Usuario(nombre, email, contrasena, fechaRegistro, telefono, fotoDePerfil, activo, nombreRol)
+    VALUES (_nombre, _email, MD5(_contrasena), _fechaRegistro, _telefono, _fotoPerfil, 1, "Administrador");
+
     SET _idAdministrador = @@last_insert_id;
+
     INSERT INTO Administrador(idAdministrador, rol)
     VALUES (_idAdministrador, _rol);
 END $$
@@ -261,6 +265,7 @@ END $$
 -- CALL TA.OBTENER_X_ID_JUGADOR(2);
 
 DELIMITER //
+DROP PROCEDURE IF EXISTS VERIFICAR_CUENTA_USUARIO //
 CREATE PROCEDURE VERIFICAR_CUENTA_USUARIO (
     IN p_email VARCHAR(100),
     IN p_contrasena VARCHAR(100)
@@ -268,7 +273,7 @@ CREATE PROCEDURE VERIFICAR_CUENTA_USUARIO (
 BEGIN
     SELECT id
     FROM Usuario
-    WHERE email = p_email AND contrasena = p_contrasena AND activo = 1;
+    WHERE email = p_email AND contrasena = MD5(p_contrasena) AND activo = 1;
 END //
 
 DELIMITER //
