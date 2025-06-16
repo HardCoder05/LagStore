@@ -31,12 +31,15 @@ namespace LagStoreWA
             switch (ddlTipoUsuario.SelectedValue)
             {
                 case "Desarrollador":
+                    formRegistro.Attributes["style"] = "padding-top: 60px; padding-bottom: 60px;";
                     pnlDesarrollador.Visible = true;
                     break;
                 case "Jugador":
+                    formRegistro.Attributes["style"] = "padding-top: 30px; padding-bottom: 30px;";
                     pnlJugador.Visible = true;
                     break;
                 case "Administrador":
+                    formRegistro.Attributes["style"] = "padding-top: 30px; padding-bottom: 30px;";
                     pnlAdministrador.Visible = true;
                     break;
             }
@@ -118,7 +121,8 @@ namespace LagStoreWA
                     telefono = txtTelefono.Text.Trim(),
                     fotoDePerfil = txtFoto.Text.Trim(),
                     nickname = txtNickname.Text.Trim(),
-                    fechaRegistro = DateTime.Now
+                    fechaRegistro = DateTime.Now.Date,
+                    rolUsuario = rol.Jugador
                 };
 
                 int resultado = jugadorWSClient.insertarJugador(jugadorNuevo);
@@ -168,7 +172,8 @@ namespace LagStoreWA
                     fotoDePerfil = txtFoto.Text.Trim(),
                     numeroCuenta = txtNumeroCuenta.Text.Trim(),
                     ingresoTotal = ingresoTotal,
-                    fechaRegistro = DateTime.Now
+                    fechaRegistro = DateTime.Now,
+                    rolUsuario = rol.Desarrollador
                 };
 
                 int resultado = desarrolladorWSClient.insertarDesarrollador(desarrolladorNuevo);
@@ -207,7 +212,8 @@ namespace LagStoreWA
                     telefono = txtTelefono.Text.Trim(),
                     fotoDePerfil = txtFoto.Text.Trim(),
                     rolAdministrativo = txtRolAdmin.Text.Trim(),
-                    fechaRegistro = DateTime.Now
+                    fechaRegistro = DateTime.Now,
+                    rolUsuario = rol.Administrador
                 };
 
                 int resultado = administradorWSCLient.insertarAdministrador(administradorNuevo);

@@ -12,10 +12,11 @@ namespace LagStoreWA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Usuario"] != null)
+            if (Session["Jugador"] != null || Session["Desarrollador"] != null
+                || Session["Administrador"] != null)
             {
                 // Si el usuario está autenticado, mostrar su email y el enlace de cerrar sesión
-                var usu = (usuario)Session["Usuario"];
+                //var usu = (usuario)Session["Usuario"];
                 //lblUsuario.Text = $"Bienvenido, {usuario.email}";
                 lnkIniciarSesion.Visible = false;
                 liCerrarSesion.Visible = true;

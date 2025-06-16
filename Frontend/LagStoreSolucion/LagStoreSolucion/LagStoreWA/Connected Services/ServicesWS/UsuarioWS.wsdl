@@ -11,15 +11,34 @@
   <message name="verificaUsuarioResponse">
     <part name="parameters" element="tns:verificaUsuarioResponse" />
   </message>
+  <message name="obtenerRol">
+    <part name="parameters" element="tns:obtenerRol" />
+  </message>
+  <message name="obtenerRolResponse">
+    <part name="parameters" element="tns:obtenerRolResponse" />
+  </message>
   <portType name="UsuarioWS">
     <operation name="verificaUsuario">
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/verificaUsuarioRequest" message="tns:verificaUsuario" />
       <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/verificaUsuarioResponse" message="tns:verificaUsuarioResponse" />
     </operation>
+    <operation name="obtenerRol">
+      <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/obtenerRolRequest" message="tns:obtenerRol" />
+      <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/obtenerRolResponse" message="tns:obtenerRolResponse" />
+    </operation>
   </portType>
   <binding name="UsuarioWSPortBinding" type="tns:UsuarioWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="verificaUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerRol">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

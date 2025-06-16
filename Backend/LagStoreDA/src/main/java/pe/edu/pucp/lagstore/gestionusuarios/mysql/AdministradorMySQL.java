@@ -1,23 +1,25 @@
 package pe.edu.pucp.lagstore.gestionusuarios.mysql;
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.sql.Types;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.AdministradorDAO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Administrador;
+import pe.edu.pucp.lagstore.gestusuarios.model.Rol;
 
 public class AdministradorMySQL implements AdministradorDAO{
-    private Connection con;
     private ResultSet rs;
 
-   
+    
     @Override
     public int insertar(Administrador administrador) {
         Map<Integer,Object> parametrosSalida = new HashMap<>();   
@@ -28,11 +30,15 @@ public class AdministradorMySQL implements AdministradorDAO{
         parametrosEntrada.put(3, administrador.getNombre());
         parametrosEntrada.put(4, administrador.getEmail());
         parametrosEntrada.put(5, administrador.getContrasena());
+        LocalDate localDate = LocalDate.now();
+        administrador.setFechaRegistro(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         parametrosEntrada.put(6, administrador.getFechaRegistro());
         parametrosEntrada.put(7, administrador.getTelefono());
         parametrosEntrada.put(8, administrador.getFotoDePerfil());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ADMINISTRADOR", parametrosEntrada, parametrosSalida);
+        administrador.setRolUsuario(Rol.Administrador);
         administrador.setIdUsuario((int) parametrosSalida.get(1));
+        administrador.setIdAdministrador(administrador.getIdUsuario());
         System.out.println("Se ha realizado el registro del administrador");
         return administrador.getIdUsuario();
     }
@@ -78,6 +84,8 @@ public class AdministradorMySQL implements AdministradorDAO{
                 a.setTelefono(rs.getString(6));
                 a.setFotoDePerfil(rs.getString(7));
                 a.setRolAdministrativo(rs.getString(8));
+                a.setRolUsuario(Rol.Administrador);
+                a.setActivo(1);
                 administradores.add(a);
             }
         }catch(SQLException ex){
@@ -107,6 +115,8 @@ public class AdministradorMySQL implements AdministradorDAO{
                 administrador.setTelefono(rs.getString(5));
                 administrador.setFotoDePerfil(rs.getString(6));
                 administrador.setRolAdministrativo(rs.getString(7));
+                administrador.setRolUsuario(Rol.Administrador);
+                administrador.setActivo(1);
                 System.out.println(administrador);
             }
         } catch (SQLException ex) {

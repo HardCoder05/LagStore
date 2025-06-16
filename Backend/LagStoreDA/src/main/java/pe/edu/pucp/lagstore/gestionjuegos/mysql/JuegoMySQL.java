@@ -150,8 +150,20 @@ public class JuegoMySQL implements JuegoDAO{
                 juego.setFechaUltimaActualizacion(rs.getDate("fechaUltimaActualizacion"));
                 juego.setGenero(Genero.valueOf(rs.getString("nombreGenero")));
                 juego.setModeloNegocio(ModeloNegocio.valueOf(rs.getString("modelo")));
-                juego.setDesarrollador(new DesarrolladorMySQL().obtenerPorId(rs.getInt("desarrollador_idDesarrollador")));
                 juego.setActivo(rs.getInt("activo"));
+                
+                Desarrollador dev = new Desarrollador();
+                dev.setIdDesarrollador(rs.getInt("desarrollador_idDesarrollador"));
+                dev.setIdUsuario(rs.getInt("idUsuario"));
+                dev.setNombre(rs.getString("nombre"));
+                dev.setEmail(rs.getString("email"));
+                dev.setContrasena(rs.getString("contrasena"));
+                dev.setFechaRegistro(rs.getDate("fechaRegistro"));
+                dev.setTelefono(rs.getString("telefono"));
+                dev.setFotoDePerfil(rs.getString("fotoDePerfil"));
+                dev.setNumeroCuenta(rs.getString("numeroCuenta"));
+                dev.setIngresoTotal(rs.getDouble("ingresoTotal"));
+                juego.setDesarrollador(dev);
             }
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());

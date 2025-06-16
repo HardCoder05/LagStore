@@ -1,31 +1,32 @@
 ﻿using LagStoreWA.ServicesWS;
 using System;
-using System.IO;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 
 namespace LagStoreWA
 {
     public partial class PerfilUsuario : System.Web.UI.Page
     {
-        private UsuarioWSClient wsUsuario;
-        private usuario usuarioActual;
-        private JugadorWSClient wsJugador;
+        private JugadorWSClient wsJugador = new JugadorWSClient();
+        private DesarrolladorWSClient wsDesarrollador = new DesarrolladorWSClient();
+        private AdministradorWSClient wsAdministrador = new AdministradorWSClient();
+        private jugador jugadorActual = null;
+        private desarrollador desarrolladorActual = null;
+        private administrador administradorActual = null;
+        private rol rolUsuario = rol.Jugador;
+        private int idUsuarioActual = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             // Verificar si el usuario está logueado
-            if (Session["Usuario"] == null)
+            if (Session["Jugador"] == null && Session["Desarrollador"] == null
+                && Session["Administrador"] == null)
             {
                 Response.Redirect("InicioSesion.aspx");
                 return;
             }
 
-            wsUsuario = new UsuarioWSClient();
-            usuarioActual = (usuario)Session["Usuario"];
-            wsJugador = new JugadorWSClient();
+            idUsuarioActual = (int)Session["usuarioId"];
+            rolUsuario = (rol)Session["RolUsuario"];
 
             if (!IsPostBack)
             {
@@ -37,62 +38,137 @@ namespace LagStoreWA
         {
             try
             {
-                // Obtener datos actualizados del usuario
-                jugador juga = wsJugador.obtenerJugadorPorID(11);
-                //Session["Jugador"] = juga;
-                usuario usu = new usuario
+                if (rolUsuario == rol.Jugador)
                 {
-                    idUsuario = juga.idJugador,
-                    nombre = juga.nombre,
-                    email = juga.email,
-                    telefono = juga.telefono,
-                    contrasena = juga.contrasena,
-                    fechaRegistro = juga.fechaRegistro,
-                    fotoDePerfil = juga.fotoDePerfil,
-                    rolUsuario = juga.rolUsuario,
-                    activo = juga.activo
-                };
+                    // Cargar datos del jugador
+                    jugadorActual = wsJugador.obtenerJugadorPorID(idUsuarioActual);
 
-                if (usu != null)
+                    if (jugadorActual != null)
+                    {
+                        Session["Jugador"] = jugadorActual;
+                        lblNombreUsuario.Text = jugadorActual.nickname;
+
+                        lblEmailUsuario.Text = jugadorActual.email;
+                        lblFechaRegistro.Text = FormatearFecha(jugadorActual.fechaRegistro);
+
+                        // Estado del usuario
+                        if (jugadorActual.activo == 1)
+                        {
+                            lblEstadoUsuario.Text = "Activo";
+                            lblEstadoUsuario.CssClass = "status-badge status-active";
+                            lblEstadoCuenta.Text = "Cuenta Activa";
+                        }
+                        else
+                        {
+                            lblEstadoUsuario.Text = "Inactivo";
+                            lblEstadoUsuario.CssClass = "status-badge status-inactive";
+                            lblEstadoCuenta.Text = "Cuenta Inactiva";
+                        }
+
+
+                        // Cargar datos en los formularios
+                        txtNombre.Text = jugadorActual.nombre;
+                        txtEmail.Text = jugadorActual.email;
+                        txtTelefono.Text = jugadorActual.telefono ?? "";
+
+                        // Información adicional
+                        lblRolUsuario.Text = jugadorActual.rolUsuario.ToString();
+                        lblIdUsuario.Text = jugadorActual.idJugador.ToString();
+                        lblUltimoAcceso.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
+                        // Cargar foto de perfil
+                        imgPerfil.ImageUrl = jugadorActual.fotoDePerfil;
+                    }
+                }
+                else if (rolUsuario == rol.Desarrollador)
                 {
-                    // Actualizar información en la sesión
-                    Session["Usuario"] = usu;
-                    usuarioActual = usu;
-
-                    // Cargar datos en el header
-                    lblNombreUsuario.Text = juga.nickname;
-                    lblEmailUsuario.Text = usu.email;
-                    lblFechaRegistro.Text = FormatearFecha(usu.fechaRegistro);
-
-                    // Estado del usuario
-                    if (usu.activo == 1)
+                    // Cargar datos del desarrollador
+                    desarrolladorActual = wsDesarrollador.obtenerDesarrolladorPorID(idUsuarioActual);
+                    if (desarrolladorActual != null)
                     {
-                        lblEstadoUsuario.Text = "Activo";
-                        lblEstadoUsuario.CssClass = "status-badge status-active";
-                        lblEstadoCuenta.Text = "Cuenta Activa";
+                        Session["Desarrollador"] = desarrolladorActual;
+                        lblNombreUsuario.Text = desarrolladorActual.nombre;
+
+                        lblEmailUsuario.Text = desarrolladorActual.email;
+                        lblFechaRegistro.Text = FormatearFecha(desarrolladorActual.fechaRegistro);
+
+                        // Estado del usuario
+                        if (desarrolladorActual.activo == 1)
+                        {
+                            lblEstadoUsuario.Text = "Activo";
+                            lblEstadoUsuario.CssClass = "status-badge status-active";
+                            lblEstadoCuenta.Text = "Cuenta Activa";
+                        }
+                        else
+                        {
+                            lblEstadoUsuario.Text = "Inactivo";
+                            lblEstadoUsuario.CssClass = "status-badge status-inactive";
+                            lblEstadoCuenta.Text = "Cuenta Inactiva";
+                        }
+
+
+                        // Cargar datos en los formularios
+                        txtNombre.Text = desarrolladorActual.nombre;
+                        txtEmail.Text = desarrolladorActual.email;
+                        txtTelefono.Text = desarrolladorActual.telefono ?? "";
+
+                        // Información adicional
+                        lblRolUsuario.Text = desarrolladorActual.rolUsuario.ToString();
+                        lblIdUsuario.Text = desarrolladorActual.idDesarrollador.ToString();
+                        lblUltimoAcceso.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
+                        // Cargar foto de perfil
+                        imgPerfil.ImageUrl = desarrolladorActual.fotoDePerfil;
+
+                        //Atributos específicos del desarrollador
+                        NumCuenta.Visible = true;
+                        lblNumCuenta.Text = desarrolladorActual.numeroCuenta;
+                        IngresoTotal.Visible = true;
+                        lblIngresoTotal.Text = desarrolladorActual.ingresoTotal.ToString("C2");
                     }
-                    else
+                }
+                else if (rolUsuario == rol.Administrador)
+                {
+                    // Cargar datos del desarrollador
+                    administradorActual = wsAdministrador.obtenerAdministradorPorID(idUsuarioActual);
+                    if (administradorActual != null)
                     {
-                        lblEstadoUsuario.Text = "Inactivo";
-                        lblEstadoUsuario.CssClass = "status-badge status-inactive";
-                        lblEstadoCuenta.Text = "Cuenta Inactiva";
+                        Session["Administrador"] = administradorActual;
+                        lblNombreUsuario.Text = administradorActual.nombre;
+
+                        lblEmailUsuario.Text = administradorActual.email;
+                        lblFechaRegistro.Text = FormatearFecha(administradorActual.fechaRegistro);
+
+                        // Estado del usuario
+                        if (administradorActual.activo == 1)
+                        {
+                            lblEstadoUsuario.Text = "Activo";
+                            lblEstadoUsuario.CssClass = "status-badge status-active";
+                            lblEstadoCuenta.Text = "Cuenta Activa";
+                        }
+                        else
+                        {
+                            lblEstadoUsuario.Text = "Inactivo";
+                            lblEstadoUsuario.CssClass = "status-badge status-inactive";
+                            lblEstadoCuenta.Text = "Cuenta Inactiva";
+                        }
+
+
+                        // Cargar datos en los formularios
+                        txtNombre.Text = administradorActual.nombre;
+                        txtEmail.Text = administradorActual.email;
+                        txtTelefono.Text = administradorActual.telefono ?? "";
+
+                        // Información adicional
+                        lblRolUsuario.Text = administradorActual.rolUsuario.ToString();
+                        lblIdUsuario.Text = administradorActual.idAdministrador.ToString();
+                        lblUltimoAcceso.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
+                        // Cargar foto de perfil
+                        imgPerfil.ImageUrl = administradorActual.fotoDePerfil;
+                        RolAdministrativo.Visible = true;
+                        lblRolAdministrativo.Text = administradorActual.rolAdministrativo;
                     }
-
-                    
-                    // Cargar datos en los formularios
-                    txtNombre.Text = usu.nombre;
-                    txtEmail.Text = usu.email;
-                    txtTelefono.Text = usu.telefono ?? "";
-
-                    // Información adicional
-                    lblRolUsuario.Text = usu.rolUsuario.ToString();
-                    lblIdUsuario.Text = usu.idUsuario.ToString();
-                    lblUltimoAcceso.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-
-                    // Cargar foto de perfil
-                    //CargarFotoPerfil();
-                    imgPerfil.ImageUrl = usu.fotoDePerfil;
-                    imgPerfilGrande.ImageUrl = usu.fotoDePerfil;
                 }
                 else
                 {
@@ -103,23 +179,6 @@ namespace LagStoreWA
             {
                 MostrarMensaje("Error al cargar el perfil: " + ex.Message, "alert-danger");
             }
-        }
-
-        private void CargarFotoPerfil(string rutaFoto)
-        {
-            string urlFoto = "~/Assets/default-avatar.jpg";
-
-            if (!string.IsNullOrEmpty(rutaFoto))
-            {
-                string rutaCompleta = Server.MapPath("~/Assets/ProfilePictures/" + rutaFoto);
-                if (File.Exists(rutaCompleta))
-                {
-                    urlFoto = "~/Assets/ProfilePictures/" + rutaFoto;
-                }
-            }
-
-            imgPerfil.ImageUrl = urlFoto;
-            imgPerfilGrande.ImageUrl = urlFoto;
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)
@@ -153,56 +212,35 @@ namespace LagStoreWA
                     return;
                 }
 
-                // Crear objeto usuario con datos actualizados
-                usuario usuarioActualizado = new usuario
-                {
-                    idUsuario = usuarioActual.idUsuario,
-                    nombre = txtNombre.Text.Trim(),
-                    email = txtEmail.Text.Trim(),
-                    telefono = txtTelefono.Text.Trim(),
-                    contrasena = usuarioActual.contrasena, // Mantener la contraseña actual
-                    fechaRegistro = usuarioActual.fechaRegistro,
-                    fotoDePerfil = usuarioActual.fotoDePerfil,
-                    rolUsuario = usuarioActual.rolUsuario,
-                    activo = usuarioActual.activo
-                };
-
                 // Verificar si se está cambiando la contraseña
-                if (!string.IsNullOrEmpty(txtContrasenaActual.Text) ||
-                    !string.IsNullOrEmpty(txtNuevaContrasena.Text) ||
-                    !string.IsNullOrEmpty(txtConfirmarContrasena.Text))
-                {
-                    if (!ValidarCambioContrasena())
-                        return;
+                bool cambiarContrasena = !string.IsNullOrEmpty(txtContrasenaActual.Text) ||
+                                        !string.IsNullOrEmpty(txtNuevaContrasena.Text) ||
+                                        !string.IsNullOrEmpty(txtConfirmarContrasena.Text);
 
-                    usuarioActualizado.contrasena = txtNuevaContrasena.Text;
+                if (cambiarContrasena && !ValidarCambioContrasena())
+                    return;
+
+                // Actualizar según el rol del usuario
+                bool resultado = false;
+
+                if (rolUsuario == rol.Jugador)
+                {
+                    resultado = ActualizarJugador(cambiarContrasena);
+                }
+                else if (rolUsuario == rol.Desarrollador)
+                {
+                    resultado = ActualizarDesarrollador(cambiarContrasena);
+                }
+                else if (rolUsuario == rol.Administrador)
+                {
+                    resultado = ActualizarAdministrador(cambiarContrasena);
                 }
 
-                // Actualizar usuario
-                jugador jug = new jugador();
-                wsJugador = new JugadorWSClient();
-                jug.idUsuario = usuarioActualizado.idUsuario;
-                jug.nombre = usuarioActualizado.nombre;
-                jug.email = usuarioActualizado.email;
-                jug.telefono = usuarioActualizado.telefono;
-                jug.contrasena = usuarioActualizado.contrasena;
-                jug.fechaRegistro = usuarioActualizado.fechaRegistro;
-                jug.fotoDePerfil = usuarioActualizado.fotoDePerfil;
-                jug.rolUsuario = usuarioActualizado.rolUsuario;
-                jug.activo = usuarioActualizado.activo;
-
-                int resultado = wsJugador.modificarJugador(jug);
-
-                if (resultado > 0)
+                if (resultado)
                 {
-                    // Actualizar sesión
-                    Session["Usuario"] = usuarioActualizado;
-
                     // Limpiar campos de contraseña
                     LimpiarCamposContrasena();
-
                     MostrarMensaje("Perfil actualizado exitosamente", "alert-success");
-
                     // Recargar datos
                     CargarDatosUsuario();
                 }
@@ -217,6 +255,88 @@ namespace LagStoreWA
             }
         }
 
+        private bool ActualizarJugador(bool cambiarContrasena)
+        {
+            jugador jugadorActualizado = new jugador
+            {
+                idJugador = jugadorActual.idJugador,
+                nickname = jugadorActual.nickname, // Mantener nickname original
+                nombre = txtNombre.Text.Trim(),
+                email = txtEmail.Text.Trim(),
+                telefono = txtTelefono.Text.Trim(),
+                contrasena = cambiarContrasena ? txtNuevaContrasena.Text : jugadorActual.contrasena,
+                fechaRegistro = jugadorActual.fechaRegistro,
+                fotoDePerfil = jugadorActual.fotoDePerfil,
+                rolUsuario = jugadorActual.rolUsuario,
+                activo = jugadorActual.activo
+            };
+
+            int resultado = wsJugador.modificarJugador(jugadorActualizado);
+
+            if (resultado > 0)
+            {
+                Session["Jugador"] = jugadorActualizado;
+                jugadorActual = jugadorActualizado;
+                return true;
+            }
+            return false;
+        }
+
+        private bool ActualizarDesarrollador(bool cambiarContrasena)
+        {
+            desarrollador desarrolladorActualizado = new desarrollador
+            {
+                idDesarrollador = desarrolladorActual.idDesarrollador,
+                nombre = txtNombre.Text.Trim(),
+                email = txtEmail.Text.Trim(),
+                telefono = txtTelefono.Text.Trim(),
+                contrasena = cambiarContrasena ? txtNuevaContrasena.Text : desarrolladorActual.contrasena,
+                fechaRegistro = desarrolladorActual.fechaRegistro,
+                fotoDePerfil = desarrolladorActual.fotoDePerfil,
+                rolUsuario = desarrolladorActual.rolUsuario,
+                numeroCuenta = desarrolladorActual.numeroCuenta,
+                ingresoTotal = desarrolladorActual.ingresoTotal,
+                activo = desarrolladorActual.activo
+            };
+
+            int resultado = wsDesarrollador.modificarDesarrollador(desarrolladorActualizado);
+
+            if (resultado > 0)
+            {
+                Session["Desarrollador"] = desarrolladorActualizado;
+                desarrolladorActual = desarrolladorActualizado;
+                return true;
+            }
+            return false;
+        }
+
+        private bool ActualizarAdministrador(bool cambiarContrasena)
+        {
+            administrador administradorActualizado = new administrador
+            {
+                idAdministrador = administradorActual.idAdministrador,
+                nombre = txtNombre.Text.Trim(),
+                email = txtEmail.Text.Trim(),
+                telefono = txtTelefono.Text.Trim(),
+                contrasena = cambiarContrasena ? txtNuevaContrasena.Text : administradorActual.contrasena,
+                fechaRegistro = administradorActual.fechaRegistro,
+                fotoDePerfil = administradorActual.fotoDePerfil,
+                rolUsuario = administradorActual.rolUsuario,
+                rolAdministrativo = administradorActual.rolAdministrativo,
+                activo = administradorActual.activo
+            };
+
+            int resultado = wsAdministrador.modificarAdministrador(administradorActualizado);
+
+            if (resultado > 0)
+            {
+                Session["Administrador"] = administradorActualizado;
+                administradorActual = administradorActualizado;
+                return true;
+            }
+            return false;
+        }
+
         private bool ValidarCambioContrasena()
         {
             // Verificar que todos los campos estén llenos
@@ -228,8 +348,25 @@ namespace LagStoreWA
                 return false;
             }
 
-            // Verificar contraseña actual
-            if (txtContrasenaActual.Text != usuarioActual.contrasena)
+            // Verificar contraseña actual según el rol
+            string contrasenaActual = "";
+            if (rolUsuario == rol.Jugador)
+            {
+                jugadorActual = (jugador)Session["Jugador"];
+                contrasenaActual = jugadorActual.contrasena;
+            }
+            else if (rolUsuario == rol.Desarrollador)
+            {
+                desarrolladorActual = (desarrollador)Session["Desarrollador"];
+                contrasenaActual = desarrolladorActual.contrasena;
+            }
+            else if (rolUsuario == rol.Administrador)
+            {
+                administradorActual = (administrador)Session["Administrador"];
+                contrasenaActual = administradorActual.contrasena;
+            }
+
+            if (txtContrasenaActual.Text != contrasenaActual)
             {
                 MostrarMensaje("La contraseña actual no es correcta", "alert-warning");
                 return false;
@@ -239,6 +376,13 @@ namespace LagStoreWA
             if (txtNuevaContrasena.Text != txtConfirmarContrasena.Text)
             {
                 MostrarMensaje("Las contraseñas nuevas no coinciden", "alert-warning");
+                return false;
+            }
+
+            // Verificar que la nueva contraseña sea diferente a la actual
+            if (txtNuevaContrasena.Text == contrasenaActual)
+            {
+                MostrarMensaje("La nueva contraseña debe ser diferente a la actual", "alert-warning");
                 return false;
             }
 
@@ -261,97 +405,10 @@ namespace LagStoreWA
             return true;
         }
 
-        protected void btnSubirFoto_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (fuFotoPerfil.HasFile)
-                {
-                    // Validar tipo de archivo
-                    string extension = Path.GetExtension(fuFotoPerfil.FileName).ToLower();
-                    if (extension != ".jpg" && extension != ".jpeg" && extension != ".png")
-                    {
-                        MostrarMensaje("Solo se permiten archivos JPG y PNG", "alert-warning");
-                        return;
-                    }
-
-                    // Validar tamaño (2MB máximo)
-                    if (fuFotoPerfil.PostedFile.ContentLength > 2 * 1024 * 1024)
-                    {
-                        MostrarMensaje("El archivo no puede ser mayor a 2MB", "alert-warning");
-                        return;
-                    }
-
-                    // Crear directorio si no existe
-                    string directorioFotos = Server.MapPath("~/Assets/ProfilePictures/");
-                    if (!Directory.Exists(directorioFotos))
-                    {
-                        Directory.CreateDirectory(directorioFotos);
-                    }
-
-                    // Generar nombre único para el archivo
-                    string nombreArchivo = "perfil_" + usuarioActual.idUsuario + "_" +
-                                         DateTime.Now.ToString("yyyyMMddHHmmss") + extension;
-                    string rutaCompleta = Path.Combine(directorioFotos, nombreArchivo);
-
-                    // Eliminar foto anterior si existe
-                    if (!string.IsNullOrEmpty(usuarioActual.fotoDePerfil))
-                    {
-                        string fotoAnterior = Path.Combine(directorioFotos, usuarioActual.fotoDePerfil);
-                        if (File.Exists(fotoAnterior))
-                        {
-                            File.Delete(fotoAnterior);
-                        }
-                    }
-
-                    // Guardar nueva foto
-                    fuFotoPerfil.SaveAs(rutaCompleta);
-
-                    // Actualizar base de datos
-                    usuario usuarioActualizado = usuarioActual;
-                    usuarioActualizado.fotoDePerfil = nombreArchivo;
-
-                    //bool resultado = wsUsuario.actualizarUsuario(usuarioActualizado);
-
-                    //if (resultado)
-                    //{
-                    //    Session["Usuario"] = usuarioActualizado;
-                    //    CargarFotoPerfil(nombreArchivo);
-                    //    MostrarMensaje("Foto de perfil actualizada exitosamente", "alert-success");
-                    //}
-                    //else
-                    //{
-                    //    MostrarMensaje("Error al actualizar la foto de perfil", "alert-danger");
-                    //}
-                }
-                else
-                {
-                    MostrarMensaje("Por favor seleccione una imagen", "alert-warning");
-                }
-            }
-            catch (Exception ex)
-            {
-                MostrarMensaje("Error al subir la foto: " + ex.Message, "alert-danger");
-            }
-        }
-
-        // Métodos auxiliares
+        //Métodos auxiliares
         private string FormatearFecha(DateTime fecha)
         {
             return fecha.ToString("dd 'de' MMMM 'de' yyyy");
-        }
-
-        private string FormatearRol(rol rolUsu)
-        {
-            switch (rolUsu)
-            {
-                case rol.Administrador:
-                    return "Administrador";
-                case rol.Jugador:
-                    return "Jugador";
-                default:
-                    return "Usuario";
-            }
         }
 
         private bool ValidarEmail(string email)
@@ -380,9 +437,5 @@ namespace LagStoreWA
             pnlMensaje.Visible = true;
         }
 
-        protected void Page_UnLoad(object sender, EventArgs e)
-        {
-            wsUsuario?.Close();
-        }
     }
 }

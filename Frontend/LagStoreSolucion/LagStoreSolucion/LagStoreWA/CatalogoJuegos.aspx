@@ -1,30 +1,74 @@
 ﻿<%@ Page Title="Catálogo de Juegos" Language="C#" MasterPageFile="~/LagStore.Master" AutoEventWireup="true" CodeBehind="CatalogoJuegos.aspx.cs" Inherits="LagStoreWA.CatalogoJuegos" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Title" runat="server">
     LagStore - Catálogo de Juegos
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
     <style>
-        .filter-card {
-            background: #f8f9fa;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        body {
+            background: #1a1a2e;
+            color: white;
         }
+
+        /* Cards de filtros y juegos */
+        .filter-card,
+        .filter-section,
+        .card {
+            background: #2c2f48;
+            color: white;
+        }
+
+        /* Etiquetas */
+        .text-dark {
+            color: white !important;
+        }
+
+        .text-muted {
+            color: #a6a6c0 !important;
+        }
+
+        /* Títulos */
+        h2, h5, h4 {
+            color: white;
+        }
+
+        /* Estilo del input y select para modo oscuro */
+        .form-control,
+        .form-select {
+            background-color: #1a1a2e;
+            color: white;
+            border: 1px solid #4c4c6d;
+        }
+
+        .form-control::placeholder {
+            color: #cccccc;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background-color: #1a1a2e;
+            color: white;
+            border-color: #007bff;
+            box-shadow: none;
+        }
+
         .game-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 12px;
             overflow: hidden;
         }
+
         .game-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
+
         .game-image {
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             width: 100%;
         }
+
         .price-tag {
             background: linear-gradient(45deg, #007bff, #0056b3);
             color: white;
@@ -32,15 +76,22 @@
             border-radius: 20px;
             font-weight: bold;
         }
+
         .free-tag {
             background: linear-gradient(45deg, #28a745, #1e7e34);
         }
+
         .filter-section {
-            background: white;
+            background: #484f85;
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 1rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        body{
+            background: #1a1a2e;
+            color: white;
         }
     </style>
 </asp:Content>
@@ -115,7 +166,7 @@
         <!-- Catálogo de Juegos -->
         <div class="col-lg-9 col-md-8">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fw-bold text-dark">
+                <h2 class="fw-bold text-white">
                     <i class="fas fa-gamepad text-primary me-2"></i>Catálogo de Juegos
                 </h2>
                 <asp:Label ID="lblResultados" runat="server" CssClass="text-muted"></asp:Label>

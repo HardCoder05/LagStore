@@ -6,12 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.sql.Types;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.JugadorDAO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
+import pe.edu.pucp.lagstore.gestusuarios.model.Rol;
 
 public class JugadorMySQL implements JugadorDAO{
     
@@ -25,6 +28,8 @@ public class JugadorMySQL implements JugadorDAO{
         parametrosEntrada.put(2, jugador.getNombre());
         parametrosEntrada.put(3, jugador.getEmail());
         parametrosEntrada.put(4, jugador.getContrasena());
+        LocalDate localDate = LocalDate.now();
+        jugador.setFechaRegistro(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         parametrosEntrada.put(5, jugador.getFechaRegistro());
         parametrosEntrada.put(6, jugador.getTelefono());
         parametrosEntrada.put(7, jugador.getFotoDePerfil());
@@ -32,7 +37,9 @@ public class JugadorMySQL implements JugadorDAO{
         
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_JUGADOR", parametrosEntrada, parametrosSalida);
         
+        jugador.setRolUsuario(Rol.Jugador);
         jugador.setIdJugador((int) parametrosSalida.get(1));
+        jugador.setIdUsuario(jugador.getIdJugador());
         
         System.out.println("Se ha realizado el registro del jugador");
         
@@ -73,6 +80,7 @@ public class JugadorMySQL implements JugadorDAO{
             while(rs.next()){
                 Jugador j = new Jugador();
                 j.setIdJugador(rs.getInt(1));
+                j.setIdUsuario(j.getIdJugador());
                 j.setNombre(rs.getString(2));
                 j.setEmail(rs.getString(3));
                 j.setContrasena(rs.getString(4));
@@ -80,6 +88,8 @@ public class JugadorMySQL implements JugadorDAO{
                 j.setTelefono(rs.getString(6));
                 j.setFotoDePerfil(rs.getString(7));
                 j.setNickname(rs.getString(8));
+                j.setRolUsuario(Rol.Jugador);
+                j.setActivo(1);
                 jugadores.add(j);
             }
         }catch(SQLException ex){
@@ -102,6 +112,7 @@ public class JugadorMySQL implements JugadorDAO{
             if (rs.next()) {
                 jugador = new Jugador();
                 jugador.setIdJugador(idJugador);
+                jugador.setIdUsuario(idJugador);
                 jugador.setNombre(rs.getString(1));
                 jugador.setEmail(rs.getString(2));
                 jugador.setContrasena(rs.getString(3));
@@ -109,6 +120,7 @@ public class JugadorMySQL implements JugadorDAO{
                 jugador.setTelefono(rs.getString(5));
                 jugador.setFotoDePerfil(rs.getString(6));
                 jugador.setNickname(rs.getString(7));
+                jugador.setRolUsuario(Rol.Jugador);
                 jugador.setActivo(1);
 
                 System.out.println(jugador);

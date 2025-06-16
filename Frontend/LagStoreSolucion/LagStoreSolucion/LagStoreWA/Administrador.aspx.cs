@@ -12,24 +12,30 @@ namespace LagStoreWA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-                if (!IsPostBack)
-                {
-                    // Accedemos al Master Page
-                    var liGestion = this.Master.FindControl("liGestion") as System.Web.UI.HtmlControls.HtmlGenericControl;
-                    var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
-                    var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
-                    var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
-                    if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
-                    {
-                        // Mostrar menú gestión y cerrar sesión
-                        liGestion.Visible = true;
-                        liCerrarSesion.Visible = true;
+            if (Session["Administrador"] == null)
+            {
+                // Si no hay un administrador en sesión, redirigir a la página de inicio de sesión
+                Response.Redirect("InicioSesion.aspx");
+            }
 
-                        // Ocultar iniciar sesión y crear cuenta
-                        lnkIniciarSesion.Visible = false;
-                        liCrearCuenta.Visible = false;
-                    }
+            if (!IsPostBack)
+            {
+                // Accedemos al Master Page
+                var liGestion = this.Master.FindControl("liGestion") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
+                var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
+                if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
+                {
+                    // Mostrar menú gestión y cerrar sesión
+                    liGestion.Visible = true;
+                    liCerrarSesion.Visible = true;
+
+                    // Ocultar iniciar sesión y crear cuenta
+                    lnkIniciarSesion.Visible = false;
+                    liCrearCuenta.Visible = false;
                 }
+            }
           
         }
     }

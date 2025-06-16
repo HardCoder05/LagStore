@@ -1,31 +1,27 @@
 package pe.edu.pucp.lagstore.gestionusuarios.mysql;
-import java.sql.Connection;
+
 import java.sql.Date;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.sql.Types;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+
 import java.util.Map;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.DesarrolladorDAO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
+import pe.edu.pucp.lagstore.gestusuarios.model.Rol;
 
 
 public class DesarrolladorMySQL implements DesarrolladorDAO{
-    private Connection con;
-    private PreparedStatement pst;
     private ResultSet rs;
-    private Statement st;
-    SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
     
     @Override
     public int insertar(Desarrollador desarrollador) {
@@ -35,23 +31,18 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
         parametrosEntrada.put(2, desarrollador.getNombre());
         parametrosEntrada.put(3, desarrollador.getEmail());
         parametrosEntrada.put(4, desarrollador.getContrasena());
-        if(desarrollador.getFechaRegistro()==null){
-            try {
-                parametrosEntrada.put(5,sdf.parse("2025-06-04"));
-            } catch (ParseException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
-        else{
-            parametrosEntrada.put(5, desarrollador.getFechaRegistro());
-        }
-        
+        LocalDate localDate = LocalDate.now();
+        desarrollador.setFechaRegistro(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        parametrosEntrada.put(5, desarrollador.getFechaRegistro());
         parametrosEntrada.put(6, desarrollador.getTelefono());
         parametrosEntrada.put(7, desarrollador.getFotoDePerfil());
         parametrosEntrada.put(8, desarrollador.getNumeroCuenta());
         parametrosEntrada.put(9, desarrollador.getIngresoTotal());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_DESARROLLADOR", parametrosEntrada, parametrosSalida);
+        
+        desarrollador.setRolUsuario(Rol.Desarrollador);
         desarrollador.setIdDesarrollador((int) parametrosSalida.get(1));
+        desarrollador.setIdUsuario(desarrollador.getIdDesarrollador());
         System.out.println("Se ha realizado el registro del Desarrollador");
         return desarrollador.getIdDesarrollador();
     }
@@ -99,6 +90,8 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
                 d.setFotoDePerfil(rs.getString(7));
                 d.setNumeroCuenta(rs.getString(8));
                 d.setIngresoTotal(rs.getDouble(9));
+                d.setRolUsuario(Rol.Desarrollador);
+                d.setActivo(1);
                 desarrolladores.add(d);
             }
         }catch(SQLException ex){
@@ -129,6 +122,8 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
                 desarrollador.setFotoDePerfil(rs.getString(6));
                 desarrollador.setNumeroCuenta(rs.getString(7));
                 desarrollador.setIngresoTotal(rs.getDouble(8));
+                desarrollador.setRolUsuario(Rol.Desarrollador);
+                desarrollador.setActivo(1);
                 System.out.println(desarrollador);
             }
         } catch (SQLException ex) {

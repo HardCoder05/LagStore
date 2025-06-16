@@ -40,4 +40,8 @@ public class BibliotecaBO {
     public Biblioteca obtenerPorId(int idBiblioteca){
         return daoBiblioteca.obtenerPorId(idBiblioteca);
     }
+    
+    public Biblioteca obtenerBibliotecaPorUsuario(int idUsuario){
+        return daoBiblioteca.obtenerBibliotecaPorUsuario(idUsuario);
+    }
 }

@@ -6,6 +6,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
     <style>
+        body{
+            background: #1a1a2e;
+            color: white;
+        }
+
         .profile-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -14,6 +19,7 @@
             margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
+
         .profile-avatar {
             width: 120px;
             height: 120px;
@@ -22,34 +28,43 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             object-fit: cover;
         }
+
         .profile-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.05); /* ligeramente translúcido */
+            backdrop-filter: blur(5px);            /* efecto de vidrio esmerilado */
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
+            color: white; /* para mantener contraste con fondo oscuro */
         }
+
         .profile-card:hover {
             transform: translateY(-2px);
         }
+
         .section-header {
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-            border-radius: 10px 10px 0 0;
-            padding: 1rem 1.5rem;
-            border-bottom: 2px solid #dee2e6;
+            background: linear-gradient(45deg, #2e2e4e, #3c3c5c);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
         }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #764ba2;
+            color: white;
+        }
+
         .form-floating {
             margin-bottom: 1rem;
         }
-        .btn-upload {
-            background: linear-gradient(45deg, #28a745, #20c997);
-            border: none;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        .btn-upload:hover {
-            background: linear-gradient(45deg, #218838, #1ea472);
-            transform: translateY(-1px);
-        }
+
         .status-badge {
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -57,40 +72,59 @@
             text-transform: uppercase;
             font-size: 0.8rem;
         }
+
         .status-active {
             background: #d4edda;
             color: #155724;
         }
+
         .status-inactive {
             background: #f8d7da;
             color: #721c24;
         }
+
         .info-item {
             padding: 0.75rem 0;
             border-bottom: 1px solid #f0f0f0;
         }
+
         .info-item:last-child {
             border-bottom: none;
         }
+
         .password-strength {
             height: 5px;
             border-radius: 3px;
             margin-top: 0.5rem;
             transition: all 0.3s ease;
         }
+
         .strength-weak { background: #dc3545; }
         .strength-medium { background: #ffc107; }
         .strength-strong { background: #28a745; }
     </style>
 
-    <script type="text/javascript">
-        function previewImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('<%= imgPerfil.ClientID %>').src = e.target.result;
-                };
-                reader.readAsDataURL(input.files[0]);
+    <script type="text/javascript">        
+        function togglePasswordSection() {
+            var passwordSection = document.getElementById('passwordSection');
+            var toggleBtn = document.getElementById('togglePasswordBtn');
+
+            if (passwordSection.style.display === 'none' || passwordSection.style.display === '') {
+                passwordSection.style.display = 'block';
+                toggleBtn.textContent = 'Cancelar cambio de contraseña';
+                toggleBtn.className = 'btn btn-outline-secondary btn-sm';
+            } else {
+                passwordSection.style.display = 'none';
+                toggleBtn.textContent = 'Cambiar contraseña';
+                toggleBtn.className = 'btn btn-outline-primary btn-sm';
+
+                // Limpiar campos de contraseña
+                document.getElementById('<%= txtContrasenaActual.ClientID %>').value = '';
+                document.getElementById('<%= txtNuevaContrasena.ClientID %>').value = '';
+                document.getElementById('<%= txtConfirmarContrasena.ClientID %>').value = '';
+
+                // Resetear indicador de fortaleza
+                resetPasswordStrength();
             }
         }
 
@@ -98,50 +132,105 @@
             var password = document.getElementById('<%= txtNuevaContrasena.ClientID %>').value;
             var strengthBar = document.querySelector('.password-strength');
             var strengthText = document.getElementById('strengthText');
-            
-            var strength = 0;
-            if (password.length >= 8) strength++;
-            if (password.match(/[a-z]/)) strength++;
-            if (password.match(/[A-Z]/)) strength++;
-            if (password.match(/[0-9]/)) strength++;
-            if (password.match(/[^a-zA-Z0-9]/)) strength++;
-            
-            strengthBar.style.width = (strength * 20) + '%';
-            
-            if (strength < 2) {
-                strengthBar.className = 'password-strength strength-weak';
-                strengthText.textContent = 'Débil';
-                strengthText.style.color = '#dc3545';
-            } else if (strength < 4) {
-                strengthBar.className = 'password-strength strength-medium';
-                strengthText.textContent = 'Media';
-                strengthText.style.color = '#ffc107';
-            } else {
-                strengthBar.className = 'password-strength strength-strong';
-                strengthText.textContent = 'Fuerte';
-                strengthText.style.color = '#28a745';
-            }
+
+            var strength = calculatePasswordStrength(password);
+
+            // Actualizar barra de progreso
+            strengthBar.style.width = strength.percentage + '%';
+            strengthBar.style.backgroundColor = strength.color;
+
+            // Actualizar texto
+            strengthText.textContent = strength.text;
+            strengthText.style.color = strength.color;
         }
 
-        function togglePasswordSection() {
-            var section = document.getElementById('passwordSection');
-            var button = document.getElementById('togglePasswordBtn');
-            
-            if (section.style.display === 'none') {
-                section.style.display = 'block';
-                button.textContent = 'Cancelar cambio de contraseña';
-                button.className = 'btn btn-outline-secondary btn-sm';
-            } else {
-                section.style.display = 'none';
-                button.textContent = 'Cambiar contraseña';
-                button.className = 'btn btn-outline-primary btn-sm';
-                
-                // Limpiar campos
-                document.getElementById('<%= txtContrasenaActual.ClientID %>').value = '';
-                document.getElementById('<%= txtNuevaContrasena.ClientID %>').value = '';
-                document.getElementById('<%= txtConfirmarContrasena.ClientID %>').value = '';
+        function calculatePasswordStrength(password) {
+            var score = 0;
+            var feedback = {
+                percentage: 0,
+                text: 'Muy débil',
+                color: '#dc3545'
+            };
+
+            if (password.length === 0) {
+                return { percentage: 0, text: '-', color: '#6c757d' };
             }
+
+            // Longitud
+            if (password.length >= 8) score += 25;
+            if (password.length >= 12) score += 10;
+
+            // Mayúsculas
+            if (/[A-Z]/.test(password)) score += 20;
+
+            // Minúsculas
+            if (/[a-z]/.test(password)) score += 20;
+
+            // Números
+            if (/[0-9]/.test(password)) score += 20;
+
+            // Caracteres especiales
+            if (/[^A-Za-z0-9]/.test(password)) score += 15;
+
+            // Determinar fortaleza
+            if (score < 30) {
+                feedback = { percentage: score, text: 'Muy débil', color: '#dc3545' };
+            } else if (score < 60) {
+                feedback = { percentage: score, text: 'Débil', color: '#fd7e14' };
+            } else if (score < 80) {
+                feedback = { percentage: score, text: 'Buena', color: '#ffc107' };
+            } else {
+                feedback = { percentage: score, text: 'Fuerte', color: '#198754' };
+            }
+
+            return feedback;
         }
+
+        function resetPasswordStrength() {
+            var strengthBar = document.querySelector('.password-strength');
+            var strengthText = document.getElementById('strengthText');
+
+            strengthBar.style.width = '0%';
+            strengthText.textContent = '-';
+            strengthText.style.color = '#6c757d';
+        }
+        
+        // Validación en tiempo real para campos de texto
+        document.addEventListener('DOMContentLoaded', function () {
+            // Validación de email en tiempo real
+            var emailInput = document.getElementById('<%= txtEmail.ClientID %>');
+            if (emailInput) {
+                emailInput.addEventListener('blur', function () {
+                    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    if (this.value && !emailPattern.test(this.value)) {
+                        this.classList.add('is-invalid');
+                    } else {
+                        this.classList.remove('is-invalid');
+                    }
+                });
+            }
+
+            // Validación de teléfono en tiempo real
+            var telefonoInput = document.getElementById('<%= txtTelefono.ClientID %>');
+            if (telefonoInput) {
+                telefonoInput.addEventListener('blur', function () {
+                    var telefonoPattern = /^[0-9+\-\s()]{7,15}$/;
+                    if (this.value && !telefonoPattern.test(this.value)) {
+                        this.classList.add('is-invalid');
+                    } else {
+                        this.classList.remove('is-invalid');
+                    }
+                });
+            }
+
+            // Auto-hide messages after 5 seconds
+            var alertPanel = document.getElementById('<%= pnlMensaje.ClientID %>');
+            if (alertPanel && alertPanel.style.display !== 'none') {
+                setTimeout(function () {
+                    alertPanel.style.display = 'none';
+                }, 5000);
+            }
+        });
     </script>
 </asp:Content>
 
@@ -161,7 +250,7 @@
                     <i class="fas fa-envelope me-2"></i>
                     <asp:Label ID="lblEmailUsuario" runat="server"></asp:Label>
                 </p>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center gap-2">
                     <asp:Label ID="lblEstadoUsuario" runat="server" CssClass="status-badge me-3"></asp:Label>
                     <small class="opacity-75">
                         <i class="fas fa-calendar me-1"></i>
@@ -195,21 +284,21 @@
                             <div class="form-floating">
                                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" 
                                             placeholder="Nombre completo"></asp:TextBox>
-                                <label for="<%= txtNombre.ClientID %>">Nombre Completo</label>
+                                <label for="<%= txtNombre.ClientID %>" class="text-white-50">Nombre Completo</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" 
                                             TextMode="Email" placeholder="Email"></asp:TextBox>
-                                <label for="<%= txtEmail.ClientID %>">Email</label>
+                                <label for="<%= txtEmail.ClientID %>" class="text-white-50">Email</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" 
                                             placeholder="Teléfono"></asp:TextBox>
-                                <label for="<%= txtTelefono.ClientID %>">Teléfono</label>
+                                <label for="<%= txtTelefono.ClientID %>" class="text-white-50">Teléfono</label>
                             </div>
                         </div>
                     </div>
@@ -266,30 +355,6 @@
 
         <!-- Panel Lateral -->
         <div class="col-lg-4">
-            <!-- Foto de Perfil -->
-            <div class="profile-card mb-4">
-                <div class="section-header">
-                    <h5 class="mb-0">
-                        <i class="fas fa-camera text-primary me-2"></i>Foto de Perfil
-                    </h5>
-                </div>
-                <div class="p-4 text-center">
-                    <div class="mb-3">
-                        <asp:Image ID="imgPerfilGrande" runat="server" CssClass="profile-avatar" 
-                                  ImageUrl="~/Assets/default-avatar.jpg" />
-                    </div>
-                    <div class="mb-3">
-                        <asp:FileUpload ID="fuFotoPerfil" runat="server" CssClass="form-control form-control-sm" 
-                                       onchange="previewImage(this)" accept="image/*" />
-                    </div>
-                    <asp:Button ID="btnSubirFoto" runat="server" Text="Subir Foto" 
-                               CssClass="btn btn-upload btn-sm" OnClick="btnSubirFoto_Click" />
-                    <div class="mt-2">
-                        <small class="text-muted">Formatos: JPG, PNG. Máximo 2MB</small>
-                    </div>
-                </div>
-            </div>
-
             <!-- Información de Cuenta -->
             <div class="profile-card">
                 <div class="section-header">
@@ -300,27 +365,51 @@
                 <div class="p-4">
                     <div class="info-item">
                         <div class="d-flex justify-content-between">
-                            <span class="text-muted">Rol:</span>
+                            <span class="text-white">Rol:</span>
                             <asp:Label ID="lblRolUsuario" runat="server" CssClass="fw-bold"></asp:Label>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="d-flex justify-content-between">
-                            <span class="text-muted">Estado:</span>
+                            <span class="text-white">Estado:</span>
                             <asp:Label ID="lblEstadoCuenta" runat="server"></asp:Label>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="d-flex justify-content-between">
-                            <span class="text-muted">ID Usuario:</span>
+                            <span class="text-white">ID Usuario:</span>
                             <asp:Label ID="lblIdUsuario" runat="server" CssClass="fw-bold"></asp:Label>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted">Último acceso:</span>
+                            <span class="text-white">Último acceso:</span>
                             <small class="text-end">
                                 <asp:Label ID="lblUltimoAcceso" runat="server"></asp:Label>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="info-item" id="RolAdministrativo" runat="server" visible="false">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-white">Rol administrativo:</span>
+                            <small class="text-end">
+                                <asp:Label ID="lblRolAdministrativo" runat="server"></asp:Label>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="info-item" id="NumCuenta" runat="server" visible="false">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-white">Numero de cuenta:</span>
+                            <small class="text-end">
+                                <asp:Label ID="lblNumCuenta" runat="server"></asp:Label>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="info-item" id="IngresoTotal" runat="server" visible="false">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-white">Ingreso total:</span>
+                            <small class="text-end">
+                                <asp:Label ID="lblIngresoTotal" runat="server"></asp:Label>
                             </small>
                         </div>
                     </div>
