@@ -54,7 +54,7 @@ public class JugadorMySQL implements JugadorDAO{
         parametrosEntrada.put(3, jugador.getNombre());
         parametrosEntrada.put(4, jugador.getEmail());
         parametrosEntrada.put(5, jugador.getContrasena());
-        parametrosEntrada.put(6, new Date(jugador.getFechaRegistro().getTime()));
+        parametrosEntrada.put(6, jugador.getFechaRegistro());
         parametrosEntrada.put(7, jugador.getTelefono());
         parametrosEntrada.put(8, jugador.getFotoDePerfil());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_JUGADOR", parametrosEntrada, null);

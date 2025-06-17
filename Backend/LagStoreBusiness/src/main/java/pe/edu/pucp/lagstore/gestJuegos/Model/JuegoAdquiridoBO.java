@@ -49,5 +49,8 @@ public class JuegoAdquiridoBO {
         idBiblioteca,int idJuego){
         return daoJuegoAdquirido.obtenerJuegoAdquiridoPorBibliotecaYJuego(idBiblioteca, idJuego);
     }
-
+    
+    public int eliminarJuegoAdquiridoPorBibliotecaYJuego(int idBiblioteca,int idJuego){
+        return daoJuegoAdquirido.eliminarJuegoAdquiridoPorBibliotecaYJuego(idBiblioteca, idJuego);
+    }
 }

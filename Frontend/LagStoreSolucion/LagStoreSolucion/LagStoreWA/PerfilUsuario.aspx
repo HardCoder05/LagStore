@@ -92,6 +92,25 @@
             border-bottom: none;
         }
 
+        #passwordSection {
+            background: rgba(255, 255, 255, 0.05); /* mismo estilo que profile-card */
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #passwordSection h6 {
+            color: white !important; /* para que el título sea visible */
+        }
+
+        #passwordSection label {
+            color: rgba(255, 255, 255, 0.7) !important; /* labels más claros */
+        }
+
+        #passwordSection .text-muted {
+            color: rgba(255, 255, 255, 0.6) !important; /* texto de fortaleza */
+        }
+
         .password-strength {
             height: 5px;
             border-radius: 3px;
@@ -311,7 +330,7 @@
                     </div>
 
                     <!-- Sección de Cambio de Contraseña -->
-                    <div id="passwordSection" style="display: none;" class="mt-4 p-3 bg-light rounded">
+                    <div id="passwordSection" style="display: none;" class="mt-4 p-3 rounded">
                         <h6 class="text-muted mb-3">Cambiar Contraseña</h6>
                         <div class="row">
                             <div class="col-md-12">

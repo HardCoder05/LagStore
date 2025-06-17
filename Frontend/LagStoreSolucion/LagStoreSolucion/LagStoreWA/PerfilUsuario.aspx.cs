@@ -1,6 +1,9 @@
 ﻿using LagStoreWA.ServicesWS;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Web.UI.HtmlControls;
 
 namespace LagStoreWA
 {
@@ -30,6 +33,25 @@ namespace LagStoreWA
 
             if (!IsPostBack)
             {
+                if (Session["Administrador"] != null)
+                {
+                    // Accedemos al Master Page
+                    var liGestion = this.Master.FindControl("liGestion") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
+                    var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
+                    if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
+                    {
+                        // Mostrar menú gestión y cerrar sesión
+                        liGestion.Visible = true;
+                        liCerrarSesion.Visible = true;
+
+                        // Ocultar iniciar sesión y crear cuenta
+                        lnkIniciarSesion.Visible = false;
+                        liCrearCuenta.Visible = false;
+                    }
+                }
+
                 CargarDatosUsuario();
             }
         }
@@ -337,6 +359,21 @@ namespace LagStoreWA
             return false;
         }
 
+        private string ObtenerMD5(string texto)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(texto);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in hashBytes)
+                    sb.Append(b.ToString("x2")); // formato hexadecimal
+
+                return sb.ToString();
+            }
+        }
+
         private bool ValidarCambioContrasena()
         {
             // Verificar que todos los campos estén llenos
@@ -366,7 +403,9 @@ namespace LagStoreWA
                 contrasenaActual = administradorActual.contrasena;
             }
 
-            if (txtContrasenaActual.Text != contrasenaActual)
+            string hashIngresado = ObtenerMD5(txtContrasenaActual.Text);
+
+            if (hashIngresado != contrasenaActual)
             {
                 MostrarMensaje("La contraseña actual no es correcta", "alert-warning");
                 return false;

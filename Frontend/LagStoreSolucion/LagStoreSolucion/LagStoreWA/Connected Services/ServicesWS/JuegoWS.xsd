@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eliminarJuego" type="tns:eliminarJuego" />
+  <xs:element name="eliminarJuegoResponse" type="tns:eliminarJuegoResponse" />
   <xs:element name="insertarJuego" type="tns:insertarJuego" />
   <xs:element name="insertarJuegoResponse" type="tns:insertarJuegoResponse" />
   <xs:element name="listarJuegos" type="tns:listarJuegos" />
   <xs:element name="listarJuegosConFiltro" type="tns:listarJuegosConFiltro" />
   <xs:element name="listarJuegosConFiltroResponse" type="tns:listarJuegosConFiltroResponse" />
   <xs:element name="listarJuegosResponse" type="tns:listarJuegosResponse" />
+  <xs:element name="modificarJuego" type="tns:modificarJuego" />
+  <xs:element name="modificarJuegoResponse" type="tns:modificarJuegoResponse" />
   <xs:element name="obtenerJuegoPorId" type="tns:obtenerJuegoPorId" />
   <xs:element name="obtenerJuegoPorIdResponse" type="tns:obtenerJuegoPorIdResponse" />
   <xs:complexType name="listarJuegosConFiltro">
@@ -73,12 +77,32 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:juego" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="modificarJuego">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="juego" type="tns:juego" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarJuegoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="insertarJuego">
     <xs:sequence>
       <xs:element minOccurs="0" name="juego" type="tns:juego" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarJuegoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarJuego">
+    <xs:sequence>
+      <xs:element name="idJuego" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarJuegoResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
