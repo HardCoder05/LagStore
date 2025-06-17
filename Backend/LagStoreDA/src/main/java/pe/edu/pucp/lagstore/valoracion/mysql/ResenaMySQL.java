@@ -3,9 +3,12 @@ package pe.edu.pucp.lagstore.valoracion.mysql;
 //import java.sql.ResultSet;
 //import java.sql.SQLException;
 //import java.sql.Statement;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +29,8 @@ public class ResenaMySQL implements ResenaDAO{
         parametrosEntrada.put(2, resena.getAutor().getIdJugador());//no se si falta casteo
         parametrosEntrada.put(3, resena.getJuego().getIdJuego());
         parametrosEntrada.put(4,resena.getComentario());
+        LocalDate localDate = LocalDate.now();
+        resena.setFechaPublicacion(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         parametrosEntrada.put(5,resena.getFechaPublicacion());
         parametrosEntrada.put(6,resena.getCalificacion().getIdCalificacion());
         parametrosEntrada.put(7,resena.getActivo());

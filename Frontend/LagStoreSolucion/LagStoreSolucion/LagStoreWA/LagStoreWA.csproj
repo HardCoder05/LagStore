@@ -330,6 +330,7 @@
     <Content Include="Content\Fonts\css\v5-font-face.css" />
     <Content Include="Content\Fonts\css\v5-font-face.min.css" />
     <Content Include="Content\site.css" />
+    <Content Include="DetalleJuego.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="InicioSesion.aspx" />
     <Content Include="ListarDesarrolladores.aspx" />
@@ -412,6 +413,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleJuego.aspx.cs">
+      <DependentUpon>DetalleJuego.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleJuego.aspx.designer.cs">
+      <DependentUpon>DetalleJuego.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

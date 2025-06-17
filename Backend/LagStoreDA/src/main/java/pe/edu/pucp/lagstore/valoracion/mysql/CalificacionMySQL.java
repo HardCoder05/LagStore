@@ -1,9 +1,12 @@
 package pe.edu.pucp.lagstore.valoracion.mysql;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +31,15 @@ public class CalificacionMySQL implements CalificacionDAO{
         parametrosSalida.put(1, Types.INTEGER);//deberia ser el id de Resena
         parametrosEntrada.put(2, calificacion.getAutor().getIdJugador());//no se si falta casteo
         parametrosEntrada.put(3, calificacion.getJuego().getIdJuego());
+        LocalDate localDate = LocalDate.now();
+        calificacion.setFechaPuntuacion(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         parametrosEntrada.put(4,calificacion.getFechaPuntuacion());
         parametrosEntrada.put(5,calificacion.getPuntuacion());
         parametrosEntrada.put(6,calificacion.getActivo());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_CALIFICACION", parametrosEntrada, parametrosSalida);
         calificacion.setIdCalificacion((int) parametrosSalida.get(1));//SE RESCATA EL ID
+        //sete a auna copia local de java 
+        //Ese objeto se modifica internamente (en el backend Java), pero esa modificación no se refleja automáticamente del lado del cliente (C#)
         System.out.println("Se ha realizado el registro de la calificacion");
         return calificacion.getIdCalificacion();
     }
