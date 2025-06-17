@@ -320,6 +320,13 @@
                                 <label for="<%= txtTelefono.ClientID %>" class="text-white-50">Teléfono</label>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <asp:TextBox ID="txtFotoPerfil" runat="server" CssClass="form-control"
+                                    placeholder="URL de la imagen de perfil"></asp:TextBox>
+                                <label for="<%= txtFotoPerfil.ClientID %>" class="text-white-50">URL de Foto de Perfil</label>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="mt-3">

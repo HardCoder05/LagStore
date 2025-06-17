@@ -100,6 +100,7 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = jugadorActual.fotoDePerfil;
+                        txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
                     }
                 }
                 else if (rolUsuario == rol.Desarrollador)
@@ -141,6 +142,7 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = desarrolladorActual.fotoDePerfil;
+                        txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
 
                         //Atributos específicos del desarrollador
                         NumCuenta.Visible = true;
@@ -188,6 +190,9 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = administradorActual.fotoDePerfil;
+                        txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
+
+                        // Atributos específicos del administrador
                         RolAdministrativo.Visible = true;
                         lblRolAdministrativo.Text = administradorActual.rolAdministrativo;
                     }
@@ -288,7 +293,7 @@ namespace LagStoreWA
                 telefono = txtTelefono.Text.Trim(),
                 contrasena = cambiarContrasena ? txtNuevaContrasena.Text : jugadorActual.contrasena,
                 fechaRegistro = jugadorActual.fechaRegistro,
-                fotoDePerfil = jugadorActual.fotoDePerfil,
+                fotoDePerfil = txtFotoPerfil.Text.Trim(),
                 rolUsuario = jugadorActual.rolUsuario,
                 activo = jugadorActual.activo
             };
@@ -314,7 +319,7 @@ namespace LagStoreWA
                 telefono = txtTelefono.Text.Trim(),
                 contrasena = cambiarContrasena ? txtNuevaContrasena.Text : desarrolladorActual.contrasena,
                 fechaRegistro = desarrolladorActual.fechaRegistro,
-                fotoDePerfil = desarrolladorActual.fotoDePerfil,
+                fotoDePerfil = txtFotoPerfil.Text.Trim(),
                 rolUsuario = desarrolladorActual.rolUsuario,
                 numeroCuenta = desarrolladorActual.numeroCuenta,
                 ingresoTotal = desarrolladorActual.ingresoTotal,
@@ -342,7 +347,7 @@ namespace LagStoreWA
                 telefono = txtTelefono.Text.Trim(),
                 contrasena = cambiarContrasena ? txtNuevaContrasena.Text : administradorActual.contrasena,
                 fechaRegistro = administradorActual.fechaRegistro,
-                fotoDePerfil = administradorActual.fotoDePerfil,
+                fotoDePerfil = txtFotoPerfil.Text.Trim(),
                 rolUsuario = administradorActual.rolUsuario,
                 rolAdministrativo = administradorActual.rolAdministrativo,
                 activo = administradorActual.activo
