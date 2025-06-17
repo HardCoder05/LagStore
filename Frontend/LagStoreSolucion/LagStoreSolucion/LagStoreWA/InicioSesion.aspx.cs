@@ -70,6 +70,7 @@ namespace LagStoreWA
                             Session["Desarrollador"] = desarrolladorWSClient.obtenerDesarrolladorPorID(idUsuario);
                             break;
                         case rol.Administrador:
+                            //Response.Redirect("Administrador.aspx", true);
                             Session["Administrador"] = administradorWSClient.obtenerAdministradorPorID(idUsuario);
                             break;
                         default:
@@ -93,7 +94,26 @@ namespace LagStoreWA
 
                     // Redirección
                     string returnUrl = Request.QueryString["ReturnUrl"];
-                    Response.Redirect(string.IsNullOrEmpty(returnUrl) ? "Home.aspx" : returnUrl, true);
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        Response.Redirect(returnUrl, true);
+                    }
+                    else
+                    {
+                        // Redirigir según el rol
+                        switch (rolUsuario)
+                        {
+                            case rol.Administrador:
+                                Response.Redirect("Administrador.aspx", true);
+                                break;
+                            case rol.Jugador:
+                            case rol.Desarrollador:
+                            default:
+                                Response.Redirect("Home.aspx", true);
+                                break;
+                        }
+                    }
+                    //Response.Redirect(string.IsNullOrEmpty(returnUrl) ? "Home.aspx" : returnUrl, true);
                 }
                 else
                 {

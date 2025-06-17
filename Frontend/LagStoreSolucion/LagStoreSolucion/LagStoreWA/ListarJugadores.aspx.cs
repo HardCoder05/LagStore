@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-
 using LagStoreWA.ServicesWS;
 
 namespace LagStoreWA
@@ -51,18 +50,13 @@ namespace LagStoreWA
         protected void btnBuscar_ServerClick(object sender, EventArgs e)
         {
             string textoBuscar = txtBuscar.Value.Trim();
-            boJugador = new JugadorWSClient();
-
             if (!string.IsNullOrEmpty(textoBuscar))
             {
-                int idBuscar = int.Parse(textoBuscar); // ← si estás 100% seguro que siempre será un número
-
                 try
                 {
-                    jugador j = boJugador.obtenerJugadorPorID(idBuscar);
-                    if (j != null)
+                    var listaResultado = boJugador.listarPorNombreONickname(textoBuscar);
+                    if (listaResultado != null && listaResultado.Length > 0)
                     {
-                        var listaResultado = new List<jugador> { j };
                         gvJugadores.DataSource = listaResultado;
                         gvJugadores.DataBind();
                     }
@@ -70,7 +64,7 @@ namespace LagStoreWA
                     {
                         gvJugadores.DataSource = new List<jugador>();
                         gvJugadores.DataBind();
-                        MostrarMensaje($"No se encontró un jugador con ID {idBuscar}");
+                        MostrarMensaje($"No se encontraron jugadores con el nombre o nickname: '{textoBuscar}'");
                     }
                 }
                 catch (Exception ex)
