@@ -134,22 +134,22 @@
       <xs:element minOccurs="0" name="return" type="tns:resena" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarResena">
-    <xs:sequence>
-      <xs:element name="idResena" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarResenaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="insertarResena">
     <xs:sequence>
       <xs:element minOccurs="0" name="resena" type="tns:resena" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarResenaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarResena">
+    <xs:sequence>
+      <xs:element name="idResena" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarResenaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
