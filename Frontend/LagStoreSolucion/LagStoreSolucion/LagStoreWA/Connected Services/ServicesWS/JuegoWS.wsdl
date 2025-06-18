@@ -23,6 +23,12 @@
   <message name="obtenerJuegoPorIdResponse">
     <part name="parameters" element="tns:obtenerJuegoPorIdResponse" />
   </message>
+  <message name="listarJuegosPorDesarrollador">
+    <part name="parameters" element="tns:listarJuegosPorDesarrollador" />
+  </message>
+  <message name="listarJuegosPorDesarrolladorResponse">
+    <part name="parameters" element="tns:listarJuegosPorDesarrolladorResponse" />
+  </message>
   <message name="listarJuegosConFiltro">
     <part name="parameters" element="tns:listarJuegosConFiltro" />
   </message>
@@ -41,6 +47,10 @@
     <operation name="obtenerJuegoPorId">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/obtenerJuegoPorIdRequest" message="tns:obtenerJuegoPorId" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/obtenerJuegoPorIdResponse" message="tns:obtenerJuegoPorIdResponse" />
+    </operation>
+    <operation name="listarJuegosPorDesarrollador">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosPorDesarrolladorRequest" message="tns:listarJuegosPorDesarrollador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosPorDesarrolladorResponse" message="tns:listarJuegosPorDesarrolladorResponse" />
     </operation>
     <operation name="listarJuegosConFiltro">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroRequest" message="tns:listarJuegosConFiltro" />
@@ -68,6 +78,15 @@
       </output>
     </operation>
     <operation name="obtenerJuegoPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarJuegosPorDesarrollador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
