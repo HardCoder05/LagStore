@@ -279,14 +279,38 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorJuegoResponse.datasource">
-
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorJuegoResponse.datasource" />
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.carroCompra.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse.datasource">
-
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarDesarrolladoresPorNombreResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosConMayorCalificacionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosPorDesarrolladorResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorJuegoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorNombreONicknameResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJuegoResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
@@ -341,10 +365,13 @@
     <Content Include="DetalleJuego.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="InicioSesion.aspx" />
+    <Content Include="JuegosMasVendidos.aspx" />
+    <Content Include="JuegosMayorCalificacion.aspx" />
     <Content Include="ListarDesarrolladores.aspx" />
     <Content Include="ListarJuegos.aspx" />
     <Content Include="ListarJugadores.aspx" />
     <Content Include="ListarRecargas.aspx" />
+    <Content Include="OrdenaJuego.aspx" />
     <Content Include="PerfilUsuario.aspx" />
     <Content Include="RegistrarDesarrollador.aspx" />
     <Content Include="RegistrarJuego.aspx" />
@@ -450,6 +477,20 @@
     <Compile Include="InicioSesion.aspx.designer.cs">
       <DependentUpon>InicioSesion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="JuegosMasVendidos.aspx.cs">
+      <DependentUpon>JuegosMasVendidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JuegosMasVendidos.aspx.designer.cs">
+      <DependentUpon>JuegosMasVendidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JuegosMayorCalificacion.aspx.cs">
+      <DependentUpon>JuegosMayorCalificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JuegosMayorCalificacion.aspx.designer.cs">
+      <DependentUpon>JuegosMayorCalificacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LagStore.Master.cs">
       <DependentUpon>LagStore.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -484,6 +525,13 @@
     </Compile>
     <Compile Include="ListarRecargas.aspx.designer.cs">
       <DependentUpon>ListarRecargas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenaJuego.aspx.cs">
+      <DependentUpon>OrdenaJuego.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrdenaJuego.aspx.designer.cs">
+      <DependentUpon>OrdenaJuego.aspx</DependentUpon>
     </Compile>
     <Compile Include="PerfilUsuario.aspx.cs">
       <DependentUpon>PerfilUsuario.aspx</DependentUpon>

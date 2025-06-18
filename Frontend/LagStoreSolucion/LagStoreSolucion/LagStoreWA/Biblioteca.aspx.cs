@@ -52,7 +52,7 @@ namespace LagStoreWA
 
         private void InicializarBiblioteca()
         {
-            int idUsuario = (int)Session["id"];
+            int idUsuario = (int)Session["usuarioId"];
 
             try
             {
