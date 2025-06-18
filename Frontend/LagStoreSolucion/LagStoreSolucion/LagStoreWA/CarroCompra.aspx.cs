@@ -55,6 +55,10 @@ namespace LagStoreWA
                 // Recuperar la lista de juegos del carrito desde sesión; si no existe, se inicializa vacía
                 List<juego> listaJuegos = Session["ListaJuegosCarro"] as List<juego> ?? new List<juego>();
 
+                var carro = boCarro.otenerCarroPorUsuario(usuarioId);
+                carro.juegos = listaJuegos.ToArray(); // Convertir la lista a un arreglo para resolver el error CS0029
+
+                boCarro.modificarCarroCompra(carro);
                 // Guardar la lista en el atributo actual para referencia
                 carroCompraActual = listaJuegos;
 
@@ -62,9 +66,14 @@ namespace LagStoreWA
                 gvCarro.DataSource = listaJuegos;
                 gvCarro.DataBind();
 
+
+                double total = listaJuegos.Sum(j => j.precio);
+                lblTotal.Text = "Total: " + total.ToString("C");
+
                 // Mostrar mensaje según la existencia de juegos en el carrito
                 if (listaJuegos.Any())
-                {
+                {   
+                
                     //lblMensaje.Text = "Si deseas agregar más juegos a tu carro, selecciónalos desde la tienda.";
                 }
                 else
@@ -74,7 +83,7 @@ namespace LagStoreWA
             }
             catch (Exception ex)
             {
-                lblMensaje.Text = "Error al cargar el carro de compra: " + ex.Message;
+                //lblMensaje.Text = "Error al cargar el carro de compra: " + ex.Message;
             }
         }
 

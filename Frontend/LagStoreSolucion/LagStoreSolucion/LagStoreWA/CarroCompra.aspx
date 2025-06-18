@@ -25,13 +25,13 @@
         <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" />
         <asp:GridView ID="gvCarro" runat="server" AutoGenerateColumns="False" CssClass="table table-striped" DataKeyNames="idJuego" OnRowDeleting="GvCarro_RowDeleting">
             <Columns>
-                <%-- Columna para la miniatura de la imagen del juego --%>
+                <%-- Columna de miniatura de imagen del juego --%>
                 <asp:TemplateField HeaderText="Imagen">
                     <ItemTemplate>
                         <img src='<%# Eval("imagen") %>' alt="miniatura" style="max-width: 100px; height: auto;" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <%-- Se utiliza 'titulo' en vez de 'nombre' ya que esa es la propiedad correcta en el objeto juego --%>
+                <%-- Se utiliza 'titulo' en vez de 'nombre' ya que es la propiedad correcta en el objeto juego --%>
                 <asp:BoundField DataField="titulo" HeaderText="Juego" />
                 <asp:TemplateField HeaderText="Cantidad">
                     <ItemTemplate>
@@ -47,7 +47,18 @@
                 <asp:CommandField ShowDeleteButton="True" DeleteText="Quitar" />
             </Columns>
         </asp:GridView>
-        <div class="carro-actions">
+        
+        <!-- Label para mostrar el total de la compra -->
+        <div class="text-end" style="margin-top:20px;">
+            <asp:Label ID="lblTotal" runat="server" CssClass="h4" Text=""></asp:Label>
+        </div>
+
+         <asp:Panel ID="pnlProcesando" runat="server" Visible="false">
+             <asp:Image ID="imgEstadoCompra" runat="server" />
+             <asp:Label ID="lblProcesando" runat="server" Text=""></asp:Label>
+         </asp:Panel>
+
+        <div class="carro-actions" style="margin-top:20px;">
             <asp:Button ID="btnFinalizarCompra" runat="server" Text="Finalizar Compra" CssClass="btn btn-success" OnClick="btnFinalizarCompra_Click" />
         </div>
     </div>

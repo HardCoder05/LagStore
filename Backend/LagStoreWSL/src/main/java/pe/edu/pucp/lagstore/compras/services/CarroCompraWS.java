@@ -39,4 +39,6 @@ public class CarroCompraWS {
         carroCompraBO = new CarroCompraBO();
         return carroCompraBO.obtenerPorIdUsuario(idUsuario);
     }
+    
+    
 }
