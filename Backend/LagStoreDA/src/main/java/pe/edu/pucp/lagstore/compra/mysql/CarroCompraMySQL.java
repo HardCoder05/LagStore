@@ -189,11 +189,11 @@ public class CarroCompraMySQL implements CarroCompraDAO {
                     juego.setGenero(Genero.valueOf(rsJuegos.getString("nombreGenero")));
                     juego.setModeloNegocio(ModeloNegocio.valueOf(rsJuegos.getString("modelo")));
                     
-                    //Se añade los datos del dearrollador
-                    DesarrolladorBO boDesarrollador = new DesarrolladorBO();
-                    Desarrollador desarrollador = boDesarrollador.obtenerPorId(juego.getDesarrollador().getIdDesarrollador());
-                    juego.setDesarrollador(desarrollador);
-                    juegos.add(juego);
+//                    //Se añade los datos del dearrollador
+//                    DesarrolladorBO boDesarrollador = new DesarrolladorBO();
+//                    Desarrollador desarrollador = boDesarrollador.obtenerPorId(juego.getDesarrollador().getIdDesarrollador());
+//                    juego.setDesarrollador(desarrollador);
+//                    juegos.add(juego);
                 }
                 carro.setJuegos(juegos);
             }

@@ -2,28 +2,23 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/Fonts/css/all.css" rel="stylesheet" />
     <link href="Content/site.css" rel="stylesheet" />
-    <link rel="icon" type="image/svg+xml" href="Assets/logo.svg">
-
+    <link rel="icon" type="image/svg+xml" href="Assets/logo.svg"/>
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/bootstrap.bundle.js"></script>
     <script src="Scripts/jquery-3.7.1.js"></script>
-
     <title>
-        <asp:ContentPlaceHolder ID="cph_Title" runat="server">
-        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="cph_Title" runat="server"></asp:ContentPlaceHolder>
     </title>
-    <asp:ContentPlaceHolder ID="cph_Scripts" runat="server">
-    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="cph_Scripts" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1f2937;">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold text-white" href="#">
@@ -59,9 +54,15 @@
 
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item me-3 position-relative">
-                            <a class="nav-link text-white" href="#">
+                            <a class="nav-link text-white" href="CarroCompra.aspx">
                                 <i class="fas fa-shopping-cart"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">0</span>
+                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                                      <asp:UpdatePanel ID="updContador" runat="server" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <asp:Label ID="lblContadorCarrito" runat="server" Text="0"></asp:Label>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                 </span>
                             </a>
                         </li>
                         <li class="nav-item me-3">
