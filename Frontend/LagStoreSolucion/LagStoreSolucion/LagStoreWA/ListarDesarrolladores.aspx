@@ -63,6 +63,7 @@
             <asp:TemplateField HeaderText="Ingreso Total">
                 <ItemTemplate>
                     S/ <%# Eval("ingresoTotal", "{0:N2}") %>
+
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="text-center">

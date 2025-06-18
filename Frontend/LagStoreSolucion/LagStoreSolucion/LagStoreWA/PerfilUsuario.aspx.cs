@@ -142,8 +142,8 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = desarrolladorActual.fotoDePerfil;
-                        txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
-
+                       // txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
+                       //lo comente solo por el chistee
                         //Atributos específicos del desarrollador
                         NumCuenta.Visible = true;
                         lblNumCuenta.Text = desarrolladorActual.numeroCuenta;

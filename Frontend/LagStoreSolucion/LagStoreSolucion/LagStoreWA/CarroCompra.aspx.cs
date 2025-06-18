@@ -68,7 +68,7 @@ namespace LagStoreWA
 
 
                 double total = listaJuegos.Sum(j => j.precio);
-                lblTotal.Text = "Total: " + total.ToString("C");
+                lblTotal.Text = "Total:S/ " + total.ToString("N2"); //para que salga en soles
 
                 // Mostrar mensaje según la existencia de juegos en el carrito
                 if (listaJuegos.Any())

@@ -54,7 +54,7 @@
                     <asp:TextBox ID="txtFoto" runat="server" CssClass="form-control" />
                 </div>
 
-<<<<<<< HEAD
+
                 <%--<div class="form-group mb-3">
                     <label for="ddlTipoUsuario">Tipo de usuario</label>
 =======

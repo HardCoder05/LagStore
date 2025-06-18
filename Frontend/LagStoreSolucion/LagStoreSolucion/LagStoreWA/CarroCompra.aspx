@@ -38,16 +38,16 @@
                         1
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="precio" HeaderText="Precio Unitario" DataFormatString="{0:C}" />
+                <asp:BoundField DataField="precio" HeaderText="Precio Unitario"  DataFormatString="S/{0:N2}" HtmlEncode="false" />
                 <asp:TemplateField HeaderText="Subtotal">
                     <ItemTemplate>
-                        <%# Eval("precio", "{0:C}") %>
+                        S/<%# Eval("precio", "{0:N2}") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:CommandField ShowDeleteButton="True" DeleteText="Quitar" />
             </Columns>
         </asp:GridView>
-        
+       
         <!-- Label para mostrar el total de la compra -->
         <div class="text-end" style="margin-top:20px;">
             <asp:Label ID="lblTotal" runat="server" CssClass="h4" Text=""></asp:Label>
