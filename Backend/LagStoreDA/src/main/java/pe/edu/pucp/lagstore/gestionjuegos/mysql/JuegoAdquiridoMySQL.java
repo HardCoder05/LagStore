@@ -246,4 +246,15 @@ public class JuegoAdquiridoMySQL implements JuegoAdquiridoDAO{
         return ja;
     }
     
+    @Override
+    public int eliminarJuegoAdquiridoPorBibliotecaYJuego(int idBiblioteca,
+        int idJuego) {
+        Map<Integer, Object> inParams = new HashMap<>();
+        
+        inParams.put(1, idBiblioteca);
+        inParams.put(2, idJuego);
+        
+        return DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_JUEGO_ADQUIRIDO_POR_BIBLIOTECA_Y_JUEGO", inParams, null);
+    }
+    
 }
