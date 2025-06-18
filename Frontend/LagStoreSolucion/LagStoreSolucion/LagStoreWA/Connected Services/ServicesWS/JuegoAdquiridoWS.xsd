@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="eliminarJuegoAdquirido" type="tns:eliminarJuegoAdquirido" />
+  <xs:element name="eliminarJuegoAdquiridoPorBibliotecaYJuego" type="tns:eliminarJuegoAdquiridoPorBibliotecaYJuego" />
+  <xs:element name="eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse" type="tns:eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse" />
   <xs:element name="eliminarJuegoAdquiridoResponse" type="tns:eliminarJuegoAdquiridoResponse" />
   <xs:element name="insertarJuegoAdquirido" type="tns:insertarJuegoAdquirido" />
   <xs:element name="insertarJuegoAdquiridoResponse" type="tns:insertarJuegoAdquiridoResponse" />
@@ -136,6 +138,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarJuegoAdquiridoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarJuegoAdquiridoPorBibliotecaYJuego">
+    <xs:sequence>
+      <xs:element name="idBiblioteca" type="xs:int" />
+      <xs:element name="idJuego" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>

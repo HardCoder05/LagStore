@@ -5,11 +5,19 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/AdministradorWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
+
   <message name="listarJuegosQueMasSeVenden">
     <part name="parameters" element="tns:listarJuegosQueMasSeVenden" />
   </message>
   <message name="listarJuegosQueMasSeVendenResponse">
     <part name="parameters" element="tns:listarJuegosQueMasSeVendenResponse" />
+
+  <message name="listarTodosAdministradores">
+    <part name="parameters" element="tns:listarTodosAdministradores" />
+  </message>
+  <message name="listarTodosAdministradoresResponse">
+    <part name="parameters" element="tns:listarTodosAdministradoresResponse" />
+
   </message>
   <message name="insertarAdministrador">
     <part name="parameters" element="tns:insertarAdministrador" />
@@ -29,12 +37,19 @@
   <message name="modificarAdministradorResponse">
     <part name="parameters" element="tns:modificarAdministradorResponse" />
   </message>
+  <message name="obtenerAdministradorPorID">
+    <part name="parameters" element="tns:obtenerAdministradorPorID" />
+  </message>
+  <message name="obtenerAdministradorPorIDResponse">
+    <part name="parameters" element="tns:obtenerAdministradorPorIDResponse" />
+  </message>
   <message name="eliminarAdministrador">
     <part name="parameters" element="tns:eliminarAdministrador" />
   </message>
   <message name="eliminarAdministradorResponse">
     <part name="parameters" element="tns:eliminarAdministradorResponse" />
   </message>
+
   <message name="listarTodosAdministradores">
     <part name="parameters" element="tns:listarTodosAdministradores" />
   </message>
@@ -51,6 +66,12 @@
     <operation name="listarJuegosQueMasSeVenden">
       <input wsam:Action="http://services.pucp.edu.pe/AdministradorWS/listarJuegosQueMasSeVendenRequest" message="tns:listarJuegosQueMasSeVenden" />
       <output wsam:Action="http://services.pucp.edu.pe/AdministradorWS/listarJuegosQueMasSeVendenResponse" message="tns:listarJuegosQueMasSeVendenResponse" />
+
+  <portType name="AdministradorWS">
+    <operation name="listarTodosAdministradores">
+      <input wsam:Action="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresRequest" message="tns:listarTodosAdministradores" />
+      <output wsam:Action="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresResponse" message="tns:listarTodosAdministradoresResponse" />
+
     </operation>
     <operation name="insertarAdministrador">
       <input wsam:Action="http://services.pucp.edu.pe/AdministradorWS/insertarAdministradorRequest" message="tns:insertarAdministrador" />
@@ -64,10 +85,15 @@
       <input wsam:Action="http://services.pucp.edu.pe/AdministradorWS/modificarAdministradorRequest" message="tns:modificarAdministrador" />
       <output wsam:Action="http://services.pucp.edu.pe/AdministradorWS/modificarAdministradorResponse" message="tns:modificarAdministradorResponse" />
     </operation>
+    <operation name="obtenerAdministradorPorID">
+      <input wsam:Action="http://services.pucp.edu.pe/AdministradorWS/obtenerAdministradorPorIDRequest" message="tns:obtenerAdministradorPorID" />
+      <output wsam:Action="http://services.pucp.edu.pe/AdministradorWS/obtenerAdministradorPorIDResponse" message="tns:obtenerAdministradorPorIDResponse" />
+    </operation>
     <operation name="eliminarAdministrador">
       <input wsam:Action="http://services.pucp.edu.pe/AdministradorWS/eliminarAdministradorRequest" message="tns:eliminarAdministrador" />
       <output wsam:Action="http://services.pucp.edu.pe/AdministradorWS/eliminarAdministradorResponse" message="tns:eliminarAdministradorResponse" />
     </operation>
+
     <operation name="listarTodosAdministradores">
       <input wsam:Action="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresRequest" message="tns:listarTodosAdministradores" />
       <output wsam:Action="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresResponse" message="tns:listarTodosAdministradoresResponse" />
@@ -80,6 +106,12 @@
   <binding name="AdministradorWSPortBinding" type="tns:AdministradorWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="listarJuegosQueMasSeVenden">
+
+  </portType>
+  <binding name="AdministradorWSPortBinding" type="tns:AdministradorWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarTodosAdministradores">
+
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -115,7 +147,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarAdministrador">
+    <operation name="obtenerAdministradorPorID">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -124,7 +156,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarTodosAdministradores">
+    <operation name="eliminarAdministrador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

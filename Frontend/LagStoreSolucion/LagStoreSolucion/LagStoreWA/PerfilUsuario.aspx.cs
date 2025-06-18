@@ -1,6 +1,9 @@
 ﻿using LagStoreWA.ServicesWS;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Web.UI.HtmlControls;
 
 namespace LagStoreWA
 {
@@ -30,6 +33,25 @@ namespace LagStoreWA
 
             if (!IsPostBack)
             {
+                if (Session["Administrador"] != null)
+                {
+                    // Accedemos al Master Page
+                    var liGestion = this.Master.FindControl("liGestion") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
+                    var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
+                    if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
+                    {
+                        // Mostrar menú gestión y cerrar sesión
+                        liGestion.Visible = true;
+                        liCerrarSesion.Visible = true;
+
+                        // Ocultar iniciar sesión y crear cuenta
+                        lnkIniciarSesion.Visible = false;
+                        liCrearCuenta.Visible = false;
+                    }
+                }
+
                 CargarDatosUsuario();
             }
         }
@@ -78,6 +100,7 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = jugadorActual.fotoDePerfil;
+                        txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
                     }
                 }
                 else if (rolUsuario == rol.Desarrollador)
@@ -119,6 +142,7 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = desarrolladorActual.fotoDePerfil;
+                        txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
 
                         //Atributos específicos del desarrollador
                         NumCuenta.Visible = true;
@@ -166,6 +190,9 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = administradorActual.fotoDePerfil;
+                        txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
+
+                        // Atributos específicos del administrador
                         RolAdministrativo.Visible = true;
                         lblRolAdministrativo.Text = administradorActual.rolAdministrativo;
                     }
@@ -266,7 +293,7 @@ namespace LagStoreWA
                 telefono = txtTelefono.Text.Trim(),
                 contrasena = cambiarContrasena ? txtNuevaContrasena.Text : jugadorActual.contrasena,
                 fechaRegistro = jugadorActual.fechaRegistro,
-                fotoDePerfil = jugadorActual.fotoDePerfil,
+                fotoDePerfil = txtFotoPerfil.Text.Trim(),
                 rolUsuario = jugadorActual.rolUsuario,
                 activo = jugadorActual.activo
             };
@@ -292,7 +319,7 @@ namespace LagStoreWA
                 telefono = txtTelefono.Text.Trim(),
                 contrasena = cambiarContrasena ? txtNuevaContrasena.Text : desarrolladorActual.contrasena,
                 fechaRegistro = desarrolladorActual.fechaRegistro,
-                fotoDePerfil = desarrolladorActual.fotoDePerfil,
+                fotoDePerfil = txtFotoPerfil.Text.Trim(),
                 rolUsuario = desarrolladorActual.rolUsuario,
                 numeroCuenta = desarrolladorActual.numeroCuenta,
                 ingresoTotal = desarrolladorActual.ingresoTotal,
@@ -320,7 +347,7 @@ namespace LagStoreWA
                 telefono = txtTelefono.Text.Trim(),
                 contrasena = cambiarContrasena ? txtNuevaContrasena.Text : administradorActual.contrasena,
                 fechaRegistro = administradorActual.fechaRegistro,
-                fotoDePerfil = administradorActual.fotoDePerfil,
+                fotoDePerfil = txtFotoPerfil.Text.Trim(),
                 rolUsuario = administradorActual.rolUsuario,
                 rolAdministrativo = administradorActual.rolAdministrativo,
                 activo = administradorActual.activo
@@ -335,6 +362,21 @@ namespace LagStoreWA
                 return true;
             }
             return false;
+        }
+
+        private string ObtenerMD5(string texto)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(texto);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in hashBytes)
+                    sb.Append(b.ToString("x2")); // formato hexadecimal
+
+                return sb.ToString();
+            }
         }
 
         private bool ValidarCambioContrasena()
@@ -366,7 +408,9 @@ namespace LagStoreWA
                 contrasenaActual = administradorActual.contrasena;
             }
 
-            if (txtContrasenaActual.Text != contrasenaActual)
+            string hashIngresado = ObtenerMD5(txtContrasenaActual.Text);
+
+            if (hashIngresado != contrasenaActual)
             {
                 MostrarMensaje("La contraseña actual no es correcta", "alert-warning");
                 return false;

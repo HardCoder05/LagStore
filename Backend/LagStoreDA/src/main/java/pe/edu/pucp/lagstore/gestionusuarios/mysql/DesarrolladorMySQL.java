@@ -56,7 +56,7 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
         parametrosEntrada.put(4, desarrollador.getNombre());
         parametrosEntrada.put(5, desarrollador.getEmail());
         parametrosEntrada.put(6, desarrollador.getContrasena());
-        parametrosEntrada.put(7, new Date(desarrollador.getFechaRegistro().getTime()));
+        parametrosEntrada.put(7, desarrollador.getFechaRegistro());
         parametrosEntrada.put(8, desarrollador.getTelefono());
         parametrosEntrada.put(9, desarrollador.getFotoDePerfil());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_DESARROLLADOR", parametrosEntrada, null);
