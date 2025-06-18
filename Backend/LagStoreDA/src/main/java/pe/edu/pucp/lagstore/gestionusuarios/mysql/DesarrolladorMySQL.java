@@ -56,7 +56,7 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
         parametrosEntrada.put(4, desarrollador.getNombre());
         parametrosEntrada.put(5, desarrollador.getEmail());
         parametrosEntrada.put(6, desarrollador.getContrasena());
-        parametrosEntrada.put(7, new Date(desarrollador.getFechaRegistro().getTime()));
+        parametrosEntrada.put(7, desarrollador.getFechaRegistro());
         parametrosEntrada.put(8, desarrollador.getTelefono());
         parametrosEntrada.put(9, desarrollador.getFotoDePerfil());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_DESARROLLADOR", parametrosEntrada, null);
@@ -132,6 +132,37 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
             DBManager.getInstance().cerrarConexion();
         }
         return desarrollador;
+    }
+
+    @Override
+    public ArrayList<Desarrollador> listarPorNombre(String Nombre) {
+        ArrayList<Desarrollador> desarrolladores = null;
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, Nombre);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_DESARROLLADORES_X_NOMBRE", parametrosEntrada);
+        System.out.println("Lectura de desarrolladores...");
+        try{
+            while(rs.next()){
+                if(desarrolladores == null) desarrolladores = new ArrayList<>();
+                Desarrollador desarrollador = new Desarrollador();
+                desarrollador.setIdUsuario(rs.getInt(1));
+                desarrollador.setIdDesarrollador(rs.getInt(1));
+                desarrollador.setNombre(rs.getString(2));
+                desarrollador.setEmail(rs.getString(3));
+                desarrollador.setFechaRegistro(rs.getDate(4));
+                desarrollador.setTelefono(rs.getString(5));
+                desarrollador.setFotoDePerfil(rs.getString(6));
+                desarrollador.setNumeroCuenta(rs.getString(7));
+                desarrollador.setIngresoTotal(rs.getDouble(8));
+                desarrollador.setActivo(1);
+                desarrolladores.add(desarrollador);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return desarrolladores;
     }
     
 }

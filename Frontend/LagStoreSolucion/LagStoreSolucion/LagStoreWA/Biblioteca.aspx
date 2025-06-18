@@ -99,17 +99,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="badge fs-6 <%# Convert.ToInt32(Eval("activo")) == 1 ? "bg-success" : "bg-warning text-dark" %>">
-                                <%# Convert.ToInt32(Eval("activo")) == 1 ? "Visible" : "Oculto" %>
+                            <!-- CAMBIO: Usar 'actualizado' en lugar de 'activo' -->
+                            <div class="badge fs-6 <%# Convert.ToBoolean(Eval("actualizado")) ? "bg-success" : "bg-warning text-dark" %>">
+                                <%# Convert.ToBoolean(Eval("actualizado")) ? "Visible" : "Oculto" %>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 text-end">
                         <div class="btn-group-vertical gap-2" role="group">
+                            <!-- CAMBIO: Usar 'actualizado' en lugar de 'activo' -->
                             <asp:Button ID="btnOcultar" runat="server"
                                 CommandArgument='<%# Eval("juego.idJuego") + "," + Eval("biblioteca.idBiblioteca") %>'
-                                Text='<%# (Convert.ToInt32(Eval("activo")) == 1) ? "Ocultar" : "Mostrar" %>'
-                                CssClass='<%# (Convert.ToInt32(Eval("activo")) == 1) ? "btn btn-outline-warning" : "btn btn-outline-success" %>'
+                                Text='<%# Convert.ToBoolean(Eval("actualizado")) ? "Ocultar" : "Mostrar" %>'
+                                CssClass='<%# Convert.ToBoolean(Eval("actualizado")) ? "btn btn-outline-warning" : "btn btn-outline-success" %>'
                                 OnClick="btnOcultar_Click" />
                             <asp:Button ID="btnEliminar" runat="server"
                                 CommandArgument='<%# Eval("juego.idJuego") + "," + Eval("biblioteca.idBiblioteca") %>'

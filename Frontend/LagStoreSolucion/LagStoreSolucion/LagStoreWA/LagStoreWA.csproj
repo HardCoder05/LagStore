@@ -61,6 +61,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+<<<<<<< HEAD
+=======
+    <Reference Include="System.Xml.Linq" />
+>>>>>>> 8c9027bf97565f084fba51067306ff424c4f6a8e
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administrador.aspx" />
@@ -275,7 +279,30 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+<<<<<<< HEAD
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosPorDesarrolladorResponse.datasource">
+=======
+
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorNombreONicknameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarDesarrolladoresPorNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosConMayorCalificacionResponse.datasource">
+
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJuegoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse.datasource">
+
+>>>>>>> 8c9027bf97565f084fba51067306ff424c4f6a8e
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
@@ -329,6 +356,8 @@
     <Content Include="Content\site.css" />
     <Content Include="Home.aspx" />
     <Content Include="InicioSesion.aspx" />
+    <Content Include="JuegosMasVendidos.aspx" />
+    <Content Include="JuegosMayorCalificacion.aspx" />
     <Content Include="ListarDesarrolladores.aspx" />
     <Content Include="ListarJuegos.aspx" />
     <Content Include="ListarJugadores.aspx" />
@@ -424,6 +453,20 @@
     </Compile>
     <Compile Include="InicioSesion.aspx.designer.cs">
       <DependentUpon>InicioSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JuegosMasVendidos.aspx.cs">
+      <DependentUpon>JuegosMasVendidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JuegosMasVendidos.aspx.designer.cs">
+      <DependentUpon>JuegosMasVendidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JuegosMayorCalificacion.aspx.cs">
+      <DependentUpon>JuegosMayorCalificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JuegosMayorCalificacion.aspx.designer.cs">
+      <DependentUpon>JuegosMayorCalificacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="LagStore.Master.cs">
       <DependentUpon>LagStore.Master</DependentUpon>
