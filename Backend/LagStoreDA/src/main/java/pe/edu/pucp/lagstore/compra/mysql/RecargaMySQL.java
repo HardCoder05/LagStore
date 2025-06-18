@@ -118,7 +118,6 @@ public class RecargaMySQL implements RecargaDAO {
         return recarga;
     }
 
-
     @Override
     public ArrayList<Recarga> listarAsociadas(int idCartera) {
         ArrayList<Recarga> lista = new ArrayList<>();
@@ -150,5 +149,4 @@ public class RecargaMySQL implements RecargaDAO {
         }
         return lista;   
     }
-
 }

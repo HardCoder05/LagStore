@@ -6,6 +6,8 @@
   <xs:element name="insertarCarroCompraResponse" type="tns:insertarCarroCompraResponse" />
   <xs:element name="modificarCarroCompra" type="tns:modificarCarroCompra" />
   <xs:element name="modificarCarroCompraResponse" type="tns:modificarCarroCompraResponse" />
+  <xs:element name="otenerCarroPorUsuario" type="tns:otenerCarroPorUsuario" />
+  <xs:element name="otenerCarroPorUsuarioResponse" type="tns:otenerCarroPorUsuarioResponse" />
   <xs:complexType name="eliminarCarroCompra">
     <xs:sequence>
       <xs:element name="idCarro" type="xs:int" />
@@ -16,9 +18,14 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarCarroCompra">
+  <xs:complexType name="otenerCarroPorUsuario">
     <xs:sequence>
-      <xs:element minOccurs="0" name="carro" type="tns:carroCompra" />
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="otenerCarroPorUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:carroCompra" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="carroCompra">
@@ -126,6 +133,11 @@
       <xs:element minOccurs="0" name="fechaPublicacion" type="xs:dateTime" />
       <xs:element name="idResena" type="xs:int" />
       <xs:element minOccurs="0" name="juego" type="tns:juego" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarCarroCompra">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="carro" type="tns:carroCompra" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarCarroCompraResponse">

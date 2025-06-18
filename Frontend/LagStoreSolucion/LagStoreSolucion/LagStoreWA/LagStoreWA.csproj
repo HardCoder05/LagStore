@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="Administrador.aspx" />
     <Content Include="Biblioteca.aspx" />
+    <Content Include="CarroCompra.aspx" />
     <Content Include="CatalogoJuegos.aspx" />
     <None Include="Connected Services\ServicesWS\AdministradorWS.wsdl" />
     <None Include="Connected Services\ServicesWS\AdministradorWS.xsd">
@@ -407,6 +408,13 @@
     </Compile>
     <Compile Include="Biblioteca.aspx.designer.cs">
       <DependentUpon>Biblioteca.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarroCompra.aspx.cs">
+      <DependentUpon>CarroCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarroCompra.aspx.designer.cs">
+      <DependentUpon>CarroCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="CatalogoJuegos.aspx.cs">
       <DependentUpon>CatalogoJuegos.aspx</DependentUpon>
