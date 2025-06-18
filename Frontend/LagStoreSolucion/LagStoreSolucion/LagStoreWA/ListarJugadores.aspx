@@ -43,7 +43,7 @@
 
     <!-- Buscador por ID -->
     <div class="input-group search-box">
-        <input type="text" class="form-control" placeholder="Buscar por ID" id="txtBuscar" runat="server" />
+        <input type="text" class="form-control" placeholder="Buscar por nombre o nickname" id="txtBuscar" runat="server" />
         <button class="btn btn-primary" type="button" id="btnBuscar" runat="server" onserverclick="btnBuscar_ServerClick">
             <i class="fas fa-search"></i>
         </button>
@@ -54,9 +54,10 @@
 
     <!-- Tabla para mostrar jugadores -->
     <asp:GridView ID="gvJugadores" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover"
-        OnRowCommand="gvJugadores_RowCommand" DataKeyNames="idJugador">
+        AllowPaging="true" PageSize="5" OnPageIndexChanging="gvJugadores_PageIndexChanging" OnRowCommand="gvJugadores_RowCommand" 
+        DataKeyNames="idJugador">
         <Columns>
-            <asp:BoundField DataField="idJugador" HeaderText="ID" />
+
             <asp:BoundField DataField="nickname" HeaderText="Nickname" />
             <asp:BoundField DataField="nombre" HeaderText="Nombre" />
             <asp:BoundField DataField="email" HeaderText="Email" />

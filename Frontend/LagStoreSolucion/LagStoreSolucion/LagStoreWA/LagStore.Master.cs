@@ -21,6 +21,7 @@ namespace LagStoreWA
                 lnkIniciarSesion.Visible = false;
                 liCerrarSesion.Visible = true;
                 liCrearCuenta.Visible = false; // Ocultar el enlace de crear cuenta si ya está autenticado
+
             }
             else
             {

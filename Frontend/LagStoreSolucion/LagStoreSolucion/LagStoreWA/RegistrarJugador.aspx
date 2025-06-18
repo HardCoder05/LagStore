@@ -48,10 +48,12 @@
         <asp:TextBox ID="txtFotoPerfil" runat="server" CssClass="form-control" />
     </div>
 
-    <div class="mb-3">
-        <label for="txtContrasena" class="form-label">Contraseña</label>
-        <asp:TextBox ID="txtContrasena" runat="server" CssClass="form-control" TextMode="Password" />
-    </div>
+    <asp:Panel ID="panelContrasena" runat="server" Visible="true">
+        <div class="mb-3">
+            <label for="txtContrasena" class="form-label">Contraseña</label>
+            <asp:TextBox ID="txtContrasena" runat="server" CssClass="form-control" TextMode="Password" />
+        </div>
+    </asp:Panel>
 
     <asp:Button ID="btnGuardar" runat="server" Text="Guardar Cambios" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary ms-2" OnClick="btnCancelar_Click" />

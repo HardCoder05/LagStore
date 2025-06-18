@@ -4,6 +4,8 @@
   <xs:element name="eliminarDesarrolladorResponse" type="tns:eliminarDesarrolladorResponse" />
   <xs:element name="insertarDesarrollador" type="tns:insertarDesarrollador" />
   <xs:element name="insertarDesarrolladorResponse" type="tns:insertarDesarrolladorResponse" />
+  <xs:element name="listarDesarrolladoresPorNombre" type="tns:listarDesarrolladoresPorNombre" />
+  <xs:element name="listarDesarrolladoresPorNombreResponse" type="tns:listarDesarrolladoresPorNombreResponse" />
   <xs:element name="listarTodosDesarrolladores" type="tns:listarTodosDesarrolladores" />
   <xs:element name="listarTodosDesarrolladoresResponse" type="tns:listarTodosDesarrolladoresResponse" />
   <xs:element name="modificarDesarrollador" type="tns:modificarDesarrollador" />
@@ -50,6 +52,16 @@
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
       <xs:element minOccurs="0" name="rolUsuario" type="tns:rol" />
       <xs:element minOccurs="0" name="telefono" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDesarrolladoresPorNombre">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDesarrolladoresPorNombreResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:desarrollador" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarDesarrollador">

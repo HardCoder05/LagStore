@@ -57,7 +57,11 @@
             <asp:BoundField DataField="titulo" HeaderText="Título" />
             <asp:BoundField DataField="genero" HeaderText="Género" />
             <asp:BoundField DataField="modeloNegocio" HeaderText="Modelo de Negocio" />
-            <asp:BoundField DataField="precio" HeaderText="Precio" DataFormatString="{0:C}" />
+            <asp:TemplateField HeaderText="Precio">
+                <ItemTemplate>
+                    S/ <%# Eval("precio", "{0:N2}") %>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="fechaLanzamiento" HeaderText="Fecha de Lanzamiento" DataFormatString="{0:yyyy-MM-dd}" />
             <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="text-center">
                 <ItemTemplate>

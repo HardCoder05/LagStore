@@ -38,4 +38,8 @@ public class JugadorBO {
     public Jugador obtenerPorId(int idJugador){
         return daoJugador.obtenerPorId(idJugador);
     }
+    
+    public ArrayList<Jugador> listarJugadoresPorNombreONickname(String Nombre){
+        return daoJugador.listarPorNombreONickname(Nombre);
+    }
 }

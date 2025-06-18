@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-
 using LagStoreWA.ServicesWS;
 
 namespace LagStoreWA
@@ -17,11 +16,11 @@ namespace LagStoreWA
         private BindingList<jugador> jugadores;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Administrador"] == null)
+            /*if (Session["Administrador"] == null)
             {
                 // Si no hay un administrador en sesión, redirigir a la página de inicio de sesión
                 Response.Redirect("InicioSesion.aspx");
-            }
+            }*/
 
             boJugador = new JugadorWSClient();
             if (!IsPostBack)
@@ -34,12 +33,14 @@ namespace LagStoreWA
                 var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
                 var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
                 var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
+                var liMasVendidos = this.Master.FindControl("liMasVendidos") as HtmlGenericControl;
+                
                 if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
                 {
                     // Mostrar menú gestión y cerrar sesión
                     liGestion.Visible = true;
                     liCerrarSesion.Visible = true;
-
+                    liMasVendidos.Visible = true;
                     // Ocultar iniciar sesión y crear cuenta
                     lnkIniciarSesion.Visible = false;
                     liCrearCuenta.Visible = false;
@@ -51,18 +52,13 @@ namespace LagStoreWA
         protected void btnBuscar_ServerClick(object sender, EventArgs e)
         {
             string textoBuscar = txtBuscar.Value.Trim();
-            boJugador = new JugadorWSClient();
-
             if (!string.IsNullOrEmpty(textoBuscar))
             {
-                int idBuscar = int.Parse(textoBuscar); // ← si estás 100% seguro que siempre será un número
-
                 try
                 {
-                    jugador j = boJugador.obtenerJugadorPorID(idBuscar);
-                    if (j != null)
+                    var listaResultado = boJugador.listarPorNombreONickname(textoBuscar);
+                    if (listaResultado != null && listaResultado.Length > 0)
                     {
-                        var listaResultado = new List<jugador> { j };
                         gvJugadores.DataSource = listaResultado;
                         gvJugadores.DataBind();
                     }
@@ -70,7 +66,7 @@ namespace LagStoreWA
                     {
                         gvJugadores.DataSource = new List<jugador>();
                         gvJugadores.DataBind();
-                        MostrarMensaje($"No se encontró un jugador con ID {idBuscar}");
+                        MostrarMensaje($"No se encontraron jugadores con el nombre o nickname: '{textoBuscar}'");
                     }
                 }
                 catch (Exception ex)
@@ -117,5 +113,30 @@ namespace LagStoreWA
             boJugador.eliminarJugador(idJugador);
             Response.Redirect("ListarJugadores.aspx");
         }*/
+
+        //enpaginar jugadores
+        protected void gvJugadores_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvJugadores.PageIndex = e.NewPageIndex;
+
+            // Si hay búsqueda activa
+            string textoBuscar = txtBuscar.Value.Trim();
+            if (!string.IsNullOrEmpty(textoBuscar))
+            {
+                var listaResultado = boJugador.listarPorNombreONickname(textoBuscar);
+                gvJugadores.DataSource = listaResultado;
+            }
+            else
+            {
+                jugadores = new BindingList<jugador>(boJugador.listarTodosJugadores());
+                gvJugadores.DataSource = jugadores;
+            }
+
+            gvJugadores.DataBind();
+        }
+
     }
+
+    
+
 }

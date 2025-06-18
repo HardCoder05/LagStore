@@ -4,6 +4,8 @@
   <xs:element name="eliminarJugadorResponse" type="tns:eliminarJugadorResponse" />
   <xs:element name="insertarJugador" type="tns:insertarJugador" />
   <xs:element name="insertarJugadorResponse" type="tns:insertarJugadorResponse" />
+  <xs:element name="listarPorNombreONickname" type="tns:listarPorNombreONickname" />
+  <xs:element name="listarPorNombreONicknameResponse" type="tns:listarPorNombreONicknameResponse" />
   <xs:element name="listarTodosJugadores" type="tns:listarTodosJugadores" />
   <xs:element name="listarTodosJugadoresResponse" type="tns:listarTodosJugadoresResponse" />
   <xs:element name="modificarJugador" type="tns:modificarJugador" />
@@ -55,6 +57,7 @@
   <xs:complexType name="juego">
     <xs:sequence>
       <xs:element name="activo" type="xs:int" />
+      <xs:element name="cantidadVentas" type="xs:int" />
       <xs:element minOccurs="0" name="desarrollador" type="tns:desarrollador" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
       <xs:element name="espacioDisco" type="xs:double" />
@@ -126,16 +129,6 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarJugador">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="jugador" type="tns:jugador" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="insertarJugadorResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="obtenerJugadorPorID">
     <xs:sequence>
       <xs:element name="idJugador" type="xs:int" />
@@ -146,10 +139,30 @@
       <xs:element minOccurs="0" name="return" type="tns:jugador" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="insertarJugador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jugador" type="tns:jugador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarJugadorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarTodosJugadores">
     <xs:sequence />
   </xs:complexType>
   <xs:complexType name="listarTodosJugadoresResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:jugador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPorNombreONickname">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPorNombreONicknameResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:jugador" />
     </xs:sequence>

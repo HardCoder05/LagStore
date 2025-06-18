@@ -85,7 +85,7 @@ public class Principal {
         //eliminar jugador
         jugadorBO.eliminar(200);
         // obtener por ID
-        jugadorBO.obtenerPorId(201);
+        jugadorBO.obtenerPorId(44);
     }
     
     private static void test_desarrolladores()throws ParseException{

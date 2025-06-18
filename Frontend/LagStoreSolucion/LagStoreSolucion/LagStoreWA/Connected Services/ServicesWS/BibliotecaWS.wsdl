@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/BibliotecaWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
+  <message name="obtenerBibliotecaPorUsuario">
+    <part name="parameters" element="tns:obtenerBibliotecaPorUsuario" />
+  </message>
+  <message name="obtenerBibliotecaPorUsuarioResponse">
+    <part name="parameters" element="tns:obtenerBibliotecaPorUsuarioResponse" />
+  </message>
   <message name="eliminarBiblioteca">
     <part name="parameters" element="tns:eliminarBiblioteca" />
   </message>
@@ -16,12 +22,6 @@
   </message>
   <message name="insertarBibliotecaResponse">
     <part name="parameters" element="tns:insertarBibliotecaResponse" />
-  </message>
-  <message name="obtenerBibliotecaPorUsuario">
-    <part name="parameters" element="tns:obtenerBibliotecaPorUsuario" />
-  </message>
-  <message name="obtenerBibliotecaPorUsuarioResponse">
-    <part name="parameters" element="tns:obtenerBibliotecaPorUsuarioResponse" />
   </message>
   <message name="modificarBiblioteca">
     <part name="parameters" element="tns:modificarBiblioteca" />
@@ -36,6 +36,10 @@
     <part name="parameters" element="tns:obtenerBibliotecaPorIdResponse" />
   </message>
   <portType name="BibliotecaWS">
+    <operation name="obtenerBibliotecaPorUsuario">
+      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorUsuarioRequest" message="tns:obtenerBibliotecaPorUsuario" />
+      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorUsuarioResponse" message="tns:obtenerBibliotecaPorUsuarioResponse" />
+    </operation>
     <operation name="eliminarBiblioteca">
       <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaRequest" message="tns:eliminarBiblioteca" />
       <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaResponse" message="tns:eliminarBibliotecaResponse" />
@@ -43,10 +47,6 @@
     <operation name="insertarBiblioteca">
       <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
       <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
-    </operation>
-    <operation name="obtenerBibliotecaPorUsuario">
-      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorUsuarioRequest" message="tns:obtenerBibliotecaPorUsuario" />
-      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorUsuarioResponse" message="tns:obtenerBibliotecaPorUsuarioResponse" />
     </operation>
     <operation name="modificarBiblioteca">
       <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/modificarBibliotecaRequest" message="tns:modificarBiblioteca" />
@@ -59,6 +59,15 @@
   </portType>
   <binding name="BibliotecaWSPortBinding" type="tns:BibliotecaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="obtenerBibliotecaPorUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="eliminarBiblioteca">
       <soap:operation soapAction="" />
       <input>
@@ -69,15 +78,6 @@
       </output>
     </operation>
     <operation name="insertarBiblioteca">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="obtenerBibliotecaPorUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
