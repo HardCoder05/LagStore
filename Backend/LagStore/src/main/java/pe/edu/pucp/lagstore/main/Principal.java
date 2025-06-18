@@ -1,13 +1,11 @@
 package pe.edu.pucp.lagstore.main;
 import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 
 import pe.edu.pucp.lagstore.compra.model.CarroCompra;
 import pe.edu.pucp.lagstore.compra.model.CarroCompraBO;
@@ -16,7 +14,7 @@ import pe.edu.pucp.lagstore.compra.model.CarteraBO;
 import pe.edu.pucp.lagstore.compra.model.MetodoPago;
 import pe.edu.pucp.lagstore.compra.model.Recarga;
 import pe.edu.pucp.lagstore.compra.model.RecargaBO;
-import pe.edu.pucp.lagstore.config.DBManager;
+
 
 import pe.edu.pucp.lagstore.gestJuegos.Model.BibliotecaBO;
 import pe.edu.pucp.lagstore.gestJuegos.Model.JuegoAdquiridoBO;
