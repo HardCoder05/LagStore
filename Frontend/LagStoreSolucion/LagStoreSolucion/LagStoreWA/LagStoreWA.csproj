@@ -281,6 +281,12 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorNombreONicknameResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarDesarrolladoresPorNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
     <None Include="Connected Services\ServicesWS\RecargaWS.xsd">
       <SubType>Designer</SubType>
@@ -332,6 +338,7 @@
     <Content Include="Content\site.css" />
     <Content Include="Home.aspx" />
     <Content Include="InicioSesion.aspx" />
+    <Content Include="JuegosMasVendidos.aspx" />
     <Content Include="ListarDesarrolladores.aspx" />
     <Content Include="ListarJuegos.aspx" />
     <Content Include="ListarJugadores.aspx" />
@@ -426,6 +433,13 @@
     </Compile>
     <Compile Include="InicioSesion.aspx.designer.cs">
       <DependentUpon>InicioSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JuegosMasVendidos.aspx.cs">
+      <DependentUpon>JuegosMasVendidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JuegosMasVendidos.aspx.designer.cs">
+      <DependentUpon>JuegosMasVendidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="LagStore.Master.cs">
       <DependentUpon>LagStore.Master</DependentUpon>

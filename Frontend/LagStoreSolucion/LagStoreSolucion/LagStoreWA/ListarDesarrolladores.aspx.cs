@@ -18,11 +18,11 @@ namespace LagStoreWA
         private BindingList<desarrollador> desarrolladores;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Administrador"] == null)
+            /*if (Session["Administrador"] == null)
             {
                 // Si no hay un administrador en sesión, redirigir a la página de inicio de sesión
                 Response.Redirect("InicioSesion.aspx");
-            }
+            }*/
 
             boDesarrollador = new DesarrolladorWSClient();
             if (!IsPostBack)
@@ -36,10 +36,12 @@ namespace LagStoreWA
                 var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
                 var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
                 var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
+                var liMasVendidos = this.Master.FindControl("liMasVendidos") as HtmlGenericControl;
                 if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
                 {
                     // Mostrar menú gestión y cerrar sesión
                     liGestion.Visible = true;
+                    liMasVendidos.Visible = true;
                     liCerrarSesion.Visible = true;
                     // Ocultar iniciar sesión y crear cuenta
                     lnkIniciarSesion.Visible = false;
@@ -74,23 +76,22 @@ namespace LagStoreWA
 
             if (!string.IsNullOrEmpty(textoBuscar))
             {
-                int idBuscar = int.Parse(textoBuscar); // ← si estás seguro que siempre será un número
+               
 
                 try
                 {
-                    desarrollador d = boDesarrollador.obtenerDesarrolladorPorID(idBuscar);
-                    if (d != null)
+                    var listaResultado = boDesarrollador.listarDesarrolladoresPorNombre(textoBuscar);
+                    if (listaResultado != null && listaResultado.Length > 0)
                     {
-                        var listaResultado = new List<desarrollador> { d };
                         gvDesarrolladores.DataSource = listaResultado;
                         gvDesarrolladores.DataBind();
-                        lblMensaje.Text = ""; // Limpiar mensaje si hay resultado
+                        lblMensaje.Text = "";
                     }
                     else
                     {
                         gvDesarrolladores.DataSource = new List<desarrollador>();
                         gvDesarrolladores.DataBind();
-                        MostrarMensaje($"No se encontró un desarrollador con ID {idBuscar}");
+                        MostrarMensaje($"No se encontraron desarrolladores con el nombre: '{textoBuscar}'");
                     }
                 }
                 catch (Exception ex)

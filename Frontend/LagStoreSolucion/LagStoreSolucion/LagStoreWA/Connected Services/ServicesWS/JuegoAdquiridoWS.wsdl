@@ -11,11 +11,11 @@
   <message name="obtenerJuegoAdquiridoPorIdResponse">
     <part name="parameters" element="tns:obtenerJuegoAdquiridoPorIdResponse" />
   </message>
-  <message name="insertarJuegoAdquirido">
-    <part name="parameters" element="tns:insertarJuegoAdquirido" />
+  <message name="eliminarJuegoAdquirido">
+    <part name="parameters" element="tns:eliminarJuegoAdquirido" />
   </message>
-  <message name="insertarJuegoAdquiridoResponse">
-    <part name="parameters" element="tns:insertarJuegoAdquiridoResponse" />
+  <message name="eliminarJuegoAdquiridoResponse">
+    <part name="parameters" element="tns:eliminarJuegoAdquiridoResponse" />
   </message>
   <message name="modificarJuegoAdquirido">
     <part name="parameters" element="tns:modificarJuegoAdquirido" />
@@ -23,11 +23,11 @@
   <message name="modificarJuegoAdquiridoResponse">
     <part name="parameters" element="tns:modificarJuegoAdquiridoResponse" />
   </message>
-  <message name="eliminarJuegoAdquirido">
-    <part name="parameters" element="tns:eliminarJuegoAdquirido" />
+  <message name="insertarJuegoAdquirido">
+    <part name="parameters" element="tns:insertarJuegoAdquirido" />
   </message>
-  <message name="eliminarJuegoAdquiridoResponse">
-    <part name="parameters" element="tns:eliminarJuegoAdquiridoResponse" />
+  <message name="insertarJuegoAdquiridoResponse">
+    <part name="parameters" element="tns:insertarJuegoAdquiridoResponse" />
   </message>
   <message name="listarJuegosAdquiridosPorBiblioteca">
     <part name="parameters" element="tns:listarJuegosAdquiridosPorBiblioteca" />
@@ -46,17 +46,17 @@
       <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdRequest" message="tns:obtenerJuegoAdquiridoPorId" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdResponse" message="tns:obtenerJuegoAdquiridoPorIdResponse" />
     </operation>
-    <operation name="insertarJuegoAdquirido">
-      <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoRequest" message="tns:insertarJuegoAdquirido" />
-      <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoResponse" message="tns:insertarJuegoAdquiridoResponse" />
+    <operation name="eliminarJuegoAdquirido">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoRequest" message="tns:eliminarJuegoAdquirido" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoResponse" message="tns:eliminarJuegoAdquiridoResponse" />
     </operation>
     <operation name="modificarJuegoAdquirido">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoRequest" message="tns:modificarJuegoAdquirido" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoResponse" message="tns:modificarJuegoAdquiridoResponse" />
     </operation>
-    <operation name="eliminarJuegoAdquirido">
-      <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoRequest" message="tns:eliminarJuegoAdquirido" />
-      <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoResponse" message="tns:eliminarJuegoAdquiridoResponse" />
+    <operation name="insertarJuegoAdquirido">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoRequest" message="tns:insertarJuegoAdquirido" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoResponse" message="tns:insertarJuegoAdquiridoResponse" />
     </operation>
     <operation name="listarJuegosAdquiridosPorBiblioteca">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/listarJuegosAdquiridosPorBibliotecaRequest" message="tns:listarJuegosAdquiridosPorBiblioteca" />
@@ -78,7 +78,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarJuegoAdquirido">
+    <operation name="eliminarJuegoAdquirido">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -96,7 +96,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarJuegoAdquirido">
+    <operation name="insertarJuegoAdquirido">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

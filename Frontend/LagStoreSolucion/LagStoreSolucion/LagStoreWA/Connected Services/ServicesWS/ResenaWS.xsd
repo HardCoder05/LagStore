@@ -64,6 +64,7 @@
   <xs:complexType name="juego">
     <xs:sequence>
       <xs:element name="activo" type="xs:int" />
+      <xs:element name="cantidadVentas" type="xs:int" />
       <xs:element minOccurs="0" name="desarrollador" type="tns:desarrollador" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
       <xs:element name="espacioDisco" type="xs:double" />

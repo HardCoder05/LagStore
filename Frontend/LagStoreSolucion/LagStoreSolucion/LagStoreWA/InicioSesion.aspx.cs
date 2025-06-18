@@ -44,19 +44,6 @@ namespace LagStoreWA
 
                 if (idUsuario > 0)
                 {
-                    //// Obtener datos completos del usuario
-                    //usuario usuarioCompleto = usuarioWSClient.obte(idUsuario);
-
-                    //if (usuarioCompleto == null)
-                    //{
-                    //    lblMensaje.Text = "No se pudo cargar la información del usuario.";
-                    //    return;
-                    //}
-
-                    //// Guardar en sesión
-                    //Session["Usuario"] = usuarioCompleto;
-                    //Session["UsuarioEmail"] = email;
-
                     Session["usuarioId"] = idUsuario;
                     rolUsuario = usuarioWSClient.obtenerRol(idUsuario);
                     Session["RolUsuario"] = rolUsuario;
@@ -68,10 +55,11 @@ namespace LagStoreWA
                             break;
                         case rol.Desarrollador:
                             Session["Desarrollador"] = desarrolladorWSClient.obtenerDesarrolladorPorID(idUsuario);
+
                             break;
                         case rol.Administrador:
-                            //Response.Redirect("Administrador.aspx", true);
                             Session["Administrador"] = administradorWSClient.obtenerAdministradorPorID(idUsuario);
+                            Response.Redirect("Administrador.aspx");
                             break;
                         default:
                             lblMensaje.Text = "Rol de usuario no reconocido.";
@@ -94,26 +82,7 @@ namespace LagStoreWA
 
                     // Redirección
                     string returnUrl = Request.QueryString["ReturnUrl"];
-                    if (!string.IsNullOrEmpty(returnUrl))
-                    {
-                        Response.Redirect(returnUrl, true);
-                    }
-                    else
-                    {
-                        // Redirigir según el rol
-                        switch (rolUsuario)
-                        {
-                            case rol.Administrador:
-                                Response.Redirect("Administrador.aspx", true);
-                                break;
-                            case rol.Jugador:
-                            case rol.Desarrollador:
-                            default:
-                                Response.Redirect("Home.aspx", true);
-                                break;
-                        }
-                    }
-                    //Response.Redirect(string.IsNullOrEmpty(returnUrl) ? "Home.aspx" : returnUrl, true);
+                    Response.Redirect(string.IsNullOrEmpty(returnUrl) ? "Home.aspx" : returnUrl, true);
                 }
                 else
                 {

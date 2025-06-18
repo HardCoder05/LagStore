@@ -16,11 +16,11 @@ namespace LagStoreWA
         private BindingList<jugador> jugadores;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Administrador"] == null)
+            /*if (Session["Administrador"] == null)
             {
                 // Si no hay un administrador en sesión, redirigir a la página de inicio de sesión
                 Response.Redirect("InicioSesion.aspx");
-            }
+            }*/
 
             boJugador = new JugadorWSClient();
             if (!IsPostBack)
@@ -33,12 +33,14 @@ namespace LagStoreWA
                 var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
                 var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
                 var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
+                var liMasVendidos = this.Master.FindControl("liMasVendidos") as HtmlGenericControl;
+                
                 if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
                 {
                     // Mostrar menú gestión y cerrar sesión
                     liGestion.Visible = true;
                     liCerrarSesion.Visible = true;
-
+                    liMasVendidos.Visible = true;
                     // Ocultar iniciar sesión y crear cuenta
                     lnkIniciarSesion.Visible = false;
                     liCrearCuenta.Visible = false;
@@ -111,5 +113,30 @@ namespace LagStoreWA
             boJugador.eliminarJugador(idJugador);
             Response.Redirect("ListarJugadores.aspx");
         }*/
+
+        //enpaginar jugadores
+        protected void gvJugadores_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvJugadores.PageIndex = e.NewPageIndex;
+
+            // Si hay búsqueda activa
+            string textoBuscar = txtBuscar.Value.Trim();
+            if (!string.IsNullOrEmpty(textoBuscar))
+            {
+                var listaResultado = boJugador.listarPorNombreONickname(textoBuscar);
+                gvJugadores.DataSource = listaResultado;
+            }
+            else
+            {
+                jugadores = new BindingList<jugador>(boJugador.listarTodosJugadores());
+                gvJugadores.DataSource = jugadores;
+            }
+
+            gvJugadores.DataBind();
+        }
+
     }
+
+    
+
 }

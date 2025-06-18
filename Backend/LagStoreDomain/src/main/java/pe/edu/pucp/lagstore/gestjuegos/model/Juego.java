@@ -20,8 +20,11 @@ public class Juego {
     private ModeloNegocio modeloNegocio;
     private Desarrollador desarrollador;
     private int activo;
-
-    public Juego() {}
+    private int cantidadVentas;
+    
+    public Juego() {
+        cantidadVentas=0;
+    }
 
     public Juego(String titulo, String descripcion, double precio, double version, String imagenJuego,
                  Date fechaLanzamiento, String requisitosMinimos, String requisitosRecomendados,
@@ -41,6 +44,7 @@ public class Juego {
         this.modeloNegocio = modeloNegocio;
         this.desarrollador = desarrollador;
         this.activo = 1;
+        this.cantidadVentas=0;
     }
 
     public int getIdJuego() { return idJuego; }
@@ -87,4 +91,7 @@ public class Juego {
 
     public int getActivo() { return activo; }
     public void setActivo(int activo) { this.activo = activo; }
+    
+    public int getCantidadVentas() {return cantidadVentas;}
+    public void setCantidadVentas(int cantidadVentas) {this.cantidadVentas = cantidadVentas;}
 }

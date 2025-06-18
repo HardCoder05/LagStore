@@ -5,6 +5,7 @@ import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
+import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
 import pe.edu.pucp.lagstore.gestusuarios.model.Administrador;
 import pe.edu.pucp.lagstore.gestusuarios.model.AdministradorBO;
 
@@ -57,5 +58,19 @@ public class AdministradorWS {
         boAdministrador=new AdministradorBO();
         return boAdministrador.obtenerPorId(idAdministrador);
     }
+    
+    @WebMethod(operationName = "listarJuegosQueMasSeVenden")
+    public ArrayList<Juego> listarJuegosQueMasSeVenden() {
+        ArrayList<Juego> juegos = null;
+        try{
+            boAdministrador = new AdministradorBO();
+            juegos = boAdministrador.listarJuegosMasVendidos();
+            System.out.println(juegos.get(0).getCantidadVentas());
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return juegos;
+    }
+    
     
 }

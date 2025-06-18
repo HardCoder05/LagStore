@@ -6,13 +6,14 @@ package pe.edu.pucp.lagstore.gestusuarios.model;
 import java.util.ArrayList;
 import pe.edu.pucp.lagstore.gestionusuarios.mysql.AdministradorMySQL;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.AdministradorDAO;
+import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
 /**
  *
  * @author W10
  */
 public class AdministradorBO {
     private final AdministradorDAO daoAdministrador;
-    
+
     public AdministradorBO(){
         daoAdministrador = new AdministradorMySQL();
     }
@@ -35,4 +36,8 @@ public class AdministradorBO {
     public Administrador obtenerPorId(int idAdministrador){
         return daoAdministrador.obtenerPorId(idAdministrador);
     }
+    public ArrayList<Juego> listarJuegosMasVendidos(){
+        return daoAdministrador.listarJuegosMasVendidos();
+    }
+    
 }

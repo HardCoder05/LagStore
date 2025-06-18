@@ -11,14 +11,15 @@ namespace LagStoreWA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Administrador"] == null)
+            /*if (Session["Administrador"] == null)
             {
                 // Si no hay un administrador en sesión, redirigir a la página de inicio de sesión
                 Response.Redirect("InicioSesion.aspx");
-            }
+            }*/
 
             if (!IsPostBack)
             {
+                panelContrasena.Visible = false;
                 string accion = Request.QueryString["accion"];
                 if (accion == "modificar")
                 {
