@@ -124,16 +124,6 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerCalificacionPorId">
-    <xs:sequence>
-      <xs:element name="idCalificacion" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerCalificacionPorIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:calificacion" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarCalificacion">
     <xs:sequence>
       <xs:element name="idCalificacion" type="xs:int" />
@@ -142,6 +132,16 @@
   <xs:complexType name="eliminarCalificacionResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerCalificacionPorId">
+    <xs:sequence>
+      <xs:element name="idCalificacion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerCalificacionPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:calificacion" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarCalificacion">

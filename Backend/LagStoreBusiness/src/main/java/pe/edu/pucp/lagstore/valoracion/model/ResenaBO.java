@@ -24,9 +24,12 @@ public class ResenaBO {
         return daoResena.eliminar(idResena);
     }
         public ArrayList<Resena> listarBibliotecas(){
-        return daoResena.listarTodas();
+        return daoResena.listarTodos();
     }
     public Resena obtenerPorId(int idResena){
         return daoResena.obtenerPorId(idResena);
+    }
+    public ArrayList<Resena> listarPorJuego(int idJuego){
+        return daoResena.listarPorJuego(idJuego);
     }
 }

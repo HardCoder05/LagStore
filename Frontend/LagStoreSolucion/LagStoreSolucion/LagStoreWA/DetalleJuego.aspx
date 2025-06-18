@@ -99,15 +99,43 @@
         <div class="row">
             <div class="col-md-6">
                 <asp:Image ID="imgJuego" runat="server" CssClass="img-fluid rounded shadow" />
+                <h4 class="text-primary mt-3">
+                    <asp:Label ID="lblPrecio" runat="server" /></h4>
+                <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al Carrito" CssClass="btn btn-success my-3" />
+                <p class="text-muted">
+                    Fecha de lanzamiento:<asp:Label ID="lblFecha" runat="server" />
+                </p>
+                <!--solo es hasta aqui-->
+                <hr class="my-5" />
+                <h4>Comentarios y Calificación</h4>
+                <asp:Repeater ID="rptComentarios" runat="server">
+                    <ItemTemplate>
+                        <div class="border rounded p-3 mb-3">
+                            <strong><%# Eval("autor.nombre") %></strong> - <%# new string('★', Convert.ToInt32(Eval("calificacion.puntuacion"))) %>
+                            <br/>
+                            <p class="mb-0"><%# Eval("comentario") %></p>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+
+                <h5 class="mt-4">Dejar un comentario</h5>
+                <div class="mb-3">
+                    <asp:TextBox ID="txtComentario" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3" placeholder="Escribe tu comentario..."></asp:TextBox>
+                </div>
+                <div class="mb-3">
+                    <asp:DropDownList ID="ddlCalificacion" runat="server" CssClass="form-select">
+                        <asp:ListItem Text=" ★" Value="1" />
+                        <asp:ListItem Text="★★" Value="2" />
+                        <asp:ListItem Text="★★★" Value="3" />
+                        <asp:ListItem Text="★★★★" Value="4" />
+                        <asp:ListItem Text="★★★★★" Value="5" />
+                    </asp:DropDownList>
+                </div>
+                <asp:Button ID="btnComentar" runat="server" Text="Enviar Comentario" CssClass="btn btn-primary" OnClick="btnComentar_Click" />
             </div>
             <div class="col-md-6">
                 <h2 class="fw-bold">
                     <asp:Label ID="lblTitulo" runat="server" /></h2>
-                <h4 class="text-primary mt-3">
-                    <asp:Label ID="lblPrecio" runat="server" /></h4>
-                <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al Carrito" CssClass="btn btn-success my-3" />
-                <p class="text-muted">Fecha de lanzamiento:
-                    <asp:Label ID="lblFecha" runat="server" /></p>
                 <hr />
                 <p>
                     <asp:Label ID="lblDescripcion" runat="server" /></p>
@@ -136,33 +164,5 @@
                 </div>
             </div>
         </div>
-        <!--solo es hasta aqui-->
-        <hr class="my-5" />
-        <h4>Comentarios y Calificación</h4>
-        <asp:Repeater ID="rptComentarios" runat="server">
-            <ItemTemplate>
-                <div class="border rounded p-3 mb-3">
-                    <strong><%# Eval("usuario") %></strong> - 
-                   <%# new string('★', Convert.ToInt32(Eval("calificacion"))) %>
-                    <br />
-                    <p class="mb-0"><%# Eval("comentario") %></p>
-                </div>
-            </ItemTemplate>
-        </asp:Repeater>
-
-        <h5 class="mt-4">Dejar un comentario</h5>
-        <div class="mb-3">
-            <asp:TextBox ID="txtComentario" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3" placeholder="Escribe tu comentario..."></asp:TextBox>
-        </div>
-        <div class="mb-3">
-            <asp:DropDownList ID="ddlCalificacion" runat="server" CssClass="form-select">
-                <asp:ListItem Text="1 ★" Value="1" />
-                <asp:ListItem Text="2 ★★" Value="2" />
-                <asp:ListItem Text="3 ★★★" Value="3" />
-                <asp:ListItem Text="4 ★★★★" Value="4" />
-                <asp:ListItem Text="5 ★★★★★" Value="5" />
-            </asp:DropDownList>
-        </div>
-        <asp:Button ID="btnComentar" runat="server" Text="Enviar Comentario" CssClass="btn btn-primary" OnClick="btnComentar_Click" />
     </div>
 </asp:Content>

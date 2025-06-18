@@ -65,7 +65,7 @@ public class ResenaMySQL implements ResenaDAO{
     }
 
     @Override
-    public ArrayList<Resena> listarTodas() {
+    public ArrayList<Resena> listarTodos() {
          ArrayList<Resena> resenas = new ArrayList<>();
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_RESENAS_TODAS", null);
         System.out.println("Lectura de resenas...");
@@ -133,5 +133,43 @@ public class ResenaMySQL implements ResenaDAO{
             DBManager.getInstance().cerrarConexion();
         }
         return resena;
-    } 
+    }
+    @Override
+    public ArrayList<Resena> listarPorJuego(int idJuego) {
+        ArrayList<Resena> resenas = new ArrayList<>();
+
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idJuego); // el único parámetro de entrada
+
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_RESENAS_X_JUEGO", parametrosEntrada);
+        System.out.println("Lectura de reseñas por juego...");
+
+        try {
+            while (rs.next()) {
+                Resena resena = new Resena();
+                resena.setIdResena(rs.getInt("idResena"));
+                resena.setComentario(rs.getString("comentario"));
+                resena.setFechaPublicacion(rs.getDate("fechaPublicacion"));
+                resena.setActivo(rs.getInt("activo"));
+
+                // Calificación
+                Calificacion calificacion = new Calificacion();
+                calificacion.setIdCalificacion(rs.getInt("idCalificacion"));
+                calificacion.setPuntuacion(rs.getInt("puntaje"));
+                resena.setCalificacion(calificacion);
+
+                // Jugador (autor)
+                Jugador autor = new Jugador();
+                autor.setIdJugador(rs.getInt("fidJugador"));
+                autor.setNombre(rs.getString("nickname")); // este viene del JOIN
+                resena.setAutor(autor);
+                resenas.add(resena);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return resenas;
+    }
 }

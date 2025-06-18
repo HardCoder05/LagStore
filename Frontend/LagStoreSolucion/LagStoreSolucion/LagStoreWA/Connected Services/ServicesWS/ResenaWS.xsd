@@ -4,6 +4,8 @@
   <xs:element name="eliminarResenaResponse" type="tns:eliminarResenaResponse" />
   <xs:element name="insertarResena" type="tns:insertarResena" />
   <xs:element name="insertarResenaResponse" type="tns:insertarResenaResponse" />
+  <xs:element name="listarPorJuego" type="tns:listarPorJuego" />
+  <xs:element name="listarPorJuegoResponse" type="tns:listarPorJuegoResponse" />
   <xs:element name="modificarResena" type="tns:modificarResena" />
   <xs:element name="modificarResenaResponse" type="tns:modificarResenaResponse" />
   <xs:element name="obtenerResenaPorId" type="tns:obtenerResenaPorId" />
@@ -124,6 +126,16 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="listarPorJuego">
+    <xs:sequence>
+      <xs:element name="idJuego" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPorJuegoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:resena" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="obtenerResenaPorId">
     <xs:sequence>
       <xs:element name="idResena" type="xs:int" />
@@ -134,22 +146,22 @@
       <xs:element minOccurs="0" name="return" type="tns:resena" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarResena">
-    <xs:sequence>
-      <xs:element name="idResena" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarResenaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="insertarResena">
     <xs:sequence>
       <xs:element minOccurs="0" name="resena" type="tns:resena" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarResenaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarResena">
+    <xs:sequence>
+      <xs:element name="idResena" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarResenaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>

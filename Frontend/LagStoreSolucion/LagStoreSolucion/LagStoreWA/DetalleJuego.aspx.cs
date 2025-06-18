@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -21,7 +22,7 @@ namespace LagStoreWA{
                 if (int.TryParse(Request.QueryString["id"], out idJuego))
                 {
                     CargarDatosJuego(idJuego);
-                    //CargarComentarios(idJuego);
+                    CargarComentarios(idJuego);
                 }
             }
         }
@@ -49,14 +50,15 @@ namespace LagStoreWA{
                 lblDesarrollador.Text = juego.desarrollador?.nombre ?? "N/A";
             }
         }
-        /*
+        
         private void CargarComentarios(int idJuego)
         {
-            var comentarios = ComentarioDAO.ObtenerPorJuego(idJuego); // también debes implementarla
+              wsResena= new ResenaWSClient();
+        List<resena> comentarios = wsResena.listarPorJuego(idJuego)?.ToList() ?? new List<resena>();//si esta vacio (devuelve lista vacia)
             rptComentarios.DataSource = comentarios;
             rptComentarios.DataBind();
         }
-        */
+        
         
         protected void btnComentar_Click(object sender, EventArgs e)
         {
@@ -98,7 +100,7 @@ namespace LagStoreWA{
 
 
             txtComentario.Text = "";
-          //  CargarComentarios(idJuego);
+            CargarComentarios(idJuego);
             
         }
         
