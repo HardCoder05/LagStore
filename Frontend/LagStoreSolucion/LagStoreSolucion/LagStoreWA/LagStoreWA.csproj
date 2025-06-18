@@ -287,6 +287,9 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosConMayorCalificacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
     <None Include="Connected Services\ServicesWS\RecargaWS.xsd">
       <SubType>Designer</SubType>
@@ -339,6 +342,7 @@
     <Content Include="Home.aspx" />
     <Content Include="InicioSesion.aspx" />
     <Content Include="JuegosMasVendidos.aspx" />
+    <Content Include="JuegosMayorCalificacion.aspx" />
     <Content Include="ListarDesarrolladores.aspx" />
     <Content Include="ListarJuegos.aspx" />
     <Content Include="ListarJugadores.aspx" />
@@ -440,6 +444,13 @@
     </Compile>
     <Compile Include="JuegosMasVendidos.aspx.designer.cs">
       <DependentUpon>JuegosMasVendidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JuegosMayorCalificacion.aspx.cs">
+      <DependentUpon>JuegosMayorCalificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JuegosMayorCalificacion.aspx.designer.cs">
+      <DependentUpon>JuegosMayorCalificacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="LagStore.Master.cs">
       <DependentUpon>LagStore.Master</DependentUpon>

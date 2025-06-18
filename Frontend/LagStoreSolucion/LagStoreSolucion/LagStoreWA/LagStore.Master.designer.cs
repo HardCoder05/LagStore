@@ -60,6 +60,15 @@ namespace LagStoreWA
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl liMasVendidos;
 
         /// <summary>
+        /// Control liMayorCalificacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liMayorCalificacion;
+
+        /// <summary>
         /// Control lnkIniciarSesion.
         /// </summary>
         /// <remarks>

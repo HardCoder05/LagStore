@@ -42,7 +42,7 @@
     <h2 class="mb-4">Lista de Juegos</h2>
 
     <div class="input-group search-box">
-        <input type="text" class="form-control" placeholder="Buscar por ID" id="txtBuscar" runat="server" />
+        <input type="text" class="form-control" placeholder="Buscar por nombre" id="txtBuscar" runat="server" />
         <button class="btn btn-primary" type="button" id="btnBuscar" runat="server" onserverclick="btnBuscar_ServerClick">
             <i class="fas fa-search"></i>
         </button>
@@ -53,7 +53,6 @@
     <asp:GridView ID="gvJuegos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover"
         OnRowCommand="gvJuegos_RowCommand" DataKeyNames="idJuego">
         <Columns>
-            <asp:BoundField DataField="idJuego" HeaderText="ID" />
             <asp:BoundField DataField="titulo" HeaderText="Título" />
             <asp:BoundField DataField="genero" HeaderText="Género" />
             <asp:BoundField DataField="modeloNegocio" HeaderText="Modelo de Negocio" />

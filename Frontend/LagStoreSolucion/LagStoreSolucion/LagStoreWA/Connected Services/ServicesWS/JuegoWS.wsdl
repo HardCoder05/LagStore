@@ -5,12 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/JuegoWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="listarJuegosConFiltro">
-    <part name="parameters" element="tns:listarJuegosConFiltro" />
-  </message>
-  <message name="listarJuegosConFiltroResponse">
-    <part name="parameters" element="tns:listarJuegosConFiltroResponse" />
-  </message>
   <message name="insertarJuego">
     <part name="parameters" element="tns:insertarJuego" />
   </message>
@@ -29,11 +23,13 @@
   <message name="listarJuegosResponse">
     <part name="parameters" element="tns:listarJuegosResponse" />
   </message>
+  <message name="listarJuegosConFiltro">
+    <part name="parameters" element="tns:listarJuegosConFiltro" />
+  </message>
+  <message name="listarJuegosConFiltroResponse">
+    <part name="parameters" element="tns:listarJuegosConFiltroResponse" />
+  </message>
   <portType name="JuegoWS">
-    <operation name="listarJuegosConFiltro">
-      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroRequest" message="tns:listarJuegosConFiltro" />
-      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroResponse" message="tns:listarJuegosConFiltroResponse" />
-    </operation>
     <operation name="insertarJuego">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoRequest" message="tns:insertarJuego" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoResponse" message="tns:insertarJuegoResponse" />
@@ -46,18 +42,13 @@
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosRequest" message="tns:listarJuegos" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosResponse" message="tns:listarJuegosResponse" />
     </operation>
+    <operation name="listarJuegosConFiltro">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroRequest" message="tns:listarJuegosConFiltro" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroResponse" message="tns:listarJuegosConFiltroResponse" />
+    </operation>
   </portType>
   <binding name="JuegoWSPortBinding" type="tns:JuegoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarJuegosConFiltro">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="insertarJuego">
       <soap:operation soapAction="" />
       <input>
@@ -77,6 +68,15 @@
       </output>
     </operation>
     <operation name="listarJuegos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarJuegosConFiltro">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
