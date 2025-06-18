@@ -48,4 +48,8 @@ public class JuegoBO {
         return daoJuego.listarJuegosConFiltro(titulo,genero, 
             modelo,precioMin,precioMax);
     }
+    
+    public ArrayList<Juego> listarPorDesarrollador(int idDesarrollador) {
+        return daoJuego.listarPorDesarrollador(idDesarrollador);
+    }
 }

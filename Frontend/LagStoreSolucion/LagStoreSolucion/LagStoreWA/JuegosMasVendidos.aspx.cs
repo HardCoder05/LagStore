@@ -18,10 +18,13 @@ namespace LagStoreWA
             var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
             var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as System.Web.UI.HtmlControls.HtmlGenericControl;
             var liMasVendidos = this.Master.FindControl("liMasVendidos") as HtmlGenericControl;
+            var liMayorCalificacion = this.Master.FindControl("liMayorCalificacion") as HtmlGenericControl;
+            
             if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
             {
                 liGestion.Visible = true;
                 liMasVendidos.Visible = true;
+                liMayorCalificacion.Visible = true;
                 liCerrarSesion.Visible = true;
                 lnkIniciarSesion.Visible = false;
                 liCrearCuenta.Visible = false;

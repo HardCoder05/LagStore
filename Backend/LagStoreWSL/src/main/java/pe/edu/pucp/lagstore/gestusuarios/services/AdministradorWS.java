@@ -72,5 +72,19 @@ public class AdministradorWS {
         return juegos;
     }
     
+    @WebMethod(operationName = "listarJuegosConMayorCalificacion")
+    public ArrayList<Juego> listarJuegosConMayorCalificacion() {
+        ArrayList<Juego> juegos = null;
+        try{
+            boAdministrador = new AdministradorBO();
+            juegos = boAdministrador.listarJuegosCalificacionAltas();
+            System.out.println(juegos.get(0).getCantidadCalificaciones());
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return juegos;
+    }
+    
+    
     
 }

@@ -413,6 +413,11 @@ BEGIN
   UPDATE JuegoAdquirido
   SET activo = 0
   WHERE fidBiblioteca = p_idBiblioteca AND fidJuego = p_idJuego;
+  
+  -- Actualizar la cantidad de juegos de la biblioteca
+  UPDATE Biblioteca
+  SET cantidadJuegos = cantidadJuegos - 1
+  WHERE idBiblioteca = p_idBiblioteca;
 END //
 
 

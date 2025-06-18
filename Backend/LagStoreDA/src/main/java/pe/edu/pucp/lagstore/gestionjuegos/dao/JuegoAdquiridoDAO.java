@@ -14,4 +14,5 @@ import pe.edu.pucp.lagstore.gestjuegos.model.JuegoAdquirido;
 public interface JuegoAdquiridoDAO extends ICrud<JuegoAdquirido> {
     ArrayList<JuegoAdquirido> listarJuegosAdquiridosPorBiblioteca(int idBiblioteca);
     JuegoAdquirido obtenerJuegoAdquiridoPorBibliotecaYJuego(int idBiblioteca,int idJuego);
+    int eliminarJuegoAdquiridoPorBibliotecaYJuego(int idBiblioteca,int idJuego);
 }

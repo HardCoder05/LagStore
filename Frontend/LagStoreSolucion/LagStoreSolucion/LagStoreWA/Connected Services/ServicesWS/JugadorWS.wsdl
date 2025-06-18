@@ -5,12 +5,42 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/JugadorWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
+<<<<<<< HEAD
+=======
+
   <message name="listarPorNombreONickname">
     <part name="parameters" element="tns:listarPorNombreONickname" />
   </message>
   <message name="listarPorNombreONicknameResponse">
     <part name="parameters" element="tns:listarPorNombreONicknameResponse" />
   </message>
+  <message name="insertarJugador">
+    <part name="parameters" element="tns:insertarJugador" />
+  </message>
+  <message name="insertarJugadorResponse">
+    <part name="parameters" element="tns:insertarJugadorResponse" />
+  </message>
+
+
+  <message name="eliminarJugador">
+    <part name="parameters" element="tns:eliminarJugador" />
+  </message>
+  <message name="eliminarJugadorResponse">
+    <part name="parameters" element="tns:eliminarJugadorResponse" />
+  </message>
+  <message name="modificarJugador">
+    <part name="parameters" element="tns:modificarJugador" />
+  </message>
+  <message name="modificarJugadorResponse">
+    <part name="parameters" element="tns:modificarJugadorResponse" />
+  </message>
+  <message name="insertarJugador">
+    <part name="parameters" element="tns:insertarJugador" />
+  </message>
+  <message name="insertarJugadorResponse">
+    <part name="parameters" element="tns:insertarJugadorResponse" />
+  </message>
+>>>>>>> 8c9027bf97565f084fba51067306ff424c4f6a8e
   <message name="listarTodosJugadores">
     <part name="parameters" element="tns:listarTodosJugadores" />
   </message>
@@ -22,6 +52,12 @@
   </message>
   <message name="obtenerJugadorPorIDResponse">
     <part name="parameters" element="tns:obtenerJugadorPorIDResponse" />
+  </message>
+  <message name="insertarJugador">
+    <part name="parameters" element="tns:insertarJugador" />
+  </message>
+  <message name="insertarJugadorResponse">
+    <part name="parameters" element="tns:insertarJugadorResponse" />
   </message>
   <message name="modificarJugador">
     <part name="parameters" element="tns:modificarJugador" />
@@ -35,17 +71,32 @@
   <message name="eliminarJugadorResponse">
     <part name="parameters" element="tns:eliminarJugadorResponse" />
   </message>
-  <message name="insertarJugador">
-    <part name="parameters" element="tns:insertarJugador" />
-  </message>
-  <message name="insertarJugadorResponse">
-    <part name="parameters" element="tns:insertarJugadorResponse" />
-  </message>
   <portType name="JugadorWS">
+<<<<<<< HEAD
+=======
+
     <operation name="listarPorNombreONickname">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/listarPorNombreONicknameRequest" message="tns:listarPorNombreONickname" />
       <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/listarPorNombreONicknameResponse" message="tns:listarPorNombreONicknameResponse" />
     </operation>
+    <operation name="insertarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorRequest" message="tns:insertarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorResponse" message="tns:insertarJugadorResponse" />
+    </operation>
+
+    <operation name="eliminarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorRequest" message="tns:eliminarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorResponse" message="tns:eliminarJugadorResponse" />
+    </operation>
+    <operation name="modificarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorRequest" message="tns:modificarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorResponse" message="tns:modificarJugadorResponse" />
+    </operation>
+    <operation name="insertarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorRequest" message="tns:insertarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorResponse" message="tns:insertarJugadorResponse" />
+    </operation>
+>>>>>>> 8c9027bf97565f084fba51067306ff424c4f6a8e
     <operation name="listarTodosJugadores">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/listarTodosJugadoresRequest" message="tns:listarTodosJugadores" />
       <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/listarTodosJugadoresResponse" message="tns:listarTodosJugadoresResponse" />
@@ -53,6 +104,10 @@
     <operation name="obtenerJugadorPorID">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/obtenerJugadorPorIDRequest" message="tns:obtenerJugadorPorID" />
       <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/obtenerJugadorPorIDResponse" message="tns:obtenerJugadorPorIDResponse" />
+    </operation>
+    <operation name="insertarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorRequest" message="tns:insertarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorResponse" message="tns:insertarJugadorResponse" />
     </operation>
     <operation name="modificarJugador">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorRequest" message="tns:modificarJugador" />
@@ -62,14 +117,61 @@
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorRequest" message="tns:eliminarJugador" />
       <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorResponse" message="tns:eliminarJugadorResponse" />
     </operation>
-    <operation name="insertarJugador">
-      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorRequest" message="tns:insertarJugador" />
-      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorResponse" message="tns:insertarJugadorResponse" />
-    </operation>
   </portType>
   <binding name="JugadorWSPortBinding" type="tns:JugadorWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+<<<<<<< HEAD
+    <operation name="listarTodosJugadores">
+=======
+
     <operation name="listarPorNombreONickname">
+>>>>>>> 8c9027bf97565f084fba51067306ff424c4f6a8e
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+<<<<<<< HEAD
+    <operation name="obtenerJugadorPorID">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarJugador">
+=======
+    <operation name="insertarJugador">
+
+    <operation name="eliminarJugador">
+
+>>>>>>> 8c9027bf97565f084fba51067306ff424c4f6a8e
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarJugador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+<<<<<<< HEAD
+    <operation name="eliminarJugador">
+=======
+    <operation name="insertarJugador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -88,33 +190,7 @@
       </output>
     </operation>
     <operation name="obtenerJugadorPorID">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarJugador">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="eliminarJugador">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="insertarJugador">
+>>>>>>> 8c9027bf97565f084fba51067306ff424c4f6a8e
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
