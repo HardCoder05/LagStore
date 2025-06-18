@@ -27,11 +27,14 @@ namespace LagStoreWA
                 var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as LinkButton;
                 var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as HtmlGenericControl;
                 var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
-
+                var liMasVendidos = this.Master.FindControl("liMasVendidos") as HtmlGenericControl;
+                var liMayorCalificacion = this.Master.FindControl("liMayorCalificacion") as HtmlGenericControl;
                 if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
                 {
                     liGestion.Visible = true;
                     liCerrarSesion.Visible = true;
+                    liMasVendidos.Visible = true;
+                    liMayorCalificacion.Visible = true;
                     lnkIniciarSesion.Visible = false;
                     liCrearCuenta.Visible = false;
                 }

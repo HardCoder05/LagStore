@@ -105,7 +105,7 @@ public class JuegoMySQL implements JuegoDAO{
 
                 Desarrollador dev = new Desarrollador();
                 dev.setIdDesarrollador(rs.getInt("desarrollador_idDesarrollador"));
-                dev.setIdUsuario(rs.getInt("idUsuario"));
+                /*dev.setIdUsuario(rs.getInt("desarrollador_idDesarrollador"));
                 dev.setNombre(rs.getString("nombre"));
                 dev.setEmail(rs.getString("email"));
                 dev.setContrasena(rs.getString("contrasena"));
@@ -113,7 +113,7 @@ public class JuegoMySQL implements JuegoDAO{
                 dev.setTelefono(rs.getString("telefono"));
                 dev.setFotoDePerfil(rs.getString("fotoDePerfil"));
                 dev.setNumeroCuenta(rs.getString("numeroCuenta"));
-                dev.setIngresoTotal(rs.getDouble("ingresoTotal"));
+                dev.setIngresoTotal(rs.getDouble("ingresoTotal"));*/
 
                 juego.setDesarrollador(dev);
                 juegos.add(juego);

@@ -5,6 +5,21 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/JugadorWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
+
+  <message name="listarPorNombreONickname">
+    <part name="parameters" element="tns:listarPorNombreONickname" />
+  </message>
+  <message name="listarPorNombreONicknameResponse">
+    <part name="parameters" element="tns:listarPorNombreONicknameResponse" />
+  </message>
+  <message name="insertarJugador">
+    <part name="parameters" element="tns:insertarJugador" />
+  </message>
+  <message name="insertarJugadorResponse">
+    <part name="parameters" element="tns:insertarJugadorResponse" />
+  </message>
+
+
   <message name="eliminarJugador">
     <part name="parameters" element="tns:eliminarJugador" />
   </message>
@@ -36,6 +51,16 @@
     <part name="parameters" element="tns:obtenerJugadorPorIDResponse" />
   </message>
   <portType name="JugadorWS">
+
+    <operation name="listarPorNombreONickname">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/listarPorNombreONicknameRequest" message="tns:listarPorNombreONickname" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/listarPorNombreONicknameResponse" message="tns:listarPorNombreONicknameResponse" />
+    </operation>
+    <operation name="insertarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorRequest" message="tns:insertarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorResponse" message="tns:insertarJugadorResponse" />
+    </operation>
+
     <operation name="eliminarJugador">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorRequest" message="tns:eliminarJugador" />
       <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorResponse" message="tns:eliminarJugadorResponse" />
@@ -59,7 +84,20 @@
   </portType>
   <binding name="JugadorWSPortBinding" type="tns:JugadorWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+
+    <operation name="listarPorNombreONickname">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarJugador">
+
     <operation name="eliminarJugador">
+
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

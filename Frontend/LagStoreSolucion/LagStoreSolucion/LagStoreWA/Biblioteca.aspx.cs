@@ -16,11 +16,11 @@ namespace LagStoreWA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuarioId"] == null)
+            /*if (Session["usuarioId"] == null)
             {
                 Response.Redirect("InicioSesion.aspx");
                 return;
-            }
+            }*/
 
             if (!IsPostBack)
             {
@@ -52,7 +52,7 @@ namespace LagStoreWA
 
         private void InicializarBiblioteca()
         {
-            int idUsuario = (int)Session["usuarioId"];
+            int idUsuario = (int)Session["id"];
 
             try
             {
