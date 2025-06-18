@@ -5,11 +5,19 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/JugadorWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
+
   <message name="eliminarJugador">
     <part name="parameters" element="tns:eliminarJugador" />
   </message>
   <message name="eliminarJugadorResponse">
     <part name="parameters" element="tns:eliminarJugadorResponse" />
+
+  <message name="insertarJugador">
+    <part name="parameters" element="tns:insertarJugador" />
+  </message>
+  <message name="insertarJugadorResponse">
+    <part name="parameters" element="tns:insertarJugadorResponse" />
+
   </message>
   <message name="modificarJugador">
     <part name="parameters" element="tns:modificarJugador" />
@@ -17,11 +25,19 @@
   <message name="modificarJugadorResponse">
     <part name="parameters" element="tns:modificarJugadorResponse" />
   </message>
+
   <message name="insertarJugador">
     <part name="parameters" element="tns:insertarJugador" />
   </message>
   <message name="insertarJugadorResponse">
     <part name="parameters" element="tns:insertarJugadorResponse" />
+
+  <message name="eliminarJugador">
+    <part name="parameters" element="tns:eliminarJugador" />
+  </message>
+  <message name="eliminarJugadorResponse">
+    <part name="parameters" element="tns:eliminarJugadorResponse" />
+
   </message>
   <message name="obtenerJugadorPorID">
     <part name="parameters" element="tns:obtenerJugadorPorID" />
@@ -39,6 +55,9 @@
     <operation name="eliminarJugador">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorRequest" message="tns:eliminarJugador" />
       <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorResponse" message="tns:eliminarJugadorResponse" />
+    <operation name="insertarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorRequest" message="tns:insertarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorResponse" message="tns:insertarJugadorResponse" />
     </operation>
     <operation name="modificarJugador">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorRequest" message="tns:modificarJugador" />
@@ -47,6 +66,9 @@
     <operation name="insertarJugador">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorRequest" message="tns:insertarJugador" />
       <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorResponse" message="tns:insertarJugadorResponse" />
+    <operation name="eliminarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorRequest" message="tns:eliminarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorResponse" message="tns:eliminarJugadorResponse" />
     </operation>
     <operation name="obtenerJugadorPorID">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/obtenerJugadorPorIDRequest" message="tns:obtenerJugadorPorID" />
@@ -78,6 +100,7 @@
       </output>
     </operation>
     <operation name="insertarJugador">
+    <operation name="eliminarJugador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -11,6 +11,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.HashSet;
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.JugadorDAO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
@@ -54,7 +55,7 @@ public class JugadorMySQL implements JugadorDAO{
         parametrosEntrada.put(3, jugador.getNombre());
         parametrosEntrada.put(4, jugador.getEmail());
         parametrosEntrada.put(5, jugador.getContrasena());
-        parametrosEntrada.put(6, new Date(jugador.getFechaRegistro().getTime()));
+        parametrosEntrada.put(6, jugador.getFechaRegistro());
         parametrosEntrada.put(7, jugador.getTelefono());
         parametrosEntrada.put(8, jugador.getFotoDePerfil());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_JUGADOR", parametrosEntrada, null);
@@ -131,6 +132,38 @@ public class JugadorMySQL implements JugadorDAO{
             DBManager.getInstance().cerrarConexion();
         }
         return jugador;
+    }
+
+    @Override
+    public ArrayList<Jugador> listarPorNombreONickname(String Nombre) {
+        ArrayList<Jugador> jugadores = null;
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, Nombre);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_JUGADORES_X_NOMBRE_X_NICKNAME", parametrosEntrada);
+        System.out.println("Lectura de jugadores...");
+        try{
+            while(rs.next()){
+                if(jugadores == null) jugadores = new ArrayList<>();
+                Jugador jugador = new Jugador();
+                jugador.setIdUsuario(rs.getInt(1));
+                jugador.setIdJugador(rs.getInt(1));
+                jugador.setNombre(rs.getString(2));
+                jugador.setEmail(rs.getString(3));
+                jugador.setFechaRegistro(rs.getDate(4));
+                jugador.setTelefono(rs.getString(5));
+                jugador.setFotoDePerfil(rs.getString(6));
+                jugador.setNickname(rs.getString(7));
+                jugador.setRolUsuario(Rol.Jugador);
+                jugador.setActivo(1);
+                jugadores.add(jugador);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return jugadores;
+        
     }
 
     

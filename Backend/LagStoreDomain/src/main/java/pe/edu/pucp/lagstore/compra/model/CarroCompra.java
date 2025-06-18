@@ -16,7 +16,11 @@ public class CarroCompra {
     public int getIdCarroCompra(){
         return idCarroCompra;
     }
-
+    
+    public int setCantJuegos(){
+        return juegos.size();
+    }
+    
     public void setIdCarroCompra(int idCarroCompra){
         this.idCarroCompra = idCarroCompra;
     }

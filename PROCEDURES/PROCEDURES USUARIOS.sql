@@ -41,7 +41,7 @@ CREATE PROCEDURE TA.MODIFICAR_DESARROLLADOR(
 BEGIN
 	UPDATE Usuario SET nombre = _nombre, 
 						email=_email, 
-						contrasena=_contrasena, 
+						contrasena=MD5(_contrasena), 
 						fechaRegistro=_fechaRegistro, 
 						telefono=_telefono, 
 						fotoDePerfil=_fotoDePerfil
@@ -129,7 +129,7 @@ CREATE PROCEDURE TA.MODIFICAR_JUGADOR(
 BEGIN
 	UPDATE Usuario SET nombre = _nombre, 
 						email=_email, 
-						contrasena=_contrasena, 
+						contrasena=MD5(_contrasena), 
 						fechaRegistro=_fechaRegistro, 
 						telefono=_telefono, 
 						fotoDePerfil=_fotoDePerfil
@@ -214,7 +214,7 @@ CREATE PROCEDURE TA.MODIFICAR_ADMINISTRADOR(
 BEGIN
 	UPDATE Usuario SET nombre = _nombre, 
 						email=_email, 
-						contrasena=_contrasena, 
+						contrasena=MD5(_contrasena), 
 						fechaRegistro=_fechaRegistro, 
 						telefono=_telefono, 
 						fotoDePerfil=_fotoPerfil

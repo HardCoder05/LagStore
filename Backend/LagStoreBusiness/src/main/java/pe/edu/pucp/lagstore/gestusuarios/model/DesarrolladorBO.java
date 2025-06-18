@@ -41,4 +41,8 @@ public class DesarrolladorBO {
     public Desarrollador obtenerPorId(int idDesarrollador){
         return daoDesarrollador.obtenerPorId(idDesarrollador);
     }
+    
+    public ArrayList<Desarrollador> listarDesarrolladoresPorNombre(String Nombre){
+        return daoDesarrollador.listarPorNombre(Nombre);
+    }
 }

@@ -62,4 +62,17 @@ public class DesarrolladorWS {
         return boDesarrollador.obtenerPorId(idDesarrollador);
     }
     
+    @WebMethod(operationName = "listarDesarrolladoresPorNombre")
+    public ArrayList<Desarrollador> listarDesarrolladoresPorNombre(@WebParam(name = "Nombre")String Nombre) {
+        ArrayList<Desarrollador> desarrolladores = null;
+        try{
+            boDesarrollador = new DesarrolladorBO();
+            desarrolladores = boDesarrollador.listarDesarrolladoresPorNombre(Nombre);
+            System.out.println(desarrolladores.get(0).getEmail());
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return desarrolladores;
+    }
+    
 }

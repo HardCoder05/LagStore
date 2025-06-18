@@ -13,5 +13,5 @@ public interface CarroCompraDAO {
     int eliminar(int idCarroCompra);
     ArrayList<CarroCompra>listarTodas();
     CarroCompra obtenerPorId(int idCarroCompra);
-    
+    CarroCompra obtenerPorIdUsuario(int id);
 }

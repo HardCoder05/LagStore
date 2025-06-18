@@ -12,6 +12,7 @@
             position: relative;
             color: white;
             margin-bottom: 10px;
+            border-radius: 35px;
         }
 
         .hero-overlay {

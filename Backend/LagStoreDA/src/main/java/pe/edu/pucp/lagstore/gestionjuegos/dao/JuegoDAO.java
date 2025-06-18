@@ -17,4 +17,5 @@ import pe.edu.pucp.lagstore.gestjuegos.model.ModeloNegocio;
  */
 public interface JuegoDAO extends ICrud<Juego> {
      ArrayList<Juego> listarJuegosConFiltro(String titulo, Genero genero, ModeloNegocio modelo, Double precioMin, Double precioMax);
+     ArrayList<Juego> listarPorDesarrollador(int idDesarrollador);
 }

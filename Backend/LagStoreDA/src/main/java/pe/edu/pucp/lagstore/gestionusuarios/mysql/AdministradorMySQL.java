@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.AdministradorDAO;
+import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
 import pe.edu.pucp.lagstore.gestusuarios.model.Administrador;
 import pe.edu.pucp.lagstore.gestusuarios.model.Rol;
 
@@ -51,7 +52,7 @@ public class AdministradorMySQL implements AdministradorDAO{
         parametrosEntrada.put(3, administrador.getNombre());
         parametrosEntrada.put(4, administrador.getEmail());
         parametrosEntrada.put(5, administrador.getContrasena());
-        parametrosEntrada.put(6, new Date(administrador.getFechaRegistro().getTime()));
+        parametrosEntrada.put(6, administrador.getFechaRegistro());
         parametrosEntrada.put(7, administrador.getTelefono());
         parametrosEntrada.put(8, administrador.getFotoDePerfil());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ADMINISTRADOR", parametrosEntrada, null);
@@ -125,6 +126,48 @@ public class AdministradorMySQL implements AdministradorDAO{
             DBManager.getInstance().cerrarConexion();
         }
         return administrador;
+    }
+
+    @Override
+    public ArrayList<Juego> listarJuegosMasVendidos() {
+        ArrayList<Juego> juegos = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_JUEGOS_MAS_VENDIDOS", null);
+        try {
+            while (rs.next()) {
+                Juego j = new Juego();
+                j.setIdJuego(rs.getInt("idJuego"));
+                j.setTitulo(rs.getString("titulo"));
+                j.setCantidadVentas(rs.getInt("cantidadVentas")); // ← Este campo nuevo
+                juegos.add(j);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return juegos;
+    }
+
+    @Override
+    public ArrayList<Juego> listarJuegosCalificacionAltas() {
+        ArrayList<Juego> juegos = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_JUEGOS_MEJOR_CALIFICADOS", null);
+        try {
+            while (rs.next()) {
+                Juego j = new Juego();
+                j.setIdJuego(rs.getInt("idJuego"));
+                j.setTitulo(rs.getString("titulo"));
+                j.setPromedioCalificacion(rs.getDouble("promedioCalificacion"));
+                j.setCantidadCalificaciones(rs.getInt("cantidadCalificaciones"));
+                juegos.add(j);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return juegos;
+    
     }
     
 }
