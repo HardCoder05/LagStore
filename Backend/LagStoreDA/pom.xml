@@ -16,6 +16,12 @@
             <artifactId>LagStoreDBManager</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>pe.edu.pucp.lagstore</groupId>
+            <artifactId>LagStoreBusiness</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

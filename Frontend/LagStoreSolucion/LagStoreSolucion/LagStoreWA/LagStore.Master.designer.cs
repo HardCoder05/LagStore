@@ -42,6 +42,15 @@ namespace LagStoreWA
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control ScriptManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// Control liGestion.
         /// </summary>
         /// <remarks>
@@ -51,22 +60,22 @@ namespace LagStoreWA
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl liGestion;
 
         /// <summary>
-        /// Control liMasVendidos.
+        /// Control updContador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liMasVendidos;
+        protected global::System.Web.UI.UpdatePanel updContador;
 
         /// <summary>
-        /// Control liMayorCalificacion.
+        /// Control lblContadorCarrito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liMayorCalificacion;
+        protected global::System.Web.UI.WebControls.Label lblContadorCarrito;
 
         /// <summary>
         /// Control lnkIniciarSesion.

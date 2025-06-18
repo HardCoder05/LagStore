@@ -12,6 +12,11 @@ namespace LagStoreWA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                ActualizarContadorCarrito();
+            }
+
             if (Session["Jugador"] != null || Session["Desarrollador"] != null
                 || Session["Administrador"] != null)
             {
@@ -31,6 +36,15 @@ namespace LagStoreWA
                 liCerrarSesion.Visible = false;
             }
         }
+
+        public void ActualizarContadorCarrito()
+        {
+            List<juego> listaJuegos = Session["ListaJuegosCarro"] as List<juego>;
+            int cantidad = (listaJuegos != null) ? listaJuegos.Count : 0;
+            lblContadorCarrito.Text = cantidad.ToString();
+            updContador.Update();
+        }
+
         protected void lnkIniciarSesion_Click(object sender, EventArgs e)
         {
             Response.Redirect("InicioSesion.aspx");

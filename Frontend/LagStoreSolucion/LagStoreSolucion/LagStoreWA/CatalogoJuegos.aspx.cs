@@ -212,11 +212,38 @@ namespace LagStoreWA
             if (e.CommandName == "AgregarCarrito")
             {
                 int idJuego = Convert.ToInt32(e.CommandArgument);
+                // Obtener la información completa del juego a través del servicio web
+                juego juegoSeleccionado = wsJuego.obtenerJuegoPorId(idJuego);
+                if (juegoSeleccionado != null)
+                {
+                    // Recuperar o crear la lista de juegos para el carrito
+                    List<juego> listaJuegos = Session["ListaJuegosCarro"] as List<juego>;
+                    if (listaJuegos == null)
+                    {
+                        listaJuegos = new List<juego>();
+                    }
 
-                // Aquí implementarías la lógica para agregar al carrito
-                // Por ejemplo, guardar en Session o base de datos
+                    // Agregar el juego seleccionado a la lista
+                    listaJuegos.Add(juegoSeleccionado);
+                    Session["ListaJuegosCarro"] = listaJuegos;
 
-                MostrarMensaje("Juego agregado al carrito exitosamente", "alert-success");
+                    // Actualizar el contador en el master
+                    var master = this.Master as LagStoreWA.LagStore;
+                    if (master != null)
+                    {
+                        master.ActualizarContadorCarrito();
+                    }
+
+                    // Mostrar mensaje de éxito en la misma página (o mediante AJAX)
+                    MostrarMensaje("Juego agregado al carrito exitosamente", "alert-success");
+
+                    // (Opcional) Puedes redireccionar tras unos segundos o permitir que el usuario siga navegando
+                    // Response.Redirect("CarroCompra.aspx");
+                }
+                else
+                {
+                    MostrarMensaje("No se pudo obtener el juego", "alert-danger");
+                }
             }
         }
 
