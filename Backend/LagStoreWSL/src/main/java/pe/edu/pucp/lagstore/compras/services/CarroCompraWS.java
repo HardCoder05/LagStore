@@ -33,4 +33,10 @@ public class CarroCompraWS {
         carroCompraBO = new CarroCompraBO();
         return carroCompraBO.eliminar(idCarro);
     }
+    
+    @WebMethod(operationName = "otenerCarroPorUsuario")
+    public CarroCompra otenerCarroPorUsuario(@WebParam(name = "idUsuario") int idUsuario) {
+        carroCompraBO = new CarroCompraBO();
+        return carroCompraBO.obtenerPorIdUsuario(idUsuario);
+    }
 }
