@@ -92,6 +92,18 @@
             background: #1a1a2e;
             color: white;
         }
+        .comentario-container {
+            background-color: #2c2f48;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .comentario-container:hover {
+            background-color: #3a3f6e;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
@@ -110,9 +122,10 @@
                 <h4>Comentarios y Calificación</h4>
                 <asp:Repeater ID="rptComentarios" runat="server" OnItemCommand="rptComentarios_ItemCommand" OnItemDataBound= "rptComentarios_ItemDataBound">
                     <ItemTemplate>
+                        <div class="comentario-container">
+                            <strong><%# Eval("autor.nombre") %></strong> - <%# new string('★', Convert.ToInt32(Eval("calificacion.puntuacion"))) %>
+                            <br />
                             <div class="border rounded p-3 mb-3">
-                                <strong><%# Eval("autor.nombre") %></strong> - <%# new string('★', Convert.ToInt32(Eval("calificacion.puntuacion"))) %>
-                                <br />
                                 <p class="mb-0"><%# Eval("comentario") %></p>
                             </div>
                             <%-- Mostrar botones solo si es del jugador actual --%>
@@ -120,6 +133,7 @@
                                 <asp:Button runat="server" CommandName="Editar" CommandArgument='<%# Eval("idResena") %>' Text="Editar" CssClass="btn btn-primary btn-sm me-2" />
                                 <asp:Button runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("idResena") %>' Text="Eliminar" CssClass="btn btn-danger btn-sm" />
                             </asp:Panel>
+                        </div>
                     </ItemTemplate>
                 </asp:Repeater>
 

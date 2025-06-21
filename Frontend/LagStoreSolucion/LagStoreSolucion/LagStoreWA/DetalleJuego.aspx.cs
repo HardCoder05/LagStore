@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Threading;
 using System.Web;
@@ -111,8 +112,12 @@ namespace LagStoreWA{
             if (e.CommandName == "Eliminar"){
                 int idResena = Convert.ToInt32(e.CommandArgument);
                 wsResena = new ResenaWSClient();
+                resena resena;
+                resena = new resena();
+                resena = wsResena.obtenerResenaPorId(idResena);//no se si funciona esto
                 wsResena.eliminarResena(idResena); // Tu método del WS debe poner activo=0
-                //falta eliminar la calificacion
+                wsCalificacion = new CalificacionWSClient();
+                wsCalificacion.eliminarCalificacion(resena.calificacion.idCalificacion);
                 CargarComentarios(idJuego); // recargar la lista
             }
             else if (e.CommandName == "Editar"){
