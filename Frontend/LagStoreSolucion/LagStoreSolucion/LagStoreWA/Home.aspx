@@ -161,7 +161,7 @@
                         <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2">
                             <span class="price me-2">S/<asp:Label ID="lblPrecioDestacado" runat="server" Text="0.00"></asp:Label></span>
                             <asp:Button ID="btnAgregarDestacado" runat="server" CssClass="btn btn-add-cart" Text="Agregar al carrito" />
-                            <asp:Button ID="btnVerDetallesDestacado" runat="server" CssClass="btn btn-details" Text="Ver detalles" />
+                            <asp:Button ID="btnVerDetallesDestacado" runat="server" CssClass="btn btn-details" Text="Ver detalles" OnClick="btnVerDetallesDestacado_Click"/>
                         </div>
                     </div>
                 </div>

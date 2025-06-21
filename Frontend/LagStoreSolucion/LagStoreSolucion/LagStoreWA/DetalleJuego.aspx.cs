@@ -63,6 +63,11 @@ namespace LagStoreWA{
         
         protected void btnComentar_Click(object sender, EventArgs e)
         {
+            if (Session["Jugador"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx");
+                return;
+            }
             wsResena = new ResenaWSClient();
             wsCalificacion = new CalificacionWSClient();
             int idJuego = int.Parse(Request.QueryString["id"]);
