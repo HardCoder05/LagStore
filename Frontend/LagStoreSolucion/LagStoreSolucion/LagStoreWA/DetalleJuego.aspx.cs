@@ -103,6 +103,47 @@ namespace LagStoreWA{
             CargarComentarios(idJuego);
             
         }
-        
+
+        protected void rptComentarios_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            int idJuego = int.Parse(Request.QueryString["id"]);
+
+            if (e.CommandName == "Eliminar"){
+                int idResena = Convert.ToInt32(e.CommandArgument);
+                wsResena = new ResenaWSClient();
+                wsResena.eliminarResena(idResena); // Tu método del WS debe poner activo=0
+                //falta eliminar la calificacion
+                CargarComentarios(idJuego); // recargar la lista
+            }
+            else if (e.CommandName == "Editar"){
+                int idResena = Convert.ToInt32(e.CommandArgument);
+                // Puedes guardar en sesión el ID de la reseña a editar
+                Session["ResenaAEditar"] = idResena;
+                Response.Redirect($"EditarResena.aspx?id={idResena}"); // o mostrar el comentario en un TextBox para editarlo en la misma página
+            }
+        }
+
+        protected void rptComentarios_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            //ListItemType.Item: es una fila de datos normal (ítem impar). ListItemType.AlternatingItem: es una fila de datos alterna(ítem par), útil cuando tienes estilos alternos.
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                resena resena = (resena)e.Item.DataItem;
+
+                // Obtiene el jugador actual de la sesión
+                jugador jugadorActual = (jugador)Session["Jugador"];
+
+                // Busca el Panel de botones dentro del item
+                Panel pnlOpciones = (Panel)e.Item.FindControl("pnlOpciones");
+
+                // Compara el ID del autor con el del jugador actual
+                if (jugadorActual != null && resena.autor != null && resena.autor.idJugador == jugadorActual.idJugador){
+                    pnlOpciones.Visible = true;
+                }
+                else{
+                    pnlOpciones.Visible = false;
+                }
+            }
+        }
     }
 }

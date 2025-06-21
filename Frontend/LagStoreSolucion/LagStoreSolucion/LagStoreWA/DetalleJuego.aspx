@@ -108,13 +108,18 @@
                 <!--solo es hasta aqui-->
                 <hr class="my-5" />
                 <h4>Comentarios y Calificación</h4>
-                <asp:Repeater ID="rptComentarios" runat="server">
+                <asp:Repeater ID="rptComentarios" runat="server" OnItemCommand="rptComentarios_ItemCommand" OnItemDataBound= "rptComentarios_ItemDataBound">
                     <ItemTemplate>
-                        <div class="border rounded p-3 mb-3">
-                            <strong><%# Eval("autor.nombre") %></strong> - <%# new string('★', Convert.ToInt32(Eval("calificacion.puntuacion"))) %>
-                            <br/>
-                            <p class="mb-0"><%# Eval("comentario") %></p>
-                        </div>
+                            <div class="border rounded p-3 mb-3">
+                                <strong><%# Eval("autor.nombre") %></strong> - <%# new string('★', Convert.ToInt32(Eval("calificacion.puntuacion"))) %>
+                                <br />
+                                <p class="mb-0"><%# Eval("comentario") %></p>
+                            </div>
+                            <%-- Mostrar botones solo si es del jugador actual --%>
+                            <asp:Panel ID="pnlOpciones" runat="server" Visible="false">
+                                <asp:Button runat="server" CommandName="Editar" CommandArgument='<%# Eval("idResena") %>' Text="Editar" CssClass="btn btn-primary btn-sm me-2" />
+                                <asp:Button runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("idResena") %>' Text="Eliminar" CssClass="btn btn-danger btn-sm" />
+                            </asp:Panel>
                     </ItemTemplate>
                 </asp:Repeater>
 
