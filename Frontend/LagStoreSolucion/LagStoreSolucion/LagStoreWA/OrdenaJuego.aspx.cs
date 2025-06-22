@@ -47,22 +47,6 @@ namespace LagStoreWA
                 //}
                 gvJuegos.DataSource = juegos;
                 gvJuegos.DataBind();
-<<<<<<< HEAD
-
-                var liGestion = this.Master.FindControl("liGestion") as HtmlGenericControl;
-                var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as LinkButton;
-                var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as HtmlGenericControl;
-                var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
-
-                if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
-                {
-                    liGestion.Visible = true;
-                    liCerrarSesion.Visible = true;
-                    lnkIniciarSesion.Visible = false;
-                    liCrearCuenta.Visible = false;
-                }
-=======
->>>>>>> leonardo
             }
 
         }

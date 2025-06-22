@@ -16,11 +16,11 @@ namespace LagStoreWA
         private BindingList<jugador> jugadores;
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*if (Session["Administrador"] == null)
+            if (Session["Administrador"] == null)
             {
                 // Si no hay un administrador en sesión, redirigir a la página de inicio de sesión
                 Response.Redirect("InicioSesion.aspx");
-            }*/
+            }
 
             boJugador = new JugadorWSClient();
             if (!IsPostBack)
