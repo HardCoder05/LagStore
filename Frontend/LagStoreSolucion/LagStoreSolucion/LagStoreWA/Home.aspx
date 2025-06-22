@@ -161,7 +161,7 @@
                         <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2">
                             <span class="price me-2">S/<asp:Label ID="lblPrecioDestacado" runat="server" Text="0.00"></asp:Label></span>
                             <asp:Button ID="btnAgregarDestacado" runat="server" CssClass="btn btn-add-cart" Text="Agregar al carrito" />
-                            <asp:Button ID="btnVerDetallesDestacado" runat="server" CssClass="btn btn-details" Text="Ver detalles" />
+                            <asp:Button ID="btnVerDetallesDestacado" runat="server" CssClass="btn btn-details" Text="Ver detalles" OnClick="btnVerDetallesDestacado_Click"/>
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@
         <!-- Sección Explorar Juegos -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="section-title">Explorar juegos</h2>
-            <a href="#" class="explore-all">Ver todos</a>
+            <a href="CatalogoJuegos.aspx" class="explore-all">Ver todos</a>
         </div>
 
         <div class="row">

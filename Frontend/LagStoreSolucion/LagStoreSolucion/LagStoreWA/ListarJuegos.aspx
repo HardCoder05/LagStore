@@ -42,7 +42,8 @@
     <h2 class="mb-4">Lista de Juegos</h2>
 
     <div class="input-group search-box">
-        <input type="text" class="form-control" placeholder="Buscar por Nombre" id="txtBuscar" runat="server" />
+
+        <input type="text" class="form-control" placeholder="Buscar por nombre" id="txtBuscar" runat="server" />
         <button class="btn btn-primary" type="button" id="btnBuscar" runat="server" onserverclick="btnBuscar_ServerClick">
             <i class="fas fa-search"></i>
         </button>
@@ -53,11 +54,14 @@
     <asp:GridView ID="gvJuegos" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-hover"
         OnRowCommand="gvJuegos_RowCommand" DataKeyNames="idJuego">
         <Columns>
-            <asp:BoundField DataField="idJuego" HeaderText="ID" />
             <asp:BoundField DataField="titulo" HeaderText="Título" />
             <asp:BoundField DataField="genero" HeaderText="Género" />
             <asp:BoundField DataField="modeloNegocio" HeaderText="Modelo de Negocio" />
-            <asp:BoundField DataField="precio" HeaderText="Precio" DataFormatString="{0:C}" />
+            <asp:TemplateField HeaderText="Precio">
+                <ItemTemplate>
+                    S/ <%# Eval("precio", "{0:N2}") %>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="fechaLanzamiento" HeaderText="Fecha de Lanzamiento" DataFormatString="{0:yyyy-MM-dd}" />
             <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="text-center">
                 <ItemTemplate>

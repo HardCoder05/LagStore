@@ -4,6 +4,8 @@
   <xs:element name="eliminarResenaResponse" type="tns:eliminarResenaResponse" />
   <xs:element name="insertarResena" type="tns:insertarResena" />
   <xs:element name="insertarResenaResponse" type="tns:insertarResenaResponse" />
+  <xs:element name="listarPorJuego" type="tns:listarPorJuego" />
+  <xs:element name="listarPorJuegoResponse" type="tns:listarPorJuegoResponse" />
   <xs:element name="modificarResena" type="tns:modificarResena" />
   <xs:element name="modificarResenaResponse" type="tns:modificarResenaResponse" />
   <xs:element name="obtenerResenaPorId" type="tns:obtenerResenaPorId" />
@@ -64,6 +66,8 @@
   <xs:complexType name="juego">
     <xs:sequence>
       <xs:element name="activo" type="xs:int" />
+      <xs:element name="cantidadCalificaciones" type="xs:int" />
+      <xs:element name="cantidadVentas" type="xs:int" />
       <xs:element minOccurs="0" name="desarrollador" type="tns:desarrollador" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
       <xs:element name="espacioDisco" type="xs:double" />
@@ -74,6 +78,7 @@
       <xs:element minOccurs="0" name="imagen" type="xs:string" />
       <xs:element minOccurs="0" name="modeloNegocio" type="tns:ModeloNegocio" />
       <xs:element name="precio" type="xs:double" />
+      <xs:element name="promedioCalificacion" type="xs:double" />
       <xs:element minOccurs="0" name="requisitosMinimos" type="xs:string" />
       <xs:element minOccurs="0" name="requisitosRecomendados" type="xs:string" />
       <xs:element minOccurs="0" name="titulo" type="xs:string" />
@@ -122,6 +127,16 @@
   <xs:complexType name="modificarResenaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPorJuego">
+    <xs:sequence>
+      <xs:element name="idJuego" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPorJuegoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:resena" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="obtenerResenaPorId">

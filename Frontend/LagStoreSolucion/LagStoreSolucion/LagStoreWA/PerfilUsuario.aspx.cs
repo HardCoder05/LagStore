@@ -37,6 +37,8 @@ namespace LagStoreWA
                 {
                     // Accedemos al Master Page
                     var liGestion = this.Master.FindControl("liGestion") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var liMasVendidos = this.Master.FindControl("liMasVendidos") as HtmlGenericControl;
+                    var liMayorCalificacion = this.Master.FindControl("liMayorCalificacion") as HtmlGenericControl;
                     var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
                     var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
                     var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
@@ -44,6 +46,8 @@ namespace LagStoreWA
                     {
                         // Mostrar menú gestión y cerrar sesión
                         liGestion.Visible = true;
+                        liMasVendidos.Visible = true;
+                        liMayorCalificacion.Visible = true;
                         liCerrarSesion.Visible = true;
 
                         // Ocultar iniciar sesión y crear cuenta
@@ -142,8 +146,8 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = desarrolladorActual.fotoDePerfil;
-                        txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
-
+                        txtFotoPerfil.Text = desarrolladorActual.fotoDePerfil;
+                        //lo comente solo por el chistee
                         //Atributos específicos del desarrollador
                         NumCuenta.Visible = true;
                         lblNumCuenta.Text = desarrolladorActual.numeroCuenta;
@@ -190,7 +194,7 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = administradorActual.fotoDePerfil;
-                        txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
+                        txtFotoPerfil.Text = administradorActual.fotoDePerfil;
 
                         // Atributos específicos del administrador
                         RolAdministrativo.Visible = true;
@@ -284,6 +288,8 @@ namespace LagStoreWA
 
         private bool ActualizarJugador(bool cambiarContrasena)
         {
+            jugadorActual = (jugador)Session["Jugador"];
+
             jugador jugadorActualizado = new jugador
             {
                 idJugador = jugadorActual.idJugador,
@@ -311,6 +317,8 @@ namespace LagStoreWA
 
         private bool ActualizarDesarrollador(bool cambiarContrasena)
         {
+            desarrolladorActual = (desarrollador)Session["Desarrollador"];
+
             desarrollador desarrolladorActualizado = new desarrollador
             {
                 idDesarrollador = desarrolladorActual.idDesarrollador,
@@ -339,6 +347,8 @@ namespace LagStoreWA
 
         private bool ActualizarAdministrador(bool cambiarContrasena)
         {
+            administradorActual = (administrador)Session["Administrador"];
+
             administrador administradorActualizado = new administrador
             {
                 idAdministrador = administradorActual.idAdministrador,

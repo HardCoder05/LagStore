@@ -55,4 +55,19 @@ public class JugadorWS {
         return boJugador.obtenerPorId(idJugador);
     }
     
+    
+    @WebMethod(operationName = "listarPorNombreONickname")
+    public ArrayList<Jugador> listarPorNombreONickname(@WebParam(name = "Nombre")String Nombre) {
+        ArrayList<Jugador> jugadores = null;
+        try{
+            boJugador = new JugadorBO();
+            jugadores = boJugador.listarJugadoresPorNombreONickname(Nombre);
+            System.out.println(jugadores.get(0).getEmail());
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return jugadores;
+    }
+    
+    
 }

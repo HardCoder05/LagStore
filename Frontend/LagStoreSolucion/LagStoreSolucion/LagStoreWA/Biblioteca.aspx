@@ -87,7 +87,7 @@
                                     <div class="col-6">
                                         <p class="text-light mb-1"><strong>Género:</strong> <%# Eval("juego.genero") %></p>
                                         <p class="text-light mb-1"><strong>Modelo:</strong> <%# Eval("juego.modeloNegocio") %></p>
-                                        <p class="text-light mb-1"><strong>Precio:</strong> $<%# Eval("juego.precio", "{0:F2}") %></p>
+                                        <p class="text-light mb-1"><strong>Precio:</strong> S/<%# Eval("juego.precio", "{0:N2}") %></p>
                                     </div>
                                     <div class="col-6">
                                         <p class="text-light mb-1"><strong>Adquirido:</strong> <%# Eval("fechaAdquisicion", "{0:dd/MM/yyyy}") %></p>

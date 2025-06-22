@@ -7,6 +7,8 @@
   <xs:element name="listarJuegos" type="tns:listarJuegos" />
   <xs:element name="listarJuegosConFiltro" type="tns:listarJuegosConFiltro" />
   <xs:element name="listarJuegosConFiltroResponse" type="tns:listarJuegosConFiltroResponse" />
+  <xs:element name="listarJuegosPorDesarrollador" type="tns:listarJuegosPorDesarrollador" />
+  <xs:element name="listarJuegosPorDesarrolladorResponse" type="tns:listarJuegosPorDesarrolladorResponse" />
   <xs:element name="listarJuegosResponse" type="tns:listarJuegosResponse" />
   <xs:element name="modificarJuego" type="tns:modificarJuego" />
   <xs:element name="modificarJuegoResponse" type="tns:modificarJuegoResponse" />
@@ -29,6 +31,8 @@
   <xs:complexType name="juego">
     <xs:sequence>
       <xs:element name="activo" type="xs:int" />
+      <xs:element name="cantidadCalificaciones" type="xs:int" />
+      <xs:element name="cantidadVentas" type="xs:int" />
       <xs:element minOccurs="0" name="desarrollador" type="tns:desarrollador" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
       <xs:element name="espacioDisco" type="xs:double" />
@@ -39,6 +43,7 @@
       <xs:element minOccurs="0" name="imagen" type="xs:string" />
       <xs:element minOccurs="0" name="modeloNegocio" type="tns:ModeloNegocio" />
       <xs:element name="precio" type="xs:double" />
+      <xs:element name="promedioCalificacion" type="xs:double" />
       <xs:element minOccurs="0" name="requisitosMinimos" type="xs:string" />
       <xs:element minOccurs="0" name="requisitosRecomendados" type="xs:string" />
       <xs:element minOccurs="0" name="titulo" type="xs:string" />
@@ -105,6 +110,16 @@
   <xs:complexType name="eliminarJuegoResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarJuegosPorDesarrollador">
+    <xs:sequence>
+      <xs:element name="idDesarrollador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarJuegosPorDesarrolladorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:juego" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="obtenerJuegoPorId">

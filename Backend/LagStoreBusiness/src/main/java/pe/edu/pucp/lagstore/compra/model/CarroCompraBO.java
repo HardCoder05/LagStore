@@ -33,4 +33,7 @@ public class CarroCompraBO {
     public CarroCompra obtenerPorId(int id){
         return daoCarroCompra.obtenerPorId(id);
     }
+    public CarroCompra obtenerPorIdUsuario(int id){
+        return daoCarroCompra.obtenerPorIdUsuario(id);
+    }
 }

@@ -63,5 +63,10 @@ namespace LagStoreWA
                 // Puedes registrar el error si es necesario
             }
         }
+
+        protected void btnVerDetallesDestacado_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"DetalleJuego.aspx?id={1}");
+        }
     }
 }

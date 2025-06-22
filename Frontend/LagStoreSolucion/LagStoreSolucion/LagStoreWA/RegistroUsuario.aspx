@@ -18,6 +18,15 @@
             <div class="card p-4 w-100" style="max-width: 500px;">
                 <h3 class="card-title text-center mb-4">Registro de Usuario</h3>
 
+                <div class="form-group mb-3">
+                    <label for="ddlTipoUsuario">Tipo de usuario</label>
+                    <asp:DropDownList ID="ddlTipoUsuario" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlTipoUsuario_SelectedIndexChanged">
+                        <asp:ListItem Text="Seleccionar" Value="" />
+                        <asp:ListItem Text="Desarrollador" Value="Desarrollador" />
+                        <asp:ListItem Text="Jugador" Value="Jugador" />
+                        <asp:ListItem Text="Administrador" Value="Administrador" />
+                    </asp:DropDownList>
+                </div>
 
                 <div class="form-group mb-3">
                     <label for="txtNombre">Nombre completo<strong class="text-danger">*</strong></label>
@@ -45,15 +54,20 @@
                     <asp:TextBox ID="txtFoto" runat="server" CssClass="form-control" />
                 </div>
 
+
+                <%--<div class="form-group mb-3">
+                    <label for="ddlTipoUsuario">Tipo de usuario</label>
+=======
                 <div class="form-group mb-3">
                     <label for="ddlTipoUsuario">Tipo de usuario<strong class="text-danger">*</strong></label>
+>>>>>>> 8c9027bf97565f084fba51067306ff424c4f6a8e
                     <asp:DropDownList ID="ddlTipoUsuario" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlTipoUsuario_SelectedIndexChanged">
                         <asp:ListItem Text="Seleccionar" Value="" />
                         <asp:ListItem Text="Desarrollador" Value="Desarrollador" />
                         <asp:ListItem Text="Jugador" Value="Jugador" />
                         <asp:ListItem Text="Administrador" Value="Administrador" />
                     </asp:DropDownList>
-                </div>
+                </div>--%>
 
                 <!-- Panel Desarrollador -->
                 <asp:Panel ID="pnlDesarrollador" runat="server" Visible="false">

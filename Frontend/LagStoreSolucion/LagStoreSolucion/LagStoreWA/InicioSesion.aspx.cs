@@ -44,19 +44,6 @@ namespace LagStoreWA
 
                 if (idUsuario > 0)
                 {
-                    //// Obtener datos completos del usuario
-                    //usuario usuarioCompleto = usuarioWSClient.obte(idUsuario);
-
-                    //if (usuarioCompleto == null)
-                    //{
-                    //    lblMensaje.Text = "No se pudo cargar la información del usuario.";
-                    //    return;
-                    //}
-
-                    //// Guardar en sesión
-                    //Session["Usuario"] = usuarioCompleto;
-                    //Session["UsuarioEmail"] = email;
-
                     Session["usuarioId"] = idUsuario;
                     rolUsuario = usuarioWSClient.obtenerRol(idUsuario);
                     Session["RolUsuario"] = rolUsuario;
@@ -68,9 +55,11 @@ namespace LagStoreWA
                             break;
                         case rol.Desarrollador:
                             Session["Desarrollador"] = desarrolladorWSClient.obtenerDesarrolladorPorID(idUsuario);
+
                             break;
                         case rol.Administrador:
                             Session["Administrador"] = administradorWSClient.obtenerAdministradorPorID(idUsuario);
+                            Response.Redirect("Administrador.aspx");
                             break;
                         default:
                             lblMensaje.Text = "Rol de usuario no reconocido.";
