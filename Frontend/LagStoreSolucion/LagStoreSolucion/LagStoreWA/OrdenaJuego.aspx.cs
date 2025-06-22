@@ -17,6 +17,11 @@ namespace LagStoreWA
         private int idDesarrollador;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Desarrollador"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx");
+            }
+            
             boJuego = new JuegoWSClient();
             idDesarrollador = Convert.ToInt32(Session["usuarioId"]);
             if (!IsPostBack)
@@ -42,6 +47,7 @@ namespace LagStoreWA
                 //}
                 gvJuegos.DataSource = juegos;
                 gvJuegos.DataBind();
+<<<<<<< HEAD
 
                 var liGestion = this.Master.FindControl("liGestion") as HtmlGenericControl;
                 var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as LinkButton;
@@ -55,6 +61,8 @@ namespace LagStoreWA
                     lnkIniciarSesion.Visible = false;
                     liCrearCuenta.Visible = false;
                 }
+=======
+>>>>>>> leonardo
             }
 
         }

@@ -112,16 +112,6 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarJuegosPorDesarrollador">
-    <xs:sequence>
-      <xs:element name="idDesarrollador" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarJuegosPorDesarrolladorResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:juego" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="obtenerJuegoPorId">
     <xs:sequence>
       <xs:element name="idJuego" type="xs:int" />
@@ -130,6 +120,16 @@
   <xs:complexType name="obtenerJuegoPorIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:juego" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarJuegosPorDesarrollador">
+    <xs:sequence>
+      <xs:element name="idDesarrollador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarJuegosPorDesarrolladorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:juego" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="Genero">

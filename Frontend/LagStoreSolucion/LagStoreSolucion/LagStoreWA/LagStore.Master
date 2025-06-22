@@ -39,6 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="Biblioteca.aspx"><i class="fas fa-shopping-basket me-1"></i>Biblioteca</a>
                         </li>
+                        <li id="liOrdenaJuego" class="nav-item" runat="server" visible="false">
+                            <a class="nav-link text-white" href="OrdenaJuego.aspx"><i class="fas fa-shopping-basket me-1"></i>Lista de Juegos</a>
+                        </li>
 
                         <li class="nav-item dropdown" runat="server" id="liGestion" Visible="false">
                             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

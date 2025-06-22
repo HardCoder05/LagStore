@@ -15,6 +15,11 @@ namespace LagStoreWA
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Administrador"] == null)
+            {
+                Response.Redirect("InicioSesion.aspx");
+            }
+
             boJuego = new JuegoWSClient();
 
             if (!IsPostBack)

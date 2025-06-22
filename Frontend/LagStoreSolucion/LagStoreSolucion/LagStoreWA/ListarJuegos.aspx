@@ -44,9 +44,6 @@
     <div class="input-group search-box">
 
         <input type="text" class="form-control" placeholder="Buscar por nombre" id="txtBuscar" runat="server" />
-
-        <input type="text" class="form-control" placeholder="Buscar por Nombre" id="txtBuscar" runat="server" />
-
         <button class="btn btn-primary" type="button" id="btnBuscar" runat="server" onserverclick="btnBuscar_ServerClick">
             <i class="fas fa-search"></i>
         </button>

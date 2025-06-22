@@ -175,7 +175,7 @@
         <!-- Sección Explorar Juegos -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="section-title">Explorar juegos</h2>
-            <a href="#" class="explore-all">Ver todos</a>
+            <a href="CatalogoJuegos.aspx" class="explore-all">Ver todos</a>
         </div>
 
         <div class="row">
