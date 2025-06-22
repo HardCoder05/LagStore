@@ -16,6 +16,42 @@ namespace LagStoreWA.ServicesWS {
     public interface JuegoAdquiridoWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.insertarJuegoAdquiridoResponse insertarJuegoAdquirido(LagStoreWA.ServicesWS.insertarJuegoAdquiridoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarJuegoAdquiridoResponse> insertarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.insertarJuegoAdquiridoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse modificarJuegoAdquirido(LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse> modificarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse eliminarJuegoAdquirido(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse> eliminarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse obtenerJuegoAdquiridoPorId(LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse> obtenerJuegoAdquiridoPorIdAsync(LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/listarJuegosAdquiridosPorBibliotecaR" +
             "equest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/listarJuegosAdquiridosPorBibliotecaR" +
             "esponse")]
@@ -27,28 +63,6 @@ namespace LagStoreWA.ServicesWS {
             "equest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/listarJuegosAdquiridosPorBibliotecaR" +
             "esponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse> listarJuegosAdquiridosPorBibliotecaAsync(LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.insertarJuegoAdquiridoResponse insertarJuegoAdquirido(LagStoreWA.ServicesWS.insertarJuegoAdquiridoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarJuegoAdquiridoResponse> insertarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.insertarJuegoAdquiridoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoPorBibliotecaY" +
-            "JuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoPorBibliotecaY" +
-            "JuegoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse eliminarJuegoAdquiridoPorBibliotecaYJuego(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoPorBibliotecaY" +
-            "JuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoPorBibliotecaY" +
-            "JuegoResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse> eliminarJuegoAdquiridoPorBibliotecaYJuegoAsync(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorBibliotecaYJ" +
@@ -64,31 +78,17 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse> obtenerJuegoAdquiridoPorBibliotecaYJuegoAsync(LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorBibliotecaYJuegoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoPorBibliotecaY" +
+            "JuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoPorBibliotecaY" +
+            "JuegoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse obtenerJuegoAdquiridoPorId(LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest request);
+        LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse eliminarJuegoAdquiridoPorBibliotecaYJuego(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse> obtenerJuegoAdquiridoPorIdAsync(LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse eliminarJuegoAdquirido(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse> eliminarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse modificarJuegoAdquirido(LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse> modificarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoPorBibliotecaY" +
+            "JuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoPorBibliotecaY" +
+            "JuegoResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse> eliminarJuegoAdquiridoPorBibliotecaYJuegoAsync(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest request);
     }
     
     /// <remarks/>
@@ -1653,42 +1653,6 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarJuegosAdquiridosPorBiblioteca", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class listarJuegosAdquiridosPorBibliotecaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idBiblioteca;
-        
-        public listarJuegosAdquiridosPorBibliotecaRequest() {
-        }
-        
-        public listarJuegosAdquiridosPorBibliotecaRequest(int idBiblioteca) {
-            this.idBiblioteca = idBiblioteca;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarJuegosAdquiridosPorBibliotecaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class listarJuegosAdquiridosPorBibliotecaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.juegoAdquirido[] @return;
-        
-        public listarJuegosAdquiridosPorBibliotecaResponse() {
-        }
-        
-        public listarJuegosAdquiridosPorBibliotecaResponse(LagStoreWA.ServicesWS.juegoAdquirido[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="insertarJuegoAdquirido", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
     public partial class insertarJuegoAdquiridoRequest {
         
@@ -1725,40 +1689,143 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarJuegoAdquiridoPorBibliotecaYJuego", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJuegoAdquirido", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarJuegoAdquiridoRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idBiblioteca;
+        public LagStoreWA.ServicesWS.juegoAdquirido juegoAdquirido;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idJuego;
-        
-        public eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest() {
+        public modificarJuegoAdquiridoRequest() {
         }
         
-        public eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest(int idBiblioteca, int idJuego) {
-            this.idBiblioteca = idBiblioteca;
-            this.idJuego = idJuego;
+        public modificarJuegoAdquiridoRequest(LagStoreWA.ServicesWS.juegoAdquirido juegoAdquirido) {
+            this.juegoAdquirido = juegoAdquirido;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJuegoAdquiridoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarJuegoAdquiridoResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int @return;
         
-        public eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse() {
+        public modificarJuegoAdquiridoResponse() {
         }
         
-        public eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse(int @return) {
+        public modificarJuegoAdquiridoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarJuegoAdquirido", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarJuegoAdquiridoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idJuegoAdquirido;
+        
+        public eliminarJuegoAdquiridoRequest() {
+        }
+        
+        public eliminarJuegoAdquiridoRequest(int idJuegoAdquirido) {
+            this.idJuegoAdquirido = idJuegoAdquirido;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarJuegoAdquiridoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarJuegoAdquiridoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarJuegoAdquiridoResponse() {
+        }
+        
+        public eliminarJuegoAdquiridoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerJuegoAdquiridoPorId", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class obtenerJuegoAdquiridoPorIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idJuegoAdquirido;
+        
+        public obtenerJuegoAdquiridoPorIdRequest() {
+        }
+        
+        public obtenerJuegoAdquiridoPorIdRequest(int idJuegoAdquirido) {
+            this.idJuegoAdquirido = idJuegoAdquirido;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerJuegoAdquiridoPorIdResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class obtenerJuegoAdquiridoPorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.juegoAdquirido @return;
+        
+        public obtenerJuegoAdquiridoPorIdResponse() {
+        }
+        
+        public obtenerJuegoAdquiridoPorIdResponse(LagStoreWA.ServicesWS.juegoAdquirido @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarJuegosAdquiridosPorBiblioteca", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarJuegosAdquiridosPorBibliotecaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idBiblioteca;
+        
+        public listarJuegosAdquiridosPorBibliotecaRequest() {
+        }
+        
+        public listarJuegosAdquiridosPorBibliotecaRequest(int idBiblioteca) {
+            this.idBiblioteca = idBiblioteca;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarJuegosAdquiridosPorBibliotecaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarJuegosAdquiridosPorBibliotecaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.juegoAdquirido[] @return;
+        
+        public listarJuegosAdquiridosPorBibliotecaResponse() {
+        }
+        
+        public listarJuegosAdquiridosPorBibliotecaResponse(LagStoreWA.ServicesWS.juegoAdquirido[] @return) {
             this.@return = @return;
         }
     }
@@ -1807,107 +1874,40 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerJuegoAdquiridoPorId", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class obtenerJuegoAdquiridoPorIdRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarJuegoAdquiridoPorBibliotecaYJuego", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idJuegoAdquirido;
+        public int idBiblioteca;
         
-        public obtenerJuegoAdquiridoPorIdRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idJuego;
+        
+        public eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest() {
         }
         
-        public obtenerJuegoAdquiridoPorIdRequest(int idJuegoAdquirido) {
-            this.idJuegoAdquirido = idJuegoAdquirido;
+        public eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest(int idBiblioteca, int idJuego) {
+            this.idBiblioteca = idBiblioteca;
+            this.idJuego = idJuego;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerJuegoAdquiridoPorIdResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class obtenerJuegoAdquiridoPorIdResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.juegoAdquirido @return;
-        
-        public obtenerJuegoAdquiridoPorIdResponse() {
-        }
-        
-        public obtenerJuegoAdquiridoPorIdResponse(LagStoreWA.ServicesWS.juegoAdquirido @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarJuegoAdquirido", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class eliminarJuegoAdquiridoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idJuegoAdquirido;
-        
-        public eliminarJuegoAdquiridoRequest() {
-        }
-        
-        public eliminarJuegoAdquiridoRequest(int idJuegoAdquirido) {
-            this.idJuegoAdquirido = idJuegoAdquirido;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarJuegoAdquiridoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class eliminarJuegoAdquiridoResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int @return;
         
-        public eliminarJuegoAdquiridoResponse() {
+        public eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse() {
         }
         
-        public eliminarJuegoAdquiridoResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJuegoAdquirido", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarJuegoAdquiridoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.juegoAdquirido juegoAdquirido;
-        
-        public modificarJuegoAdquiridoRequest() {
-        }
-        
-        public modificarJuegoAdquiridoRequest(LagStoreWA.ServicesWS.juegoAdquirido juegoAdquirido) {
-            this.juegoAdquirido = juegoAdquirido;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJuegoAdquiridoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarJuegoAdquiridoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public modificarJuegoAdquiridoResponse() {
-        }
-        
-        public modificarJuegoAdquiridoResponse(int @return) {
+        public eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -1940,29 +1940,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.listarJuegosAdquiridosPorBiblioteca(LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest request) {
-            return base.Channel.listarJuegosAdquiridosPorBiblioteca(request);
-        }
-        
-        public LagStoreWA.ServicesWS.juegoAdquirido[] listarJuegosAdquiridosPorBiblioteca(int idBiblioteca) {
-            LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest inValue = new LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest();
-            inValue.idBiblioteca = idBiblioteca;
-            LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse retVal = ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).listarJuegosAdquiridosPorBiblioteca(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse> LagStoreWA.ServicesWS.JuegoAdquiridoWS.listarJuegosAdquiridosPorBibliotecaAsync(LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest request) {
-            return base.Channel.listarJuegosAdquiridosPorBibliotecaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse> listarJuegosAdquiridosPorBibliotecaAsync(int idBiblioteca) {
-            LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest inValue = new LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest();
-            inValue.idBiblioteca = idBiblioteca;
-            return ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).listarJuegosAdquiridosPorBibliotecaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.insertarJuegoAdquiridoResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.insertarJuegoAdquirido(LagStoreWA.ServicesWS.insertarJuegoAdquiridoRequest request) {
             return base.Channel.insertarJuegoAdquirido(request);
         }
@@ -1986,28 +1963,95 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.eliminarJuegoAdquiridoPorBibliotecaYJuego(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest request) {
-            return base.Channel.eliminarJuegoAdquiridoPorBibliotecaYJuego(request);
+        LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.modificarJuegoAdquirido(LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest request) {
+            return base.Channel.modificarJuegoAdquirido(request);
         }
         
-        public int eliminarJuegoAdquiridoPorBibliotecaYJuego(int idBiblioteca, int idJuego) {
-            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest inValue = new LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest();
-            inValue.idBiblioteca = idBiblioteca;
-            inValue.idJuego = idJuego;
-            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse retVal = ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).eliminarJuegoAdquiridoPorBibliotecaYJuego(inValue);
+        public int modificarJuegoAdquirido(LagStoreWA.ServicesWS.juegoAdquirido juegoAdquirido) {
+            LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest inValue = new LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest();
+            inValue.juegoAdquirido = juegoAdquirido;
+            LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse retVal = ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).modificarJuegoAdquirido(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse> LagStoreWA.ServicesWS.JuegoAdquiridoWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoAsync(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest request) {
-            return base.Channel.eliminarJuegoAdquiridoPorBibliotecaYJuegoAsync(request);
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse> LagStoreWA.ServicesWS.JuegoAdquiridoWS.modificarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest request) {
+            return base.Channel.modificarJuegoAdquiridoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse> eliminarJuegoAdquiridoPorBibliotecaYJuegoAsync(int idBiblioteca, int idJuego) {
-            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest inValue = new LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest();
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse> modificarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.juegoAdquirido juegoAdquirido) {
+            LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest inValue = new LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest();
+            inValue.juegoAdquirido = juegoAdquirido;
+            return ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).modificarJuegoAdquiridoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.eliminarJuegoAdquirido(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest request) {
+            return base.Channel.eliminarJuegoAdquirido(request);
+        }
+        
+        public int eliminarJuegoAdquirido(int idJuegoAdquirido) {
+            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest inValue = new LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest();
+            inValue.idJuegoAdquirido = idJuegoAdquirido;
+            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse retVal = ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).eliminarJuegoAdquirido(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse> LagStoreWA.ServicesWS.JuegoAdquiridoWS.eliminarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest request) {
+            return base.Channel.eliminarJuegoAdquiridoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse> eliminarJuegoAdquiridoAsync(int idJuegoAdquirido) {
+            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest inValue = new LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest();
+            inValue.idJuegoAdquirido = idJuegoAdquirido;
+            return ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).eliminarJuegoAdquiridoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.obtenerJuegoAdquiridoPorId(LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest request) {
+            return base.Channel.obtenerJuegoAdquiridoPorId(request);
+        }
+        
+        public LagStoreWA.ServicesWS.juegoAdquirido obtenerJuegoAdquiridoPorId(int idJuegoAdquirido) {
+            LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest();
+            inValue.idJuegoAdquirido = idJuegoAdquirido;
+            LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse retVal = ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).obtenerJuegoAdquiridoPorId(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse> LagStoreWA.ServicesWS.JuegoAdquiridoWS.obtenerJuegoAdquiridoPorIdAsync(LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest request) {
+            return base.Channel.obtenerJuegoAdquiridoPorIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse> obtenerJuegoAdquiridoPorIdAsync(int idJuegoAdquirido) {
+            LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest();
+            inValue.idJuegoAdquirido = idJuegoAdquirido;
+            return ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).obtenerJuegoAdquiridoPorIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.listarJuegosAdquiridosPorBiblioteca(LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest request) {
+            return base.Channel.listarJuegosAdquiridosPorBiblioteca(request);
+        }
+        
+        public LagStoreWA.ServicesWS.juegoAdquirido[] listarJuegosAdquiridosPorBiblioteca(int idBiblioteca) {
+            LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest inValue = new LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest();
             inValue.idBiblioteca = idBiblioteca;
-            inValue.idJuego = idJuego;
-            return ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).eliminarJuegoAdquiridoPorBibliotecaYJuegoAsync(inValue);
+            LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse retVal = ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).listarJuegosAdquiridosPorBiblioteca(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse> LagStoreWA.ServicesWS.JuegoAdquiridoWS.listarJuegosAdquiridosPorBibliotecaAsync(LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest request) {
+            return base.Channel.listarJuegosAdquiridosPorBibliotecaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse> listarJuegosAdquiridosPorBibliotecaAsync(int idBiblioteca) {
+            LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest inValue = new LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaRequest();
+            inValue.idBiblioteca = idBiblioteca;
+            return ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).listarJuegosAdquiridosPorBibliotecaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2036,72 +2080,28 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.obtenerJuegoAdquiridoPorId(LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest request) {
-            return base.Channel.obtenerJuegoAdquiridoPorId(request);
+        LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.eliminarJuegoAdquiridoPorBibliotecaYJuego(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest request) {
+            return base.Channel.eliminarJuegoAdquiridoPorBibliotecaYJuego(request);
         }
         
-        public LagStoreWA.ServicesWS.juegoAdquirido obtenerJuegoAdquiridoPorId(int idJuegoAdquirido) {
-            LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest();
-            inValue.idJuegoAdquirido = idJuegoAdquirido;
-            LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse retVal = ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).obtenerJuegoAdquiridoPorId(inValue);
+        public int eliminarJuegoAdquiridoPorBibliotecaYJuego(int idBiblioteca, int idJuego) {
+            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest inValue = new LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest();
+            inValue.idBiblioteca = idBiblioteca;
+            inValue.idJuego = idJuego;
+            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse retVal = ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).eliminarJuegoAdquiridoPorBibliotecaYJuego(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse> LagStoreWA.ServicesWS.JuegoAdquiridoWS.obtenerJuegoAdquiridoPorIdAsync(LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest request) {
-            return base.Channel.obtenerJuegoAdquiridoPorIdAsync(request);
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse> LagStoreWA.ServicesWS.JuegoAdquiridoWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoAsync(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest request) {
+            return base.Channel.eliminarJuegoAdquiridoPorBibliotecaYJuegoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse> obtenerJuegoAdquiridoPorIdAsync(int idJuegoAdquirido) {
-            LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdRequest();
-            inValue.idJuegoAdquirido = idJuegoAdquirido;
-            return ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).obtenerJuegoAdquiridoPorIdAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.eliminarJuegoAdquirido(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest request) {
-            return base.Channel.eliminarJuegoAdquirido(request);
-        }
-        
-        public int eliminarJuegoAdquirido(int idJuegoAdquirido) {
-            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest inValue = new LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest();
-            inValue.idJuegoAdquirido = idJuegoAdquirido;
-            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse retVal = ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).eliminarJuegoAdquirido(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse> LagStoreWA.ServicesWS.JuegoAdquiridoWS.eliminarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest request) {
-            return base.Channel.eliminarJuegoAdquiridoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse> eliminarJuegoAdquiridoAsync(int idJuegoAdquirido) {
-            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest inValue = new LagStoreWA.ServicesWS.eliminarJuegoAdquiridoRequest();
-            inValue.idJuegoAdquirido = idJuegoAdquirido;
-            return ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).eliminarJuegoAdquiridoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse LagStoreWA.ServicesWS.JuegoAdquiridoWS.modificarJuegoAdquirido(LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest request) {
-            return base.Channel.modificarJuegoAdquirido(request);
-        }
-        
-        public int modificarJuegoAdquirido(LagStoreWA.ServicesWS.juegoAdquirido juegoAdquirido) {
-            LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest inValue = new LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest();
-            inValue.juegoAdquirido = juegoAdquirido;
-            LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse retVal = ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).modificarJuegoAdquirido(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse> LagStoreWA.ServicesWS.JuegoAdquiridoWS.modificarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest request) {
-            return base.Channel.modificarJuegoAdquiridoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse> modificarJuegoAdquiridoAsync(LagStoreWA.ServicesWS.juegoAdquirido juegoAdquirido) {
-            LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest inValue = new LagStoreWA.ServicesWS.modificarJuegoAdquiridoRequest();
-            inValue.juegoAdquirido = juegoAdquirido;
-            return ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).modificarJuegoAdquiridoAsync(inValue);
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse> eliminarJuegoAdquiridoPorBibliotecaYJuegoAsync(int idBiblioteca, int idJuego) {
+            LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest inValue = new LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest();
+            inValue.idBiblioteca = idBiblioteca;
+            inValue.idJuego = idJuego;
+            return ((LagStoreWA.ServicesWS.JuegoAdquiridoWS)(this)).eliminarJuegoAdquiridoPorBibliotecaYJuegoAsync(inValue);
         }
     }
     
@@ -2137,13 +2137,13 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarJuegosResponse> listarJuegosAsync(LagStoreWA.ServicesWS.listarJuegosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/modificarJuegoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/insertarJuegoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.modificarJuegoResponse modificarJuego(LagStoreWA.ServicesWS.modificarJuegoRequest request);
+        LagStoreWA.ServicesWS.insertarJuegoResponse insertarJuego(LagStoreWA.ServicesWS.insertarJuegoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/modificarJuegoResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoResponse> modificarJuegoAsync(LagStoreWA.ServicesWS.modificarJuegoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/insertarJuegoResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarJuegoResponse> insertarJuegoAsync(LagStoreWA.ServicesWS.insertarJuegoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/obtenerJuegoPorIdRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/obtenerJuegoPorIdResponse")]
@@ -2155,15 +2155,6 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerJuegoPorIdResponse> obtenerJuegoPorIdAsync(LagStoreWA.ServicesWS.obtenerJuegoPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/insertarJuegoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.insertarJuegoResponse insertarJuego(LagStoreWA.ServicesWS.insertarJuegoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/insertarJuegoResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarJuegoResponse> insertarJuegoAsync(LagStoreWA.ServicesWS.insertarJuegoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/eliminarJuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/eliminarJuegoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -2171,6 +2162,15 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/eliminarJuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/eliminarJuegoResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJuegoResponse> eliminarJuegoAsync(LagStoreWA.ServicesWS.eliminarJuegoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/modificarJuegoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.modificarJuegoResponse modificarJuego(LagStoreWA.ServicesWS.modificarJuegoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoRequest", ReplyAction="http://services.pucp.edu.pe/JuegoWS/modificarJuegoResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoResponse> modificarJuegoAsync(LagStoreWA.ServicesWS.modificarJuegoRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2296,17 +2296,17 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJuego", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarJuegoRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarJuego", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarJuegoRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public LagStoreWA.ServicesWS.juego juego;
         
-        public modificarJuegoRequest() {
+        public insertarJuegoRequest() {
         }
         
-        public modificarJuegoRequest(LagStoreWA.ServicesWS.juego juego) {
+        public insertarJuegoRequest(LagStoreWA.ServicesWS.juego juego) {
             this.juego = juego;
         }
     }
@@ -2314,17 +2314,17 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJuegoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarJuegoResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarJuegoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarJuegoResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int @return;
         
-        public modificarJuegoResponse() {
+        public insertarJuegoResponse() {
         }
         
-        public modificarJuegoResponse(int @return) {
+        public insertarJuegoResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -2368,42 +2368,6 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarJuego", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class insertarJuegoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.juego juego;
-        
-        public insertarJuegoRequest() {
-        }
-        
-        public insertarJuegoRequest(LagStoreWA.ServicesWS.juego juego) {
-            this.juego = juego;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarJuegoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class insertarJuegoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarJuegoResponse() {
-        }
-        
-        public insertarJuegoResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarJuego", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
     public partial class eliminarJuegoRequest {
         
@@ -2433,6 +2397,42 @@ namespace LagStoreWA.ServicesWS {
         }
         
         public eliminarJuegoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJuego", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarJuegoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.juego juego;
+        
+        public modificarJuegoRequest() {
+        }
+        
+        public modificarJuegoRequest(LagStoreWA.ServicesWS.juego juego) {
+            this.juego = juego;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJuegoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarJuegoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarJuegoResponse() {
+        }
+        
+        public modificarJuegoResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -2540,26 +2540,26 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.modificarJuegoResponse LagStoreWA.ServicesWS.JuegoWS.modificarJuego(LagStoreWA.ServicesWS.modificarJuegoRequest request) {
-            return base.Channel.modificarJuego(request);
+        LagStoreWA.ServicesWS.insertarJuegoResponse LagStoreWA.ServicesWS.JuegoWS.insertarJuego(LagStoreWA.ServicesWS.insertarJuegoRequest request) {
+            return base.Channel.insertarJuego(request);
         }
         
-        public int modificarJuego(LagStoreWA.ServicesWS.juego juego) {
-            LagStoreWA.ServicesWS.modificarJuegoRequest inValue = new LagStoreWA.ServicesWS.modificarJuegoRequest();
+        public int insertarJuego(LagStoreWA.ServicesWS.juego juego) {
+            LagStoreWA.ServicesWS.insertarJuegoRequest inValue = new LagStoreWA.ServicesWS.insertarJuegoRequest();
             inValue.juego = juego;
-            LagStoreWA.ServicesWS.modificarJuegoResponse retVal = ((LagStoreWA.ServicesWS.JuegoWS)(this)).modificarJuego(inValue);
+            LagStoreWA.ServicesWS.insertarJuegoResponse retVal = ((LagStoreWA.ServicesWS.JuegoWS)(this)).insertarJuego(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoResponse> LagStoreWA.ServicesWS.JuegoWS.modificarJuegoAsync(LagStoreWA.ServicesWS.modificarJuegoRequest request) {
-            return base.Channel.modificarJuegoAsync(request);
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarJuegoResponse> LagStoreWA.ServicesWS.JuegoWS.insertarJuegoAsync(LagStoreWA.ServicesWS.insertarJuegoRequest request) {
+            return base.Channel.insertarJuegoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoResponse> modificarJuegoAsync(LagStoreWA.ServicesWS.juego juego) {
-            LagStoreWA.ServicesWS.modificarJuegoRequest inValue = new LagStoreWA.ServicesWS.modificarJuegoRequest();
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarJuegoResponse> insertarJuegoAsync(LagStoreWA.ServicesWS.juego juego) {
+            LagStoreWA.ServicesWS.insertarJuegoRequest inValue = new LagStoreWA.ServicesWS.insertarJuegoRequest();
             inValue.juego = juego;
-            return ((LagStoreWA.ServicesWS.JuegoWS)(this)).modificarJuegoAsync(inValue);
+            return ((LagStoreWA.ServicesWS.JuegoWS)(this)).insertarJuegoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2586,29 +2586,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.insertarJuegoResponse LagStoreWA.ServicesWS.JuegoWS.insertarJuego(LagStoreWA.ServicesWS.insertarJuegoRequest request) {
-            return base.Channel.insertarJuego(request);
-        }
-        
-        public int insertarJuego(LagStoreWA.ServicesWS.juego juego) {
-            LagStoreWA.ServicesWS.insertarJuegoRequest inValue = new LagStoreWA.ServicesWS.insertarJuegoRequest();
-            inValue.juego = juego;
-            LagStoreWA.ServicesWS.insertarJuegoResponse retVal = ((LagStoreWA.ServicesWS.JuegoWS)(this)).insertarJuego(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarJuegoResponse> LagStoreWA.ServicesWS.JuegoWS.insertarJuegoAsync(LagStoreWA.ServicesWS.insertarJuegoRequest request) {
-            return base.Channel.insertarJuegoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarJuegoResponse> insertarJuegoAsync(LagStoreWA.ServicesWS.juego juego) {
-            LagStoreWA.ServicesWS.insertarJuegoRequest inValue = new LagStoreWA.ServicesWS.insertarJuegoRequest();
-            inValue.juego = juego;
-            return ((LagStoreWA.ServicesWS.JuegoWS)(this)).insertarJuegoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.eliminarJuegoResponse LagStoreWA.ServicesWS.JuegoWS.eliminarJuego(LagStoreWA.ServicesWS.eliminarJuegoRequest request) {
             return base.Channel.eliminarJuego(request);
         }
@@ -2629,6 +2606,29 @@ namespace LagStoreWA.ServicesWS {
             LagStoreWA.ServicesWS.eliminarJuegoRequest inValue = new LagStoreWA.ServicesWS.eliminarJuegoRequest();
             inValue.idJuego = idJuego;
             return ((LagStoreWA.ServicesWS.JuegoWS)(this)).eliminarJuegoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.modificarJuegoResponse LagStoreWA.ServicesWS.JuegoWS.modificarJuego(LagStoreWA.ServicesWS.modificarJuegoRequest request) {
+            return base.Channel.modificarJuego(request);
+        }
+        
+        public int modificarJuego(LagStoreWA.ServicesWS.juego juego) {
+            LagStoreWA.ServicesWS.modificarJuegoRequest inValue = new LagStoreWA.ServicesWS.modificarJuegoRequest();
+            inValue.juego = juego;
+            LagStoreWA.ServicesWS.modificarJuegoResponse retVal = ((LagStoreWA.ServicesWS.JuegoWS)(this)).modificarJuego(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoResponse> LagStoreWA.ServicesWS.JuegoWS.modificarJuegoAsync(LagStoreWA.ServicesWS.modificarJuegoRequest request) {
+            return base.Channel.modificarJuegoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJuegoResponse> modificarJuegoAsync(LagStoreWA.ServicesWS.juego juego) {
+            LagStoreWA.ServicesWS.modificarJuegoRequest inValue = new LagStoreWA.ServicesWS.modificarJuegoRequest();
+            inValue.juego = juego;
+            return ((LagStoreWA.ServicesWS.JuegoWS)(this)).modificarJuegoAsync(inValue);
         }
     }
     
@@ -2673,15 +2673,6 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarJugadorResponse> insertarJugadorAsync(LagStoreWA.ServicesWS.insertarJugadorRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorRequest", ReplyAction="http://services.pucp.edu.pe/JugadorWS/modificarJugadorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.modificarJugadorResponse modificarJugador(LagStoreWA.ServicesWS.modificarJugadorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorRequest", ReplyAction="http://services.pucp.edu.pe/JugadorWS/modificarJugadorResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJugadorResponse> modificarJugadorAsync(LagStoreWA.ServicesWS.modificarJugadorRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorRequest", ReplyAction="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -2689,6 +2680,15 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorRequest", ReplyAction="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarJugadorResponse> eliminarJugadorAsync(LagStoreWA.ServicesWS.eliminarJugadorRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorRequest", ReplyAction="http://services.pucp.edu.pe/JugadorWS/modificarJugadorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.modificarJugadorResponse modificarJugador(LagStoreWA.ServicesWS.modificarJugadorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorRequest", ReplyAction="http://services.pucp.edu.pe/JugadorWS/modificarJugadorResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJugadorResponse> modificarJugadorAsync(LagStoreWA.ServicesWS.modificarJugadorRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2830,42 +2830,6 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJugador", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarJugadorRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.jugador jugador;
-        
-        public modificarJugadorRequest() {
-        }
-        
-        public modificarJugadorRequest(LagStoreWA.ServicesWS.jugador jugador) {
-            this.jugador = jugador;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJugadorResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarJugadorResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public modificarJugadorResponse() {
-        }
-        
-        public modificarJugadorResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarJugador", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
     public partial class eliminarJugadorRequest {
         
@@ -2895,6 +2859,42 @@ namespace LagStoreWA.ServicesWS {
         }
         
         public eliminarJugadorResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJugador", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarJugadorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.jugador jugador;
+        
+        public modificarJugadorRequest() {
+        }
+        
+        public modificarJugadorRequest(LagStoreWA.ServicesWS.jugador jugador) {
+            this.jugador = jugador;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarJugadorResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarJugadorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarJugadorResponse() {
+        }
+        
+        public modificarJugadorResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -3017,29 +3017,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.modificarJugadorResponse LagStoreWA.ServicesWS.JugadorWS.modificarJugador(LagStoreWA.ServicesWS.modificarJugadorRequest request) {
-            return base.Channel.modificarJugador(request);
-        }
-        
-        public int modificarJugador(LagStoreWA.ServicesWS.jugador jugador) {
-            LagStoreWA.ServicesWS.modificarJugadorRequest inValue = new LagStoreWA.ServicesWS.modificarJugadorRequest();
-            inValue.jugador = jugador;
-            LagStoreWA.ServicesWS.modificarJugadorResponse retVal = ((LagStoreWA.ServicesWS.JugadorWS)(this)).modificarJugador(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJugadorResponse> LagStoreWA.ServicesWS.JugadorWS.modificarJugadorAsync(LagStoreWA.ServicesWS.modificarJugadorRequest request) {
-            return base.Channel.modificarJugadorAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJugadorResponse> modificarJugadorAsync(LagStoreWA.ServicesWS.jugador jugador) {
-            LagStoreWA.ServicesWS.modificarJugadorRequest inValue = new LagStoreWA.ServicesWS.modificarJugadorRequest();
-            inValue.jugador = jugador;
-            return ((LagStoreWA.ServicesWS.JugadorWS)(this)).modificarJugadorAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.eliminarJugadorResponse LagStoreWA.ServicesWS.JugadorWS.eliminarJugador(LagStoreWA.ServicesWS.eliminarJugadorRequest request) {
             return base.Channel.eliminarJugador(request);
         }
@@ -3061,11 +3038,43 @@ namespace LagStoreWA.ServicesWS {
             inValue.idJugador = idJugador;
             return ((LagStoreWA.ServicesWS.JugadorWS)(this)).eliminarJugadorAsync(inValue);
         }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.modificarJugadorResponse LagStoreWA.ServicesWS.JugadorWS.modificarJugador(LagStoreWA.ServicesWS.modificarJugadorRequest request) {
+            return base.Channel.modificarJugador(request);
+        }
+        
+        public int modificarJugador(LagStoreWA.ServicesWS.jugador jugador) {
+            LagStoreWA.ServicesWS.modificarJugadorRequest inValue = new LagStoreWA.ServicesWS.modificarJugadorRequest();
+            inValue.jugador = jugador;
+            LagStoreWA.ServicesWS.modificarJugadorResponse retVal = ((LagStoreWA.ServicesWS.JugadorWS)(this)).modificarJugador(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJugadorResponse> LagStoreWA.ServicesWS.JugadorWS.modificarJugadorAsync(LagStoreWA.ServicesWS.modificarJugadorRequest request) {
+            return base.Channel.modificarJugadorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarJugadorResponse> modificarJugadorAsync(LagStoreWA.ServicesWS.jugador jugador) {
+            LagStoreWA.ServicesWS.modificarJugadorRequest inValue = new LagStoreWA.ServicesWS.modificarJugadorRequest();
+            inValue.jugador = jugador;
+            return ((LagStoreWA.ServicesWS.JugadorWS)(this)).modificarJugadorAsync(inValue);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicesWS.CalificacionWS")]
     public interface CalificacionWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionRequest", ReplyAction="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.modificarCalificacionResponse modificarCalificacion(LagStoreWA.ServicesWS.modificarCalificacionRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionRequest", ReplyAction="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarCalificacionResponse> modificarCalificacionAsync(LagStoreWA.ServicesWS.modificarCalificacionRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CalificacionWS/eliminarCalificacionRequest", ReplyAction="http://services.pucp.edu.pe/CalificacionWS/eliminarCalificacionResponse")]
@@ -3086,15 +3095,6 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarCalificacionResponse> insertarCalificacionAsync(LagStoreWA.ServicesWS.insertarCalificacionRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionRequest", ReplyAction="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.modificarCalificacionResponse modificarCalificacion(LagStoreWA.ServicesWS.modificarCalificacionRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionRequest", ReplyAction="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarCalificacionResponse> modificarCalificacionAsync(LagStoreWA.ServicesWS.modificarCalificacionRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CalificacionWS/obtenerCalificacionPorIdRequest", ReplyAction="http://services.pucp.edu.pe/CalificacionWS/obtenerCalificacionPorIdResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -3102,6 +3102,42 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CalificacionWS/obtenerCalificacionPorIdRequest", ReplyAction="http://services.pucp.edu.pe/CalificacionWS/obtenerCalificacionPorIdResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerCalificacionPorIdResponse> obtenerCalificacionPorIdAsync(LagStoreWA.ServicesWS.obtenerCalificacionPorIdRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarCalificacion", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarCalificacionRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.calificacion calificacion;
+        
+        public modificarCalificacionRequest() {
+        }
+        
+        public modificarCalificacionRequest(LagStoreWA.ServicesWS.calificacion calificacion) {
+            this.calificacion = calificacion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarCalificacionResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarCalificacionResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarCalificacionResponse() {
+        }
+        
+        public modificarCalificacionResponse(int @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -3179,42 +3215,6 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarCalificacion", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarCalificacionRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.calificacion calificacion;
-        
-        public modificarCalificacionRequest() {
-        }
-        
-        public modificarCalificacionRequest(LagStoreWA.ServicesWS.calificacion calificacion) {
-            this.calificacion = calificacion;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarCalificacionResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarCalificacionResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public modificarCalificacionResponse() {
-        }
-        
-        public modificarCalificacionResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerCalificacionPorId", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
     public partial class obtenerCalificacionPorIdRequest {
         
@@ -3276,6 +3276,29 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.modificarCalificacionResponse LagStoreWA.ServicesWS.CalificacionWS.modificarCalificacion(LagStoreWA.ServicesWS.modificarCalificacionRequest request) {
+            return base.Channel.modificarCalificacion(request);
+        }
+        
+        public int modificarCalificacion(LagStoreWA.ServicesWS.calificacion calificacion) {
+            LagStoreWA.ServicesWS.modificarCalificacionRequest inValue = new LagStoreWA.ServicesWS.modificarCalificacionRequest();
+            inValue.calificacion = calificacion;
+            LagStoreWA.ServicesWS.modificarCalificacionResponse retVal = ((LagStoreWA.ServicesWS.CalificacionWS)(this)).modificarCalificacion(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarCalificacionResponse> LagStoreWA.ServicesWS.CalificacionWS.modificarCalificacionAsync(LagStoreWA.ServicesWS.modificarCalificacionRequest request) {
+            return base.Channel.modificarCalificacionAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarCalificacionResponse> modificarCalificacionAsync(LagStoreWA.ServicesWS.calificacion calificacion) {
+            LagStoreWA.ServicesWS.modificarCalificacionRequest inValue = new LagStoreWA.ServicesWS.modificarCalificacionRequest();
+            inValue.calificacion = calificacion;
+            return ((LagStoreWA.ServicesWS.CalificacionWS)(this)).modificarCalificacionAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.eliminarCalificacionResponse LagStoreWA.ServicesWS.CalificacionWS.eliminarCalificacion(LagStoreWA.ServicesWS.eliminarCalificacionRequest request) {
             return base.Channel.eliminarCalificacion(request);
         }
@@ -3322,29 +3345,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.modificarCalificacionResponse LagStoreWA.ServicesWS.CalificacionWS.modificarCalificacion(LagStoreWA.ServicesWS.modificarCalificacionRequest request) {
-            return base.Channel.modificarCalificacion(request);
-        }
-        
-        public int modificarCalificacion(LagStoreWA.ServicesWS.calificacion calificacion) {
-            LagStoreWA.ServicesWS.modificarCalificacionRequest inValue = new LagStoreWA.ServicesWS.modificarCalificacionRequest();
-            inValue.calificacion = calificacion;
-            LagStoreWA.ServicesWS.modificarCalificacionResponse retVal = ((LagStoreWA.ServicesWS.CalificacionWS)(this)).modificarCalificacion(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarCalificacionResponse> LagStoreWA.ServicesWS.CalificacionWS.modificarCalificacionAsync(LagStoreWA.ServicesWS.modificarCalificacionRequest request) {
-            return base.Channel.modificarCalificacionAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarCalificacionResponse> modificarCalificacionAsync(LagStoreWA.ServicesWS.calificacion calificacion) {
-            LagStoreWA.ServicesWS.modificarCalificacionRequest inValue = new LagStoreWA.ServicesWS.modificarCalificacionRequest();
-            inValue.calificacion = calificacion;
-            return ((LagStoreWA.ServicesWS.CalificacionWS)(this)).modificarCalificacionAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.obtenerCalificacionPorIdResponse LagStoreWA.ServicesWS.CalificacionWS.obtenerCalificacionPorId(LagStoreWA.ServicesWS.obtenerCalificacionPorIdRequest request) {
             return base.Channel.obtenerCalificacionPorId(request);
         }
@@ -3386,6 +3386,15 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarDesarrolladoresPorNombreResponse> listarDesarrolladoresPorNombreAsync(LagStoreWA.ServicesWS.listarDesarrolladoresPorNombreRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse obtenerDesarrolladorPorID(LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse> obtenerDesarrolladorPorIDAsync(LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -3393,6 +3402,15 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarDesarrolladorResponse> insertarDesarrolladorAsync(LagStoreWA.ServicesWS.insertarDesarrolladorRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse listarTodosDesarrolladores(LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse> listarTodosDesarrolladoresAsync(LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorResponse")]
@@ -3411,24 +3429,6 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/eliminarDesarrolladorRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/eliminarDesarrolladorResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarDesarrolladorResponse> eliminarDesarrolladorAsync(LagStoreWA.ServicesWS.eliminarDesarrolladorRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse obtenerDesarrolladorPorID(LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse> obtenerDesarrolladorPorIDAsync(LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse listarTodosDesarrolladores(LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresRequest", ReplyAction="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse> listarTodosDesarrolladoresAsync(LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -3470,6 +3470,42 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDesarrolladorPorID", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class obtenerDesarrolladorPorIDRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idDesarrollador;
+        
+        public obtenerDesarrolladorPorIDRequest() {
+        }
+        
+        public obtenerDesarrolladorPorIDRequest(int idDesarrollador) {
+            this.idDesarrollador = idDesarrollador;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDesarrolladorPorIDResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class obtenerDesarrolladorPorIDResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.desarrollador @return;
+        
+        public obtenerDesarrolladorPorIDResponse() {
+        }
+        
+        public obtenerDesarrolladorPorIDResponse(LagStoreWA.ServicesWS.desarrollador @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="insertarDesarrollador", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
     public partial class insertarDesarrolladorRequest {
         
@@ -3499,6 +3535,34 @@ namespace LagStoreWA.ServicesWS {
         }
         
         public insertarDesarrolladorResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosDesarrolladores", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarTodosDesarrolladoresRequest {
+        
+        public listarTodosDesarrolladoresRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosDesarrolladoresResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarTodosDesarrolladoresResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.desarrollador[] @return;
+        
+        public listarTodosDesarrolladoresResponse() {
+        }
+        
+        public listarTodosDesarrolladoresResponse(LagStoreWA.ServicesWS.desarrollador[] @return) {
             this.@return = @return;
         }
     }
@@ -3575,70 +3639,6 @@ namespace LagStoreWA.ServicesWS {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDesarrolladorPorID", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class obtenerDesarrolladorPorIDRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idDesarrollador;
-        
-        public obtenerDesarrolladorPorIDRequest() {
-        }
-        
-        public obtenerDesarrolladorPorIDRequest(int idDesarrollador) {
-            this.idDesarrollador = idDesarrollador;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDesarrolladorPorIDResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class obtenerDesarrolladorPorIDResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.desarrollador @return;
-        
-        public obtenerDesarrolladorPorIDResponse() {
-        }
-        
-        public obtenerDesarrolladorPorIDResponse(LagStoreWA.ServicesWS.desarrollador @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosDesarrolladores", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class listarTodosDesarrolladoresRequest {
-        
-        public listarTodosDesarrolladoresRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosDesarrolladoresResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class listarTodosDesarrolladoresResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.desarrollador[] @return;
-        
-        public listarTodosDesarrolladoresResponse() {
-        }
-        
-        public listarTodosDesarrolladoresResponse(LagStoreWA.ServicesWS.desarrollador[] @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface DesarrolladorWSChannel : LagStoreWA.ServicesWS.DesarrolladorWS, System.ServiceModel.IClientChannel {
     }
@@ -3690,6 +3690,29 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse LagStoreWA.ServicesWS.DesarrolladorWS.obtenerDesarrolladorPorID(LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest request) {
+            return base.Channel.obtenerDesarrolladorPorID(request);
+        }
+        
+        public LagStoreWA.ServicesWS.desarrollador obtenerDesarrolladorPorID(int idDesarrollador) {
+            LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest inValue = new LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest();
+            inValue.idDesarrollador = idDesarrollador;
+            LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse retVal = ((LagStoreWA.ServicesWS.DesarrolladorWS)(this)).obtenerDesarrolladorPorID(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse> LagStoreWA.ServicesWS.DesarrolladorWS.obtenerDesarrolladorPorIDAsync(LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest request) {
+            return base.Channel.obtenerDesarrolladorPorIDAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse> obtenerDesarrolladorPorIDAsync(int idDesarrollador) {
+            LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest inValue = new LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest();
+            inValue.idDesarrollador = idDesarrollador;
+            return ((LagStoreWA.ServicesWS.DesarrolladorWS)(this)).obtenerDesarrolladorPorIDAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.insertarDesarrolladorResponse LagStoreWA.ServicesWS.DesarrolladorWS.insertarDesarrollador(LagStoreWA.ServicesWS.insertarDesarrolladorRequest request) {
             return base.Channel.insertarDesarrollador(request);
         }
@@ -3710,6 +3733,27 @@ namespace LagStoreWA.ServicesWS {
             LagStoreWA.ServicesWS.insertarDesarrolladorRequest inValue = new LagStoreWA.ServicesWS.insertarDesarrolladorRequest();
             inValue.desarrollador = desarrollador;
             return ((LagStoreWA.ServicesWS.DesarrolladorWS)(this)).insertarDesarrolladorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse LagStoreWA.ServicesWS.DesarrolladorWS.listarTodosDesarrolladores(LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest request) {
+            return base.Channel.listarTodosDesarrolladores(request);
+        }
+        
+        public LagStoreWA.ServicesWS.desarrollador[] listarTodosDesarrolladores() {
+            LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest inValue = new LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest();
+            LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse retVal = ((LagStoreWA.ServicesWS.DesarrolladorWS)(this)).listarTodosDesarrolladores(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse> LagStoreWA.ServicesWS.DesarrolladorWS.listarTodosDesarrolladoresAsync(LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest request) {
+            return base.Channel.listarTodosDesarrolladoresAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse> listarTodosDesarrolladoresAsync() {
+            LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest inValue = new LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest();
+            return ((LagStoreWA.ServicesWS.DesarrolladorWS)(this)).listarTodosDesarrolladoresAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3757,64 +3801,11 @@ namespace LagStoreWA.ServicesWS {
             inValue.idDesarrollador = idDesarrollador;
             return ((LagStoreWA.ServicesWS.DesarrolladorWS)(this)).eliminarDesarrolladorAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse LagStoreWA.ServicesWS.DesarrolladorWS.obtenerDesarrolladorPorID(LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest request) {
-            return base.Channel.obtenerDesarrolladorPorID(request);
-        }
-        
-        public LagStoreWA.ServicesWS.desarrollador obtenerDesarrolladorPorID(int idDesarrollador) {
-            LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest inValue = new LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest();
-            inValue.idDesarrollador = idDesarrollador;
-            LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse retVal = ((LagStoreWA.ServicesWS.DesarrolladorWS)(this)).obtenerDesarrolladorPorID(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse> LagStoreWA.ServicesWS.DesarrolladorWS.obtenerDesarrolladorPorIDAsync(LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest request) {
-            return base.Channel.obtenerDesarrolladorPorIDAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse> obtenerDesarrolladorPorIDAsync(int idDesarrollador) {
-            LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest inValue = new LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDRequest();
-            inValue.idDesarrollador = idDesarrollador;
-            return ((LagStoreWA.ServicesWS.DesarrolladorWS)(this)).obtenerDesarrolladorPorIDAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse LagStoreWA.ServicesWS.DesarrolladorWS.listarTodosDesarrolladores(LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest request) {
-            return base.Channel.listarTodosDesarrolladores(request);
-        }
-        
-        public LagStoreWA.ServicesWS.desarrollador[] listarTodosDesarrolladores() {
-            LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest inValue = new LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest();
-            LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse retVal = ((LagStoreWA.ServicesWS.DesarrolladorWS)(this)).listarTodosDesarrolladores(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse> LagStoreWA.ServicesWS.DesarrolladorWS.listarTodosDesarrolladoresAsync(LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest request) {
-            return base.Channel.listarTodosDesarrolladoresAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosDesarrolladoresResponse> listarTodosDesarrolladoresAsync() {
-            LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest inValue = new LagStoreWA.ServicesWS.listarTodosDesarrolladoresRequest();
-            return ((LagStoreWA.ServicesWS.DesarrolladorWS)(this)).listarTodosDesarrolladoresAsync(inValue);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicesWS.RecargaWS")]
     public interface RecargaWS {
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RecargaWS/obtenerRecargaPorIdRequest", ReplyAction="http://services.pucp.edu.pe/RecargaWS/obtenerRecargaPorIdResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse obtenerRecargaPorId(LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RecargaWS/obtenerRecargaPorIdRequest", ReplyAction="http://services.pucp.edu.pe/RecargaWS/obtenerRecargaPorIdResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse> obtenerRecargaPorIdAsync(LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RecargaWS/listarRecargasAsociadasRequest", ReplyAction="http://services.pucp.edu.pe/RecargaWS/listarRecargasAsociadasResponse")]
@@ -3826,6 +3817,15 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarRecargasAsociadasResponse> listarRecargasAsociadasAsync(LagStoreWA.ServicesWS.listarRecargasAsociadasRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RecargaWS/obtenerRecargaPorIdRequest", ReplyAction="http://services.pucp.edu.pe/RecargaWS/obtenerRecargaPorIdResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse obtenerRecargaPorId(LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RecargaWS/obtenerRecargaPorIdRequest", ReplyAction="http://services.pucp.edu.pe/RecargaWS/obtenerRecargaPorIdResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse> obtenerRecargaPorIdAsync(LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RecargaWS/insertarRecargaRequest", ReplyAction="http://services.pucp.edu.pe/RecargaWS/insertarRecargaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -3833,42 +3833,6 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RecargaWS/insertarRecargaRequest", ReplyAction="http://services.pucp.edu.pe/RecargaWS/insertarRecargaResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarRecargaResponse> insertarRecargaAsync(LagStoreWA.ServicesWS.insertarRecargaRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerRecargaPorId", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class obtenerRecargaPorIdRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idRecarga;
-        
-        public obtenerRecargaPorIdRequest() {
-        }
-        
-        public obtenerRecargaPorIdRequest(int idRecarga) {
-            this.idRecarga = idRecarga;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerRecargaPorIdResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class obtenerRecargaPorIdResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.recarga @return;
-        
-        public obtenerRecargaPorIdResponse() {
-        }
-        
-        public obtenerRecargaPorIdResponse(LagStoreWA.ServicesWS.recarga @return) {
-            this.@return = @return;
-        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -3903,6 +3867,42 @@ namespace LagStoreWA.ServicesWS {
         }
         
         public listarRecargasAsociadasResponse(LagStoreWA.ServicesWS.recarga[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerRecargaPorId", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class obtenerRecargaPorIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idRecarga;
+        
+        public obtenerRecargaPorIdRequest() {
+        }
+        
+        public obtenerRecargaPorIdRequest(int idRecarga) {
+            this.idRecarga = idRecarga;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerRecargaPorIdResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class obtenerRecargaPorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.recarga @return;
+        
+        public obtenerRecargaPorIdResponse() {
+        }
+        
+        public obtenerRecargaPorIdResponse(LagStoreWA.ServicesWS.recarga @return) {
             this.@return = @return;
         }
     }
@@ -3971,29 +3971,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse LagStoreWA.ServicesWS.RecargaWS.obtenerRecargaPorId(LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest request) {
-            return base.Channel.obtenerRecargaPorId(request);
-        }
-        
-        public LagStoreWA.ServicesWS.recarga obtenerRecargaPorId(int idRecarga) {
-            LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest();
-            inValue.idRecarga = idRecarga;
-            LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse retVal = ((LagStoreWA.ServicesWS.RecargaWS)(this)).obtenerRecargaPorId(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse> LagStoreWA.ServicesWS.RecargaWS.obtenerRecargaPorIdAsync(LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest request) {
-            return base.Channel.obtenerRecargaPorIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse> obtenerRecargaPorIdAsync(int idRecarga) {
-            LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest();
-            inValue.idRecarga = idRecarga;
-            return ((LagStoreWA.ServicesWS.RecargaWS)(this)).obtenerRecargaPorIdAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.listarRecargasAsociadasResponse LagStoreWA.ServicesWS.RecargaWS.listarRecargasAsociadas(LagStoreWA.ServicesWS.listarRecargasAsociadasRequest request) {
             return base.Channel.listarRecargasAsociadas(request);
         }
@@ -4014,6 +3991,29 @@ namespace LagStoreWA.ServicesWS {
             LagStoreWA.ServicesWS.listarRecargasAsociadasRequest inValue = new LagStoreWA.ServicesWS.listarRecargasAsociadasRequest();
             inValue.idCartera = idCartera;
             return ((LagStoreWA.ServicesWS.RecargaWS)(this)).listarRecargasAsociadasAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse LagStoreWA.ServicesWS.RecargaWS.obtenerRecargaPorId(LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest request) {
+            return base.Channel.obtenerRecargaPorId(request);
+        }
+        
+        public LagStoreWA.ServicesWS.recarga obtenerRecargaPorId(int idRecarga) {
+            LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest();
+            inValue.idRecarga = idRecarga;
+            LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse retVal = ((LagStoreWA.ServicesWS.RecargaWS)(this)).obtenerRecargaPorId(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse> LagStoreWA.ServicesWS.RecargaWS.obtenerRecargaPorIdAsync(LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest request) {
+            return base.Channel.obtenerRecargaPorIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse> obtenerRecargaPorIdAsync(int idRecarga) {
+            LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerRecargaPorIdRequest();
+            inValue.idRecarga = idRecarga;
+            return ((LagStoreWA.ServicesWS.RecargaWS)(this)).obtenerRecargaPorIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -4223,15 +4223,6 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerBibliotecaPorUsuarioResponse> obtenerBibliotecaPorUsuarioAsync(LagStoreWA.ServicesWS.obtenerBibliotecaPorUsuarioRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse obtenerBibliotecaPorId(LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse> obtenerBibliotecaPorIdAsync(LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/modificarBibliotecaRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/modificarBibliotecaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -4241,13 +4232,13 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarBibliotecaResponse> modificarBibliotecaAsync(LagStoreWA.ServicesWS.modificarBibliotecaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.insertarBibliotecaResponse insertarBiblioteca(LagStoreWA.ServicesWS.insertarBibliotecaRequest request);
+        LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse obtenerBibliotecaPorId(LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarBibliotecaResponse> insertarBibliotecaAsync(LagStoreWA.ServicesWS.insertarBibliotecaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse> obtenerBibliotecaPorIdAsync(LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaResponse")]
@@ -4257,6 +4248,15 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarBibliotecaResponse> eliminarBibliotecaAsync(LagStoreWA.ServicesWS.eliminarBibliotecaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.insertarBibliotecaResponse insertarBiblioteca(LagStoreWA.ServicesWS.insertarBibliotecaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest", ReplyAction="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarBibliotecaResponse> insertarBibliotecaAsync(LagStoreWA.ServicesWS.insertarBibliotecaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4291,42 +4291,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         public obtenerBibliotecaPorUsuarioResponse(LagStoreWA.ServicesWS.biblioteca @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerBibliotecaPorId", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class obtenerBibliotecaPorIdRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idBiblioteca;
-        
-        public obtenerBibliotecaPorIdRequest() {
-        }
-        
-        public obtenerBibliotecaPorIdRequest(int idBiblioteca) {
-            this.idBiblioteca = idBiblioteca;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerBibliotecaPorIdResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class obtenerBibliotecaPorIdResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.biblioteca @return;
-        
-        public obtenerBibliotecaPorIdResponse() {
-        }
-        
-        public obtenerBibliotecaPorIdResponse(LagStoreWA.ServicesWS.biblioteca @return) {
             this.@return = @return;
         }
     }
@@ -4370,35 +4334,35 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarBiblioteca", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class insertarBibliotecaRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerBibliotecaPorId", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class obtenerBibliotecaPorIdRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.biblioteca biblioteca;
+        public int idBiblioteca;
         
-        public insertarBibliotecaRequest() {
+        public obtenerBibliotecaPorIdRequest() {
         }
         
-        public insertarBibliotecaRequest(LagStoreWA.ServicesWS.biblioteca biblioteca) {
-            this.biblioteca = biblioteca;
+        public obtenerBibliotecaPorIdRequest(int idBiblioteca) {
+            this.idBiblioteca = idBiblioteca;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarBibliotecaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class insertarBibliotecaResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerBibliotecaPorIdResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class obtenerBibliotecaPorIdResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
+        public LagStoreWA.ServicesWS.biblioteca @return;
         
-        public insertarBibliotecaResponse() {
+        public obtenerBibliotecaPorIdResponse() {
         }
         
-        public insertarBibliotecaResponse(int @return) {
+        public obtenerBibliotecaPorIdResponse(LagStoreWA.ServicesWS.biblioteca @return) {
             this.@return = @return;
         }
     }
@@ -4435,6 +4399,42 @@ namespace LagStoreWA.ServicesWS {
         }
         
         public eliminarBibliotecaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarBiblioteca", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarBibliotecaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.biblioteca biblioteca;
+        
+        public insertarBibliotecaRequest() {
+        }
+        
+        public insertarBibliotecaRequest(LagStoreWA.ServicesWS.biblioteca biblioteca) {
+            this.biblioteca = biblioteca;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarBibliotecaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarBibliotecaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarBibliotecaResponse() {
+        }
+        
+        public insertarBibliotecaResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -4490,29 +4490,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse LagStoreWA.ServicesWS.BibliotecaWS.obtenerBibliotecaPorId(LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest request) {
-            return base.Channel.obtenerBibliotecaPorId(request);
-        }
-        
-        public LagStoreWA.ServicesWS.biblioteca obtenerBibliotecaPorId(int idBiblioteca) {
-            LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest();
-            inValue.idBiblioteca = idBiblioteca;
-            LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse retVal = ((LagStoreWA.ServicesWS.BibliotecaWS)(this)).obtenerBibliotecaPorId(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse> LagStoreWA.ServicesWS.BibliotecaWS.obtenerBibliotecaPorIdAsync(LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest request) {
-            return base.Channel.obtenerBibliotecaPorIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse> obtenerBibliotecaPorIdAsync(int idBiblioteca) {
-            LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest();
-            inValue.idBiblioteca = idBiblioteca;
-            return ((LagStoreWA.ServicesWS.BibliotecaWS)(this)).obtenerBibliotecaPorIdAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.modificarBibliotecaResponse LagStoreWA.ServicesWS.BibliotecaWS.modificarBiblioteca(LagStoreWA.ServicesWS.modificarBibliotecaRequest request) {
             return base.Channel.modificarBiblioteca(request);
         }
@@ -4536,26 +4513,26 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.insertarBibliotecaResponse LagStoreWA.ServicesWS.BibliotecaWS.insertarBiblioteca(LagStoreWA.ServicesWS.insertarBibliotecaRequest request) {
-            return base.Channel.insertarBiblioteca(request);
+        LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse LagStoreWA.ServicesWS.BibliotecaWS.obtenerBibliotecaPorId(LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest request) {
+            return base.Channel.obtenerBibliotecaPorId(request);
         }
         
-        public int insertarBiblioteca(LagStoreWA.ServicesWS.biblioteca biblioteca) {
-            LagStoreWA.ServicesWS.insertarBibliotecaRequest inValue = new LagStoreWA.ServicesWS.insertarBibliotecaRequest();
-            inValue.biblioteca = biblioteca;
-            LagStoreWA.ServicesWS.insertarBibliotecaResponse retVal = ((LagStoreWA.ServicesWS.BibliotecaWS)(this)).insertarBiblioteca(inValue);
+        public LagStoreWA.ServicesWS.biblioteca obtenerBibliotecaPorId(int idBiblioteca) {
+            LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest();
+            inValue.idBiblioteca = idBiblioteca;
+            LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse retVal = ((LagStoreWA.ServicesWS.BibliotecaWS)(this)).obtenerBibliotecaPorId(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarBibliotecaResponse> LagStoreWA.ServicesWS.BibliotecaWS.insertarBibliotecaAsync(LagStoreWA.ServicesWS.insertarBibliotecaRequest request) {
-            return base.Channel.insertarBibliotecaAsync(request);
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse> LagStoreWA.ServicesWS.BibliotecaWS.obtenerBibliotecaPorIdAsync(LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest request) {
+            return base.Channel.obtenerBibliotecaPorIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarBibliotecaResponse> insertarBibliotecaAsync(LagStoreWA.ServicesWS.biblioteca biblioteca) {
-            LagStoreWA.ServicesWS.insertarBibliotecaRequest inValue = new LagStoreWA.ServicesWS.insertarBibliotecaRequest();
-            inValue.biblioteca = biblioteca;
-            return ((LagStoreWA.ServicesWS.BibliotecaWS)(this)).insertarBibliotecaAsync(inValue);
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse> obtenerBibliotecaPorIdAsync(int idBiblioteca) {
+            LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest inValue = new LagStoreWA.ServicesWS.obtenerBibliotecaPorIdRequest();
+            inValue.idBiblioteca = idBiblioteca;
+            return ((LagStoreWA.ServicesWS.BibliotecaWS)(this)).obtenerBibliotecaPorIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -4579,6 +4556,29 @@ namespace LagStoreWA.ServicesWS {
             LagStoreWA.ServicesWS.eliminarBibliotecaRequest inValue = new LagStoreWA.ServicesWS.eliminarBibliotecaRequest();
             inValue.idBiblioteca = idBiblioteca;
             return ((LagStoreWA.ServicesWS.BibliotecaWS)(this)).eliminarBibliotecaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.insertarBibliotecaResponse LagStoreWA.ServicesWS.BibliotecaWS.insertarBiblioteca(LagStoreWA.ServicesWS.insertarBibliotecaRequest request) {
+            return base.Channel.insertarBiblioteca(request);
+        }
+        
+        public int insertarBiblioteca(LagStoreWA.ServicesWS.biblioteca biblioteca) {
+            LagStoreWA.ServicesWS.insertarBibliotecaRequest inValue = new LagStoreWA.ServicesWS.insertarBibliotecaRequest();
+            inValue.biblioteca = biblioteca;
+            LagStoreWA.ServicesWS.insertarBibliotecaResponse retVal = ((LagStoreWA.ServicesWS.BibliotecaWS)(this)).insertarBiblioteca(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarBibliotecaResponse> LagStoreWA.ServicesWS.BibliotecaWS.insertarBibliotecaAsync(LagStoreWA.ServicesWS.insertarBibliotecaRequest request) {
+            return base.Channel.insertarBibliotecaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarBibliotecaResponse> insertarBibliotecaAsync(LagStoreWA.ServicesWS.biblioteca biblioteca) {
+            LagStoreWA.ServicesWS.insertarBibliotecaRequest inValue = new LagStoreWA.ServicesWS.insertarBibliotecaRequest();
+            inValue.biblioteca = biblioteca;
+            return ((LagStoreWA.ServicesWS.BibliotecaWS)(this)).insertarBibliotecaAsync(inValue);
         }
     }
     
@@ -4688,6 +4688,24 @@ namespace LagStoreWA.ServicesWS {
     public interface CarroCompraWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarroCompraWS/otenerCarroPorUsuarioRequest", ReplyAction="http://services.pucp.edu.pe/CarroCompraWS/otenerCarroPorUsuarioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse otenerCarroPorUsuario(LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarroCompraWS/otenerCarroPorUsuarioRequest", ReplyAction="http://services.pucp.edu.pe/CarroCompraWS/otenerCarroPorUsuarioResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse> otenerCarroPorUsuarioAsync(LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraRequest", ReplyAction="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.eliminarCarroCompraResponse eliminarCarroCompra(LagStoreWA.ServicesWS.eliminarCarroCompraRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraRequest", ReplyAction="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarCarroCompraResponse> eliminarCarroCompraAsync(LagStoreWA.ServicesWS.eliminarCarroCompraRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarroCompraWS/insertarCarroCompraRequest", ReplyAction="http://services.pucp.edu.pe/CarroCompraWS/insertarCarroCompraResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -4704,24 +4722,78 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarroCompraWS/modificarCarroCompraRequest", ReplyAction="http://services.pucp.edu.pe/CarroCompraWS/modificarCarroCompraResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarCarroCompraResponse> modificarCarroCompraAsync(LagStoreWA.ServicesWS.modificarCarroCompraRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="otenerCarroPorUsuario", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class otenerCarroPorUsuarioRequest {
         
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraRequest", ReplyAction="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.eliminarCarroCompraResponse eliminarCarroCompra(LagStoreWA.ServicesWS.eliminarCarroCompraRequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idUsuario;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraRequest", ReplyAction="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarCarroCompraResponse> eliminarCarroCompraAsync(LagStoreWA.ServicesWS.eliminarCarroCompraRequest request);
+        public otenerCarroPorUsuarioRequest() {
+        }
         
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarroCompraWS/otenerCarroPorUsuarioRequest", ReplyAction="http://services.pucp.edu.pe/CarroCompraWS/otenerCarroPorUsuarioResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse otenerCarroPorUsuario(LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest request);
+        public otenerCarroPorUsuarioRequest(int idUsuario) {
+            this.idUsuario = idUsuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="otenerCarroPorUsuarioResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class otenerCarroPorUsuarioResponse {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarroCompraWS/otenerCarroPorUsuarioRequest", ReplyAction="http://services.pucp.edu.pe/CarroCompraWS/otenerCarroPorUsuarioResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse> otenerCarroPorUsuarioAsync(LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.carroCompra @return;
+        
+        public otenerCarroPorUsuarioResponse() {
+        }
+        
+        public otenerCarroPorUsuarioResponse(LagStoreWA.ServicesWS.carroCompra @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarCarroCompra", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarCarroCompraRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idCarro;
+        
+        public eliminarCarroCompraRequest() {
+        }
+        
+        public eliminarCarroCompraRequest(int idCarro) {
+            this.idCarro = idCarro;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarCarroCompraResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarCarroCompraResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarCarroCompraResponse() {
+        }
+        
+        public eliminarCarroCompraResponse(int @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4796,78 +4868,6 @@ namespace LagStoreWA.ServicesWS {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarCarroCompra", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class eliminarCarroCompraRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idCarro;
-        
-        public eliminarCarroCompraRequest() {
-        }
-        
-        public eliminarCarroCompraRequest(int idCarro) {
-            this.idCarro = idCarro;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarCarroCompraResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class eliminarCarroCompraResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public eliminarCarroCompraResponse() {
-        }
-        
-        public eliminarCarroCompraResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="otenerCarroPorUsuario", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class otenerCarroPorUsuarioRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idUsuario;
-        
-        public otenerCarroPorUsuarioRequest() {
-        }
-        
-        public otenerCarroPorUsuarioRequest(int idUsuario) {
-            this.idUsuario = idUsuario;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="otenerCarroPorUsuarioResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class otenerCarroPorUsuarioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.carroCompra @return;
-        
-        public otenerCarroPorUsuarioResponse() {
-        }
-        
-        public otenerCarroPorUsuarioResponse(LagStoreWA.ServicesWS.carroCompra @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CarroCompraWSChannel : LagStoreWA.ServicesWS.CarroCompraWS, System.ServiceModel.IClientChannel {
     }
@@ -4893,6 +4893,52 @@ namespace LagStoreWA.ServicesWS {
         
         public CarroCompraWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse LagStoreWA.ServicesWS.CarroCompraWS.otenerCarroPorUsuario(LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest request) {
+            return base.Channel.otenerCarroPorUsuario(request);
+        }
+        
+        public LagStoreWA.ServicesWS.carroCompra otenerCarroPorUsuario(int idUsuario) {
+            LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest inValue = new LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest();
+            inValue.idUsuario = idUsuario;
+            LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse retVal = ((LagStoreWA.ServicesWS.CarroCompraWS)(this)).otenerCarroPorUsuario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse> LagStoreWA.ServicesWS.CarroCompraWS.otenerCarroPorUsuarioAsync(LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest request) {
+            return base.Channel.otenerCarroPorUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse> otenerCarroPorUsuarioAsync(int idUsuario) {
+            LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest inValue = new LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest();
+            inValue.idUsuario = idUsuario;
+            return ((LagStoreWA.ServicesWS.CarroCompraWS)(this)).otenerCarroPorUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.eliminarCarroCompraResponse LagStoreWA.ServicesWS.CarroCompraWS.eliminarCarroCompra(LagStoreWA.ServicesWS.eliminarCarroCompraRequest request) {
+            return base.Channel.eliminarCarroCompra(request);
+        }
+        
+        public int eliminarCarroCompra(int idCarro) {
+            LagStoreWA.ServicesWS.eliminarCarroCompraRequest inValue = new LagStoreWA.ServicesWS.eliminarCarroCompraRequest();
+            inValue.idCarro = idCarro;
+            LagStoreWA.ServicesWS.eliminarCarroCompraResponse retVal = ((LagStoreWA.ServicesWS.CarroCompraWS)(this)).eliminarCarroCompra(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarCarroCompraResponse> LagStoreWA.ServicesWS.CarroCompraWS.eliminarCarroCompraAsync(LagStoreWA.ServicesWS.eliminarCarroCompraRequest request) {
+            return base.Channel.eliminarCarroCompraAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarCarroCompraResponse> eliminarCarroCompraAsync(int idCarro) {
+            LagStoreWA.ServicesWS.eliminarCarroCompraRequest inValue = new LagStoreWA.ServicesWS.eliminarCarroCompraRequest();
+            inValue.idCarro = idCarro;
+            return ((LagStoreWA.ServicesWS.CarroCompraWS)(this)).eliminarCarroCompraAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -4940,52 +4986,6 @@ namespace LagStoreWA.ServicesWS {
             inValue.carro = carro;
             return ((LagStoreWA.ServicesWS.CarroCompraWS)(this)).modificarCarroCompraAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.eliminarCarroCompraResponse LagStoreWA.ServicesWS.CarroCompraWS.eliminarCarroCompra(LagStoreWA.ServicesWS.eliminarCarroCompraRequest request) {
-            return base.Channel.eliminarCarroCompra(request);
-        }
-        
-        public int eliminarCarroCompra(int idCarro) {
-            LagStoreWA.ServicesWS.eliminarCarroCompraRequest inValue = new LagStoreWA.ServicesWS.eliminarCarroCompraRequest();
-            inValue.idCarro = idCarro;
-            LagStoreWA.ServicesWS.eliminarCarroCompraResponse retVal = ((LagStoreWA.ServicesWS.CarroCompraWS)(this)).eliminarCarroCompra(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarCarroCompraResponse> LagStoreWA.ServicesWS.CarroCompraWS.eliminarCarroCompraAsync(LagStoreWA.ServicesWS.eliminarCarroCompraRequest request) {
-            return base.Channel.eliminarCarroCompraAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarCarroCompraResponse> eliminarCarroCompraAsync(int idCarro) {
-            LagStoreWA.ServicesWS.eliminarCarroCompraRequest inValue = new LagStoreWA.ServicesWS.eliminarCarroCompraRequest();
-            inValue.idCarro = idCarro;
-            return ((LagStoreWA.ServicesWS.CarroCompraWS)(this)).eliminarCarroCompraAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse LagStoreWA.ServicesWS.CarroCompraWS.otenerCarroPorUsuario(LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest request) {
-            return base.Channel.otenerCarroPorUsuario(request);
-        }
-        
-        public LagStoreWA.ServicesWS.carroCompra otenerCarroPorUsuario(int idUsuario) {
-            LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest inValue = new LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest();
-            inValue.idUsuario = idUsuario;
-            LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse retVal = ((LagStoreWA.ServicesWS.CarroCompraWS)(this)).otenerCarroPorUsuario(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse> LagStoreWA.ServicesWS.CarroCompraWS.otenerCarroPorUsuarioAsync(LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest request) {
-            return base.Channel.otenerCarroPorUsuarioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse> otenerCarroPorUsuarioAsync(int idUsuario) {
-            LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest inValue = new LagStoreWA.ServicesWS.otenerCarroPorUsuarioRequest();
-            inValue.idUsuario = idUsuario;
-            return ((LagStoreWA.ServicesWS.CarroCompraWS)(this)).otenerCarroPorUsuarioAsync(inValue);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -5006,6 +5006,33 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarJuegosConMayorCalificacionResponse> listarJuegosConMayorCalificacionAsync(LagStoreWA.ServicesWS.listarJuegosConMayorCalificacionRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/modificarAdministradorRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/modificarAdministradorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.modificarAdministradorResponse modificarAdministrador(LagStoreWA.ServicesWS.modificarAdministradorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/modificarAdministradorRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/modificarAdministradorResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarAdministradorResponse> modificarAdministradorAsync(LagStoreWA.ServicesWS.modificarAdministradorRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/eliminarAdministradorRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/eliminarAdministradorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.eliminarAdministradorResponse eliminarAdministrador(LagStoreWA.ServicesWS.eliminarAdministradorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/eliminarAdministradorRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/eliminarAdministradorResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarAdministradorResponse> eliminarAdministradorAsync(LagStoreWA.ServicesWS.eliminarAdministradorRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.listarTodosAdministradoresResponse listarTodosAdministradores(LagStoreWA.ServicesWS.listarTodosAdministradoresRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosAdministradoresResponse> listarTodosAdministradoresAsync(LagStoreWA.ServicesWS.listarTodosAdministradoresRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/insertarAdministradorRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/insertarAdministradorResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -5024,15 +5051,6 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerAdministradorPorIDResponse> obtenerAdministradorPorIDAsync(LagStoreWA.ServicesWS.obtenerAdministradorPorIDRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.listarTodosAdministradoresResponse listarTodosAdministradores(LagStoreWA.ServicesWS.listarTodosAdministradoresRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/listarTodosAdministradoresResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosAdministradoresResponse> listarTodosAdministradoresAsync(LagStoreWA.ServicesWS.listarTodosAdministradoresRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/listarJuegosQueMasSeVendenRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/listarJuegosQueMasSeVendenResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -5040,24 +5058,6 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/listarJuegosQueMasSeVendenRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/listarJuegosQueMasSeVendenResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenResponse> listarJuegosQueMasSeVendenAsync(LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/modificarAdministradorRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/modificarAdministradorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.modificarAdministradorResponse modificarAdministrador(LagStoreWA.ServicesWS.modificarAdministradorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/modificarAdministradorRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/modificarAdministradorResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarAdministradorResponse> modificarAdministradorAsync(LagStoreWA.ServicesWS.modificarAdministradorRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/eliminarAdministradorRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/eliminarAdministradorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.eliminarAdministradorResponse eliminarAdministrador(LagStoreWA.ServicesWS.eliminarAdministradorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/AdministradorWS/eliminarAdministradorRequest", ReplyAction="http://services.pucp.edu.pe/AdministradorWS/eliminarAdministradorResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarAdministradorResponse> eliminarAdministradorAsync(LagStoreWA.ServicesWS.eliminarAdministradorRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -5084,6 +5084,106 @@ namespace LagStoreWA.ServicesWS {
         }
         
         public listarJuegosConMayorCalificacionResponse(LagStoreWA.ServicesWS.juego[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarAdministrador", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarAdministradorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.administrador administrador;
+        
+        public modificarAdministradorRequest() {
+        }
+        
+        public modificarAdministradorRequest(LagStoreWA.ServicesWS.administrador administrador) {
+            this.administrador = administrador;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarAdministradorResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarAdministradorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarAdministradorResponse() {
+        }
+        
+        public modificarAdministradorResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarAdministrador", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarAdministradorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idAdministrador;
+        
+        public eliminarAdministradorRequest() {
+        }
+        
+        public eliminarAdministradorRequest(int idAdministrador) {
+            this.idAdministrador = idAdministrador;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarAdministradorResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarAdministradorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarAdministradorResponse() {
+        }
+        
+        public eliminarAdministradorResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosAdministradores", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarTodosAdministradoresRequest {
+        
+        public listarTodosAdministradoresRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosAdministradoresResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarTodosAdministradoresResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.administrador[] @return;
+        
+        public listarTodosAdministradoresResponse() {
+        }
+        
+        public listarTodosAdministradoresResponse(LagStoreWA.ServicesWS.administrador[] @return) {
             this.@return = @return;
         }
     }
@@ -5163,34 +5263,6 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosAdministradores", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class listarTodosAdministradoresRequest {
-        
-        public listarTodosAdministradoresRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosAdministradoresResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class listarTodosAdministradoresResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.administrador[] @return;
-        
-        public listarTodosAdministradoresResponse() {
-        }
-        
-        public listarTodosAdministradoresResponse(LagStoreWA.ServicesWS.administrador[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="listarJuegosQueMasSeVenden", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
     public partial class listarJuegosQueMasSeVendenRequest {
         
@@ -5212,78 +5284,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         public listarJuegosQueMasSeVendenResponse(LagStoreWA.ServicesWS.juego[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarAdministrador", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarAdministradorRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.administrador administrador;
-        
-        public modificarAdministradorRequest() {
-        }
-        
-        public modificarAdministradorRequest(LagStoreWA.ServicesWS.administrador administrador) {
-            this.administrador = administrador;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarAdministradorResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarAdministradorResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public modificarAdministradorResponse() {
-        }
-        
-        public modificarAdministradorResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarAdministrador", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class eliminarAdministradorRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idAdministrador;
-        
-        public eliminarAdministradorRequest() {
-        }
-        
-        public eliminarAdministradorRequest(int idAdministrador) {
-            this.idAdministrador = idAdministrador;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarAdministradorResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class eliminarAdministradorResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public eliminarAdministradorResponse() {
-        }
-        
-        public eliminarAdministradorResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -5337,6 +5337,73 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.modificarAdministradorResponse LagStoreWA.ServicesWS.AdministradorWS.modificarAdministrador(LagStoreWA.ServicesWS.modificarAdministradorRequest request) {
+            return base.Channel.modificarAdministrador(request);
+        }
+        
+        public int modificarAdministrador(LagStoreWA.ServicesWS.administrador administrador) {
+            LagStoreWA.ServicesWS.modificarAdministradorRequest inValue = new LagStoreWA.ServicesWS.modificarAdministradorRequest();
+            inValue.administrador = administrador;
+            LagStoreWA.ServicesWS.modificarAdministradorResponse retVal = ((LagStoreWA.ServicesWS.AdministradorWS)(this)).modificarAdministrador(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarAdministradorResponse> LagStoreWA.ServicesWS.AdministradorWS.modificarAdministradorAsync(LagStoreWA.ServicesWS.modificarAdministradorRequest request) {
+            return base.Channel.modificarAdministradorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarAdministradorResponse> modificarAdministradorAsync(LagStoreWA.ServicesWS.administrador administrador) {
+            LagStoreWA.ServicesWS.modificarAdministradorRequest inValue = new LagStoreWA.ServicesWS.modificarAdministradorRequest();
+            inValue.administrador = administrador;
+            return ((LagStoreWA.ServicesWS.AdministradorWS)(this)).modificarAdministradorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.eliminarAdministradorResponse LagStoreWA.ServicesWS.AdministradorWS.eliminarAdministrador(LagStoreWA.ServicesWS.eliminarAdministradorRequest request) {
+            return base.Channel.eliminarAdministrador(request);
+        }
+        
+        public int eliminarAdministrador(int idAdministrador) {
+            LagStoreWA.ServicesWS.eliminarAdministradorRequest inValue = new LagStoreWA.ServicesWS.eliminarAdministradorRequest();
+            inValue.idAdministrador = idAdministrador;
+            LagStoreWA.ServicesWS.eliminarAdministradorResponse retVal = ((LagStoreWA.ServicesWS.AdministradorWS)(this)).eliminarAdministrador(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarAdministradorResponse> LagStoreWA.ServicesWS.AdministradorWS.eliminarAdministradorAsync(LagStoreWA.ServicesWS.eliminarAdministradorRequest request) {
+            return base.Channel.eliminarAdministradorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarAdministradorResponse> eliminarAdministradorAsync(int idAdministrador) {
+            LagStoreWA.ServicesWS.eliminarAdministradorRequest inValue = new LagStoreWA.ServicesWS.eliminarAdministradorRequest();
+            inValue.idAdministrador = idAdministrador;
+            return ((LagStoreWA.ServicesWS.AdministradorWS)(this)).eliminarAdministradorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.listarTodosAdministradoresResponse LagStoreWA.ServicesWS.AdministradorWS.listarTodosAdministradores(LagStoreWA.ServicesWS.listarTodosAdministradoresRequest request) {
+            return base.Channel.listarTodosAdministradores(request);
+        }
+        
+        public LagStoreWA.ServicesWS.administrador[] listarTodosAdministradores() {
+            LagStoreWA.ServicesWS.listarTodosAdministradoresRequest inValue = new LagStoreWA.ServicesWS.listarTodosAdministradoresRequest();
+            LagStoreWA.ServicesWS.listarTodosAdministradoresResponse retVal = ((LagStoreWA.ServicesWS.AdministradorWS)(this)).listarTodosAdministradores(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosAdministradoresResponse> LagStoreWA.ServicesWS.AdministradorWS.listarTodosAdministradoresAsync(LagStoreWA.ServicesWS.listarTodosAdministradoresRequest request) {
+            return base.Channel.listarTodosAdministradoresAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosAdministradoresResponse> listarTodosAdministradoresAsync() {
+            LagStoreWA.ServicesWS.listarTodosAdministradoresRequest inValue = new LagStoreWA.ServicesWS.listarTodosAdministradoresRequest();
+            return ((LagStoreWA.ServicesWS.AdministradorWS)(this)).listarTodosAdministradoresAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.insertarAdministradorResponse LagStoreWA.ServicesWS.AdministradorWS.insertarAdministrador(LagStoreWA.ServicesWS.insertarAdministradorRequest request) {
             return base.Channel.insertarAdministrador(request);
         }
@@ -5383,27 +5450,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.listarTodosAdministradoresResponse LagStoreWA.ServicesWS.AdministradorWS.listarTodosAdministradores(LagStoreWA.ServicesWS.listarTodosAdministradoresRequest request) {
-            return base.Channel.listarTodosAdministradores(request);
-        }
-        
-        public LagStoreWA.ServicesWS.administrador[] listarTodosAdministradores() {
-            LagStoreWA.ServicesWS.listarTodosAdministradoresRequest inValue = new LagStoreWA.ServicesWS.listarTodosAdministradoresRequest();
-            LagStoreWA.ServicesWS.listarTodosAdministradoresResponse retVal = ((LagStoreWA.ServicesWS.AdministradorWS)(this)).listarTodosAdministradores(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosAdministradoresResponse> LagStoreWA.ServicesWS.AdministradorWS.listarTodosAdministradoresAsync(LagStoreWA.ServicesWS.listarTodosAdministradoresRequest request) {
-            return base.Channel.listarTodosAdministradoresAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarTodosAdministradoresResponse> listarTodosAdministradoresAsync() {
-            LagStoreWA.ServicesWS.listarTodosAdministradoresRequest inValue = new LagStoreWA.ServicesWS.listarTodosAdministradoresRequest();
-            return ((LagStoreWA.ServicesWS.AdministradorWS)(this)).listarTodosAdministradoresAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenResponse LagStoreWA.ServicesWS.AdministradorWS.listarJuegosQueMasSeVenden(LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenRequest request) {
             return base.Channel.listarJuegosQueMasSeVenden(request);
         }
@@ -5423,52 +5469,6 @@ namespace LagStoreWA.ServicesWS {
             LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenRequest inValue = new LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenRequest();
             return ((LagStoreWA.ServicesWS.AdministradorWS)(this)).listarJuegosQueMasSeVendenAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.modificarAdministradorResponse LagStoreWA.ServicesWS.AdministradorWS.modificarAdministrador(LagStoreWA.ServicesWS.modificarAdministradorRequest request) {
-            return base.Channel.modificarAdministrador(request);
-        }
-        
-        public int modificarAdministrador(LagStoreWA.ServicesWS.administrador administrador) {
-            LagStoreWA.ServicesWS.modificarAdministradorRequest inValue = new LagStoreWA.ServicesWS.modificarAdministradorRequest();
-            inValue.administrador = administrador;
-            LagStoreWA.ServicesWS.modificarAdministradorResponse retVal = ((LagStoreWA.ServicesWS.AdministradorWS)(this)).modificarAdministrador(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarAdministradorResponse> LagStoreWA.ServicesWS.AdministradorWS.modificarAdministradorAsync(LagStoreWA.ServicesWS.modificarAdministradorRequest request) {
-            return base.Channel.modificarAdministradorAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarAdministradorResponse> modificarAdministradorAsync(LagStoreWA.ServicesWS.administrador administrador) {
-            LagStoreWA.ServicesWS.modificarAdministradorRequest inValue = new LagStoreWA.ServicesWS.modificarAdministradorRequest();
-            inValue.administrador = administrador;
-            return ((LagStoreWA.ServicesWS.AdministradorWS)(this)).modificarAdministradorAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.eliminarAdministradorResponse LagStoreWA.ServicesWS.AdministradorWS.eliminarAdministrador(LagStoreWA.ServicesWS.eliminarAdministradorRequest request) {
-            return base.Channel.eliminarAdministrador(request);
-        }
-        
-        public int eliminarAdministrador(int idAdministrador) {
-            LagStoreWA.ServicesWS.eliminarAdministradorRequest inValue = new LagStoreWA.ServicesWS.eliminarAdministradorRequest();
-            inValue.idAdministrador = idAdministrador;
-            LagStoreWA.ServicesWS.eliminarAdministradorResponse retVal = ((LagStoreWA.ServicesWS.AdministradorWS)(this)).eliminarAdministrador(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarAdministradorResponse> LagStoreWA.ServicesWS.AdministradorWS.eliminarAdministradorAsync(LagStoreWA.ServicesWS.eliminarAdministradorRequest request) {
-            return base.Channel.eliminarAdministradorAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarAdministradorResponse> eliminarAdministradorAsync(int idAdministrador) {
-            LagStoreWA.ServicesWS.eliminarAdministradorRequest inValue = new LagStoreWA.ServicesWS.eliminarAdministradorRequest();
-            inValue.idAdministrador = idAdministrador;
-            return ((LagStoreWA.ServicesWS.AdministradorWS)(this)).eliminarAdministradorAsync(inValue);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -5485,15 +5485,6 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obtenerResenaPorIdResponse> obtenerResenaPorIdAsync(LagStoreWA.ServicesWS.obtenerResenaPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/modificarResenaRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/modificarResenaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.modificarResenaResponse modificarResena(LagStoreWA.ServicesWS.modificarResenaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/modificarResenaRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/modificarResenaResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarResenaResponse> modificarResenaAsync(LagStoreWA.ServicesWS.modificarResenaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/insertarResenaRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/insertarResenaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -5501,6 +5492,15 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/insertarResenaRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/insertarResenaResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarResenaResponse> insertarResenaAsync(LagStoreWA.ServicesWS.insertarResenaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/listarPorJuegoRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/listarPorJuegoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.listarPorJuegoResponse listarPorJuego(LagStoreWA.ServicesWS.listarPorJuegoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/listarPorJuegoRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/listarPorJuegoResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarPorJuegoResponse> listarPorJuegoAsync(LagStoreWA.ServicesWS.listarPorJuegoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/eliminarResenaRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/eliminarResenaResponse")]
@@ -5512,13 +5512,13 @@ namespace LagStoreWA.ServicesWS {
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.eliminarResenaResponse> eliminarResenaAsync(LagStoreWA.ServicesWS.eliminarResenaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/listarPorJuegoRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/listarPorJuegoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/modificarResenaRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/modificarResenaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        LagStoreWA.ServicesWS.listarPorJuegoResponse listarPorJuego(LagStoreWA.ServicesWS.listarPorJuegoRequest request);
+        LagStoreWA.ServicesWS.modificarResenaResponse modificarResena(LagStoreWA.ServicesWS.modificarResenaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/listarPorJuegoRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/listarPorJuegoResponse")]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarPorJuegoResponse> listarPorJuegoAsync(LagStoreWA.ServicesWS.listarPorJuegoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/ResenaWS/modificarResenaRequest", ReplyAction="http://services.pucp.edu.pe/ResenaWS/modificarResenaResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarResenaResponse> modificarResenaAsync(LagStoreWA.ServicesWS.modificarResenaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -5553,42 +5553,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         public obtenerResenaPorIdResponse(LagStoreWA.ServicesWS.resena @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarResena", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarResenaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.resena resena;
-        
-        public modificarResenaRequest() {
-        }
-        
-        public modificarResenaRequest(LagStoreWA.ServicesWS.resena resena) {
-            this.resena = resena;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarResenaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class modificarResenaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public modificarResenaResponse() {
-        }
-        
-        public modificarResenaResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -5632,6 +5596,42 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPorJuego", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarPorJuegoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idJuego;
+        
+        public listarPorJuegoRequest() {
+        }
+        
+        public listarPorJuegoRequest(int idJuego) {
+            this.idJuego = idJuego;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPorJuegoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarPorJuegoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.resena[] @return;
+        
+        public listarPorJuegoResponse() {
+        }
+        
+        public listarPorJuegoResponse(LagStoreWA.ServicesWS.resena[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarResena", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
     public partial class eliminarResenaRequest {
         
@@ -5668,35 +5668,35 @@ namespace LagStoreWA.ServicesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPorJuego", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class listarPorJuegoRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarResena", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarResenaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idJuego;
+        public LagStoreWA.ServicesWS.resena resena;
         
-        public listarPorJuegoRequest() {
+        public modificarResenaRequest() {
         }
         
-        public listarPorJuegoRequest(int idJuego) {
-            this.idJuego = idJuego;
+        public modificarResenaRequest(LagStoreWA.ServicesWS.resena resena) {
+            this.resena = resena;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPorJuegoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
-    public partial class listarPorJuegoResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarResenaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarResenaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public LagStoreWA.ServicesWS.resena[] @return;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
         
-        public listarPorJuegoResponse() {
+        public modificarResenaResponse() {
         }
         
-        public listarPorJuegoResponse(LagStoreWA.ServicesWS.resena[] @return) {
+        public modificarResenaResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -5752,29 +5752,6 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.modificarResenaResponse LagStoreWA.ServicesWS.ResenaWS.modificarResena(LagStoreWA.ServicesWS.modificarResenaRequest request) {
-            return base.Channel.modificarResena(request);
-        }
-        
-        public int modificarResena(LagStoreWA.ServicesWS.resena resena) {
-            LagStoreWA.ServicesWS.modificarResenaRequest inValue = new LagStoreWA.ServicesWS.modificarResenaRequest();
-            inValue.resena = resena;
-            LagStoreWA.ServicesWS.modificarResenaResponse retVal = ((LagStoreWA.ServicesWS.ResenaWS)(this)).modificarResena(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarResenaResponse> LagStoreWA.ServicesWS.ResenaWS.modificarResenaAsync(LagStoreWA.ServicesWS.modificarResenaRequest request) {
-            return base.Channel.modificarResenaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarResenaResponse> modificarResenaAsync(LagStoreWA.ServicesWS.resena resena) {
-            LagStoreWA.ServicesWS.modificarResenaRequest inValue = new LagStoreWA.ServicesWS.modificarResenaRequest();
-            inValue.resena = resena;
-            return ((LagStoreWA.ServicesWS.ResenaWS)(this)).modificarResenaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         LagStoreWA.ServicesWS.insertarResenaResponse LagStoreWA.ServicesWS.ResenaWS.insertarResena(LagStoreWA.ServicesWS.insertarResenaRequest request) {
             return base.Channel.insertarResena(request);
         }
@@ -5795,6 +5772,29 @@ namespace LagStoreWA.ServicesWS {
             LagStoreWA.ServicesWS.insertarResenaRequest inValue = new LagStoreWA.ServicesWS.insertarResenaRequest();
             inValue.resena = resena;
             return ((LagStoreWA.ServicesWS.ResenaWS)(this)).insertarResenaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.listarPorJuegoResponse LagStoreWA.ServicesWS.ResenaWS.listarPorJuego(LagStoreWA.ServicesWS.listarPorJuegoRequest request) {
+            return base.Channel.listarPorJuego(request);
+        }
+        
+        public LagStoreWA.ServicesWS.resena[] listarPorJuego(int idJuego) {
+            LagStoreWA.ServicesWS.listarPorJuegoRequest inValue = new LagStoreWA.ServicesWS.listarPorJuegoRequest();
+            inValue.idJuego = idJuego;
+            LagStoreWA.ServicesWS.listarPorJuegoResponse retVal = ((LagStoreWA.ServicesWS.ResenaWS)(this)).listarPorJuego(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarPorJuegoResponse> LagStoreWA.ServicesWS.ResenaWS.listarPorJuegoAsync(LagStoreWA.ServicesWS.listarPorJuegoRequest request) {
+            return base.Channel.listarPorJuegoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarPorJuegoResponse> listarPorJuegoAsync(int idJuego) {
+            LagStoreWA.ServicesWS.listarPorJuegoRequest inValue = new LagStoreWA.ServicesWS.listarPorJuegoRequest();
+            inValue.idJuego = idJuego;
+            return ((LagStoreWA.ServicesWS.ResenaWS)(this)).listarPorJuegoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -5821,26 +5821,26 @@ namespace LagStoreWA.ServicesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        LagStoreWA.ServicesWS.listarPorJuegoResponse LagStoreWA.ServicesWS.ResenaWS.listarPorJuego(LagStoreWA.ServicesWS.listarPorJuegoRequest request) {
-            return base.Channel.listarPorJuego(request);
+        LagStoreWA.ServicesWS.modificarResenaResponse LagStoreWA.ServicesWS.ResenaWS.modificarResena(LagStoreWA.ServicesWS.modificarResenaRequest request) {
+            return base.Channel.modificarResena(request);
         }
         
-        public LagStoreWA.ServicesWS.resena[] listarPorJuego(int idJuego) {
-            LagStoreWA.ServicesWS.listarPorJuegoRequest inValue = new LagStoreWA.ServicesWS.listarPorJuegoRequest();
-            inValue.idJuego = idJuego;
-            LagStoreWA.ServicesWS.listarPorJuegoResponse retVal = ((LagStoreWA.ServicesWS.ResenaWS)(this)).listarPorJuego(inValue);
+        public int modificarResena(LagStoreWA.ServicesWS.resena resena) {
+            LagStoreWA.ServicesWS.modificarResenaRequest inValue = new LagStoreWA.ServicesWS.modificarResenaRequest();
+            inValue.resena = resena;
+            LagStoreWA.ServicesWS.modificarResenaResponse retVal = ((LagStoreWA.ServicesWS.ResenaWS)(this)).modificarResena(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarPorJuegoResponse> LagStoreWA.ServicesWS.ResenaWS.listarPorJuegoAsync(LagStoreWA.ServicesWS.listarPorJuegoRequest request) {
-            return base.Channel.listarPorJuegoAsync(request);
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarResenaResponse> LagStoreWA.ServicesWS.ResenaWS.modificarResenaAsync(LagStoreWA.ServicesWS.modificarResenaRequest request) {
+            return base.Channel.modificarResenaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.listarPorJuegoResponse> listarPorJuegoAsync(int idJuego) {
-            LagStoreWA.ServicesWS.listarPorJuegoRequest inValue = new LagStoreWA.ServicesWS.listarPorJuegoRequest();
-            inValue.idJuego = idJuego;
-            return ((LagStoreWA.ServicesWS.ResenaWS)(this)).listarPorJuegoAsync(inValue);
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.modificarResenaResponse> modificarResenaAsync(LagStoreWA.ServicesWS.resena resena) {
+            LagStoreWA.ServicesWS.modificarResenaRequest inValue = new LagStoreWA.ServicesWS.modificarResenaRequest();
+            inValue.resena = resena;
+            return ((LagStoreWA.ServicesWS.ResenaWS)(this)).modificarResenaAsync(inValue);
         }
     }
 }

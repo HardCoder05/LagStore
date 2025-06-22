@@ -47,6 +47,8 @@ public class ResenaMySQL implements ResenaDAO{
         parametrosEntrada.put(2, resena.getAutor().getIdJugador());
         parametrosEntrada.put(3, resena.getJuego().getIdJuego());
         parametrosEntrada.put(4,resena.getComentario());
+        LocalDate localDate = LocalDate.now();
+        resena.setFechaPublicacion(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         parametrosEntrada.put(5,resena.getFechaPublicacion());
         parametrosEntrada.put(6,resena.getCalificacion().getIdCalificacion());
         parametrosEntrada.put(7,resena.getActivo());

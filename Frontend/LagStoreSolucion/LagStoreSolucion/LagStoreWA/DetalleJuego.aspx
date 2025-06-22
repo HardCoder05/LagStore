@@ -119,7 +119,7 @@
                 </p>
                 <!--solo es hasta aqui-->
                 <hr class="my-5" />
-                <h4>Comentarios y Calificación</h4>
+                <h4>Reseñas</h4>
                 <asp:Repeater ID="rptComentarios" runat="server" OnItemCommand="rptComentarios_ItemCommand" OnItemDataBound= "rptComentarios_ItemDataBound">
                     <ItemTemplate>
                         <div class="comentario-container">
@@ -129,10 +129,13 @@
                                 <p class="mb-0"><%# Eval("comentario") %></p>
                             </div>
                             <%-- Mostrar botones solo si es del jugador actual --%>
-                            <asp:Panel ID="pnlOpciones" runat="server" Visible="false">
-                                <asp:Button runat="server" CommandName="Editar" CommandArgument='<%# Eval("idResena") %>' Text="Editar" CssClass="btn btn-primary btn-sm me-2" />
-                                <asp:Button runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("idResena") %>' Text="Eliminar" CssClass="btn btn-danger btn-sm" />
-                            </asp:Panel>
+                            <div class="d-flex justify-content-between mt-2">
+                                <span class="text-muted" style="font-size: 0.85rem;"><%# Eval("fechaPublicacion", "{0:dd/MM/yyyy}") %></span>
+                                <asp:Panel ID="pnlOpciones" runat="server" Visible="false">
+                                    <asp:Button runat="server" CommandName="Editar" CommandArgument='<%# Eval("idResena") %>' Text="Editar" CssClass="btn btn-primary btn-sm me-2" />
+                                    <asp:Button runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("idResena") %>' Text="Eliminar" CssClass="btn btn-danger btn-sm" />
+                                </asp:Panel>
+                            </div>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -150,7 +153,9 @@
                         <asp:ListItem Text="★★★★★" Value="5" />
                     </asp:DropDownList>
                 </div>
+                <div class="text-end">
                 <asp:Button ID="btnComentar" runat="server" Text="Enviar Comentario" CssClass="btn btn-primary" OnClick="btnComentar_Click" />
+                </div>
             </div>
             <div class="col-md-6">
                 <h2 class="fw-bold">

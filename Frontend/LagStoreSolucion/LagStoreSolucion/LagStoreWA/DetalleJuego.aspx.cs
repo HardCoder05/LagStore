@@ -128,8 +128,7 @@ namespace LagStoreWA{
             else if (e.CommandName == "Editar"){
                 int idResena = Convert.ToInt32(e.CommandArgument);
                 // Puedes guardar en sesión el ID de la reseña a editar
-                Session["ResenaAEditar"] = idResena;
-                Response.Redirect($"EditarResena.aspx?id={idResena}"); // o mostrar el comentario en un TextBox para editarlo en la misma página
+                Response.Redirect($"EditarComentario.aspx?idResena={idResena}&idJuego={idJuego}"); // o mostrar el comentario en un TextBox para editarlo en la misma página
             }
         }
 

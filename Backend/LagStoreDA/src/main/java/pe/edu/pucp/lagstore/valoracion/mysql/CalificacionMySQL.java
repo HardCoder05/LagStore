@@ -50,6 +50,8 @@ public class CalificacionMySQL implements CalificacionDAO{
         parametrosEntrada.put(1, calificacion.getIdCalificacion());
         parametrosEntrada.put(2, calificacion.getAutor().getIdJugador());
         parametrosEntrada.put(3, calificacion.getJuego().getIdJuego());
+        LocalDate localDate = LocalDate.now();
+        calificacion.setFechaPuntuacion(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         parametrosEntrada.put(4, calificacion.getFechaPuntuacion());
         parametrosEntrada.put(5, calificacion.getPuntuacion());
         parametrosEntrada.put(6, calificacion.getActivo());
