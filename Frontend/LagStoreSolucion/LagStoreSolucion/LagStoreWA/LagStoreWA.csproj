@@ -421,6 +421,7 @@
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
+    <Content Include="SubirJuego.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -576,6 +577,13 @@
     </Compile>
     <Compile Include="RegistroUsuario.aspx.designer.cs">
       <DependentUpon>RegistroUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubirJuego.aspx.cs">
+      <DependentUpon>SubirJuego.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubirJuego.aspx.designer.cs">
+      <DependentUpon>SubirJuego.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
