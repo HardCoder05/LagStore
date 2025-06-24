@@ -10,15 +10,21 @@ namespace LagStoreWA
     public partial class ListarRecargas : Page
     {
         private JugadorWSClient boJugador;
-        private RecargaWSClient boRecarga;              
-        private BindingList<recarga> recargas;           
-
+        private RecargaWSClient boRecarga;
+        private CarteraWSClient boCartera;
+        private BindingList<recarga> recargas;
+        private int usuarioId;
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             if (Session["Jugador"] == null)
             {
                 Response.Redirect("InicioSesion.aspx");
                 return;
+            }
+            else
+            {
+                usuarioId = Convert.ToInt32(Session["UsuarioId"]);
             }
 
             boJugador = new JugadorWSClient();
@@ -30,28 +36,26 @@ namespace LagStoreWA
 
 
         private void CargarRecargas()
-        {
-            int idJugador;
-            if (Request.QueryString["idJugador"] != null
-                && int.TryParse(Request.QueryString["idJugador"], out idJugador))
+        {   
+            cartera cartera = boCartera.obenerCarteraPorId(usuarioId);
+            
+            jugador j = boJugador.obtenerJugadorPorID(usuarioId);
+            if (j != null)
             {
-                jugador j = boJugador.obtenerJugadorPorID(idJugador);
-                if (j != null && j.cartera != null)
-                {
-                    var arreglo = boRecarga
-                         .listarRecargasAsociadas(j.cartera.idCartera)
-                         ?? Array.Empty<recarga>();
+                var arreglo = boRecarga
+                        .listarRecargasAsociadas(usuarioId)
+                        ?? Array.Empty<recarga>();
 
-                    recargas = new BindingList<recarga>(arreglo);
-                    gvRecargas.DataSource = recargas;
-                    gvRecargas.DataBind();
+                recargas = new BindingList<recarga>(arreglo);
+                gvRecargas.DataSource = recargas;
+                gvRecargas.DataBind();
 
-                    lblMensaje.Text = recargas.Count == 0
-                        ? "El jugador no tiene recargas registradas."
-                        : "";
-                    return;
-                }
+                lblMensaje.Text = recargas.Count == 0
+                    ? "El jugador no tiene recargas registradas."
+                    : "";
+                return;
             }
+            
             MostrarMensaje("No se encontró al jugador o no tiene cartera.");
         }
 

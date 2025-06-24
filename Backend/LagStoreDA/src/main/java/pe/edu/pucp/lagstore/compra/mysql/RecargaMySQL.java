@@ -119,11 +119,11 @@ public class RecargaMySQL implements RecargaDAO {
     }
 
     @Override
-    public ArrayList<Recarga> listarAsociadas(int idCartera) {
+    public ArrayList<Recarga> listarAsociadas(int idJugador) {
         ArrayList<Recarga> lista = new ArrayList<>();
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
-        parametrosEntrada.put(1, idCartera);
-        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_RECARGAS_X_CARTERA", parametrosEntrada);
+        parametrosEntrada.put(1, idJugador);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_RECARGAS_X_ID_JUGADOR", parametrosEntrada);
         System.out.println("Leyendo lista de Recargas...");
         try {
             while (rs.next()) {
@@ -143,7 +143,7 @@ public class RecargaMySQL implements RecargaDAO {
                 lista.add(recarga);
             }
         } catch (SQLException ex) {
-            System.out.println("Error al listar Recargas asociadas al idCartera : " +idCartera+ "\n" + ex.getMessage());
+            System.out.println("Error al listar Recargas asociadas al idJugador : " +idJugador+ "\n" + ex.getMessage());
         } finally {
             DBManager.getInstance().cerrarConexion();
         }

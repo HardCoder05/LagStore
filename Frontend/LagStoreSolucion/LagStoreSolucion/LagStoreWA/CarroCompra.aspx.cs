@@ -16,12 +16,12 @@ namespace LagStoreWA
         // Atributo accesible para el carro de compra actual
         protected object carroCompraActual;
 
-        protected GridView gvCarro; // Asegúrate de que gvCarro esté correctamente definido en el markup
-        protected Label lblMensaje;  // Asegúrate de que lblMensaje esté definido en el markup
+        protected GridView gvCarro; 
+        protected Label lblMensaje; 
         protected int usuarioId;
-        protected Panel pnlProcesando;     // Asegúrate de que pnlProcesando esté definido en el markup
-        protected Image imgEstadoCompra;   // Asegúrate de que imgEstadoCompra esté definido en el markup
-        protected Label lblProcesando;     // Asegúrate de que lblProcesando esté definido en el markup
+        protected Panel pnlProcesando;     
+        protected Image imgEstadoCompra;   
+        protected Label lblProcesando;     
 
         protected void Page_Load(object sender, EventArgs e)
         {
