@@ -79,15 +79,64 @@ namespace LagStoreWA
                 return;
             }
 
+            //validaciones
+            //Validar Nombre
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                !System.Text.RegularExpressions.Regex.IsMatch(txtNombre.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                lblMensaje.Text = "El nombre no puede estar vacío y solo debe contener letras.";
+                return;
+            }
+
+            //Validar Email
+            if (string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                !System.Text.RegularExpressions.Regex.IsMatch(txtEmail.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                lblMensaje.Text = "El email no es válido.";
+                return;
+            }
+
+            //Validar Teléfono
+            if (string.IsNullOrWhiteSpace(txtTelefono.Text))
+            {
+                lblMensaje.Text = "El teléfono no puede estar vacío.";
+                return;
+            }
+            else if (!System.Text.RegularExpressions.Regex.IsMatch(txtTelefono.Text, @"^\d{9}$"))
+            {
+                lblMensaje.Text = "El teléfono debe contener exactamente 9 dígitos numéricos.";
+                return;
+            }
+
+            //Validar Número de Cuenta
+            if (string.IsNullOrWhiteSpace(txtNumeroCuenta.Text) ||
+                !System.Text.RegularExpressions.Regex.IsMatch(txtNumeroCuenta.Text, @"^[0-9\-]+$"))
+            {
+                lblMensaje.Text = "El número de cuenta no puede estar vacío y solo debe contener números y guiones.";
+                return;
+            }
+
+            //Validar Ingreso Total
+            if (string.IsNullOrWhiteSpace(txtIngresoTotal.Text))
+            {
+                lblMensaje.Text = "El ingreso total no puede estar vacío.";
+                return;
+            }
+            else if (!double.TryParse(txtIngresoTotal.Text.Trim(), out  double ingreso) || ingreso < 0)
+            {
+                lblMensaje.Text = "El ingreso total debe ser un número positivo o cero.";
+                return;
+            }
+
             // Modificar solo los campos que se pueden editar
             desarrolladorAnterior.nombre = txtNombre.Text.Trim();
             desarrolladorAnterior.email = txtEmail.Text.Trim();
             desarrolladorAnterior.telefono = txtTelefono.Text.Trim();
             desarrolladorAnterior.numeroCuenta = txtNumeroCuenta.Text.Trim();
 
-            if (double.TryParse(txtIngresoTotal.Text.Trim(), out double ingreso))
+            if (double.TryParse(txtIngresoTotal.Text.Trim(), out double ingreso1))
             {
-                desarrolladorAnterior.ingresoTotal = ingreso;
+                desarrolladorAnterior.ingresoTotal = ingreso1;
             }
             else
             {

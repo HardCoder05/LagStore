@@ -11,24 +11,6 @@
   <message name="listarJuegosPorDesarrolladorResponse">
     <part name="parameters" element="tns:listarJuegosPorDesarrolladorResponse" />
   </message>
-  <message name="listarJuegosConFiltro">
-    <part name="parameters" element="tns:listarJuegosConFiltro" />
-  </message>
-  <message name="listarJuegosConFiltroResponse">
-    <part name="parameters" element="tns:listarJuegosConFiltroResponse" />
-  </message>
-  <message name="insertarJuego">
-    <part name="parameters" element="tns:insertarJuego" />
-  </message>
-  <message name="insertarJuegoResponse">
-    <part name="parameters" element="tns:insertarJuegoResponse" />
-  </message>
-  <message name="modificarJuego">
-    <part name="parameters" element="tns:modificarJuego" />
-  </message>
-  <message name="modificarJuegoResponse">
-    <part name="parameters" element="tns:modificarJuegoResponse" />
-  </message>
   <message name="listarJuegos">
     <part name="parameters" element="tns:listarJuegos" />
   </message>
@@ -41,6 +23,24 @@
   <message name="obtenerJuegoPorIdResponse">
     <part name="parameters" element="tns:obtenerJuegoPorIdResponse" />
   </message>
+  <message name="insertarJuego">
+    <part name="parameters" element="tns:insertarJuego" />
+  </message>
+  <message name="insertarJuegoResponse">
+    <part name="parameters" element="tns:insertarJuegoResponse" />
+  </message>
+  <message name="listarJuegosConFiltro">
+    <part name="parameters" element="tns:listarJuegosConFiltro" />
+  </message>
+  <message name="listarJuegosConFiltroResponse">
+    <part name="parameters" element="tns:listarJuegosConFiltroResponse" />
+  </message>
+  <message name="modificarJuego">
+    <part name="parameters" element="tns:modificarJuego" />
+  </message>
+  <message name="modificarJuegoResponse">
+    <part name="parameters" element="tns:modificarJuegoResponse" />
+  </message>
   <message name="eliminarJuego">
     <part name="parameters" element="tns:eliminarJuego" />
   </message>
@@ -52,18 +52,6 @@
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosPorDesarrolladorRequest" message="tns:listarJuegosPorDesarrollador" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosPorDesarrolladorResponse" message="tns:listarJuegosPorDesarrolladorResponse" />
     </operation>
-    <operation name="listarJuegosConFiltro">
-      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroRequest" message="tns:listarJuegosConFiltro" />
-      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroResponse" message="tns:listarJuegosConFiltroResponse" />
-    </operation>
-    <operation name="insertarJuego">
-      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoRequest" message="tns:insertarJuego" />
-      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoResponse" message="tns:insertarJuegoResponse" />
-    </operation>
-    <operation name="modificarJuego">
-      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoRequest" message="tns:modificarJuego" />
-      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoResponse" message="tns:modificarJuegoResponse" />
-    </operation>
     <operation name="listarJuegos">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosRequest" message="tns:listarJuegos" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosResponse" message="tns:listarJuegosResponse" />
@@ -71,6 +59,18 @@
     <operation name="obtenerJuegoPorId">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/obtenerJuegoPorIdRequest" message="tns:obtenerJuegoPorId" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/obtenerJuegoPorIdResponse" message="tns:obtenerJuegoPorIdResponse" />
+    </operation>
+    <operation name="insertarJuego">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoRequest" message="tns:insertarJuego" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoResponse" message="tns:insertarJuegoResponse" />
+    </operation>
+    <operation name="listarJuegosConFiltro">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroRequest" message="tns:listarJuegosConFiltro" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroResponse" message="tns:listarJuegosConFiltroResponse" />
+    </operation>
+    <operation name="modificarJuego">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoRequest" message="tns:modificarJuego" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoResponse" message="tns:modificarJuegoResponse" />
     </operation>
     <operation name="eliminarJuego">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/eliminarJuegoRequest" message="tns:eliminarJuego" />
@@ -88,7 +88,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarJuegosConFiltro">
+    <operation name="listarJuegos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerJuegoPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -106,25 +115,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="listarJuegosConFiltro">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="modificarJuego">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarJuegos">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="obtenerJuegoPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

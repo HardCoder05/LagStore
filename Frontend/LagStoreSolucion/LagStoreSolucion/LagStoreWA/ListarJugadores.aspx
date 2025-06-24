@@ -70,6 +70,7 @@
                     <i class="fas fa-edit"></i>
                     </asp:LinkButton>
                     <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("idJugador") %>'
+                        OnClientClick="return confirm('¿Estás seguro de que deseas eliminar este jugador?');"
                         CssClass="btn btn-eliminar btn-icon" ToolTip="Eliminar">
                     <i class="fas fa-trash-alt"></i>
                     </asp:LinkButton>
