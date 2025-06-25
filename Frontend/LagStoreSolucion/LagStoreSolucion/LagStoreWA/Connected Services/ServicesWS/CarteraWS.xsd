@@ -2,6 +2,8 @@
 <xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="obenerCarteraPorId" type="tns:obenerCarteraPorId" />
   <xs:element name="obenerCarteraPorIdResponse" type="tns:obenerCarteraPorIdResponse" />
+  <xs:element name="obenerCarteraPorIdUauario" type="tns:obenerCarteraPorIdUauario" />
+  <xs:element name="obenerCarteraPorIdUauarioResponse" type="tns:obenerCarteraPorIdUauarioResponse" />
   <xs:complexType name="obenerCarteraPorId">
     <xs:sequence>
       <xs:element name="idCartera" type="xs:int" />
@@ -119,6 +121,16 @@
       <xs:element minOccurs="0" name="fechaPublicacion" type="xs:dateTime" />
       <xs:element name="idResena" type="xs:int" />
       <xs:element minOccurs="0" name="juego" type="tns:juego" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obenerCarteraPorIdUauario">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obenerCarteraPorIdUauarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cartera" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="metodoPago">

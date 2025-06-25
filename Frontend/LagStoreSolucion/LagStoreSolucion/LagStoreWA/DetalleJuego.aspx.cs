@@ -15,6 +15,7 @@ namespace LagStoreWA{
         private JuegoWSClient wsJuego;
         private ResenaWSClient wsResena;
         private CalificacionWSClient wsCalificacion;
+        private juego juegoDetalle;
         protected void Page_Load(object sender, EventArgs e)
         {
             wsJuego = new JuegoWSClient();
@@ -33,6 +34,7 @@ namespace LagStoreWA{
 
             // Aquí llamas a tu base de datos
             juego juego=wsJuego.obtenerJuegoPorId(idJuego); // trae las clases con minuscula
+            juegoDetalle = juego;
             if (wsJuego != null)
             {
                 imgJuego.ImageUrl = juego.imagen;
@@ -153,6 +155,54 @@ namespace LagStoreWA{
                 else{
                     pnlOpciones.Visible = false;
                 }
+            }
+        }
+
+
+        protected void btnAgregarCarrito_Click(object sender, EventArgs e)
+        {
+            int idJuego;
+            if (!int.TryParse(Request.QueryString["id"], out idJuego))
+                return;
+
+            juego juegoSeleccionado = wsJuego.obtenerJuegoPorId(idJuego);
+            if (juegoSeleccionado != null)
+            {
+                List<juego> listaJuegos = Session["ListaJuegosCarro"] as List<juego> ?? new List<juego>();
+                if (!listaJuegos.Any(j => j.idJuego == juegoSeleccionado.idJuego))
+                {
+                    listaJuegos.Add(juegoSeleccionado);
+                    Session["ListaJuegosCarro"] = listaJuegos;
+
+                    var master = this.Master as LagStoreWA.LagStore;
+                    if (master != null)
+                    {
+                        master.ActualizarContadorCarrito();
+                    }
+                    MostrarMensaje("Juego agregado al carrito exitosamente", "alert-success");
+                }
+                else
+                {
+                    MostrarMensaje("El juego ya está en el carrito", "alert-warning");
+                }
+            }
+            else
+            {
+                MostrarMensaje("No se pudo obtener el juego", "alert-danger");
+            }
+        }
+
+        private void MostrarMensaje(string mensaje, string cssClass)
+        {
+            // Crear un control literal para mostrar el mensaje
+            Literal litMensaje = new Literal();
+            litMensaje.Text = $"<div class='alert {cssClass}' role='alert'>{mensaje}</div>";
+
+            // Buscar un contenedor en la página para agregar el mensaje (puedes ajustar esto según tu diseño)
+            var contenedorMensajes = this.FindControl("contenedorMensajes") as PlaceHolder;
+            if (contenedorMensajes != null)
+            {
+                contenedorMensajes.Controls.Add(litMensaje);
             }
         }
     }

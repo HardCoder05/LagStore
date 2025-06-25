@@ -13,7 +13,12 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- TODO: Tu buscador y GridView van aquí, dentro del form de la Master -->
+    <asp:Label ID="lblSaldo" runat="server" 
+           CssClass="fw-bold" 
+           ForeColor="Green" 
+           Style="font-size:1.2em; margin-bottom:10px; display:block;">
+    </asp:Label>
+
     <div class="input-group mb-3">
         <input id="txtBuscar" runat="server" type="text" class="form-control"
                placeholder="ID de recarga o vacío = todas" />

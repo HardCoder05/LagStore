@@ -12,4 +12,5 @@ public interface CarteraDAO {
     int eliminar(int idCartera);
     ArrayList<Cartera>listarTodas();
     Cartera obtenerPorId(int idCartera);
+    Cartera obtenerPorIdUsuario(int idUsuario);
 }

@@ -11,15 +11,34 @@
   <message name="obenerCarteraPorIdResponse">
     <part name="parameters" element="tns:obenerCarteraPorIdResponse" />
   </message>
+  <message name="obenerCarteraPorIdUauario">
+    <part name="parameters" element="tns:obenerCarteraPorIdUauario" />
+  </message>
+  <message name="obenerCarteraPorIdUauarioResponse">
+    <part name="parameters" element="tns:obenerCarteraPorIdUauarioResponse" />
+  </message>
   <portType name="CarteraWS">
     <operation name="obenerCarteraPorId">
       <input wsam:Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdRequest" message="tns:obenerCarteraPorId" />
       <output wsam:Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdResponse" message="tns:obenerCarteraPorIdResponse" />
     </operation>
+    <operation name="obenerCarteraPorIdUauario">
+      <input wsam:Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdUauarioRequest" message="tns:obenerCarteraPorIdUauario" />
+      <output wsam:Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdUauarioResponse" message="tns:obenerCarteraPorIdUauarioResponse" />
+    </operation>
   </portType>
   <binding name="CarteraWSPortBinding" type="tns:CarteraWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="obenerCarteraPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obenerCarteraPorIdUauario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

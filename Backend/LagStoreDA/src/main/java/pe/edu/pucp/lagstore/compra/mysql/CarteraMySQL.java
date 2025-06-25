@@ -103,4 +103,28 @@ public class CarteraMySQL implements CarteraDAO {
         }
         return cartera;
     }
+
+    @Override
+    public Cartera obtenerPorIdUsuario(int idUsuario) {
+        Cartera cartera = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idUsuario);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("OBTENER_CARTERA_POR_ID_USUARIO", parametrosEntrada);
+        System.out.println("Buscando Cartera por ID Jugador...");
+        
+        try {
+            if (rs.next()) {
+                cartera = new Cartera();
+                cartera.setIdCartera(rs.getInt("idCartera"));
+                cartera.setSaldoActual(rs.getDouble("saldoActual"));
+                cartera.setActivo(rs.getInt("activo"));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener Cartera: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return cartera;
+        
+    }
 }

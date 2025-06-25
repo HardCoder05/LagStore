@@ -29,4 +29,8 @@ public class CarteraBO {
     public Cartera obtenerPorId(int id){
         return daoCartera.obtenerPorId(id);
     }
+    public Cartera obtenerPorIdUusario(int id){
+        return daoCartera.obtenerPorIdUsuario(id);
+    }
+    
 }
