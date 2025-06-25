@@ -7,9 +7,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_Scripts" runat="server">
     <style>
         .search-box {
-            max-width: 300px;
+            max-width: 100%;
             margin-bottom: 20px;
         }
+
 
         .btn-icon {
             padding: 6px 10px;
@@ -35,6 +36,7 @@
             background-color: #991b1b;
             color: white;
         }
+        
     </style>
 </asp:Content>
 
@@ -47,6 +49,13 @@
         <button class="btn btn-primary" type="button" id="btnBuscar" runat="server" onserverclick="btnBuscar_ServerClick">
             <i class="fas fa-search"></i>
         </button>
+
+        <!-- Botón de reporte general -->
+        <asp:HyperLink ID="lnkReporteJugadores" runat="server"
+            NavigateUrl="~/ReporteJugador.aspx"
+            CssClass="btn btn-danger ms-2">   <!-- ← aquí el ms-2 -->
+            <i class="fas fa-file-pdf me-1"></i> Reporte jugadores
+        </asp:HyperLink>
     </div>
 
     <!--Label para mensajes -->
@@ -74,6 +83,8 @@
                         CssClass="btn btn-eliminar btn-icon" ToolTip="Eliminar">
                     <i class="fas fa-trash-alt"></i>
                     </asp:LinkButton>
+                    
+
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

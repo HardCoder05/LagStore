@@ -12,4 +12,5 @@
   <contractRef ref="http://localhost:8080/LagStoreWSL/CalificacionWS?WSDL" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://localhost:8080/LagStoreWSL/BibliotecaWS?WSDL" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://localhost:8080/LagStoreWSL/JuegoAdquiridoWS?WSDL" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/LagStoreWSL/ReporteJugadorWS?WSDL" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
 </discovery>

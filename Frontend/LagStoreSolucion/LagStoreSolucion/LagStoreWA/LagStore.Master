@@ -71,9 +71,7 @@
                                 <i class="fas fa-file-alt me-1"></i>Reportes
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="ReporteJugadores.aspx">Ver Reporte de cantidad de jugadores</a></li>
-                                <li><a class="dropdown-item" href="ReporteDesarrolladores.aspx">Ver Reporte de cantidad de desarrolladores</a></li>
-                                <li><a class="dropdown-item" href="ReporteJuegosMejorCalificados.aspx">Ver Reporte de juegos mejor calificados</a></li>
+                                <li><a class="dropdown-item" href="ReporteJugador.aspx">Ver Reporte de Juegos del Jugador</a></li>
                             </ul>
                         </li>
                         <li class="nav-item" runat="server" id="liReporteUsuarios" visible="false">

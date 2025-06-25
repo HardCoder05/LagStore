@@ -25,7 +25,7 @@ namespace LagStoreWA
             {
                 // Accedemos al Master Page
                 var liGestion = this.Master.FindControl("liGestion") as System.Web.UI.HtmlControls.HtmlGenericControl;
-                var liReportes = this.Master.FindControl("liReportes") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                //var liReportes = this.Master.FindControl("liReportes") as System.Web.UI.HtmlControls.HtmlGenericControl;
                 var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
                 var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
                 var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
@@ -39,7 +39,7 @@ namespace LagStoreWA
                     liMasVendidos.Visible = true;
                     liMayorCalificacion.Visible = true;
                     liCerrarSesion.Visible = true;
-                    liReportes.Visible = true;
+                    //liReportes.Visible = true;
                     //liReporteUsuarios.Visible = true;
                     // Ocultar iniciar sesión y crear cuenta
                     lnkIniciarSesion.Visible = false;
