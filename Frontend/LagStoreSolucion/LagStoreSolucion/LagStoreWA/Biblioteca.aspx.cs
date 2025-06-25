@@ -16,6 +16,8 @@ namespace LagStoreWA
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
             if (Session["usuarioId"] == null)
             {
                 Response.Redirect("InicioSesion.aspx");
@@ -24,6 +26,7 @@ namespace LagStoreWA
 
             if (!IsPostBack)
             {
+
                 if (Session["Administrador"] != null)
                 {
                     // Accedemos al Master Page
@@ -40,7 +43,6 @@ namespace LagStoreWA
                         liMasVendidos.Visible = true;
                         liMayorCalificacion.Visible = true;
                         liCerrarSesion.Visible = true;
-
                         // Ocultar iniciar sesión y crear cuenta
                         lnkIniciarSesion.Visible = false;
                         liCrearCuenta.Visible = false;

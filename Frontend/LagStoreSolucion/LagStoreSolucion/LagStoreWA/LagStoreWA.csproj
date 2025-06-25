@@ -313,7 +313,11 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJuegoResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.generarReporteEmpleadoResponse.datasource">
+
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obenerCarteraPorIdUauarioResponse.datasource">
+
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
@@ -383,6 +387,7 @@
     <Content Include="RegistrarJuego.aspx" />
     <Content Include="RegistrarJugador.aspx" />
     <Content Include="RegistroUsuario.aspx" />
+    <Content Include="ReporteJugador.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -411,6 +416,10 @@
     <Content Include="Content\Fonts\webfonts\fa-v4compatibility.woff2" />
     <None Include="Connected Services\ServicesWS\JuegoWS.wsdl" />
     <None Include="Connected Services\ServicesWS\JuegoWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicesWS\ReporteJugadorWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\ReporteJugadorWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServicesWS\ResenaWS.wsdl" />
@@ -582,6 +591,13 @@
     </Compile>
     <Compile Include="RegistroUsuario.aspx.designer.cs">
       <DependentUpon>RegistroUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteJugador.aspx.cs">
+      <DependentUpon>ReporteJugador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteJugador.aspx.designer.cs">
+      <DependentUpon>ReporteJugador.aspx</DependentUpon>
     </Compile>
     <Compile Include="SubirJuego.aspx.cs">
       <DependentUpon>SubirJuego.aspx</DependentUpon>
