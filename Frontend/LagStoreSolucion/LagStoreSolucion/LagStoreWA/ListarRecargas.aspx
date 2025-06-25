@@ -41,7 +41,7 @@
             <asp:BoundField DataField="fechaRecarga" HeaderText="Fecha"
                 DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
             <asp:BoundField DataField="monto" HeaderText="Monto"
-                DataFormatString="{0:C}" HtmlEncode="false" />
+                DataFormatString="S/{0:N2}" HtmlEncode="false" />
             <asp:BoundField DataField="metodoPago" HeaderText="Método de pago" />
         </Columns>
     </asp:GridView>

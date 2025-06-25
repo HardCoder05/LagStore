@@ -23,14 +23,6 @@
   <message name="otenerCarroPorUsuarioResponse">
     <part name="parameters" element="tns:otenerCarroPorUsuarioResponse" />
   </message>
-
-  <message name="eliminarCarroCompra">
-    <part name="parameters" element="tns:eliminarCarroCompra" />
-  </message>
-  <message name="eliminarCarroCompraResponse">
-    <part name="parameters" element="tns:eliminarCarroCompraResponse" />
-  </message>
-
   <message name="modificarCarroCompra">
     <part name="parameters" element="tns:modificarCarroCompra" />
   </message>
@@ -50,12 +42,6 @@
       <input wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/otenerCarroPorUsuarioRequest" message="tns:otenerCarroPorUsuario" />
       <output wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/otenerCarroPorUsuarioResponse" message="tns:otenerCarroPorUsuarioResponse" />
     </operation>
-
-    <operation name="eliminarCarroCompra">
-      <input wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraRequest" message="tns:eliminarCarroCompra" />
-      <output wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/eliminarCarroCompraResponse" message="tns:eliminarCarroCompraResponse" />
-    </operation>
-
     <operation name="modificarCarroCompra">
       <input wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/modificarCarroCompraRequest" message="tns:modificarCarroCompra" />
       <output wsam:Action="http://services.pucp.edu.pe/CarroCompraWS/modificarCarroCompraResponse" message="tns:modificarCarroCompraResponse" />
@@ -81,11 +67,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-
     <operation name="otenerCarroPorUsuario">
-
-    <operation name="eliminarCarroCompra">
-
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

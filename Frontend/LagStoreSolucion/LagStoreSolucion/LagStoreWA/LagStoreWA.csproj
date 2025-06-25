@@ -313,11 +313,11 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJuegoResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.generarReporteEmpleadoResponse.datasource">
-
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.generarReporteEmpleadoResponse.datasource" />
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obenerCarteraPorIdUauarioResponse.datasource">
-
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.generarReporteEmpleadoResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
