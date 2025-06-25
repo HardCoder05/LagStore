@@ -80,6 +80,7 @@ namespace LagStoreWA{
                 calificacion calificacion;
                 calificacion = wsCalificacion.obtenerCalificacionPorId(resena.calificacion.idCalificacion);
                 resena.calificacion.puntuacion = int.Parse(ddlCalificacion.SelectedValue);
+                calificacion.puntuacion= int.Parse(ddlCalificacion.SelectedValue);
                 // Llamadas a los WS para actualizar
                 wsCalificacion.modificarCalificacion(calificacion);
                 wsResena.modificarResena(resena);
