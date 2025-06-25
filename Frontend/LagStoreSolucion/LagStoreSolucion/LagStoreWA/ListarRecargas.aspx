@@ -37,7 +37,6 @@
         AutoGenerateColumns="false"
         OnRowCommand="gvRecargas_RowCommand">
         <Columns>
-            <asp:BoundField DataField="idRecarga" HeaderText="ID" />
             <asp:BoundField DataField="fechaRecarga" HeaderText="Fecha"
                 DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
             <asp:BoundField DataField="monto" HeaderText="Monto"
