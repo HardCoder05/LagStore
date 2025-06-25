@@ -29,6 +29,7 @@ namespace LagStoreWA
 
             boJugador = new JugadorWSClient();
             boRecarga = new RecargaWSClient();
+            boCartera = new CarteraWSClient();
 
             if (!IsPostBack)
                 CargarRecargas();
@@ -37,8 +38,12 @@ namespace LagStoreWA
 
         private void CargarRecargas()
         {   
-            cartera cartera = boCartera.obenerCarteraPorId(usuarioId);
-            
+            cartera cartera = boCartera.obenerCarteraPorIdUauario(usuarioId);
+            if (cartera != null)
+            {
+                lblSaldo.Text = $"Saldo actual: S/ {cartera.saldoActual:F2}";
+            }
+
             jugador j = boJugador.obtenerJugadorPorID(usuarioId);
             if (j != null)
             {

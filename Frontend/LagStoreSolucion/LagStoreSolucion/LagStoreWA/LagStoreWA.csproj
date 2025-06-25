@@ -313,6 +313,9 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJuegoResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obenerCarteraPorIdUauarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
     <None Include="Connected Services\ServicesWS\RecargaWS.xsd">
       <SubType>Designer</SubType>
@@ -361,6 +364,8 @@
     <Content Include="Content\Fonts\css\v4-shims.min.css" />
     <Content Include="Content\Fonts\css\v5-font-face.css" />
     <Content Include="Content\Fonts\css\v5-font-face.min.css" />
+    <Content Include="Content\Imagenes_de_carga\processing.png" />
+    <Content Include="Content\Imagenes_de_carga\success.png" />
     <Content Include="Content\site.css" />
     <Content Include="DetalleJuego.aspx" />
     <Content Include="EditarComentario.aspx" />

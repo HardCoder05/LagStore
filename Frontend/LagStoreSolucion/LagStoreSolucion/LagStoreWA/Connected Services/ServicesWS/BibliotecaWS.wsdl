@@ -11,6 +11,18 @@
   <message name="obtenerBibliotecaPorUsuarioResponse">
     <part name="parameters" element="tns:obtenerBibliotecaPorUsuarioResponse" />
   </message>
+  <message name="insertarBiblioteca">
+    <part name="parameters" element="tns:insertarBiblioteca" />
+  </message>
+  <message name="insertarBibliotecaResponse">
+    <part name="parameters" element="tns:insertarBibliotecaResponse" />
+  </message>
+  <message name="eliminarBiblioteca">
+    <part name="parameters" element="tns:eliminarBiblioteca" />
+  </message>
+  <message name="eliminarBibliotecaResponse">
+    <part name="parameters" element="tns:eliminarBibliotecaResponse" />
+  </message>
   <message name="modificarBiblioteca">
     <part name="parameters" element="tns:modificarBiblioteca" />
   </message>
@@ -23,22 +35,18 @@
   <message name="obtenerBibliotecaPorIdResponse">
     <part name="parameters" element="tns:obtenerBibliotecaPorIdResponse" />
   </message>
-  <message name="eliminarBiblioteca">
-    <part name="parameters" element="tns:eliminarBiblioteca" />
-  </message>
-  <message name="eliminarBibliotecaResponse">
-    <part name="parameters" element="tns:eliminarBibliotecaResponse" />
-  </message>
-  <message name="insertarBiblioteca">
-    <part name="parameters" element="tns:insertarBiblioteca" />
-  </message>
-  <message name="insertarBibliotecaResponse">
-    <part name="parameters" element="tns:insertarBibliotecaResponse" />
-  </message>
   <portType name="BibliotecaWS">
     <operation name="obtenerBibliotecaPorUsuario">
       <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorUsuarioRequest" message="tns:obtenerBibliotecaPorUsuario" />
       <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorUsuarioResponse" message="tns:obtenerBibliotecaPorUsuarioResponse" />
+    </operation>
+    <operation name="insertarBiblioteca">
+      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
+      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
+    </operation>
+    <operation name="eliminarBiblioteca">
+      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaRequest" message="tns:eliminarBiblioteca" />
+      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaResponse" message="tns:eliminarBibliotecaResponse" />
     </operation>
     <operation name="modificarBiblioteca">
       <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/modificarBibliotecaRequest" message="tns:modificarBiblioteca" />
@@ -47,14 +55,6 @@
     <operation name="obtenerBibliotecaPorId">
       <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdRequest" message="tns:obtenerBibliotecaPorId" />
       <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/obtenerBibliotecaPorIdResponse" message="tns:obtenerBibliotecaPorIdResponse" />
-    </operation>
-    <operation name="eliminarBiblioteca">
-      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaRequest" message="tns:eliminarBiblioteca" />
-      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaResponse" message="tns:eliminarBibliotecaResponse" />
-    </operation>
-    <operation name="insertarBiblioteca">
-      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
-      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
     </operation>
   </portType>
   <binding name="BibliotecaWSPortBinding" type="tns:BibliotecaWS">
@@ -68,16 +68,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarBiblioteca">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="obtenerBibliotecaPorId">
+    <operation name="insertarBiblioteca">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -95,7 +86,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarBiblioteca">
+    <operation name="modificarBiblioteca">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerBibliotecaPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

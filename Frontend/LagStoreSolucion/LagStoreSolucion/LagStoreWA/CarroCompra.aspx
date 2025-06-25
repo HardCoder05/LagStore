@@ -1,5 +1,5 @@
-
 <%@ Page Title="Carro de Compras" Language="C#" MasterPageFile="~/LagStore.Master" AutoEventWireup="true" CodeBehind="CarroCompra.aspx.cs" Inherits="LagStoreWA.CarroCompra" %>
+
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -53,10 +53,10 @@
             <asp:Label ID="lblTotal" runat="server" CssClass="h4" Text=""></asp:Label>
         </div>
 
-         <asp:Panel ID="pnlProcesando" runat="server" Visible="false">
-             <asp:Image ID="imgEstadoCompra" runat="server" />
-             <asp:Label ID="lblProcesando" runat="server" Text=""></asp:Label>
-         </asp:Panel>
+         <asp:Panel ID="pnlProcesando" runat="server" Visible="false" style="margin-top:20px;">
+            <asp:Image ID="imgEstadoCompra" runat="server" Width="48px" Height="48px" ImageAlign="Middle" />
+            <asp:Label ID="lblProcesando" runat="server" Text="" CssClass="ms-2 fw-bold"></asp:Label>
+        </asp:Panel>
 
         <div class="carro-actions" style="margin-top:20px;">
             <asp:Button ID="btnFinalizarCompra" runat="server" Text="Finalizar Compra" CssClass="btn btn-success" OnClick="btnFinalizarCompra_Click" />
