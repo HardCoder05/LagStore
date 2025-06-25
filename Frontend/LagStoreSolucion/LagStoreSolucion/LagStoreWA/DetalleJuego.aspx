@@ -113,8 +113,11 @@
                 <asp:Image ID="imgJuego" runat="server" CssClass="img-fluid rounded shadow" />
                 <h4 class="text-primary mt-3">
                     <asp:Label ID="lblPrecio" runat="server" /></h4>
-                <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al Carrito" CssClass="btn btn-success my-3" />
-                <p class="text-muted">
+                    <asp:Button ID="btnAgregarCarrito" runat="server" 
+                       Text="Agregar al Carrito" 
+                       CssClass="btn btn-primary"
+                       OnClick="btnAgregarCarrito_Click" />
+                 <p class="text-muted">
                     Fecha de lanzamiento:<asp:Label ID="lblFecha" runat="server" />
                 </p>
                 <!--solo es hasta aqui-->
