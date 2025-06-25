@@ -130,12 +130,15 @@ namespace LagStoreWA
                     requisitosRecomendados = txtReqRec.Text.Trim(),
                     espacioDisco = double.Parse(txtEspacio.Text),
                     fechaUltimaActualizacion = DateTime.Parse(txtFechaActualizacion.Text),
-                    genero = (Genero)Enum.Parse(typeof(Genero), ddlGenero.SelectedValue),
-                    modeloNegocio = (ModeloNegocio)Enum.Parse(typeof(ModeloNegocio), ddlModeloNegocio.SelectedValue),
+                    genero = (Genero)Enum.Parse(typeof(Genero), ddlGenero.SelectedValue, true),
+                    modeloNegocio = (ModeloNegocio)Enum.Parse(typeof(ModeloNegocio), ddlModeloNegocio.SelectedValue, true),
                     desarrollador = dev
                 };
 
-                nuevoJuego.genero = Genero.Estrategia;
+                nuevoJuego.generoSpecified = true;
+                nuevoJuego.modeloNegocioSpecified = true;
+                nuevoJuego.fechaLanzamientoSpecified = true;
+                nuevoJuego.fechaUltimaActualizacionSpecified = true;
 
                 int id = juegoWS.insertarJuego(nuevoJuego);
                 if (id > 0)
