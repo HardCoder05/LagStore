@@ -50,9 +50,10 @@ public class AdministradorMySQL implements AdministradorDAO{
         parametrosEntrada.put(2, administrador.getRolAdministrativo());
         parametrosEntrada.put(3, administrador.getNombre());
         parametrosEntrada.put(4, administrador.getEmail());
-        parametrosEntrada.put(5, administrador.getFechaRegistro());
-        parametrosEntrada.put(6, administrador.getTelefono());
-        parametrosEntrada.put(7, administrador.getFotoDePerfil());
+        parametrosEntrada.put(5, administrador.getContrasena());
+        parametrosEntrada.put(6, administrador.getFechaRegistro());
+        parametrosEntrada.put(7, administrador.getTelefono());
+        parametrosEntrada.put(8, administrador.getFotoDePerfil());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ADMINISTRADOR", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del administrador");
         return resultado;
