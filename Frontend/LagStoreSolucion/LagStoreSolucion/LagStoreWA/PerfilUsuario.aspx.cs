@@ -304,6 +304,8 @@ namespace LagStoreWA
                 activo = jugadorActual.activo
             };
 
+            jugadorActualizado.fechaRegistroSpecified = true;
+
             int resultado = wsJugador.modificarJugador(jugadorActualizado);
 
             if (resultado > 0)
