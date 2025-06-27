@@ -17,11 +17,11 @@ import pe.edu.pucp.lagstore.gestjuegos.model.ModeloNegocio;
 
 
 @WebService(serviceName = "JuegoWS", 
-    targetNamespace = "http://services.pucp.edu.pe")//Se declara un servicio
-public class JuegoWS {//Dentro se ponen los metodos
+    targetNamespace = "http://services.pucp.edu.pe")
+public class JuegoWS {
     private JuegoBO juegoBO;
     
-    @WebMethod(operationName = "listarJuegos")//se declara un metodo
+    @WebMethod(operationName = "listarJuegos")
     public ArrayList<Juego> listarJuegos() {
         ArrayList<Juego> juegos = null;
         
@@ -111,6 +111,7 @@ public class JuegoWS {//Dentro se ponen los metodos
         
         return juegos;
     }
+    
     @WebMethod(operationName = "listarJuegosPorDesarrollador")
     public ArrayList<Juego> listarJuegosPorDesarrollador(@WebParam(name = "idDesarrollador") int idDesarrollador) {
         ArrayList<Juego> juegos = null;

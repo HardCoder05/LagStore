@@ -2,8 +2,6 @@ package pe.edu.pucp.lagstore.gestusuarios.model;
 
 import java.util.Date;
 
-
-
 public class Administrador extends Usuario {
     private int idAdministrador;
     private String rolAdministrativo;

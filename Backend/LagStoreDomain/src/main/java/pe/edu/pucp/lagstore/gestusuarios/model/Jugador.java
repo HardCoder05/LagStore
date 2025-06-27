@@ -1,4 +1,5 @@
 package pe.edu.pucp.lagstore.gestusuarios.model;
+
 import pe.edu.pucp.lagstore.compra.model.CarroCompra;
 import pe.edu.pucp.lagstore.compra.model.Cartera;
 import pe.edu.pucp.lagstore.valoracion.model.Calificacion;
@@ -15,8 +16,6 @@ public class Jugador extends Usuario {
     private ArrayList<Calificacion> calificaciones;
     
     public Jugador(){}
-
-   
     
     public Jugador(String nombre,String email,String contrasena,Date fechaRegistro,String telefono, 
                    String fotoDePerfil,String nickname) {

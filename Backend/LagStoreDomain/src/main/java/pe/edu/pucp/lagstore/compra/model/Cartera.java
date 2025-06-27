@@ -2,7 +2,6 @@ package pe.edu.pucp.lagstore.compra.model;
 
 import java.util.ArrayList;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
-import pe.edu.pucp.lagstore.gestusuarios.model.Usuario;
 
 public class Cartera {
     private int idCartera;
@@ -46,17 +45,11 @@ public class Cartera {
     public void setActivo(int activo) {
         this.activo = activo;
     }
-
-    /**
-     * @return the jugador
-     */
+    
     public Jugador getJugador() {
         return jugador;
     }
-
-    /**
-     * @param jugador the jugador to set
-     */
+    
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }

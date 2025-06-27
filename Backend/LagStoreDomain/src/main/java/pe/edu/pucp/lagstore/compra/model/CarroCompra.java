@@ -1,12 +1,10 @@
 package pe.edu.pucp.lagstore.compra.model;
 
 import  pe.edu.pucp.lagstore.gestjuegos.model.Juego;
-
 import java.util.List;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
 
 public class CarroCompra {
-
     private int idCarroCompra;
     private List<Juego> juegos;
     private double totalEstimado;
@@ -53,16 +51,11 @@ public class CarroCompra {
         this.activo = activo;
     }
 
-    /**
-     * @return the jugador
-     */
+    
     public Jugador getJugador() {
         return jugador;
     }
-
-    /**
-     * @param jugador the jugador to set
-     */
+    
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }

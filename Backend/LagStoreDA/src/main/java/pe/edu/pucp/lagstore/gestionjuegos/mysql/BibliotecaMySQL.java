@@ -65,7 +65,6 @@ public class BibliotecaMySQL implements BibliotecaDAO {
                 biblioteca.setIdBiblioteca(rs.getInt("idBiblioteca"));
                 biblioteca.setIngresoTotal(rs.getDouble("ingresoTotal"));
                 biblioteca.setCantidadDeJuegos(rs.getInt("cantidadDeJuegos"));
-                //biblioteca.setUsuario(new UsuarioMySQL().obtenerPorId(rs.getInt("usuario_idUsuario")));
                 bibliotecas.add(biblioteca);
             }
         } catch (SQLException ex) {
@@ -90,7 +89,6 @@ public class BibliotecaMySQL implements BibliotecaDAO {
                 biblioteca.setIdBiblioteca(rs.getInt("idBiblioteca"));
                 biblioteca.setIngresoTotal(rs.getDouble("ingresoTotal"));
                 biblioteca.setCantidadDeJuegos(rs.getInt("cantidadDeJuegos"));
-                //biblioteca.setUsuario(new UsuarioMySQL().obtenerPorId(rs.getInt("usuario_idUsuario")));
             }
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());

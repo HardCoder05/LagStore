@@ -1,7 +1,6 @@
 package pe.edu.pucp.lagstore.gestionusuarios.mysql;
-import java.sql.Connection;
-import java.sql.Date;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -136,7 +135,7 @@ public class AdministradorMySQL implements AdministradorDAO{
                 Juego j = new Juego();
                 j.setIdJuego(rs.getInt("idJuego"));
                 j.setTitulo(rs.getString("titulo"));
-                j.setCantidadVentas(rs.getInt("cantidadVentas")); // ← Este campo nuevo
+                j.setCantidadVentas(rs.getInt("cantidadVentas"));
                 juegos.add(j);
             }
         } catch (SQLException ex) {

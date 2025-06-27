@@ -178,9 +178,7 @@ public final class DBManager {
             Object value = entry.getValue();
 
             if (value == null) {
-                // Si sabes de antemano el tipo de dato esperado por índice, puedes codificarlo aquí
-                // o mantener un Map<Integer, Integer> tiposSQL (clave=índice, valor=java.sql.Types.xxx)
-                cs.setNull(key, Types.VARCHAR); // Usa el tipo más común o crea lógica para detectarlo
+                cs.setNull(key, Types.VARCHAR);
                 continue;
             }
 

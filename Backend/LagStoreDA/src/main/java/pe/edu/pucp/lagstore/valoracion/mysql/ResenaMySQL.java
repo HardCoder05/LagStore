@@ -1,8 +1,5 @@
 package pe.edu.pucp.lagstore.valoracion.mysql;
-//import java.sql.Connection;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//import java.sql.Statement;
+
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,8 +22,8 @@ public class ResenaMySQL implements ResenaDAO{
     public int insertar(Resena resena) {
         Map<Integer,Object> parametrosSalida = new HashMap<>();
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
-        parametrosSalida.put(1, Types.INTEGER);//deberia ser el id de Resena
-        parametrosEntrada.put(2, resena.getAutor().getIdJugador());//no se si falta casteo
+        parametrosSalida.put(1, Types.INTEGER);
+        parametrosEntrada.put(2, resena.getAutor().getIdJugador());
         parametrosEntrada.put(3, resena.getJuego().getIdJuego());
         parametrosEntrada.put(4,resena.getComentario());
         LocalDate localDate = LocalDate.now();
@@ -80,7 +77,7 @@ public class ResenaMySQL implements ResenaDAO{
                 //area.setActivo(true);
                  // Calificación
                 Calificacion calificacion = new Calificacion();
-                calificacion.setIdCalificacion(rs.getInt("idCalificacion")); // o el nombre real de la columna FK
+                calificacion.setIdCalificacion(rs.getInt("idCalificacion"));
                 resena.setCalificacion(calificacion);
                 resena.setActivo(rs.getInt("activo"));
                 // Jugador (autor)
@@ -117,7 +114,7 @@ public class ResenaMySQL implements ResenaDAO{
                 //area.setActivo(true);
                  // Calificación
                 Calificacion calificacion = new Calificacion();
-                calificacion.setIdCalificacion(rs.getInt("idCalificacion")); // o el nombre real de la columna FK
+                calificacion.setIdCalificacion(rs.getInt("idCalificacion"));
                 resena.setCalificacion(calificacion);
                 resena.setActivo(rs.getInt("activo"));
                 // Jugador (autor)
@@ -141,7 +138,7 @@ public class ResenaMySQL implements ResenaDAO{
         ArrayList<Resena> resenas = new ArrayList<>();
 
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
-        parametrosEntrada.put(1, idJuego); // el único parámetro de entrada
+        parametrosEntrada.put(1, idJuego);
 
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_RESENAS_X_JUEGO", parametrosEntrada);
         System.out.println("Lectura de reseñas por juego...");
@@ -163,7 +160,7 @@ public class ResenaMySQL implements ResenaDAO{
                 // Jugador (autor)
                 Jugador autor = new Jugador();
                 autor.setIdJugador(rs.getInt("fidJugador"));
-                autor.setNombre(rs.getString("nickname")); // este viene del JOIN
+                autor.setNombre(rs.getString("nickname"));
                 resena.setAutor(autor);
                 resenas.add(resena);
             }

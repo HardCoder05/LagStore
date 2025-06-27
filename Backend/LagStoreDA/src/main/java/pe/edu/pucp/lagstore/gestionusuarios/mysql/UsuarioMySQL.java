@@ -43,23 +43,22 @@ public class UsuarioMySQL implements UsuarioDAO{
         int resultado = 0;
         
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
-        parametrosEntrada.put(1, usuario.getEmail());         // índice 1
-        parametrosEntrada.put(2, usuario.getContrasena());    // índice 2
+        parametrosEntrada.put(1, usuario.getEmail());
+        parametrosEntrada.put(2, usuario.getContrasena());
 
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("VERIFICAR_CUENTA_USUARIO", parametrosEntrada);
 
         try {
             if (rs.next()) {
-                resultado = rs.getInt("id");  // Devuelve el ID del usuario si existe
+                resultado = rs.getInt("id");
             }
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
         } finally {
-//            System.out.println("Se ha realizado la verificación del usuario");
             DBManager.getInstance().cerrarConexion();
         }
 
-        return resultado; // Si no encontró al usuario, retorna 0
+        return resultado;
     }
 
     @Override
@@ -74,7 +73,7 @@ public class UsuarioMySQL implements UsuarioDAO{
         try {
             if (rs.next()) {
                 String nombreRol = rs.getString("nombreRol");
-                rol = Rol.valueOf(nombreRol); // Convierte el texto al enum Rol
+                rol = Rol.valueOf(nombreRol);
             }
         } catch (SQLException ex) {
             System.out.println("ERROR al obtener el rol: " + ex.getMessage());

@@ -13,7 +13,9 @@ public class Resena {
     private Jugador autor;
     private Juego juego;
     private int activo;
+    
     public Resena(){};
+    
     public int getIdResena() {
         return idResena;
     }

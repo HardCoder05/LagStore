@@ -1,7 +1,6 @@
 package pe.edu.pucp.lagstore.gestjuegos.model;
 
 import java.util.Date;
-
 import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
 
 public class Juego {

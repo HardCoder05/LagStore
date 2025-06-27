@@ -1,6 +1,6 @@
 package pe.edu.pucp.lagstore.gestusuarios.model;
-import java.util.Date;
 
+import java.util.Date;
 
 public class Desarrollador extends Usuario {
     private int idDesarrollador;

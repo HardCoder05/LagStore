@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package pe.edu.pucp.lagstore.gestusuarios.model;
+
 import java.util.ArrayList;
 import pe.edu.pucp.lagstore.gestionusuarios.mysql.AdministradorMySQL;
 import pe.edu.pucp.lagstore.gestionusuarios.dao.AdministradorDAO;
@@ -33,9 +35,11 @@ public class AdministradorBO {
     public ArrayList<Administrador> listarAdministradores(){
         return daoAdministrador.listarTodos();
     }
+    
     public Administrador obtenerPorId(int idAdministrador){
         return daoAdministrador.obtenerPorId(idAdministrador);
     }
+    
     public ArrayList<Juego> listarJuegosMasVendidos(){
         return daoAdministrador.listarJuegosMasVendidos();
     }

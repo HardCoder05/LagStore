@@ -8,7 +8,7 @@ import java.util.Map;
 
 import pe.edu.pucp.lagstore.config.DBManager;
 import pe.edu.pucp.lagstore.gestionjuegos.dao.JuegoDAO;
-import pe.edu.pucp.lagstore.gestionusuarios.mysql.DesarrolladorMySQL;
+
 import pe.edu.pucp.lagstore.gestjuegos.model.Genero;
 import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
 import pe.edu.pucp.lagstore.gestjuegos.model.ModeloNegocio;
@@ -105,15 +105,6 @@ public class JuegoMySQL implements JuegoDAO{
 
                 Desarrollador dev = new Desarrollador();
                 dev.setIdDesarrollador(rs.getInt("desarrollador_idDesarrollador"));
-                /*dev.setIdUsuario(rs.getInt("desarrollador_idDesarrollador"));
-                dev.setNombre(rs.getString("nombre"));
-                dev.setEmail(rs.getString("email"));
-                dev.setContrasena(rs.getString("contrasena"));
-                dev.setFechaRegistro(rs.getDate("fechaRegistro"));
-                dev.setTelefono(rs.getString("telefono"));
-                dev.setFotoDePerfil(rs.getString("fotoDePerfil"));
-                dev.setNumeroCuenta(rs.getString("numeroCuenta"));
-                dev.setIngresoTotal(rs.getDouble("ingresoTotal"));*/
 
                 juego.setDesarrollador(dev);
                 juegos.add(juego);
@@ -214,7 +205,6 @@ public class JuegoMySQL implements JuegoDAO{
                 dev.setContrasena(rs.getString("contrasena"));
                 dev.setFechaRegistro(rs.getDate("fechaRegistro"));
                 dev.setTelefono(rs.getString("telefono"));
-                //dev.setFotoDePerfil(rs.getString("fotoDePerfil"));
                 dev.setNumeroCuenta(rs.getString("numeroCuenta"));
                 dev.setIngresoTotal(rs.getDouble("ingresoTotal"));
                 juego.setDesarrollador(dev);

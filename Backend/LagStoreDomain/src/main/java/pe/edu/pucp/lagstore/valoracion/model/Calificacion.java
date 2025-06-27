@@ -17,6 +17,7 @@ public class Calificacion {
     private int activo;
     
     public Calificacion(){};
+    
     public int getIdCalificacion() {
         return idCalificacion;
     }
