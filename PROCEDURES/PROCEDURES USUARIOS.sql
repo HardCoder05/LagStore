@@ -33,13 +33,15 @@ CREATE PROCEDURE TA.MODIFICAR_DESARROLLADOR(
     IN _ingresoTotal DOUBLE,
     IN _nombre VARCHAR(100),
     IN _email VARCHAR(100),
+    IN _contrasena VARCHAR(100),
     IN _fechaRegistro DATE,
     IN _telefono VARCHAR(12),
     IN _fotoDePerfil BLOB
 )
 BEGIN
 	UPDATE Usuario SET nombre = _nombre, 
-						email=_email,  
+						email=_email, 
+						contrasena=MD5(_contrasena), 
 						fechaRegistro=_fechaRegistro, 
 						telefono=_telefono, 
 						fotoDePerfil=_fotoDePerfil
@@ -119,6 +121,7 @@ CREATE PROCEDURE TA.MODIFICAR_JUGADOR(
     IN _nickname VARCHAR(200),
     IN _nombre VARCHAR(100),
     IN _email VARCHAR(100),
+    IN _contrasena VARCHAR(100),
     IN _fechaRegistro DATE,
     IN _telefono VARCHAR(12),
     IN _fotoDePerfil BLOB
@@ -126,6 +129,7 @@ CREATE PROCEDURE TA.MODIFICAR_JUGADOR(
 BEGIN
 	UPDATE Usuario SET nombre = _nombre, 
 						email=_email, 
+						contrasena=MD5(_contrasena), 
 						fechaRegistro=_fechaRegistro, 
 						telefono=_telefono, 
 						fotoDePerfil=_fotoDePerfil
@@ -202,6 +206,7 @@ CREATE PROCEDURE TA.MODIFICAR_ADMINISTRADOR(
     IN _rol VARCHAR(50),
     IN _nombre VARCHAR(100),
     IN _email VARCHAR(100),
+    IN _contrasena VARCHAR(100),
     IN _fechaRegistro DATE,
     IN _telefono VARCHAR(12),
     IN _fotoPerfil BLOB
@@ -209,6 +214,7 @@ CREATE PROCEDURE TA.MODIFICAR_ADMINISTRADOR(
 BEGIN
 	UPDATE Usuario SET nombre = _nombre, 
 						email=_email, 
+						contrasena=MD5(_contrasena), 
 						fechaRegistro=_fechaRegistro, 
 						telefono=_telefono, 
 						fotoDePerfil=_fotoPerfil
@@ -253,7 +259,7 @@ BEGIN
 END $$
 
 -- CALL TA.INSERTAR_JUGADOR(@idJugador,'Carlos','carlos.gomez@mail.com','password123','2025-05-13','999888777', NULL,'buba20');
--- CALL TA.MODIFICAR_JUGADOR(2,'OTRO','XX','XX@HTOA.COM','2022-01-25','999999',NULL);
+-- CALL TA.MODIFICAR_JUGADOR(2,'OTRO','XX','XX@HTOA.COM','NUEVA CONTRA','2022-01-25','999999',NULL);
 -- CALL TA.ELIMINAR_JUGADOR(2);
 -- CALL TA.LISTAR_JUGADOR();
 -- CALL TA.OBTENER_X_ID_JUGADOR(2);
@@ -279,10 +285,4 @@ BEGIN
     FROM Usuario
     WHERE id = p_idUsuario;
 END //
-
-
-
-
-
-
 
