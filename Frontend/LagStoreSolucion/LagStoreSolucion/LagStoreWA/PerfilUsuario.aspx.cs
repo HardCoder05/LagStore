@@ -243,6 +243,13 @@ namespace LagStoreWA
                     return;
                 }
 
+                // Verificar la cantidad de caracteres del nombre
+                if (txtNombre.Text.Trim().Length < 3 || txtNombre.Text.Trim().Length > 50)
+                {
+                    MostrarMensaje("El nombre debe tener entre 3 y 50 caracteres", "alert-warning");
+                    return;
+                }
+
                 // Verificar si se está cambiando la contraseña
                 bool cambiarContrasena = !string.IsNullOrEmpty(txtContrasenaActual.Text) ||
                                         !string.IsNullOrEmpty(txtNuevaContrasena.Text) ||
@@ -336,6 +343,8 @@ namespace LagStoreWA
                 activo = desarrolladorActual.activo
             };
 
+            desarrolladorActualizado.fechaRegistroSpecified = true;
+
             int resultado = wsDesarrollador.modificarDesarrollador(desarrolladorActualizado);
 
             if (resultado > 0)
@@ -364,6 +373,8 @@ namespace LagStoreWA
                 rolAdministrativo = administradorActual.rolAdministrativo,
                 activo = administradorActual.activo
             };
+
+            administradorActualizado.fechaRegistroSpecified = true;
 
             int resultado = wsAdministrador.modificarAdministrador(administradorActualizado);
 
