@@ -105,6 +105,18 @@ namespace LagStoreWA
                 return;
             }
 
+            if(juegoAnterior.modeloNegocio == ModeloNegocio.Free_to_play && double.Parse(txtPrecio.Text) > 0)
+            {
+                lblMensaje.Text = "Los juegos Free to Play no deben tener un precio mayor a 0.";
+                return;
+            }
+
+            if (juegoAnterior.modeloNegocio != ModeloNegocio.Free_to_play && double.Parse(txtPrecio.Text) == 0)
+            {
+                lblMensaje.Text = "Inserte un precio mayor a 0 para juegos que no son Free to Play.";
+                return;
+            }
+
             try
             {
                 // Actualizar campos
