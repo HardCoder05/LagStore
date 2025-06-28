@@ -17,6 +17,12 @@
   <message name="insertarJuegoResponse">
     <part name="parameters" element="tns:insertarJuegoResponse" />
   </message>
+  <message name="modificarJuego">
+    <part name="parameters" element="tns:modificarJuego" />
+  </message>
+  <message name="modificarJuegoResponse">
+    <part name="parameters" element="tns:modificarJuegoResponse" />
+  </message>
   <message name="eliminarJuego">
     <part name="parameters" element="tns:eliminarJuego" />
   </message>
@@ -35,12 +41,6 @@
   <message name="listarJuegosResponse">
     <part name="parameters" element="tns:listarJuegosResponse" />
   </message>
-  <message name="modificarJuego">
-    <part name="parameters" element="tns:modificarJuego" />
-  </message>
-  <message name="modificarJuegoResponse">
-    <part name="parameters" element="tns:modificarJuegoResponse" />
-  </message>
   <message name="listarJuegosConFiltro">
     <part name="parameters" element="tns:listarJuegosConFiltro" />
   </message>
@@ -56,6 +56,10 @@
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoRequest" message="tns:insertarJuego" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/insertarJuegoResponse" message="tns:insertarJuegoResponse" />
     </operation>
+    <operation name="modificarJuego">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoRequest" message="tns:modificarJuego" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoResponse" message="tns:modificarJuegoResponse" />
+    </operation>
     <operation name="eliminarJuego">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/eliminarJuegoRequest" message="tns:eliminarJuego" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/eliminarJuegoResponse" message="tns:eliminarJuegoResponse" />
@@ -67,10 +71,6 @@
     <operation name="listarJuegos">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosRequest" message="tns:listarJuegos" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosResponse" message="tns:listarJuegosResponse" />
-    </operation>
-    <operation name="modificarJuego">
-      <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoRequest" message="tns:modificarJuego" />
-      <output wsam:Action="http://services.pucp.edu.pe/JuegoWS/modificarJuegoResponse" message="tns:modificarJuegoResponse" />
     </operation>
     <operation name="listarJuegosConFiltro">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoWS/listarJuegosConFiltroRequest" message="tns:listarJuegosConFiltro" />
@@ -97,6 +97,15 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="modificarJuego">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="eliminarJuego">
       <soap:operation soapAction="" />
       <input>
@@ -116,15 +125,6 @@
       </output>
     </operation>
     <operation name="listarJuegos">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarJuego">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
