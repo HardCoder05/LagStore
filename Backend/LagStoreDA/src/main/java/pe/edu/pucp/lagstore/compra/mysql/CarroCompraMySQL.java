@@ -12,7 +12,6 @@ import pe.edu.pucp.lagstore.gestjuegos.model.Genero;
 import pe.edu.pucp.lagstore.gestjuegos.model.Juego;
 import pe.edu.pucp.lagstore.gestjuegos.model.ModeloNegocio;
 import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
-import pe.edu.pucp.lagstore.gestusuarios.model.DesarrolladorBO;
 import pe.edu.pucp.lagstore.gestusuarios.model.Jugador;
 
 public class CarroCompraMySQL implements CarroCompraDAO {
@@ -129,11 +128,7 @@ public class CarroCompraMySQL implements CarroCompraDAO {
                     juego.setGenero(Genero.valueOf(rsJuegos.getString("nombreGenero")));
                     juego.setModeloNegocio(ModeloNegocio.valueOf(rsJuegos.getString("modelo")));
                     
-                    //Se añade los datos del dearrollador
-                    DesarrolladorBO boDesarrollador = new DesarrolladorBO();
-                    Desarrollador desarrollador = boDesarrollador.obtenerPorId(juego.getDesarrollador().getIdDesarrollador());
-                    juego.setDesarrollador(desarrollador);
-                    juegos.add(juego);
+                   
                 }
                 carro.setJuegos(juegos);
                 lista.add(carro);
@@ -188,12 +183,7 @@ public class CarroCompraMySQL implements CarroCompraDAO {
                     juego.setActivo(rsJuegos.getInt("activo"));
                     juego.setGenero(Genero.valueOf(rsJuegos.getString("nombreGenero")));
                     juego.setModeloNegocio(ModeloNegocio.valueOf(rsJuegos.getString("modelo")));
-                    
-//                    //Se añade los datos del dearrollador
-//                    DesarrolladorBO boDesarrollador = new DesarrolladorBO();
-//                    Desarrollador desarrollador = boDesarrollador.obtenerPorId(juego.getDesarrollador().getIdDesarrollador());
-//                    juego.setDesarrollador(desarrollador);
-//                    juegos.add(juego);
+            
                 }
                 carro.setJuegos(juegos);
             }
