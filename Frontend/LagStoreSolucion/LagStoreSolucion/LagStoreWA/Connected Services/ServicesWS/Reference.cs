@@ -3574,6 +3574,15 @@ namespace LagStoreWA.ServicesWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdUauarioRequest", ReplyAction="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdUauarioResponse")]
         System.Threading.Tasks.Task<LagStoreWA.ServicesWS.obenerCarteraPorIdUauarioResponse> obenerCarteraPorIdUauarioAsync(LagStoreWA.ServicesWS.obenerCarteraPorIdUauarioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarteraWS/insertarCarteraRequest", ReplyAction="http://services.pucp.edu.pe/CarteraWS/insertarCarteraResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        LagStoreWA.ServicesWS.insertarCarteraResponse insertarCartera(LagStoreWA.ServicesWS.insertarCarteraRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/CarteraWS/insertarCarteraRequest", ReplyAction="http://services.pucp.edu.pe/CarteraWS/insertarCarteraResponse")]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarCarteraResponse> insertarCarteraAsync(LagStoreWA.ServicesWS.insertarCarteraRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -3644,6 +3653,42 @@ namespace LagStoreWA.ServicesWS {
         }
         
         public obenerCarteraPorIdUauarioResponse(LagStoreWA.ServicesWS.cartera @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarCartera", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarCarteraRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LagStoreWA.ServicesWS.cartera cartera;
+        
+        public insertarCarteraRequest() {
+        }
+        
+        public insertarCarteraRequest(LagStoreWA.ServicesWS.cartera cartera) {
+            this.cartera = cartera;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarCarteraResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarCarteraResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarCarteraResponse() {
+        }
+        
+        public insertarCarteraResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -3719,6 +3764,29 @@ namespace LagStoreWA.ServicesWS {
             LagStoreWA.ServicesWS.obenerCarteraPorIdUauarioRequest inValue = new LagStoreWA.ServicesWS.obenerCarteraPorIdUauarioRequest();
             inValue.idUsuario = idUsuario;
             return ((LagStoreWA.ServicesWS.CarteraWS)(this)).obenerCarteraPorIdUauarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LagStoreWA.ServicesWS.insertarCarteraResponse LagStoreWA.ServicesWS.CarteraWS.insertarCartera(LagStoreWA.ServicesWS.insertarCarteraRequest request) {
+            return base.Channel.insertarCartera(request);
+        }
+        
+        public int insertarCartera(LagStoreWA.ServicesWS.cartera cartera) {
+            LagStoreWA.ServicesWS.insertarCarteraRequest inValue = new LagStoreWA.ServicesWS.insertarCarteraRequest();
+            inValue.cartera = cartera;
+            LagStoreWA.ServicesWS.insertarCarteraResponse retVal = ((LagStoreWA.ServicesWS.CarteraWS)(this)).insertarCartera(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarCarteraResponse> LagStoreWA.ServicesWS.CarteraWS.insertarCarteraAsync(LagStoreWA.ServicesWS.insertarCarteraRequest request) {
+            return base.Channel.insertarCarteraAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<LagStoreWA.ServicesWS.insertarCarteraResponse> insertarCarteraAsync(LagStoreWA.ServicesWS.cartera cartera) {
+            LagStoreWA.ServicesWS.insertarCarteraRequest inValue = new LagStoreWA.ServicesWS.insertarCarteraRequest();
+            inValue.cartera = cartera;
+            return ((LagStoreWA.ServicesWS.CarteraWS)(this)).insertarCarteraAsync(inValue);
         }
     }
     
