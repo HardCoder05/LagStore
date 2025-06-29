@@ -9,6 +9,8 @@
   <xs:element name="listarTodosDesarrolladores" type="tns:listarTodosDesarrolladores" />
   <xs:element name="listarTodosDesarrolladoresResponse" type="tns:listarTodosDesarrolladoresResponse" />
   <xs:element name="modificarDesarrollador" type="tns:modificarDesarrollador" />
+  <xs:element name="modificarDesarrolladorDesdeAdministrador" type="tns:modificarDesarrolladorDesdeAdministrador" />
+  <xs:element name="modificarDesarrolladorDesdeAdministradorResponse" type="tns:modificarDesarrolladorDesdeAdministradorResponse" />
   <xs:element name="modificarDesarrolladorResponse" type="tns:modificarDesarrolladorResponse" />
   <xs:element name="obtenerDesarrolladorPorID" type="tns:obtenerDesarrolladorPorID" />
   <xs:element name="obtenerDesarrolladorPorIDResponse" type="tns:obtenerDesarrolladorPorIDResponse" />
@@ -82,6 +84,16 @@
   <xs:complexType name="obtenerDesarrolladorPorIDResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:desarrollador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarDesarrolladorDesdeAdministrador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="desarrollador" type="tns:desarrollador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarDesarrolladorDesdeAdministradorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarDesarrollador">

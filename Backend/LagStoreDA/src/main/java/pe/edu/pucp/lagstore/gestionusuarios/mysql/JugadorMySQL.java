@@ -166,6 +166,21 @@ public class JugadorMySQL implements JugadorDAO{
         
     }
 
+    @Override
+    public int modificarJugadorDesdeAdministrador(Jugador jugador) {
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1,jugador.getIdJugador());
+        parametrosEntrada.put(2, jugador.getNickname());
+        parametrosEntrada.put(3, jugador.getNombre());
+        parametrosEntrada.put(4, jugador.getEmail());
+        parametrosEntrada.put(5, jugador.getFechaRegistro());
+        parametrosEntrada.put(6, jugador.getTelefono());
+        parametrosEntrada.put(7, jugador.getFotoDePerfil());
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_JUGADOR_DESDE_ADMIN", parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion del jugador desde un administrador");
+        return resultado;
+    }
+
     
 
     

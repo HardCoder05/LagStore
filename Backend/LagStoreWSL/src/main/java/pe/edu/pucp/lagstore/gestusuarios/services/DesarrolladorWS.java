@@ -75,4 +75,10 @@ public class DesarrolladorWS {
         return desarrolladores;
     }
     
+    @WebMethod(operationName = "modificarDesarrolladorDesdeAdministrador")
+    public int modificarDesarrolladorDesdeAdministrador(@WebParam(name = "desarrollador") Desarrollador desarrollador) {
+        boDesarrollador=new DesarrolladorBO();
+        return boDesarrollador.modificarDesarrolladorDesdeAdmin(desarrollador);
+    }
+    
 }
