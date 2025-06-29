@@ -5,8 +5,8 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/AdministradorWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="listarJuegosConMayorCalificacion">
-    <part name="parameters" element="tns:listarJuegosConMayorCalificacion" />
+  <message name="insertarAdministrador">
+    <part name="parameters" element="tns:insertarAdministrador" />
   </message>
   <message name="insertarAdministradorResponse">
     <part name="parameters" element="tns:insertarAdministradorResponse" />
