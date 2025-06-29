@@ -36,6 +36,11 @@ namespace LagStoreWA
                 liCerrarSesion.Visible = false;
             }
 
+            if (Session["Jugador"] != null)
+            {
+                liRecarga.Visible = true;
+            }
+
             if (Session["Desarrollador"] != null)
             {
                 liBiblioteca.Visible = false;
