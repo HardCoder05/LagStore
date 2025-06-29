@@ -23,17 +23,17 @@
   <message name="modificarBibliotecaResponse">
     <part name="parameters" element="tns:modificarBibliotecaResponse" />
   </message>
-  <message name="insertarBiblioteca">
-    <part name="parameters" element="tns:insertarBiblioteca" />
-  </message>
-  <message name="insertarBibliotecaResponse">
-    <part name="parameters" element="tns:insertarBibliotecaResponse" />
-  </message>
   <message name="eliminarBiblioteca">
     <part name="parameters" element="tns:eliminarBiblioteca" />
   </message>
   <message name="eliminarBibliotecaResponse">
     <part name="parameters" element="tns:eliminarBibliotecaResponse" />
+  </message>
+  <message name="insertarBiblioteca">
+    <part name="parameters" element="tns:insertarBiblioteca" />
+  </message>
+  <message name="insertarBibliotecaResponse">
+    <part name="parameters" element="tns:insertarBibliotecaResponse" />
   </message>
   <portType name="BibliotecaWS">
     <operation name="obtenerBibliotecaPorUsuario">
@@ -48,13 +48,13 @@
       <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/modificarBibliotecaRequest" message="tns:modificarBiblioteca" />
       <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/modificarBibliotecaResponse" message="tns:modificarBibliotecaResponse" />
     </operation>
-    <operation name="insertarBiblioteca">
-      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
-      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
-    </operation>
     <operation name="eliminarBiblioteca">
       <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaRequest" message="tns:eliminarBiblioteca" />
       <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/eliminarBibliotecaResponse" message="tns:eliminarBibliotecaResponse" />
+    </operation>
+    <operation name="insertarBiblioteca">
+      <input wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaRequest" message="tns:insertarBiblioteca" />
+      <output wsam:Action="http://services.pucp.edu.pe/BibliotecaWS/insertarBibliotecaResponse" message="tns:insertarBibliotecaResponse" />
     </operation>
   </portType>
   <binding name="BibliotecaWSPortBinding" type="tns:BibliotecaWS">
@@ -86,7 +86,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarBiblioteca">
+    <operation name="eliminarBiblioteca">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -95,7 +95,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarBiblioteca">
+    <operation name="insertarBiblioteca">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

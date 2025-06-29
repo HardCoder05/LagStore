@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/JugadorWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
+  <message name="modificarJugadorDesdeAdministrador">
+    <part name="parameters" element="tns:modificarJugadorDesdeAdministrador" />
+  </message>
+  <message name="modificarJugadorDesdeAdministradorResponse">
+    <part name="parameters" element="tns:modificarJugadorDesdeAdministradorResponse" />
+  </message>
   <message name="obtenerJugadorPorID">
     <part name="parameters" element="tns:obtenerJugadorPorID" />
   </message>
@@ -29,25 +35,23 @@
   <message name="insertarJugadorResponse">
     <part name="parameters" element="tns:insertarJugadorResponse" />
   </message>
-  <message name="eliminarJugador">
-    <part name="parameters" element="tns:eliminarJugador" />
-  </message>
-  <message name="eliminarJugadorResponse">
-    <part name="parameters" element="tns:eliminarJugadorResponse" />
-  </message>
   <message name="modificarJugador">
     <part name="parameters" element="tns:modificarJugador" />
   </message>
   <message name="modificarJugadorResponse">
     <part name="parameters" element="tns:modificarJugadorResponse" />
   </message>
-  <message name="modificarJugadorDesdeAdministrador">
-    <part name="parameters" element="tns:modificarJugadorDesdeAdministrador" />
+  <message name="eliminarJugador">
+    <part name="parameters" element="tns:eliminarJugador" />
   </message>
-  <message name="modificarJugadorDesdeAdministradorResponse">
-    <part name="parameters" element="tns:modificarJugadorDesdeAdministradorResponse" />
+  <message name="eliminarJugadorResponse">
+    <part name="parameters" element="tns:eliminarJugadorResponse" />
   </message>
   <portType name="JugadorWS">
+    <operation name="modificarJugadorDesdeAdministrador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorDesdeAdministradorRequest" message="tns:modificarJugadorDesdeAdministrador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorDesdeAdministradorResponse" message="tns:modificarJugadorDesdeAdministradorResponse" />
+    </operation>
     <operation name="obtenerJugadorPorID">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/obtenerJugadorPorIDRequest" message="tns:obtenerJugadorPorID" />
       <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/obtenerJugadorPorIDResponse" message="tns:obtenerJugadorPorIDResponse" />
@@ -64,21 +68,26 @@
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorRequest" message="tns:insertarJugador" />
       <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/insertarJugadorResponse" message="tns:insertarJugadorResponse" />
     </operation>
-    <operation name="eliminarJugador">
-      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorRequest" message="tns:eliminarJugador" />
-      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorResponse" message="tns:eliminarJugadorResponse" />
-    </operation>
     <operation name="modificarJugador">
       <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorRequest" message="tns:modificarJugador" />
       <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorResponse" message="tns:modificarJugadorResponse" />
     </operation>
-    <operation name="modificarJugadorDesdeAdministrador">
-      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorDesdeAdministradorRequest" message="tns:modificarJugadorDesdeAdministrador" />
-      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/modificarJugadorDesdeAdministradorResponse" message="tns:modificarJugadorDesdeAdministradorResponse" />
+    <operation name="eliminarJugador">
+      <input wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorRequest" message="tns:eliminarJugador" />
+      <output wsam:Action="http://services.pucp.edu.pe/JugadorWS/eliminarJugadorResponse" message="tns:eliminarJugadorResponse" />
     </operation>
   </portType>
   <binding name="JugadorWSPortBinding" type="tns:JugadorWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="modificarJugadorDesdeAdministrador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="obtenerJugadorPorID">
       <soap:operation soapAction="" />
       <input>
@@ -115,15 +124,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarJugador">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="modificarJugador">
       <soap:operation soapAction="" />
       <input>
@@ -133,7 +133,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarJugadorDesdeAdministrador">
+    <operation name="eliminarJugador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
