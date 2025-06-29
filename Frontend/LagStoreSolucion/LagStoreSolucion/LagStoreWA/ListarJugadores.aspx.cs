@@ -47,6 +47,8 @@ namespace LagStoreWA
                     lnkIniciarSesion.Visible = false;
                     liCrearCuenta.Visible = false;
                 }
+
+                
             }
         }
 

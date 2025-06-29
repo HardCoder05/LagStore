@@ -50,12 +50,7 @@
             <i class="fas fa-search"></i>
         </button>
 
-        <!-- Botón de reporte general -->
-        <asp:HyperLink ID="lnkReporteJugadores" runat="server"
-            NavigateUrl="~/ReporteJugador.aspx"
-            CssClass="btn btn-danger ms-2">   <!-- ← aquí el ms-2 -->
-            <i class="fas fa-file-pdf me-1"></i> Reporte jugadores
-        </asp:HyperLink>
+        
     </div>
 
     <!--Label para mensajes -->
@@ -78,12 +73,20 @@
                         CssClass="btn btn-modificar btn-icon me-2" ToolTip="Modificar">
                     <i class="fas fa-edit"></i>
                     </asp:LinkButton>
+
                     <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("idJugador") %>'
                         OnClientClick="return confirm('¿Estás seguro de que deseas eliminar este jugador?');"
                         CssClass="btn btn-eliminar btn-icon" ToolTip="Eliminar">
                     <i class="fas fa-trash-alt"></i>
                     </asp:LinkButton>
                     
+                    <asp:HyperLink ID="lnkReporteJugador" runat="server"
+                        NavigateUrl='<%# Eval("idJugador", "~/ReporteJugador.aspx?idJugador={0}") %>'
+                        Target="_blank"
+                        CssClass="btn btn-danger ms-2"
+                        ToolTip="Ver reporte individual">
+                        <i class="fas fa-file-pdf me-1"></i> Reporte
+                    </asp:HyperLink>
 
                 </ItemTemplate>
             </asp:TemplateField>
