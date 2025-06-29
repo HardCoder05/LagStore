@@ -88,7 +88,34 @@ BEGIN
     WHERE u.activo=1 AND d.idDesarrollador=_idDesarrollador;
 END $$
 
+	
+DELIMITER $$
+DROP PROCEDURE IF EXISTS TA.MODIFICAR_DESARROLLADOR_DESDE_ADMIN$$
+DELIMITER $$
+CREATE PROCEDURE TA.MODIFICAR_DESARROLLADOR_DESDE_ADMIN(
+    IN _idDesarrollador INT,
+    IN _numeroCuenta VARCHAR(200),
+    IN _ingresoTotal DOUBLE,
+    IN _nombre VARCHAR(100),
+    IN _email VARCHAR(100),
+    IN _fechaRegistro DATE,
+    IN _telefono VARCHAR(12),
+    IN _fotoDePerfil BLOB
+)
+BEGIN
+	UPDATE Usuario SET nombre = _nombre, 
+						email=_email, 
+						fechaRegistro=_fechaRegistro, 
+						telefono=_telefono, 
+						fotoDePerfil=_fotoDePerfil
+                        WHERE id=_idDesarrollador;
 
+    UPDATE Desarrollador SET numeroCuenta=_numeroCuenta, 
+							ingresoTotal=_ingresoTotal
+						WHERE idDesarrollador=_idDesarrollador;
+END $$
+
+	
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS TA.INSERTAR_JUGADOR$$
@@ -174,6 +201,32 @@ BEGIN
     INNER JOIN Usuario u ON u.id = j.idJugador
     WHERE j.idJugador=_idJugador;
 END $$
+
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS TA.MODIFICAR_JUGADOR_DESDE_ADMIN$$
+DELIMITER $$
+CREATE PROCEDURE TA.MODIFICAR_JUGADOR_DESDE_ADMIN(
+    IN _idJugador INT,
+    IN _nickname VARCHAR(200),
+    IN _nombre VARCHAR(100),
+    IN _email VARCHAR(100),
+    IN _fechaRegistro DATE,
+    IN _telefono VARCHAR(12),
+    IN _fotoDePerfil BLOB
+)
+BEGIN
+	UPDATE Usuario SET nombre = _nombre, 
+						email=_email, 
+						fechaRegistro=_fechaRegistro, 
+						telefono=_telefono, 
+						fotoDePerfil=_fotoDePerfil
+                        WHERE id=_idJugador ;
+
+    UPDATE Jugador SET nickname=_nickname
+	WHERE idJugador=_idJugador;
+END $$
+
 -- ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 DELIMITER $$
