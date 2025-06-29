@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/CarteraWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="obenerCarteraPorIdUauario">
-    <part name="parameters" element="tns:obenerCarteraPorIdUauario" />
+  <message name="insertarCartera">
+    <part name="parameters" element="tns:insertarCartera" />
   </message>
-  <message name="obenerCarteraPorIdUauarioResponse">
-    <part name="parameters" element="tns:obenerCarteraPorIdUauarioResponse" />
+  <message name="insertarCarteraResponse">
+    <part name="parameters" element="tns:insertarCarteraResponse" />
   </message>
   <message name="obenerCarteraPorId">
     <part name="parameters" element="tns:obenerCarteraPorId" />
@@ -17,19 +17,29 @@
   <message name="obenerCarteraPorIdResponse">
     <part name="parameters" element="tns:obenerCarteraPorIdResponse" />
   </message>
+  <message name="obenerCarteraPorIdUauario">
+    <part name="parameters" element="tns:obenerCarteraPorIdUauario" />
+  </message>
+  <message name="obenerCarteraPorIdUauarioResponse">
+    <part name="parameters" element="tns:obenerCarteraPorIdUauarioResponse" />
+  </message>
   <portType name="CarteraWS">
-    <operation name="obenerCarteraPorIdUauario">
-      <input wsam:Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdUauarioRequest" message="tns:obenerCarteraPorIdUauario" />
-      <output wsam:Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdUauarioResponse" message="tns:obenerCarteraPorIdUauarioResponse" />
+    <operation name="insertarCartera">
+      <input wsam:Action="http://services.pucp.edu.pe/CarteraWS/insertarCarteraRequest" message="tns:insertarCartera" />
+      <output wsam:Action="http://services.pucp.edu.pe/CarteraWS/insertarCarteraResponse" message="tns:insertarCarteraResponse" />
     </operation>
     <operation name="obenerCarteraPorId">
       <input wsam:Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdRequest" message="tns:obenerCarteraPorId" />
       <output wsam:Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdResponse" message="tns:obenerCarteraPorIdResponse" />
     </operation>
+    <operation name="obenerCarteraPorIdUauario">
+      <input wsam:Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdUauarioRequest" message="tns:obenerCarteraPorIdUauario" />
+      <output wsam:Action="http://services.pucp.edu.pe/CarteraWS/obenerCarteraPorIdUauarioResponse" message="tns:obenerCarteraPorIdUauarioResponse" />
+    </operation>
   </portType>
   <binding name="CarteraWSPortBinding" type="tns:CarteraWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="obenerCarteraPorIdUauario">
+    <operation name="insertarCartera">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -39,6 +49,15 @@
       </output>
     </operation>
     <operation name="obenerCarteraPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obenerCarteraPorIdUauario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

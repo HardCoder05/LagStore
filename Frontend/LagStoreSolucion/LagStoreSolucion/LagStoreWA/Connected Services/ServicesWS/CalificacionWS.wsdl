@@ -11,11 +11,11 @@
   <message name="obtenerCalificacionPorIdResponse">
     <part name="parameters" element="tns:obtenerCalificacionPorIdResponse" />
   </message>
-  <message name="eliminarCalificacion">
-    <part name="parameters" element="tns:eliminarCalificacion" />
+  <message name="insertarCalificacion">
+    <part name="parameters" element="tns:insertarCalificacion" />
   </message>
-  <message name="eliminarCalificacionResponse">
-    <part name="parameters" element="tns:eliminarCalificacionResponse" />
+  <message name="insertarCalificacionResponse">
+    <part name="parameters" element="tns:insertarCalificacionResponse" />
   </message>
   <message name="modificarCalificacion">
     <part name="parameters" element="tns:modificarCalificacion" />
@@ -23,28 +23,28 @@
   <message name="modificarCalificacionResponse">
     <part name="parameters" element="tns:modificarCalificacionResponse" />
   </message>
-  <message name="insertarCalificacion">
-    <part name="parameters" element="tns:insertarCalificacion" />
+  <message name="eliminarCalificacion">
+    <part name="parameters" element="tns:eliminarCalificacion" />
   </message>
-  <message name="insertarCalificacionResponse">
-    <part name="parameters" element="tns:insertarCalificacionResponse" />
+  <message name="eliminarCalificacionResponse">
+    <part name="parameters" element="tns:eliminarCalificacionResponse" />
   </message>
   <portType name="CalificacionWS">
     <operation name="obtenerCalificacionPorId">
       <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/obtenerCalificacionPorIdRequest" message="tns:obtenerCalificacionPorId" />
       <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/obtenerCalificacionPorIdResponse" message="tns:obtenerCalificacionPorIdResponse" />
     </operation>
-    <operation name="eliminarCalificacion">
-      <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/eliminarCalificacionRequest" message="tns:eliminarCalificacion" />
-      <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/eliminarCalificacionResponse" message="tns:eliminarCalificacionResponse" />
+    <operation name="insertarCalificacion">
+      <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/insertarCalificacionRequest" message="tns:insertarCalificacion" />
+      <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/insertarCalificacionResponse" message="tns:insertarCalificacionResponse" />
     </operation>
     <operation name="modificarCalificacion">
       <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionRequest" message="tns:modificarCalificacion" />
       <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/modificarCalificacionResponse" message="tns:modificarCalificacionResponse" />
     </operation>
-    <operation name="insertarCalificacion">
-      <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/insertarCalificacionRequest" message="tns:insertarCalificacion" />
-      <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/insertarCalificacionResponse" message="tns:insertarCalificacionResponse" />
+    <operation name="eliminarCalificacion">
+      <input wsam:Action="http://services.pucp.edu.pe/CalificacionWS/eliminarCalificacionRequest" message="tns:eliminarCalificacion" />
+      <output wsam:Action="http://services.pucp.edu.pe/CalificacionWS/eliminarCalificacionResponse" message="tns:eliminarCalificacionResponse" />
     </operation>
   </portType>
   <binding name="CalificacionWSPortBinding" type="tns:CalificacionWS">
@@ -58,7 +58,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarCalificacion">
+    <operation name="insertarCalificacion">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarCalificacion">
+    <operation name="eliminarCalificacion">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

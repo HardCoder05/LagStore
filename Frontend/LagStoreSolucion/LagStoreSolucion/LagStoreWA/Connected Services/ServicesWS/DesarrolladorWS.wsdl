@@ -11,23 +11,17 @@
   <message name="listarDesarrolladoresPorNombreResponse">
     <part name="parameters" element="tns:listarDesarrolladoresPorNombreResponse" />
   </message>
-  <message name="modificarDesarrolladorDesdeAdministrador">
-    <part name="parameters" element="tns:modificarDesarrolladorDesdeAdministrador" />
-  </message>
-  <message name="modificarDesarrolladorDesdeAdministradorResponse">
-    <part name="parameters" element="tns:modificarDesarrolladorDesdeAdministradorResponse" />
-  </message>
   <message name="obtenerDesarrolladorPorID">
     <part name="parameters" element="tns:obtenerDesarrolladorPorID" />
   </message>
   <message name="obtenerDesarrolladorPorIDResponse">
     <part name="parameters" element="tns:obtenerDesarrolladorPorIDResponse" />
   </message>
-  <message name="listarTodosDesarrolladores">
-    <part name="parameters" element="tns:listarTodosDesarrolladores" />
+  <message name="modificarDesarrollador">
+    <part name="parameters" element="tns:modificarDesarrollador" />
   </message>
-  <message name="listarTodosDesarrolladoresResponse">
-    <part name="parameters" element="tns:listarTodosDesarrolladoresResponse" />
+  <message name="modificarDesarrolladorResponse">
+    <part name="parameters" element="tns:modificarDesarrolladorResponse" />
   </message>
   <message name="eliminarDesarrollador">
     <part name="parameters" element="tns:eliminarDesarrollador" />
@@ -35,11 +29,17 @@
   <message name="eliminarDesarrolladorResponse">
     <part name="parameters" element="tns:eliminarDesarrolladorResponse" />
   </message>
-  <message name="modificarDesarrollador">
-    <part name="parameters" element="tns:modificarDesarrollador" />
+  <message name="listarTodosDesarrolladores">
+    <part name="parameters" element="tns:listarTodosDesarrolladores" />
   </message>
-  <message name="modificarDesarrolladorResponse">
-    <part name="parameters" element="tns:modificarDesarrolladorResponse" />
+  <message name="listarTodosDesarrolladoresResponse">
+    <part name="parameters" element="tns:listarTodosDesarrolladoresResponse" />
+  </message>
+  <message name="modificarDesarrolladorDesdeAdministrador">
+    <part name="parameters" element="tns:modificarDesarrolladorDesdeAdministrador" />
+  </message>
+  <message name="modificarDesarrolladorDesdeAdministradorResponse">
+    <part name="parameters" element="tns:modificarDesarrolladorDesdeAdministradorResponse" />
   </message>
   <message name="insertarDesarrollador">
     <part name="parameters" element="tns:insertarDesarrollador" />
@@ -52,25 +52,25 @@
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarDesarrolladoresPorNombreRequest" message="tns:listarDesarrolladoresPorNombre" />
       <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarDesarrolladoresPorNombreResponse" message="tns:listarDesarrolladoresPorNombreResponse" />
     </operation>
-    <operation name="modificarDesarrolladorDesdeAdministrador">
-      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorDesdeAdministradorRequest" message="tns:modificarDesarrolladorDesdeAdministrador" />
-      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorDesdeAdministradorResponse" message="tns:modificarDesarrolladorDesdeAdministradorResponse" />
-    </operation>
     <operation name="obtenerDesarrolladorPorID">
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDRequest" message="tns:obtenerDesarrolladorPorID" />
       <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/obtenerDesarrolladorPorIDResponse" message="tns:obtenerDesarrolladorPorIDResponse" />
     </operation>
-    <operation name="listarTodosDesarrolladores">
-      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresRequest" message="tns:listarTodosDesarrolladores" />
-      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresResponse" message="tns:listarTodosDesarrolladoresResponse" />
+    <operation name="modificarDesarrollador">
+      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorRequest" message="tns:modificarDesarrollador" />
+      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorResponse" message="tns:modificarDesarrolladorResponse" />
     </operation>
     <operation name="eliminarDesarrollador">
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/eliminarDesarrolladorRequest" message="tns:eliminarDesarrollador" />
       <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/eliminarDesarrolladorResponse" message="tns:eliminarDesarrolladorResponse" />
     </operation>
-    <operation name="modificarDesarrollador">
-      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorRequest" message="tns:modificarDesarrollador" />
-      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorResponse" message="tns:modificarDesarrolladorResponse" />
+    <operation name="listarTodosDesarrolladores">
+      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresRequest" message="tns:listarTodosDesarrolladores" />
+      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/listarTodosDesarrolladoresResponse" message="tns:listarTodosDesarrolladoresResponse" />
+    </operation>
+    <operation name="modificarDesarrolladorDesdeAdministrador">
+      <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorDesdeAdministradorRequest" message="tns:modificarDesarrolladorDesdeAdministrador" />
+      <output wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/modificarDesarrolladorDesdeAdministradorResponse" message="tns:modificarDesarrolladorDesdeAdministradorResponse" />
     </operation>
     <operation name="insertarDesarrollador">
       <input wsam:Action="http://services.pucp.edu.pe/DesarrolladorWS/insertarDesarrolladorRequest" message="tns:insertarDesarrollador" />
@@ -88,15 +88,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarDesarrolladorDesdeAdministrador">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="obtenerDesarrolladorPorID">
       <soap:operation soapAction="" />
       <input>
@@ -106,7 +97,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarTodosDesarrolladores">
+    <operation name="modificarDesarrollador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -124,7 +115,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarDesarrollador">
+    <operation name="listarTodosDesarrolladores">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarDesarrolladorDesdeAdministrador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
