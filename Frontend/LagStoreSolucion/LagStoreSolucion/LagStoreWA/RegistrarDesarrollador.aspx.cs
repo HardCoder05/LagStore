@@ -146,7 +146,7 @@ namespace LagStoreWA
 
             try
             {
-                boDesarrollador.modificarDesarrollador(desarrolladorAnterior);
+                boDesarrollador.modificarDesarrolladorDesdeAdministrador(desarrolladorAnterior);
                 Response.Redirect("ListarDesarrolladores.aspx");
             }
             catch (Exception ex)

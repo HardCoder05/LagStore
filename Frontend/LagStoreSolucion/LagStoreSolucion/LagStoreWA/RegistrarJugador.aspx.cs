@@ -69,7 +69,7 @@ namespace LagStoreWA
             txtNombre.Text = jugador.nombre;
             txtEmail.Text = jugador.email;
             txtTelefono.Text = jugador.telefono;
-            //txtContrasena.Text = jugador.contrasena;
+            txtContrasena.Text = jugador.contrasena;
             txtFotoPerfil.Text = jugador.fotoDePerfil;
             
         }
@@ -112,9 +112,9 @@ namespace LagStoreWA
             }
 
             if (!string.IsNullOrWhiteSpace(txtFotoPerfil.Text) &&
-                !System.Text.RegularExpressions.Regex.IsMatch(txtFotoPerfil.Text, @"^https?:\/\/.*\.(jpg|jpeg|png|gif)$"))
+                !System.Text.RegularExpressions.Regex.IsMatch(txtFotoPerfil.Text, @"^https?:\/\/[\w\-\.]+(\.[\w\-]+)+[/#?]?.*$"))
             {
-                lblMensaje.Text = "La URL de la foto debe ser válida y terminar en .jpg, .png, etc.";
+                lblMensaje.Text = "La URL ingresada no es válida.";
                 return;
             }
 
@@ -130,15 +130,13 @@ namespace LagStoreWA
             jugadorAnterior.nombre = txtNombre.Text.Trim();
             jugadorAnterior.email = txtEmail.Text.Trim();
             jugadorAnterior.telefono = txtTelefono.Text.Trim();
-
-            //jugadorAnterior.contrasena = txtContrasena.Text.Trim();
-            
+            jugadorAnterior.contrasena = txtContrasena.Text.Trim();
             jugadorAnterior.fotoDePerfil = txtFotoPerfil.Text.Trim();
             
 
             try
             {
-                boJugador.modificarJugador(jugadorAnterior);
+                boJugador.modificarJugadorDesdeAdministrador(jugadorAnterior);
                 Response.Redirect("ListarJugadores.aspx");
             }
             catch (Exception ex)

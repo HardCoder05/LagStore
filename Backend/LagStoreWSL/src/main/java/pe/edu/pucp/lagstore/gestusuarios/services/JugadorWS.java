@@ -69,5 +69,10 @@ public class JugadorWS {
         return jugadores;
     }
     
+    @WebMethod(operationName = "modificarJugadorDesdeAdministrador")
+    public int modificarJugadorDesdeAdministrador(@WebParam(name = "jugador") Jugador jugador) {
+        boJugador=new JugadorBO();
+        return boJugador.modificarJugadorDesdeAdmin(jugador);
+    }
     
 }

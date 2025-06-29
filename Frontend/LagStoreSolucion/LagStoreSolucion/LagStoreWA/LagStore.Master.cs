@@ -38,6 +38,7 @@ namespace LagStoreWA
 
             if (Session["Desarrollador"] != null)
             {
+                liBiblioteca.Visible = false;
                 liOrdenaJuego.Visible = true;
                 liSubirJuego.Visible = true;
             }

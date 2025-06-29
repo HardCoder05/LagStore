@@ -9,6 +9,8 @@
   <xs:element name="listarTodosJugadores" type="tns:listarTodosJugadores" />
   <xs:element name="listarTodosJugadoresResponse" type="tns:listarTodosJugadoresResponse" />
   <xs:element name="modificarJugador" type="tns:modificarJugador" />
+  <xs:element name="modificarJugadorDesdeAdministrador" type="tns:modificarJugadorDesdeAdministrador" />
+  <xs:element name="modificarJugadorDesdeAdministradorResponse" type="tns:modificarJugadorDesdeAdministradorResponse" />
   <xs:element name="modificarJugadorResponse" type="tns:modificarJugadorResponse" />
   <xs:element name="obtenerJugadorPorID" type="tns:obtenerJugadorPorID" />
   <xs:element name="obtenerJugadorPorIDResponse" type="tns:obtenerJugadorPorIDResponse" />
@@ -131,16 +133,6 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarJugador">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="jugador" type="tns:jugador" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="insertarJugadorResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="obtenerJugadorPorID">
     <xs:sequence>
       <xs:element name="idJugador" type="xs:int" />
@@ -149,6 +141,16 @@
   <xs:complexType name="obtenerJugadorPorIDResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:jugador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarJugador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jugador" type="tns:jugador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarJugadorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarTodosJugadores">
@@ -175,6 +177,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarJugadorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarJugadorDesdeAdministrador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jugador" type="tns:jugador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarJugadorDesdeAdministradorResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>

@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/JuegoAdquiridoWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
+  <message name="obtenerJuegoAdquiridoPorBibliotecaYJuego">
+    <part name="parameters" element="tns:obtenerJuegoAdquiridoPorBibliotecaYJuego" />
+  </message>
+  <message name="obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse">
+    <part name="parameters" element="tns:obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse" />
+  </message>
   <message name="eliminarJuegoAdquiridoPorBibliotecaYJuego">
     <part name="parameters" element="tns:eliminarJuegoAdquiridoPorBibliotecaYJuego" />
   </message>
@@ -17,11 +23,17 @@
   <message name="listarJuegosAdquiridosPorBibliotecaResponse">
     <part name="parameters" element="tns:listarJuegosAdquiridosPorBibliotecaResponse" />
   </message>
-  <message name="obtenerJuegoAdquiridoPorBibliotecaYJuego">
-    <part name="parameters" element="tns:obtenerJuegoAdquiridoPorBibliotecaYJuego" />
+  <message name="modificarJuegoAdquirido">
+    <part name="parameters" element="tns:modificarJuegoAdquirido" />
   </message>
-  <message name="obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse">
-    <part name="parameters" element="tns:obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse" />
+  <message name="modificarJuegoAdquiridoResponse">
+    <part name="parameters" element="tns:modificarJuegoAdquiridoResponse" />
+  </message>
+  <message name="obtenerJuegoAdquiridoPorId">
+    <part name="parameters" element="tns:obtenerJuegoAdquiridoPorId" />
+  </message>
+  <message name="obtenerJuegoAdquiridoPorIdResponse">
+    <part name="parameters" element="tns:obtenerJuegoAdquiridoPorIdResponse" />
   </message>
   <message name="insertarJuegoAdquirido">
     <part name="parameters" element="tns:insertarJuegoAdquirido" />
@@ -35,19 +47,11 @@
   <message name="eliminarJuegoAdquiridoResponse">
     <part name="parameters" element="tns:eliminarJuegoAdquiridoResponse" />
   </message>
-  <message name="obtenerJuegoAdquiridoPorId">
-    <part name="parameters" element="tns:obtenerJuegoAdquiridoPorId" />
-  </message>
-  <message name="obtenerJuegoAdquiridoPorIdResponse">
-    <part name="parameters" element="tns:obtenerJuegoAdquiridoPorIdResponse" />
-  </message>
-  <message name="modificarJuegoAdquirido">
-    <part name="parameters" element="tns:modificarJuegoAdquirido" />
-  </message>
-  <message name="modificarJuegoAdquiridoResponse">
-    <part name="parameters" element="tns:modificarJuegoAdquiridoResponse" />
-  </message>
   <portType name="JuegoAdquiridoWS">
+    <operation name="obtenerJuegoAdquiridoPorBibliotecaYJuego">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorBibliotecaYJuegoRequest" message="tns:obtenerJuegoAdquiridoPorBibliotecaYJuego" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse" message="tns:obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse" />
+    </operation>
     <operation name="eliminarJuegoAdquiridoPorBibliotecaYJuego">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoPorBibliotecaYJuegoRequest" message="tns:eliminarJuegoAdquiridoPorBibliotecaYJuego" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse" message="tns:eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse" />
@@ -56,9 +60,13 @@
       <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/listarJuegosAdquiridosPorBibliotecaRequest" message="tns:listarJuegosAdquiridosPorBiblioteca" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/listarJuegosAdquiridosPorBibliotecaResponse" message="tns:listarJuegosAdquiridosPorBibliotecaResponse" />
     </operation>
-    <operation name="obtenerJuegoAdquiridoPorBibliotecaYJuego">
-      <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorBibliotecaYJuegoRequest" message="tns:obtenerJuegoAdquiridoPorBibliotecaYJuego" />
-      <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse" message="tns:obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse" />
+    <operation name="modificarJuegoAdquirido">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoRequest" message="tns:modificarJuegoAdquirido" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoResponse" message="tns:modificarJuegoAdquiridoResponse" />
+    </operation>
+    <operation name="obtenerJuegoAdquiridoPorId">
+      <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdRequest" message="tns:obtenerJuegoAdquiridoPorId" />
+      <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdResponse" message="tns:obtenerJuegoAdquiridoPorIdResponse" />
     </operation>
     <operation name="insertarJuegoAdquirido">
       <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/insertarJuegoAdquiridoRequest" message="tns:insertarJuegoAdquirido" />
@@ -68,17 +76,18 @@
       <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoRequest" message="tns:eliminarJuegoAdquirido" />
       <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/eliminarJuegoAdquiridoResponse" message="tns:eliminarJuegoAdquiridoResponse" />
     </operation>
-    <operation name="obtenerJuegoAdquiridoPorId">
-      <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdRequest" message="tns:obtenerJuegoAdquiridoPorId" />
-      <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/obtenerJuegoAdquiridoPorIdResponse" message="tns:obtenerJuegoAdquiridoPorIdResponse" />
-    </operation>
-    <operation name="modificarJuegoAdquirido">
-      <input wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoRequest" message="tns:modificarJuegoAdquirido" />
-      <output wsam:Action="http://services.pucp.edu.pe/JuegoAdquiridoWS/modificarJuegoAdquiridoResponse" message="tns:modificarJuegoAdquiridoResponse" />
-    </operation>
   </portType>
   <binding name="JuegoAdquiridoWSPortBinding" type="tns:JuegoAdquiridoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="obtenerJuegoAdquiridoPorBibliotecaYJuego">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="eliminarJuegoAdquiridoPorBibliotecaYJuego">
       <soap:operation soapAction="" />
       <input>
@@ -97,7 +106,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="obtenerJuegoAdquiridoPorBibliotecaYJuego">
+    <operation name="modificarJuegoAdquirido">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerJuegoAdquiridoPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -116,24 +134,6 @@
       </output>
     </operation>
     <operation name="eliminarJuegoAdquirido">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="obtenerJuegoAdquiridoPorId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarJuegoAdquirido">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

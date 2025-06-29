@@ -164,5 +164,21 @@ public class DesarrolladorMySQL implements DesarrolladorDAO{
         }
         return desarrolladores;
     }
+
+    @Override
+    public int modificarDesarrolladorDesdeAdministrador(Desarrollador desarrollador) {
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1,desarrollador.getIdDesarrollador());
+        parametrosEntrada.put(2, desarrollador.getNumeroCuenta());
+        parametrosEntrada.put(3, desarrollador.getIngresoTotal());
+        parametrosEntrada.put(4, desarrollador.getNombre());
+        parametrosEntrada.put(5, desarrollador.getEmail());
+        parametrosEntrada.put(6, desarrollador.getFechaRegistro());
+        parametrosEntrada.put(7, desarrollador.getTelefono());
+        parametrosEntrada.put(8, desarrollador.getFotoDePerfil());
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_DESARROLLADOR_DESDE_ADMIN", parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion del desarrollador desde el administrador");
+        return resultado;
+    }
     
 }

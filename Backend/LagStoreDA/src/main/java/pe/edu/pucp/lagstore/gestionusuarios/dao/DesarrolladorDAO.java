@@ -5,4 +5,5 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Desarrollador;
 
 public interface DesarrolladorDAO extends ICrud<Desarrollador>{
     ArrayList<Desarrollador> listarPorNombre(String Nombre);
+    public int modificarDesarrolladorDesdeAdministrador(Desarrollador desarrollador);
 }

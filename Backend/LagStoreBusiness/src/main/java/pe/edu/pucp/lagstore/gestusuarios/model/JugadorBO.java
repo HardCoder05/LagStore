@@ -42,4 +42,8 @@ public class JugadorBO {
     public ArrayList<Jugador> listarJugadoresPorNombreONickname(String Nombre){
         return daoJugador.listarPorNombreONickname(Nombre);
     }
+    
+    public int modificarJugadorDesdeAdmin(Jugador jugador){
+        return daoJugador.modificarJugadorDesdeAdministrador(jugador);
+    }
 }

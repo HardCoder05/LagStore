@@ -22,7 +22,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 class="mb-4">⭐ Juegos con Mayor Calificación</h2>
+    <h2 class="mb-4 text-center">⭐Los 10 primeros juegos con mayor calificación promedio</h2>
 
     <asp:GridView ID="gvMayorCalificacion" runat="server" AutoGenerateColumns="false"
         CssClass="table table-hover text-center table-bordered" EmptyDataText="No hay datos disponibles.">

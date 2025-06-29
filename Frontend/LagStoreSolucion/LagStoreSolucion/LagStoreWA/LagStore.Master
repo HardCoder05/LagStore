@@ -36,7 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="CatalogoJuegos.aspx"><i class="fas fa-cube me-1"></i>Tienda</a>
                         </li>
-                        <li class="nav-item">
+                        <li id="liBiblioteca" class="nav-item" runat="server">
                             <a class="nav-link text-white" href="Biblioteca.aspx"><i class="fas fa-shopping-basket me-1"></i>Biblioteca</a>
                         </li>
                         <li id="liOrdenaJuego" class="nav-item" runat="server" visible="false">
