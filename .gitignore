@@ -24,3 +24,6 @@ Thumbs.db
 # Otros directorios de configuración
 bin/
 obj/
+
+
+**/Connected Services/

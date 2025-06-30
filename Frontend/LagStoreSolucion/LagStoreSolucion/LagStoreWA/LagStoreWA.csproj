@@ -418,6 +418,10 @@
     <None Include="Connected Services\ServicesWS\JuegoWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServicesWS\ReporteDesarrolladorWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\ReporteDesarrolladorWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServicesWS\ReporteJugadorWS.wsdl" />
     <None Include="Connected Services\ServicesWS\ReporteJugadorWS.xsd">
       <SubType>Designer</SubType>

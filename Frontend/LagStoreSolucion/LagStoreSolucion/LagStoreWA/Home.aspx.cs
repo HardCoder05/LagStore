@@ -25,6 +25,15 @@ namespace LagStoreWA
 
                 CargarJuegoDestacado(1);
                 CargarJuegos();
+                btnAgregarCarrito.Visible = !EsDesarrollador;
+            }
+        }
+
+        public bool EsDesarrollador
+        {
+            get
+            {
+                return Session["Desarrollador"] != null;
             }
         }
 
@@ -106,6 +115,18 @@ namespace LagStoreWA
                 else
                 {
                     MostrarMensaje("No se pudo obtener el juego", "alert-danger");
+                }
+            }
+        }
+
+        protected void rptJuegosDestacados_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                var btnAgregar = e.Item.FindControl("btnAgregarCarrito") as Button;
+                if (btnAgregar != null && EsDesarrollador)
+                {
+                    btnAgregar.Visible = false;
                 }
             }
         }

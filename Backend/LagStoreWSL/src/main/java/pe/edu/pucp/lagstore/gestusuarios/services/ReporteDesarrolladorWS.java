@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/WebServices/WebService.java to edit this template
  */
+
 package pe.edu.pucp.lagstore.gestusuarios.services;
 
 import jakarta.jws.WebService;
-import jakarta.jws.WebMethod;
+
 import jakarta.jws.WebParam;
 import java.awt.Image;
 import java.net.URL;
@@ -19,15 +20,12 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import pe.edu.pucp.lagstore.config.DBManager;
 
-/**
- *
- * @author W10
- */
-@WebService(serviceName = "ReporteDesarrolladorWS", targetNamespace = "http://services.pucp.edu.pe")
 
+@WebService(serviceName = "ReporteDesarrolladorWS", 
+        targetNamespace = "http://services.pucp.edu.pe")
 public class ReporteDesarrolladorWS {
 
-   public byte[] generarReporteEmpleado(@WebParam(name = "nombre") String nombre,@WebParam(name = "idDesarrollador") int idDesarrollador){
+   public byte[] generarReporteDesarrollador(@WebParam(name = "nombre") String nombre,@WebParam(name = "idDesarrollador") int idDesarrollador){
        byte[]reporte=null;
         try{
             //Referenciamos el archivo Jasper

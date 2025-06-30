@@ -183,7 +183,7 @@
         </div>
 
         <div class="row">
-            <asp:Repeater ID="rptJuegosDestacados" runat="server">
+            <asp:Repeater ID="rptJuegosDestacados" runat="server" OnItemDataBound="rptJuegosDestacados_ItemDataBound">
                 <ItemTemplate>
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card game-card">

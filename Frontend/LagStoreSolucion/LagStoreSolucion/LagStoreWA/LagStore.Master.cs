@@ -40,6 +40,9 @@ namespace LagStoreWA
             {
                 liOrdenaJuego.Visible = true;
                 liSubirJuego.Visible = true;
+                liCarrito.Visible = false;
+                liTienda.Visible = false;
+                liBiblioteca.Visible = false;
             }
         }
 
