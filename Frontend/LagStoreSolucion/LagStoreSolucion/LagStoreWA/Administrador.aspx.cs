@@ -34,6 +34,7 @@ namespace LagStoreWA
                 var liBiblioteca = this.Master.FindControl("liBiblioteca") as HtmlGenericControl;
                 var liCarrito = this.Master.FindControl("liCarrito") as HtmlGenericControl;
                 
+                
                 //var liReporteUsuarios = this.Master.FindControl("liReporteUsuarios") as HtmlGenericControl;
                 if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
                 {
@@ -56,7 +57,7 @@ namespace LagStoreWA
             }
           
         }
-        
+
         private void CargarJuegoDestacado(int idJuego)
         {
             try

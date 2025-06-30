@@ -11,16 +11,20 @@ namespace LagStoreWA
     public partial class ReporteJugador : System.Web.UI.Page
     {
         private ReporteJugadorWSClient boReporte;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //boReporte = new ReporteJugadorWSClient();
-            //byte[] reporte = boReporte.generarReporteEmpleado("Luis");
+            boReporte = new ReporteJugadorWSClient();
+            //jugador jugador = (jugador)Session["Jugador"];
+            //string nombre = jugador.nombre;
+            //byte[] reporte = boReporte.generarReporteEmpleado(nombre);
+            byte[] reporte = boReporte.generarReporteEmpleado("Luis");
             //generar PDF
-            //Response.Clear();
-            //Response.ContentType = "application/pdf";
-            //Response.AddHeader("Content_Disposition", "inline;filename=ReporteJugador.pdf");
-            //Response.BinaryWrite(reporte);
-            //Response.End();
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("Content_Disposition", "inline;filename=ReporteJugador.pdf");
+            Response.BinaryWrite(reporte);
+            Response.End();
         }
     }
 }

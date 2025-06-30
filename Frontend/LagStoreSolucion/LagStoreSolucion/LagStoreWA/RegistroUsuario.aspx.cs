@@ -13,12 +13,18 @@ namespace LagStoreWA
         private JugadorWSClient jugadorWSClient;
         private DesarrolladorWSClient desarrolladorWSClient;
         private AdministradorWSClient administradorWSCLient;
+        private BibliotecaWSClient bibliotecaWSClient;
+        private CarroCompraWSClient carroCompraWSClient;
+        private CarteraWSClient carteraWSClient;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             jugadorWSClient = new JugadorWSClient();
             desarrolladorWSClient = new DesarrolladorWSClient();
             administradorWSCLient = new AdministradorWSClient();
+            bibliotecaWSClient = new BibliotecaWSClient();
+            carroCompraWSClient = new CarroCompraWSClient();
+            carteraWSClient = new CarteraWSClient();
         }
 
         protected void ddlTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
@@ -132,6 +138,42 @@ namespace LagStoreWA
                 if (resultado > 0)
                 {
                     MostrarMensajeExito("Registro exitoso del jugador.");
+
+                    //jugador jugadorRef = new jugador { idUsuario = jugadorNuevo.idJugador };
+
+                    Session["JugadorNuevo"] = jugadorNuevo; // Guardar el jugador en la sesión
+
+                    // Crear Biblioteca
+                    biblioteca nuevaBiblioteca = new biblioteca
+                    {
+                        usuario = jugadorNuevo,
+                        ingresoTotal = 0,
+                        cantidadDeJuegos = 0,
+                        activo = 1
+                    };
+
+                    bibliotecaWSClient.insertarBiblioteca(nuevaBiblioteca);
+
+                    // Crear Carro de Compra
+                    carroCompra nuevoCarro = new carroCompra
+                    {
+                        jugador = jugadorNuevo,
+                        totalEstimado = 0,
+                        activo = 1
+                    };
+
+                    carroCompraWSClient.insertarCarroCompra(nuevoCarro);
+
+                    // Crear Cartera con monto inicial
+                    cartera nuevaCartera = new cartera
+                    {
+                        jugador = jugadorNuevo,
+                        saldoActual = 100.0,
+                        activo = 1
+                    };
+
+                    carteraWSClient.insertarCartera(nuevaCartera);
+
                     LimpiarFormulario();
                 }
                 else

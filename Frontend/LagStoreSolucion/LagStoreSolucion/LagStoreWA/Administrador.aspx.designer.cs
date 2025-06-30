@@ -60,15 +60,6 @@ namespace LagStoreWA
         protected global::System.Web.UI.WebControls.Label lblPrecioDestacado;
 
         /// <summary>
-        /// Control btnAgregarDestacado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarDestacado;
-
-        /// <summary>
         /// Control btnVerDetallesDestacado.
         /// </summary>
         /// <remarks>

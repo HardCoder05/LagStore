@@ -100,16 +100,30 @@ namespace LagStoreWA
                 return;
             }
 
-            if (ddlGenero.SelectedIndex == 0)
+            if(string.IsNullOrWhiteSpace(ddlGenero.SelectedValue))
             {
                 lblMensaje.Text = "Debe seleccionar un género.";
                 lblMensaje.CssClass = "text-danger";
                 return;
             }
 
-            if (ddlModeloNegocio.SelectedIndex == 0)
+            if (string.IsNullOrWhiteSpace(ddlModeloNegocio.SelectedValue))
             {
                 lblMensaje.Text = "Debe seleccionar un modelo de negocio.";
+                lblMensaje.CssClass = "text-danger";
+                return;
+            }
+
+            if (ddlModeloNegocio.SelectedValue == ModeloNegocio.Free_to_play.ToString() && double.Parse(txtPrecio.Text) > 0)
+            {
+                lblMensaje.Text = "Para juegos Free to Play, el precio debe ser 0.";
+                lblMensaje.CssClass = "text-danger";
+                return;
+            }
+
+            if (ddlModeloNegocio.SelectedValue != ModeloNegocio.Free_to_play.ToString() && double.Parse(txtPrecio.Text) <= 0)
+            {
+                lblMensaje.Text = "Para juegos que no son Free to Play, el precio debe ser mayor a 0.";
                 lblMensaje.CssClass = "text-danger";
                 return;
             }
@@ -143,7 +157,7 @@ namespace LagStoreWA
                 int id = juegoWS.insertarJuego(nuevoJuego);
                 if (id > 0)
                 {
-                    lblMensaje.Text = "Juego registrado con éxito. ID: " + id;
+                    lblMensaje.Text = "Juego registrado con éxito.";
                     lblMensaje.CssClass = "text-success";
                     LimpiarFormulario();
                 }
