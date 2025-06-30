@@ -70,60 +70,23 @@
     <Content Include="Biblioteca.aspx" />
     <Content Include="CarroCompra.aspx" />
     <Content Include="CatalogoJuegos.aspx" />
-    <None Include="Connected Services\ServicesWS\AdministradorWS.wsdl" />
-    <None Include="Connected Services\ServicesWS\AdministradorWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServicesWS\BibliotecaWS.wsdl" />
-    <None Include="Connected Services\ServicesWS\BibliotecaWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServicesWS\CalificacionWS.wsdl" />
-    <None Include="Connected Services\ServicesWS\CalificacionWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServicesWS\CarroCompraWS.wsdl" />
-    <None Include="Connected Services\ServicesWS\CarroCompraWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServicesWS\CarteraWS.wsdl" />
-    <None Include="Connected Services\ServicesWS\CarteraWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServicesWS\DesarrolladorWS.wsdl" />
-    <None Include="Connected Services\ServicesWS\DesarrolladorWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServicesWS\file.disco" />
     <None Include="Connected Services\ServicesWS\configuration91.svcinfo" />
     <None Include="Connected Services\ServicesWS\configuration.svcinfo" />
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarJuegoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.juego.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosConFiltroResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJuegoPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.verificaUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\ServicesWS\JuegoAdquiridoWS.wsdl" />
-    <None Include="Connected Services\ServicesWS\JuegoAdquiridoWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServicesWS\JugadorWS.wsdl" />
-    <None Include="Connected Services\ServicesWS\JugadorWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.administrador.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.biblioteca.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.calificacion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.carroCompra.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.cartera.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.desarrollador.datasource">
@@ -132,22 +95,106 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarAdministradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarBibliotecaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarCalificacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarCarroCompraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarDesarrolladorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJugadorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarResenaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.generarReporteDesarrolladorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.generarReporteEmpleadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarAdministradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarBibliotecaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarCalificacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarCarroCompraResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarDesarrolladorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarJuegoAdquiridoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarJuegoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarJugadorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarRecargaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarResenaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.juego.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.juegoAdquirido.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.jugador.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarDesarrolladoresPorNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosConFiltroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosConMayorCalificacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosPorDesarrolladorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorJuegoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorNombreONicknameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarRecargasAsociadasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarTodosAdministradoresResponse.datasource">
@@ -162,168 +209,93 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarAdministradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarDesarrolladorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJugadorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerAdministradorPorIDResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJugadorPorIDResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.cartera.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarRecargaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarRecargasAsociadasResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obenerCarteraPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.recarga.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarCarroCompraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarCarroCompraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarCarroCompraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.biblioteca.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.calificacion.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarBibliotecaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarCalificacionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoAdquiridoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarResenaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarBibliotecaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarCalificacionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarJuegoAdquiridoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.insertarResenaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.juegoAdquirido.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarBibliotecaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarCalificacionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarCarroCompraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarDesarrolladorDesdeAdministradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarDesarrolladorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJuegoAdquiridoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJuegoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJugadorDesdeAdministradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJugadorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarResenaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obenerCarteraPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obenerCarteraPorIdUauarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerAdministradorPorIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerBibliotecaPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerCalificacionPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerResenaPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.resena.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerRolResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.rol.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosAdquiridosPorBibliotecaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerBibliotecaPorUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerCalificacionPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerDesarrolladorPorIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorJuegoResponse.datasource" />
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.carroCompra.datasource">
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJuegoPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJugadorPorIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerRecargaPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerResenaPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerRolResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse1.datasource">
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.recarga.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoResponse1.datasource">
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.resena.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarDesarrolladoresPorNombreResponse1.datasource">
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.rol.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosConMayorCalificacionResponse1.datasource">
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.verificaUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosPorDesarrolladorResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorJuegoResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorNombreONicknameResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJuegoResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.generarReporteEmpleadoResponse.datasource" />
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obenerCarteraPorIdUauarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.generarReporteEmpleadoResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
-    <None Include="Connected Services\ServicesWS\RecargaWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServicesWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -414,8 +386,43 @@
     <Content Include="Content\Fonts\webfonts\fa-thin-100.woff2" />
     <Content Include="Content\Fonts\webfonts\fa-v4compatibility.ttf" />
     <Content Include="Content\Fonts\webfonts\fa-v4compatibility.woff2" />
+    <None Include="Connected Services\ServicesWS\AdministradorWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\AdministradorWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicesWS\BibliotecaWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\BibliotecaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicesWS\CalificacionWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicesWS\CarroCompraWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\CarroCompraWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicesWS\CarteraWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\CarteraWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicesWS\DesarrolladorWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\DesarrolladorWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicesWS\JuegoAdquiridoWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\JuegoAdquiridoWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServicesWS\JuegoWS.wsdl" />
     <None Include="Connected Services\ServicesWS\JuegoWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicesWS\JugadorWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\JugadorWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\RecargaWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServicesWS\ReporteDesarrolladorWS.wsdl" />

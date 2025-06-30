@@ -45,4 +45,8 @@ public class DesarrolladorBO {
     public ArrayList<Desarrollador> listarDesarrolladoresPorNombre(String Nombre){
         return daoDesarrollador.listarPorNombre(Nombre);
     }
+    
+    public int modificarDesarrolladorDesdeAdmin(Desarrollador desarrollador){
+        return daoDesarrollador.modificarDesarrolladorDesdeAdministrador(desarrollador);
+    }
 }
