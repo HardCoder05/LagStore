@@ -38,7 +38,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 class="mb-4">Juegos más vendidos</h2>
+    <h2 class="mb-4">💰Top 10 de los juegos más vendidos</h2>
 
     <asp:GridView ID="gvMasVendidos" runat="server" AutoGenerateColumns="false"
         CssClass="table table-bordered table-hover text-center" EmptyDataText="No hay datos disponibles.">

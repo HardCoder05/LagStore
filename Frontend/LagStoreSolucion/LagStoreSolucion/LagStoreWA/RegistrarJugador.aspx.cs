@@ -112,7 +112,7 @@ namespace LagStoreWA
             }
 
             if (!string.IsNullOrWhiteSpace(txtFotoPerfil.Text) &&
-                !System.Text.RegularExpressions.Regex.IsMatch(txtFotoPerfil.Text, @"^https?:\/\/.*\.(jpg|jpeg|png|gif)$"))
+                !System.Text.RegularExpressions.Regex.IsMatch(txtFotoPerfil.Text, @"^https?:\/\/[\w\-\.]+(\.[\w\-]+)+[/#?]?.*$"))
             {
                 lblMensaje.Text = "La URL de la foto debe ser válida y terminar en .jpg, .png, etc.";
                 return;
@@ -138,7 +138,7 @@ namespace LagStoreWA
 
             try
             {
-                boJugador.modificarJugador(jugadorAnterior);
+                boJugador.modificarJugadorDesdeAdministrador(jugadorAnterior);
                 Response.Redirect("ListarJugadores.aspx");
             }
             catch (Exception ex)
