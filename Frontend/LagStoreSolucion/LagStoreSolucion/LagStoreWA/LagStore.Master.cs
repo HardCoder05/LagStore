@@ -41,6 +41,15 @@ namespace LagStoreWA
                 liBiblioteca.Visible = false;
                 liOrdenaJuego.Visible = true;
                 liSubirJuego.Visible = true;
+                liCarrito.Visible = false;
+                liTienda.Visible = false;
+                
+            }
+            if (Session["Administrador"] != null)
+            {
+                liCarrito.Visible = false;
+                liTienda.Visible = false;
+
             }
         }
 

@@ -1,0 +1,275 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Blank_A4" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7214947e-e384-44fa-a9b1-72dd00a65e06">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion BD TA"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="CALIFICACION">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{calificacion}==null]]></conditionExpression>
+		</conditionalStyle>
+	</style>
+	<parameter name="logo" class="java.awt.Image"/>
+	<query language="sql"><![CDATA[SELECT 
+    u.id AS idJugador,
+    u.nombre AS nombreJugador,
+    j.nickname,
+    u.fechaRegistro,
+    
+    -- Total recargado por jugador
+    (
+        SELECT IFNULL(SUM(r2.monto), 0)
+        FROM TA.Cartera c2
+        LEFT JOIN TA.Recarga r2 ON c2.idCartera = r2.cartera_IdCartera
+        WHERE c2.jugador_idJugador = j.idJugador
+    ) AS totalRecargado,
+
+    -- Saldo actual
+    ca.saldoActual,
+
+    -- Cantidad de juegos adquiridos por jugador
+    (
+        SELECT COUNT(DISTINCT ja2.fidJuego)
+        FROM TA.Biblioteca b2
+        INNER JOIN TA.JuegoAdquirido ja2 ON ja2.fidBiblioteca = b2.idBiblioteca
+        WHERE b2.usuario_idUsuario = u.id
+    ) AS cantidadJuegosAdquiridos,
+
+    -- Datos del juego
+    jg2.idJuego,
+    jg2.titulo AS juegoAdquirido,
+    
+    -- Datos de adquisición
+    ja.fechaAdquisicion,
+    ja.ultimaSesion,
+
+    -- Calificación del jugador para ese juego (si existe)
+    cal.puntaje AS calificacion
+
+FROM 
+    TA.Usuario u
+INNER JOIN 
+    TA.Jugador j ON u.id = j.idJugador
+LEFT JOIN 
+    TA.Biblioteca b ON b.usuario_idUsuario = u.id
+LEFT JOIN 
+    TA.JuegoAdquirido ja ON ja.fidBiblioteca = b.idBiblioteca
+LEFT JOIN 
+    TA.Juego jg2 ON ja.fidJuego = jg2.idJuego
+LEFT JOIN 
+    TA.Cartera ca ON ca.jugador_idJugador = j.idJugador
+LEFT JOIN 
+    TA.Calificacion cal ON cal.fidJugador = j.idJugador AND cal.fidJuego = jg2.idJuego
+
+WHERE 
+    jg2.idJuego IS NOT NULL
+    
+GROUP BY idJuego
+ORDER BY  calificacion DESC;
+]]></query>
+	<field name="idJugador" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="idJugador"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Usuario"/>
+	</field>
+	<field name="nombreJugador" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombreJugador"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Usuario"/>
+	</field>
+	<field name="nickname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nickname"/>
+		<property name="com.jaspersoft.studio.field.label" value="nickname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Jugador"/>
+	</field>
+	<field name="fechaRegistro" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fechaRegistro"/>
+		<property name="com.jaspersoft.studio.field.label" value="fechaRegistro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Usuario"/>
+	</field>
+	<field name="totalRecargado" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="totalRecargado"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalRecargado"/>
+	</field>
+	<field name="saldoActual" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="saldoActual"/>
+		<property name="com.jaspersoft.studio.field.label" value="saldoActual"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Cartera"/>
+	</field>
+	<field name="cantidadJuegosAdquiridos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="cantidadJuegosAdquiridos"/>
+		<property name="com.jaspersoft.studio.field.label" value="cantidadJuegosAdquiridos"/>
+	</field>
+	<field name="idJuego" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idJuego"/>
+		<property name="com.jaspersoft.studio.field.label" value="idJuego"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Juego"/>
+	</field>
+	<field name="juegoAdquirido" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="titulo"/>
+		<property name="com.jaspersoft.studio.field.label" value="juegoAdquirido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Juego"/>
+	</field>
+	<field name="fechaAdquisicion" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fechaAdquisicion"/>
+		<property name="com.jaspersoft.studio.field.label" value="fechaAdquisicion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="JuegoAdquirido"/>
+	</field>
+	<field name="ultimaSesion" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="ultimaSesion"/>
+		<property name="com.jaspersoft.studio.field.label" value="ultimaSesion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="JuegoAdquirido"/>
+	</field>
+	<field name="calificacion" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="puntaje"/>
+		<property name="com.jaspersoft.studio.field.label" value="calificacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Calificacion"/>
+	</field>
+	<variable name="cantidadJuegosAdquiridos1" calculation="Count" class="java.lang.Integer">
+		<expression><![CDATA[$F{cantidadJuegosAdquiridos}]]></expression>
+	</variable>
+	<variable name="cantidadJuegosAdquiridos2" calculation="First" class="java.lang.Long">
+		<expression><![CDATA[$F{cantidadJuegosAdquiridos}]]></expression>
+	</variable>
+	<variable name="nombreJugador1" calculation="DistinctCount" class="java.lang.Integer">
+		<expression><![CDATA[$F{nombreJugador}]]></expression>
+	</variable>
+	<variable name="cantidadJuegosAdquiridos3" calculation="Average" class="java.lang.Long">
+		<expression><![CDATA[$F{cantidadJuegosAdquiridos}]]></expression>
+	</variable>
+	<background splitType="Stretch"/>
+	<title height="191" splitType="Stretch">
+		<element kind="staticText" uuid="9242cb21-4c2e-4206-b723-78f90509d533" x="80" y="0" width="350" height="40" fontSize="29.0" underline="true" bold="true" hTextAlign="Center">
+			<text><![CDATA[REPORTE DE JUGADOR]]></text>
+		</element>
+		<element kind="textField" uuid="fcf41cfc-aa6e-41d5-be39-f510c3b86a59" x="160" y="50" width="140" height="30" pattern="MMM d, yyyy h:mm:ss a">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="staticText" uuid="39305166-8b48-4f00-8b3c-fc408b9d5d1e" x="0" y="50" width="160" height="30" bold="true">
+			<text><![CDATA[Fecha de Solicitud de Reporte:]]></text>
+		</element>
+		<element kind="image" uuid="014a1fb3-87a5-4490-9111-d9caae9ee64b" x="450" y="0" width="80" height="80">
+			<expression><![CDATA[$P{logo}]]></expression>
+		</element>
+		<element kind="staticText" uuid="b958493f-bee9-4a25-9fda-3b9f63f1c451" x="0" y="101" width="110" height="20" bold="true">
+			<text><![CDATA[Nombre del Jugador:]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c628de3e-2cf7-48a4-b1e1-caa44fd60f85"/>
+		</element>
+		<element kind="textField" uuid="75184134-6aef-4200-8a35-771ae08b0fca" x="134" y="101" width="90" height="20">
+			<expression><![CDATA[$F{nombreJugador}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c628de3e-2cf7-48a4-b1e1-caa44fd60f85"/>
+		</element>
+		<element kind="staticText" uuid="bf4a9e73-8d22-4a3e-9005-2af428edf337" x="0" y="122" width="80" height="20" bold="true">
+			<text><![CDATA[Nickname:]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="534f4f57-742c-45a2-b732-e7c14fc38d3c"/>
+		</element>
+		<element kind="textField" uuid="21278588-072b-43b7-84e7-2723180f56d7" x="134" y="121" width="90" height="20">
+			<expression><![CDATA[$F{nickname}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="534f4f57-742c-45a2-b732-e7c14fc38d3c"/>
+		</element>
+		<element kind="staticText" uuid="a36c39a8-829f-4fb1-ae68-c31a9517894e" x="275" y="101" width="100" height="20" bold="true">
+			<text><![CDATA[Fecha de Registro:]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9595bfb5-7d01-426f-870e-a2871e94a65f"/>
+		</element>
+		<element kind="textField" uuid="dff37979-4331-4aa5-8e33-40990de56fca" x="390" y="101" width="100" height="20">
+			<expression><![CDATA[$F{fechaRegistro}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9595bfb5-7d01-426f-870e-a2871e94a65f"/>
+		</element>
+		<element kind="staticText" uuid="616ed1f8-3c7b-4f7a-9146-ed57273d284c" x="275" y="121" width="85" height="20" bold="true">
+			<text><![CDATA[Total Recargado:]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5d5db58e-6048-4acc-b0ef-52aeb1074be3"/>
+		</element>
+		<element kind="textField" uuid="f9b2ec12-c9e2-484d-a56c-2c02490d961d" x="390" y="121" width="100" height="20">
+			<expression><![CDATA[$F{totalRecargado}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5d5db58e-6048-4acc-b0ef-52aeb1074be3"/>
+		</element>
+		<element kind="textField" uuid="e0b08624-a2fd-45b1-a536-9ae7ba055ef2" x="390" y="142" width="100" height="22">
+			<expression><![CDATA[$F{saldoActual}]]></expression>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72f4ccde-eddc-42b9-acf8-77f4c4c7cadb"/>
+		</element>
+		<element kind="staticText" uuid="09253523-c0a1-4b52-82e1-8d0281b8eb91" x="275" y="142" width="80" height="22" bold="true">
+			<text><![CDATA[Saldo Actual:]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72f4ccde-eddc-42b9-acf8-77f4c4c7cadb"/>
+		</element>
+		<element kind="staticText" uuid="48030dc0-57ee-4b29-b5d3-3d9488d97321" x="0" y="143" width="110" height="37" bold="true">
+			<text><![CDATA[Cantidad de juegos comprados:]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72f4ccde-eddc-42b9-acf8-77f4c4c7cadb"/>
+		</element>
+		<element kind="textField" uuid="86d23765-5455-4976-9392-d9fc7d962a6a" x="134" y="142" width="100" height="30">
+			<expression><![CDATA[$F{cantidadJuegosAdquiridos}]]></expression>
+		</element>
+	</title>
+	<columnHeader height="37" splitType="Stretch">
+		<element kind="staticText" uuid="4746beb5-3a1f-4c66-ba1e-0eb335cd2ed0" x="130" y="0" width="90" height="30" bold="true">
+			<text><![CDATA[Fecha de compra]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6504c66-28be-41d4-9b12-09d44fbdc399"/>
+		</element>
+		<element kind="staticText" uuid="848bbb0a-927a-4f3f-9330-2164abd824ca" x="410" y="0" width="70" height="30" bold="true">
+			<text><![CDATA[Calificacion]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bbf11582-66b0-4ff6-8812-c9a483003192"/>
+		</element>
+		<element kind="staticText" uuid="8ec754ce-5a75-446c-aa35-7e3081f13ff3" x="260" y="0" width="120" height="30" bold="true">
+			<text><![CDATA[Fecha en que se jugó por ultima vez]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eb3fb51a-b739-4914-8b6f-aef2580fcb47"/>
+		</element>
+		<element kind="staticText" uuid="190708d2-1011-49a9-908b-c0b7f4f234a7" x="20" y="0" width="90" height="30" bold="true">
+			<text><![CDATA[Juego comprado]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6307600-96dd-4a82-a381-171d11cedb1f"/>
+		</element>
+		<element kind="line" uuid="e551810d-01ca-4c9e-a57c-1888e06670f9" x="0" y="30" width="460" height="1"/>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<element kind="textField" uuid="7ad81e9e-9122-4346-b1ac-54c2ca618dfd" x="20" y="0" width="90" height="30">
+				<expression><![CDATA[$F{juegoAdquirido}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6307600-96dd-4a82-a381-171d11cedb1f"/>
+			</element>
+			<element kind="textField" uuid="f481320f-7eb5-4d3f-900e-365ad7d03944" stretchType="ElementGroupHeight" x="130" y="0" width="99" height="30" pattern="MMMM d, yyyy" linkType="None" linkTarget="Self">
+				<expression><![CDATA[$F{fechaAdquisicion}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6504c66-28be-41d4-9b12-09d44fbdc399"/>
+			</element>
+			<element kind="textField" uuid="92a29fb3-4879-4364-b541-3ba24e811038" x="280" y="0" width="80" height="30" pattern="M/d/yy">
+				<expression><![CDATA[$F{ultimaSesion}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eb3fb51a-b739-4914-8b6f-aef2580fcb47"/>
+			</element>
+			<element kind="textField" uuid="7d60c0f1-732d-467c-9089-1570e7f4c111" x="410" y="0" width="130" height="30">
+				<expression><![CDATA[IF( $F{calificacion} == null,0,$F{calificacion} ) ]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bbf11582-66b0-4ff6-8812-c9a483003192"/>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		</band>
+	</detail>
+	<columnFooter height="38" splitType="Stretch"/>
+	<pageFooter height="26" splitType="Stretch">
+		<element kind="textField" uuid="0ded67d0-f38d-420a-ba26-a3a7528cdd9f" x="190" y="0" width="160" height="16" hTextAlign="Right">
+			<expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+</jasperReport>

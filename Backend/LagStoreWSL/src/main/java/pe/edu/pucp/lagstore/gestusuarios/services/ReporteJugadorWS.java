@@ -23,7 +23,7 @@ public class ReporteJugadorWS {
      * This is a sample web service operation
      */
     @WebMethod(operationName = "generarReporteEmpleado")
-    public byte[] generarReporteEmpleado(@WebParam(name = "nombre") String nombre) {
+    public byte[] generarReporteEmpleado(@WebParam(name = "id") int id) {
         byte[]reporte=null;
         
         try{
@@ -32,7 +32,7 @@ public class ReporteJugadorWS {
             
             //Establecemos los parametros que necesita el reporte
             HashMap parametros = new HashMap();
-            parametros.put("nombre", nombre);
+            parametros.put("id", id);
             
             //Referenciamos la imagen del logo
             URL rutaLogo = getClass().getResource("/pe/edu/pucp/lagstore/reportes/LogoLagStore.png");

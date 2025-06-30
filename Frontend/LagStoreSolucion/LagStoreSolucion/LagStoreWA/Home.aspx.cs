@@ -15,7 +15,9 @@ namespace LagStoreWA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            btnAgregarCarrito.Visible = !EsDesarrollador;
+
+            if (!IsPostBack)
             {
                 // Verificar si el usuario está autenticado
                 if (Session["Administrador"] != null)
@@ -25,6 +27,14 @@ namespace LagStoreWA
 
                 CargarJuegoDestacado(1);
                 CargarJuegos();
+            }
+        }
+
+        public bool EsDesarrollador
+        {
+            get
+            {
+                return Session["Desarrollador"] != null;
             }
         }
 
@@ -122,5 +132,17 @@ namespace LagStoreWA
                 contenedorMensajes.Controls.Add(litMensaje);
             }
         }
+        protected void rptJuegosDestacados_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                var btnAgregar = e.Item.FindControl("btnAgregarCarrito") as Button;
+                if (btnAgregar != null && EsDesarrollador)
+                {
+                    btnAgregar.Visible = false;
+                }
+            }
+        }
+
     }
 }

@@ -160,6 +160,7 @@
                         </p>
                         <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2">
                             <span class="price me-2">S/<asp:Label ID="lblPrecioDestacado" runat="server" Text="0.00"></asp:Label></span>
+                            
                             <asp:Button ID="btnAgregarCarrito" runat="server" 
                                Text="Agregar" 
                                CssClass="btn btn-add-cart btn-sm"
@@ -183,7 +184,7 @@
         </div>
 
         <div class="row">
-            <asp:Repeater ID="rptJuegosDestacados" runat="server">
+            <asp:Repeater ID="rptJuegosDestacados" runat="server" OnItemDataBound="rptJuegosDestacados_ItemDataBound">
                 <ItemTemplate>
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card game-card">
