@@ -20,8 +20,10 @@
             <asp:ListItem Text="Fecha de Lanzamiento" Value="fechaLanzamiento" />
             <asp:ListItem Text="Espacio en Disco" Value="espacioDisco" />
         </asp:DropDownList>
+        <asp:HyperLink ID="lnkReporteDesarrollador" runat="server" NavigateUrl="~/ReporteDesarrollador.aspx" CssClass="btn btn-danger ms-2">   <!-- ← aquí el ms-2 -->
+<i class="fas fa-file-pdf me-1"></i> Reporte Ventas
+        </asp:HyperLink>
     </div>
-
     <div class="input-group search-box">
         <input type="text" class="form-control" placeholder="Buscar por ID" id="txtBuscar" runat="server" />
         <button class="btn btn-primary" type="button" id="btnBuscar" runat="server" onserverclick="btnBuscar_ServerClick">
