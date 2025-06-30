@@ -72,6 +72,8 @@ namespace LagStoreWA
             {
                 RegistrarAdministrador();
             }
+
+            Response.Redirect("InicioSesion.aspx");
         }
 
         private bool ValidarCamposComunes()

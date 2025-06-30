@@ -1,5 +1,5 @@
-
 <%@ Page Title="Carro de Compras" Language="C#" MasterPageFile="~/LagStore.Master" AutoEventWireup="true" CodeBehind="CarroCompra.aspx.cs" Inherits="LagStoreWA.CarroCompra" %>
+
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -38,25 +38,25 @@
                         1
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="precio" HeaderText="Precio Unitario" DataFormatString="{0:C}" />
+                <asp:BoundField DataField="precio" HeaderText="Precio Unitario"  DataFormatString="S/{0:N2}" HtmlEncode="false" />
                 <asp:TemplateField HeaderText="Subtotal">
                     <ItemTemplate>
-                        <%# Eval("precio", "{0:C}") %>
+                        S/<%# Eval("precio", "{0:N2}") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:CommandField ShowDeleteButton="True" DeleteText="Quitar" />
             </Columns>
         </asp:GridView>
-        
+       
         <!-- Label para mostrar el total de la compra -->
         <div class="text-end" style="margin-top:20px;">
             <asp:Label ID="lblTotal" runat="server" CssClass="h4" Text=""></asp:Label>
         </div>
 
-         <asp:Panel ID="pnlProcesando" runat="server" Visible="false">
-             <asp:Image ID="imgEstadoCompra" runat="server" />
-             <asp:Label ID="lblProcesando" runat="server" Text=""></asp:Label>
-         </asp:Panel>
+         <asp:Panel ID="pnlProcesando" runat="server" Visible="false" style="margin-top:20px;">
+            <asp:Image ID="imgEstadoCompra" runat="server" Width="48px" Height="48px" ImageAlign="Middle" />
+            <asp:Label ID="lblProcesando" runat="server" Text="" CssClass="ms-2 fw-bold"></asp:Label>
+        </asp:Panel>
 
         <div class="carro-actions" style="margin-top:20px;">
             <asp:Button ID="btnFinalizarCompra" runat="server" Text="Finalizar Compra" CssClass="btn btn-success" OnClick="btnFinalizarCompra_Click" />

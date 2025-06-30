@@ -40,4 +40,8 @@ public class AdministradorBO {
         return daoAdministrador.listarJuegosMasVendidos();
     }
     
+    public ArrayList<Juego>listarJuegosCalificacionAltas(){
+        return daoAdministrador.listarJuegosCalificacionAltas();
+    }
+    
 }

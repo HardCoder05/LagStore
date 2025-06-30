@@ -13,7 +13,12 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- TODO: Tu buscador y GridView van aquí, dentro del form de la Master -->
+    <asp:Label ID="lblSaldo" runat="server" 
+           CssClass="fw-bold" 
+           ForeColor="Green" 
+           Style="font-size:1.2em; margin-bottom:10px; display:block;">
+    </asp:Label>
+
     <div class="input-group mb-3">
         <input id="txtBuscar" runat="server" type="text" class="form-control"
                placeholder="ID de recarga o vacío = todas" />
@@ -32,11 +37,10 @@
         AutoGenerateColumns="false"
         OnRowCommand="gvRecargas_RowCommand">
         <Columns>
-            <asp:BoundField DataField="idRecarga" HeaderText="ID" />
             <asp:BoundField DataField="fechaRecarga" HeaderText="Fecha"
                 DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
             <asp:BoundField DataField="monto" HeaderText="Monto"
-                DataFormatString="{0:C}" HtmlEncode="false" />
+                DataFormatString="S/{0:N2}" HtmlEncode="false" />
             <asp:BoundField DataField="metodoPago" HeaderText="Método de pago" />
         </Columns>
     </asp:GridView>

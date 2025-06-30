@@ -2,6 +2,8 @@
 <xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="obenerCarteraPorId" type="tns:obenerCarteraPorId" />
   <xs:element name="obenerCarteraPorIdResponse" type="tns:obenerCarteraPorIdResponse" />
+  <xs:element name="obenerCarteraPorIdUauario" type="tns:obenerCarteraPorIdUauario" />
+  <xs:element name="obenerCarteraPorIdUauarioResponse" type="tns:obenerCarteraPorIdUauarioResponse" />
   <xs:complexType name="obenerCarteraPorId">
     <xs:sequence>
       <xs:element name="idCartera" type="xs:int" />
@@ -71,6 +73,7 @@
   <xs:complexType name="juego">
     <xs:sequence>
       <xs:element name="activo" type="xs:int" />
+      <xs:element name="cantidadCalificaciones" type="xs:int" />
       <xs:element name="cantidadVentas" type="xs:int" />
       <xs:element minOccurs="0" name="desarrollador" type="tns:desarrollador" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
@@ -82,6 +85,7 @@
       <xs:element minOccurs="0" name="imagen" type="xs:string" />
       <xs:element minOccurs="0" name="modeloNegocio" type="tns:ModeloNegocio" />
       <xs:element name="precio" type="xs:double" />
+      <xs:element name="promedioCalificacion" type="xs:double" />
       <xs:element minOccurs="0" name="requisitosMinimos" type="xs:string" />
       <xs:element minOccurs="0" name="requisitosRecomendados" type="xs:string" />
       <xs:element minOccurs="0" name="titulo" type="xs:string" />
@@ -117,6 +121,16 @@
       <xs:element minOccurs="0" name="fechaPublicacion" type="xs:dateTime" />
       <xs:element name="idResena" type="xs:int" />
       <xs:element minOccurs="0" name="juego" type="tns:juego" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obenerCarteraPorIdUauario">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obenerCarteraPorIdUauarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cartera" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="metodoPago">

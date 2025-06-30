@@ -11,11 +11,11 @@
   <message name="eliminarResenaResponse">
     <part name="parameters" element="tns:eliminarResenaResponse" />
   </message>
-  <message name="insertarResena">
-    <part name="parameters" element="tns:insertarResena" />
+  <message name="listarPorJuego">
+    <part name="parameters" element="tns:listarPorJuego" />
   </message>
-  <message name="insertarResenaResponse">
-    <part name="parameters" element="tns:insertarResenaResponse" />
+  <message name="listarPorJuegoResponse">
+    <part name="parameters" element="tns:listarPorJuegoResponse" />
   </message>
   <message name="modificarResena">
     <part name="parameters" element="tns:modificarResena" />
@@ -29,14 +29,20 @@
   <message name="obtenerResenaPorIdResponse">
     <part name="parameters" element="tns:obtenerResenaPorIdResponse" />
   </message>
+  <message name="insertarResena">
+    <part name="parameters" element="tns:insertarResena" />
+  </message>
+  <message name="insertarResenaResponse">
+    <part name="parameters" element="tns:insertarResenaResponse" />
+  </message>
   <portType name="ResenaWS">
     <operation name="eliminarResena">
       <input wsam:Action="http://services.pucp.edu.pe/ResenaWS/eliminarResenaRequest" message="tns:eliminarResena" />
       <output wsam:Action="http://services.pucp.edu.pe/ResenaWS/eliminarResenaResponse" message="tns:eliminarResenaResponse" />
     </operation>
-    <operation name="insertarResena">
-      <input wsam:Action="http://services.pucp.edu.pe/ResenaWS/insertarResenaRequest" message="tns:insertarResena" />
-      <output wsam:Action="http://services.pucp.edu.pe/ResenaWS/insertarResenaResponse" message="tns:insertarResenaResponse" />
+    <operation name="listarPorJuego">
+      <input wsam:Action="http://services.pucp.edu.pe/ResenaWS/listarPorJuegoRequest" message="tns:listarPorJuego" />
+      <output wsam:Action="http://services.pucp.edu.pe/ResenaWS/listarPorJuegoResponse" message="tns:listarPorJuegoResponse" />
     </operation>
     <operation name="modificarResena">
       <input wsam:Action="http://services.pucp.edu.pe/ResenaWS/modificarResenaRequest" message="tns:modificarResena" />
@@ -45,6 +51,10 @@
     <operation name="obtenerResenaPorId">
       <input wsam:Action="http://services.pucp.edu.pe/ResenaWS/obtenerResenaPorIdRequest" message="tns:obtenerResenaPorId" />
       <output wsam:Action="http://services.pucp.edu.pe/ResenaWS/obtenerResenaPorIdResponse" message="tns:obtenerResenaPorIdResponse" />
+    </operation>
+    <operation name="insertarResena">
+      <input wsam:Action="http://services.pucp.edu.pe/ResenaWS/insertarResenaRequest" message="tns:insertarResena" />
+      <output wsam:Action="http://services.pucp.edu.pe/ResenaWS/insertarResenaResponse" message="tns:insertarResenaResponse" />
     </operation>
   </portType>
   <binding name="ResenaWSPortBinding" type="tns:ResenaWS">
@@ -58,7 +68,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarResena">
+    <operation name="listarPorJuego">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -77,6 +87,15 @@
       </output>
     </operation>
     <operation name="obtenerResenaPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarResena">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

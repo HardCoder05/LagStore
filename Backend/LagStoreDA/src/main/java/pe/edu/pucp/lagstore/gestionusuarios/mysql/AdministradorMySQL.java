@@ -51,10 +51,9 @@ public class AdministradorMySQL implements AdministradorDAO{
         parametrosEntrada.put(2, administrador.getRolAdministrativo());
         parametrosEntrada.put(3, administrador.getNombre());
         parametrosEntrada.put(4, administrador.getEmail());
-        parametrosEntrada.put(5, administrador.getContrasena());
-        parametrosEntrada.put(6, new Date(administrador.getFechaRegistro().getTime()));
-        parametrosEntrada.put(7, administrador.getTelefono());
-        parametrosEntrada.put(8, administrador.getFotoDePerfil());
+        parametrosEntrada.put(5, administrador.getFechaRegistro());
+        parametrosEntrada.put(6, administrador.getTelefono());
+        parametrosEntrada.put(7, administrador.getFotoDePerfil());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ADMINISTRADOR", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del administrador");
         return resultado;
@@ -146,6 +145,28 @@ public class AdministradorMySQL implements AdministradorDAO{
             DBManager.getInstance().cerrarConexion();
         }
         return juegos;
+    }
+
+    @Override
+    public ArrayList<Juego> listarJuegosCalificacionAltas() {
+        ArrayList<Juego> juegos = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_JUEGOS_MEJOR_CALIFICADOS", null);
+        try {
+            while (rs.next()) {
+                Juego j = new Juego();
+                j.setIdJuego(rs.getInt("idJuego"));
+                j.setTitulo(rs.getString("titulo"));
+                j.setPromedioCalificacion(rs.getDouble("promedioCalificacion"));
+                j.setCantidadCalificaciones(rs.getInt("cantidadCalificaciones"));
+                juegos.add(j);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return juegos;
+    
     }
     
 }

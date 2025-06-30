@@ -55,4 +55,12 @@ public class JuegoAdquiridoWS {
         juegoAdquiridoBO = new JuegoAdquiridoBO();
         return juegoAdquiridoBO.obtenerJuegoAdquiridoPorBibliotecaYJuego(idBiblioteca, idJuego);
     }
+        
+    @WebMethod(operationName = "eliminarJuegoAdquiridoPorBibliotecaYJuego")
+    public int eliminarJuegoAdquiridoPorBibliotecaYJuego(
+        @WebParam(name = "idBiblioteca") int idBiblioteca, 
+        @WebParam(name = "idJuego") int idJuego) {
+        juegoAdquiridoBO = new JuegoAdquiridoBO();
+        return juegoAdquiridoBO.eliminarJuegoAdquiridoPorBibliotecaYJuego(idBiblioteca, idJuego);
+    }
 }

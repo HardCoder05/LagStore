@@ -279,13 +279,45 @@
     <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obtenerJuegoAdquiridoPorBibliotecaYJuegoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorNombreONicknameResponse.datasource">
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorJuegoResponse.datasource" />
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.carroCompra.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarDesarrolladoresPorNombreResponse.datasource">
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.otenerCarroPorUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenResponse.datasource">
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoAdquiridoPorBibliotecaYJuegoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.eliminarJuegoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarDesarrolladoresPorNombreResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosConMayorCalificacionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosPorDesarrolladorResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarJuegosQueMasSeVendenResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorJuegoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.listarPorNombreONicknameResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.modificarJuegoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.generarReporteEmpleadoResponse.datasource" />
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.obenerCarteraPorIdUauarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicesWS\LagStoreWA.ServicesWS.generarReporteEmpleadoResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\ServicesWS\RecargaWS.wsdl" />
@@ -336,19 +368,26 @@
     <Content Include="Content\Fonts\css\v4-shims.min.css" />
     <Content Include="Content\Fonts\css\v5-font-face.css" />
     <Content Include="Content\Fonts\css\v5-font-face.min.css" />
+    <Content Include="Content\Imagenes_de_carga\processing.png" />
+    <Content Include="Content\Imagenes_de_carga\success.png" />
     <Content Include="Content\site.css" />
+    <Content Include="DetalleJuego.aspx" />
+    <Content Include="EditarComentario.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="InicioSesion.aspx" />
     <Content Include="JuegosMasVendidos.aspx" />
+    <Content Include="JuegosMayorCalificacion.aspx" />
     <Content Include="ListarDesarrolladores.aspx" />
     <Content Include="ListarJuegos.aspx" />
     <Content Include="ListarJugadores.aspx" />
     <Content Include="ListarRecargas.aspx" />
+    <Content Include="OrdenaJuego.aspx" />
     <Content Include="PerfilUsuario.aspx" />
     <Content Include="RegistrarDesarrollador.aspx" />
     <Content Include="RegistrarJuego.aspx" />
     <Content Include="RegistrarJugador.aspx" />
     <Content Include="RegistroUsuario.aspx" />
+    <Content Include="ReporteJugador.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -379,6 +418,10 @@
     <None Include="Connected Services\ServicesWS\JuegoWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServicesWS\ReporteJugadorWS.wsdl" />
+    <None Include="Connected Services\ServicesWS\ReporteJugadorWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServicesWS\ResenaWS.wsdl" />
     <None Include="Connected Services\ServicesWS\ResenaWS.xsd">
       <SubType>Designer</SubType>
@@ -392,6 +435,7 @@
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
+    <Content Include="SubirJuego.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -428,6 +472,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="DetalleJuego.aspx.cs">
+      <DependentUpon>DetalleJuego.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleJuego.aspx.designer.cs">
+      <DependentUpon>DetalleJuego.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarComentario.aspx.cs">
+      <DependentUpon>EditarComentario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarComentario.aspx.designer.cs">
+      <DependentUpon>EditarComentario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -448,6 +506,13 @@
     </Compile>
     <Compile Include="JuegosMasVendidos.aspx.designer.cs">
       <DependentUpon>JuegosMasVendidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JuegosMayorCalificacion.aspx.cs">
+      <DependentUpon>JuegosMayorCalificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JuegosMayorCalificacion.aspx.designer.cs">
+      <DependentUpon>JuegosMayorCalificacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="LagStore.Master.cs">
       <DependentUpon>LagStore.Master</DependentUpon>
@@ -484,6 +549,13 @@
     <Compile Include="ListarRecargas.aspx.designer.cs">
       <DependentUpon>ListarRecargas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="OrdenaJuego.aspx.cs">
+      <DependentUpon>OrdenaJuego.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrdenaJuego.aspx.designer.cs">
+      <DependentUpon>OrdenaJuego.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PerfilUsuario.aspx.cs">
       <DependentUpon>PerfilUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -519,6 +591,20 @@
     </Compile>
     <Compile Include="RegistroUsuario.aspx.designer.cs">
       <DependentUpon>RegistroUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteJugador.aspx.cs">
+      <DependentUpon>ReporteJugador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteJugador.aspx.designer.cs">
+      <DependentUpon>ReporteJugador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubirJuego.aspx.cs">
+      <DependentUpon>SubirJuego.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubirJuego.aspx.designer.cs">
+      <DependentUpon>SubirJuego.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

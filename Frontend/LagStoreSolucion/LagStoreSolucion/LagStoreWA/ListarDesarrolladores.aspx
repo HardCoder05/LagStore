@@ -63,6 +63,7 @@
             <asp:TemplateField HeaderText="Ingreso Total">
                 <ItemTemplate>
                     S/ <%# Eval("ingresoTotal", "{0:N2}") %>
+
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="text-center">
@@ -72,6 +73,7 @@
                     <i class="fas fa-edit"></i>
                     </asp:LinkButton>
                     <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("idDesarrollador") %>'
+                        OnClientClick="return confirm('¿Estás seguro de que deseas eliminar este desarrollador?');"
                         CssClass="btn btn-eliminar btn-icon"  ToolTip="Eliminar">
                     <i class="fas fa-trash-alt"></i>
                     </asp:LinkButton>

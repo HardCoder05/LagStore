@@ -16,11 +16,11 @@ namespace LagStoreWA
         private BindingList<jugador> jugadores;
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*if (Session["Administrador"] == null)
+            if (Session["Administrador"] == null)
             {
                 // Si no hay un administrador en sesión, redirigir a la página de inicio de sesión
                 Response.Redirect("InicioSesion.aspx");
-            }*/
+            }
 
             boJugador = new JugadorWSClient();
             if (!IsPostBack)
@@ -34,11 +34,13 @@ namespace LagStoreWA
                 var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
                 var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
                 var liMasVendidos = this.Master.FindControl("liMasVendidos") as HtmlGenericControl;
+                var liMayorCalificacion = this.Master.FindControl("liMayorCalificacion") as HtmlGenericControl;
                 
                 if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
                 {
                     // Mostrar menú gestión y cerrar sesión
                     liGestion.Visible = true;
+                    liMayorCalificacion.Visible = true;
                     liCerrarSesion.Visible = true;
                     liMasVendidos.Visible = true;
                     // Ocultar iniciar sesión y crear cuenta

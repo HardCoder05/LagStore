@@ -49,6 +49,20 @@ public class JuegoWS {//Dentro se ponen los metodos
         return resultado;
     }
     
+    @WebMethod(operationName = "modificarJuego")
+    public int modificarJuego(@WebParam(name = "juego") Juego juego) {
+        int resultado = 0;
+        
+        try{
+            juegoBO = new JuegoBO();
+            resultado = juegoBO.modificar(juego);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        return resultado;
+    }
+    
     @WebMethod(operationName = "obtenerJuegoPorId")
     public Juego obtenerJuegoPorId(@WebParam(name = "idJuego") int idJuego) {
         Juego juego = null;
@@ -61,6 +75,20 @@ public class JuegoWS {//Dentro se ponen los metodos
         }
         
         return juego;
+    }
+    
+    @WebMethod(operationName = "eliminarJuego")
+    public int eliminarJuego(@WebParam(name = "idJuego") int idJuego) {
+        int resultado = 0;
+        
+        try{
+            juegoBO = new JuegoBO();
+            resultado = juegoBO.eliminar(idJuego);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        return resultado;
     }
     
     @WebMethod(operationName = "listarJuegosConFiltro")
@@ -83,4 +111,19 @@ public class JuegoWS {//Dentro se ponen los metodos
         
         return juegos;
     }
+    @WebMethod(operationName = "listarJuegosPorDesarrollador")
+    public ArrayList<Juego> listarJuegosPorDesarrollador(@WebParam(name = "idDesarrollador") int idDesarrollador) {
+        ArrayList<Juego> juegos = null;
+    
+        try {
+            juegoBO = new JuegoBO();
+            juegos = juegoBO.listarPorDesarrollador(idDesarrollador);
+ 
+        } catch (Exception ex) {
+            System.out.println("Error en listarJuegosPorDesarrollador (SOAP): " + ex.getMessage());
+        }
+    
+        return juegos;
+    }
+    
 }
