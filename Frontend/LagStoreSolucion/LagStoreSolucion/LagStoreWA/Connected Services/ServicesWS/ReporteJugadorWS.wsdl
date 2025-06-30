@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/LagStoreWSL/ReporteJugadorWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
+  <message name="generarReporteEmpleado2">
+    <part name="parameters" element="tns:generarReporteEmpleado2" />
+  </message>
+  <message name="generarReporteEmpleado2Response">
+    <part name="parameters" element="tns:generarReporteEmpleado2Response" />
+  </message>
   <message name="generarReporteEmpleado">
     <part name="parameters" element="tns:generarReporteEmpleado" />
   </message>
@@ -12,6 +18,10 @@
     <part name="parameters" element="tns:generarReporteEmpleadoResponse" />
   </message>
   <portType name="ReporteJugadorWS">
+    <operation name="generarReporteEmpleado2">
+      <input wsam:Action="http://services.pucp.edu.pe/ReporteJugadorWS/generarReporteEmpleado2Request" message="tns:generarReporteEmpleado2" />
+      <output wsam:Action="http://services.pucp.edu.pe/ReporteJugadorWS/generarReporteEmpleado2Response" message="tns:generarReporteEmpleado2Response" />
+    </operation>
     <operation name="generarReporteEmpleado">
       <input wsam:Action="http://services.pucp.edu.pe/ReporteJugadorWS/generarReporteEmpleadoRequest" message="tns:generarReporteEmpleado" />
       <output wsam:Action="http://services.pucp.edu.pe/ReporteJugadorWS/generarReporteEmpleadoResponse" message="tns:generarReporteEmpleadoResponse" />
@@ -19,6 +29,15 @@
   </portType>
   <binding name="ReporteJugadorWSPortBinding" type="tns:ReporteJugadorWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="generarReporteEmpleado2">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="generarReporteEmpleado">
       <soap:operation soapAction="" />
       <input>

@@ -13,8 +13,10 @@ namespace LagStoreWA
         private ReporteJugadorWSClient boReporte;
         protected void Page_Load(object sender, EventArgs e)
         {
-            boReporte=new ReporteJugadorWSClient();
+            int idJugador = Convert.ToInt32(Request.QueryString["idJugador"]);
+            boReporte =new ReporteJugadorWSClient();
             byte[] reporte = boReporte.generarReporteEmpleado("Luis");
+            //byte[] reporte = boReporte.generarReporteEmpleado2(1);
             //generar PDF
             Response.Clear();
             Response.ContentType = "application/pdf";

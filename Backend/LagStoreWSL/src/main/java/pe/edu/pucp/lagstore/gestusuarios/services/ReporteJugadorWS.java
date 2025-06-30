@@ -55,4 +55,39 @@ public class ReporteJugadorWS {
         }
         return reporte;
     }
+    
+    
+    @WebMethod(operationName = "generarReporteEmpleado2")
+    public byte[] generarReporteEmpleado2(@WebParam(name = "idJugador") int idJugador) {
+        byte[]reporte=null;
+        
+        try{
+            //Referenciamos el archivo Jasper
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResourceAsStream("/pe/edu/pucp/lagstore/reportes/Reporte2.jasper"));
+            
+            //Establecemos los parametros que necesita el reporte
+            HashMap parametros = new HashMap();
+            parametros.put("idJugador", idJugador);
+            
+            //Referenciamos la imagen del logo
+            URL rutaLogo = getClass().getResource("/pe/edu/pucp/lagstore/reportes/LogoLagStore.png");
+            //Generamos los objetos necesarios en el reporte
+            Image logo = (new ImageIcon(rutaLogo)).getImage();
+            
+            //Colocamos los parametros
+            parametros.put("logo", logo);
+            //Establecemos la conexión
+            Connection con = DBManager.getInstance().getConnection();
+            //Poblamos el reporte
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con);
+            //ya no se muestra en pantalla sino se exporta a memoria
+            reporte = JasperExportManager.exportReportToPdf(jp);
+            
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
+        }
+        return reporte;
+    }
 }
