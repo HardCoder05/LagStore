@@ -22,12 +22,14 @@
     <MetadataSource Address="http://localhost:8080/LagStoreWSL/file.disco" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="ReporteJugadorWS.xsd" MetadataType="Schema" ID="1ca5b209-f562-42e0-8892-c8a0f00170db" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/ReporteJugadorWS?xsd=1" />
     <MetadataFile FileName="JuegoWS.wsdl" MetadataType="Wsdl" ID="a9c8a4aa-94f9-41e5-9777-0a786d01caa2" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/JuegoWS?WSDL" />
     <MetadataFile FileName="ResenaWS.xsd" MetadataType="Schema" ID="347cc494-5d86-469e-8299-2438a05403fc" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/ResenaWS?xsd=1" />
     <MetadataFile FileName="JuegoAdquiridoWS.xsd" MetadataType="Schema" ID="5c85a5b4-ea90-4a72-a46e-328ffbf090af" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/JuegoAdquiridoWS?xsd=1" />
     <MetadataFile FileName="CalificacionWS.xsd" MetadataType="Schema" ID="64a46757-6cbd-419c-a483-b080dd1cd077" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/CalificacionWS?xsd=1" />
-    <MetadataFile FileName="ReporteJugadorWS.xsd" MetadataType="Schema" ID="1ca5b209-f562-42e0-8892-c8a0f00170db" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/ReporteJugadorWS?xsd=1" />
+    <MetadataFile FileName="DesarrolladorWS.xsd" MetadataType="Schema" ID="a8310484-00af-4a16-b91f-1312ddd4fee7" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/DesarrolladorWS?xsd=1" />
     <MetadataFile FileName="CarteraWS.xsd" MetadataType="Schema" ID="58653310-0dde-4f65-971d-a80578189c4d" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/CarteraWS?xsd=1" />
+    <MetadataFile FileName="ReporteDesarrolladorWS.xsd" MetadataType="Schema" ID="00e7a23d-0c9f-44e8-af91-d61798024614" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/ReporteDesarrolladorWS?xsd=1" />
     <MetadataFile FileName="UsuarioWS.xsd" MetadataType="Schema" ID="2446192d-e877-4234-b042-a15c84721b70" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/UsuarioWS?xsd=1" />
     <MetadataFile FileName="BibliotecaWS.xsd" MetadataType="Schema" ID="fc9ae82a-7aed-473b-84bf-3ec7b941cce1" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/BibliotecaWS?xsd=1" />
     <MetadataFile FileName="JuegoAdquiridoWS.wsdl" MetadataType="Wsdl" ID="2754d243-43d4-43b6-90a7-14e7bde8183f" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/JuegoAdquiridoWS?WSDL" />
@@ -40,7 +42,7 @@
     <MetadataFile FileName="DesarrolladorWS.wsdl" MetadataType="Wsdl" ID="920f5911-2889-4e7b-b42d-27aa58bae2ab" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/DesarrolladorWS?WSDL" />
     <MetadataFile FileName="RecargaWS.xsd" MetadataType="Schema" ID="28bb116e-990d-4c85-8632-24ccb6a19933" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/RecargaWS?xsd=1" />
     <MetadataFile FileName="CarroCompraWS.xsd" MetadataType="Schema" ID="e383c4cc-9470-46bb-a09f-c6c469cb97ee" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/CarroCompraWS?xsd=1" />
-    <MetadataFile FileName="DesarrolladorWS.xsd" MetadataType="Schema" ID="a8310484-00af-4a16-b91f-1312ddd4fee7" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/DesarrolladorWS?xsd=1" />
+    <MetadataFile FileName="ReporteDesarrolladorWS.wsdl" MetadataType="Wsdl" ID="aa6bfd7e-91fb-47e8-bf8a-5401140fe4f5" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/ReporteDesarrolladorWS?WSDL" />
     <MetadataFile FileName="JugadorWS.wsdl" MetadataType="Wsdl" ID="09940814-56ea-4e19-bd2c-6a004d919856" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/JugadorWS?WSDL" />
     <MetadataFile FileName="file.disco" MetadataType="Disco" ID="d03dbe7d-4ab5-4af3-990d-d57b3d9ad249" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/file.disco" />
     <MetadataFile FileName="JuegoWS.xsd" MetadataType="Schema" ID="2832325a-255a-48ec-8513-19aace16fe79" SourceId="1" SourceUrl="http://localhost:8080/LagStoreWSL/JuegoWS?xsd=1" />
