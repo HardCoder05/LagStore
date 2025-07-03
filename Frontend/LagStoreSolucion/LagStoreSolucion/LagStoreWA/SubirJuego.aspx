@@ -9,7 +9,7 @@
 
     <div class="mb-3">
         <label>Título *</label>
-        <asp:TextBox ID="txtTitulo" runat="server" CssClass="form-control" />
+        <asp:TextBox ID="txtTitulo" runat="server" CssClass="form-control" placeholder="Counter Strike"/>
     </div>
 
     <div class="mb-3">
@@ -19,12 +19,12 @@
 
     <div class="mb-3">
         <label>Versión *</label>
-        <asp:TextBox ID="txtVersion" runat="server" CssClass="form-control" />
+        <asp:TextBox ID="txtVersion" runat="server" CssClass="form-control" placeholder="3.1"/>
     </div>
 
     <div class="mb-3">
         <label>Precio *</label>
-        <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control" />
+        <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control" placeholder="25.50"/>
     </div>
 
     <div class="mb-3">
@@ -34,17 +34,17 @@
 
     <div class="mb-3">
         <label>Requisitos mínimos *</label>
-        <asp:TextBox ID="txtReqMin" runat="server" CssClass="form-control" />
+        <asp:TextBox ID="txtReqMin" runat="server" CssClass="form-control" placeholder="Windows 10, 4GB RAM"/>
     </div>
 
     <div class="mb-3">
         <label>Requisitos recomendados *</label>
-        <asp:TextBox ID="txtReqRec" runat="server" CssClass="form-control" />
+        <asp:TextBox ID="txtReqRec" runat="server" CssClass="form-control" placeholder="Windows 11, 16GB RAM"/>
     </div>
 
     <div class="mb-3">
         <label>Espacio en disco (GB) *</label>
-        <asp:TextBox ID="txtEspacio" runat="server" CssClass="form-control" />
+        <asp:TextBox ID="txtEspacio" runat="server" CssClass="form-control" placeholder="150"/>
     </div>
 
     <div class="mb-3">

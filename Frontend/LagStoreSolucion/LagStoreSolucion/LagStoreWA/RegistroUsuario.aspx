@@ -30,12 +30,12 @@
 
                 <div class="form-group mb-3">
                     <label for="txtNombre">Nombre completo<strong class="text-danger">*</strong></label>
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Luis Perez"/>
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="txtEmail">Correo electrónico<strong class="text-danger">*</strong></label>
-                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" />
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" placeholder="correo@email.com"/>
                 </div>
 
                 <div class="form-group mb-3">
@@ -45,12 +45,12 @@
 
                 <div class="form-group mb-3">
                     <label for="txtTelefono">Teléfono<strong class="text-danger">*</strong></label>
-                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" />
+                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" placeholder="987654321"/>
                 </div>
 
 
                 <div class="form-group mb-3">
-                    <label for="txtFoto">Foto de perfil<strong class="text-danger">*</strong></label>
+                    <label for="txtFoto">Foto de perfil (URL)<strong class="text-danger">*</strong></label>
                     <asp:TextBox ID="txtFoto" runat="server" CssClass="form-control" />
                 </div>
 
@@ -73,11 +73,11 @@
                 <asp:Panel ID="pnlDesarrollador" runat="server" Visible="false">
                     <div class="form-group mb-3">
                         <label for="txtNumeroCuenta">Número de cuenta<strong class="text-danger">*</strong></label>
-                        <asp:TextBox ID="txtNumeroCuenta" runat="server" CssClass="form-control" />
+                        <asp:TextBox ID="txtNumeroCuenta" runat="server" CssClass="form-control" placeholder="01826693009783244336"/>
                     </div>
                     <div class="form-group mb-3">
                         <label for="txtIngresoTotal">Ingreso total<strong class="text-danger">*</strong></label>
-                        <asp:TextBox ID="txtIngresoTotal" runat="server" CssClass="form-control" TextMode="Number" />
+                        <asp:TextBox ID="txtIngresoTotal" runat="server" CssClass="form-control" TextMode="Number" Text="0"/>
                     </div>
                 </asp:Panel>
 
@@ -85,7 +85,7 @@
                 <asp:Panel ID="pnlJugador" runat="server" Visible="false">
                     <div class="form-group mb-3">
                         <label for="txtNickname">Nickname<strong class="text-danger">*</strong></label>
-                        <asp:TextBox ID="txtNickname" runat="server" CssClass="form-control" />
+                        <asp:TextBox ID="txtNickname" runat="server" CssClass="form-control" placeholder="Crack25"/>
                     </div>
                 </asp:Panel>
 
@@ -93,7 +93,7 @@
                 <asp:Panel ID="pnlAdministrador" runat="server" Visible="false">
                     <div class="form-group mb-3">
                         <label for="txtRolAdmin">Rol del administrador<strong class="text-danger">*</strong></label>
-                        <asp:TextBox ID="txtRolAdmin" runat="server" CssClass="form-control" />
+                        <asp:TextBox ID="txtRolAdmin" runat="server" CssClass="form-control" placeholder="Supervisor"/>
                     </div>
                 </asp:Panel>
 
