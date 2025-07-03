@@ -139,40 +139,52 @@ namespace LagStoreWA
                 {
                     MostrarMensajeExito("Registro exitoso del jugador.");
 
-                    //jugador jugadorRef = new jugador { idUsuario = jugadorNuevo.idJugador };
-
                     Session["JugadorNuevo"] = jugadorNuevo; // Guardar el jugador en la sesión
 
-                    // Crear Biblioteca
-                    biblioteca nuevaBiblioteca = new biblioteca
+                    try
                     {
-                        usuario = jugadorNuevo,
-                        ingresoTotal = 0,
-                        cantidadDeJuegos = 0,
-                        activo = 1
-                    };
+                        // Crear Biblioteca
+                        biblioteca nuevaBiblioteca = new biblioteca
+                        {
+                            usuario = jugadorNuevo,
+                            ingresoTotal = 0,
+                            cantidadDeJuegos = 0,
+                            activo = 1
+                        };
 
-                    bibliotecaWSClient.insertarBiblioteca(nuevaBiblioteca);
+                        nuevaBiblioteca.usuario.idUsuario = resultado;
 
-                    // Crear Carro de Compra
-                    carroCompra nuevoCarro = new carroCompra
+                        bibliotecaWSClient.insertarBiblioteca(nuevaBiblioteca);
+
+                        // Crear Carro de Compra
+                        carroCompra nuevoCarro = new carroCompra
+                        {
+                            jugador = jugadorNuevo,
+                            totalEstimado = 0,
+                            activo = 1
+                        };
+
+                        nuevoCarro.jugador.idJugador = resultado; // Asignar el ID del jugador recién creado
+
+                        carroCompraWSClient.insertarCarroCompra(nuevoCarro);
+
+                        // Crear Cartera con monto inicial
+                        cartera nuevaCartera = new cartera
+                        {
+                            jugador = jugadorNuevo,
+                            saldoActual = 100.0,
+                            activo = 1
+                        };
+
+                        nuevaCartera.jugador.idJugador = resultado;
+
+                        carteraWSClient.insertarCartera(nuevaCartera);
+                    }
+                    catch(Exception ex)
                     {
-                        jugador = jugadorNuevo,
-                        totalEstimado = 0,
-                        activo = 1
-                    };
-
-                    carroCompraWSClient.insertarCarroCompra(nuevoCarro);
-
-                    // Crear Cartera con monto inicial
-                    cartera nuevaCartera = new cartera
-                    {
-                        jugador = jugadorNuevo,
-                        saldoActual = 100.0,
-                        activo = 1
-                    };
-
-                    carteraWSClient.insertarCartera(nuevaCartera);
+                        MostrarMensajeError("Error al crear biblioteca, carro de compra o cartera: " + ex.Message);
+                        return; // Detener el proceso si hay un error
+                    }
 
                     LimpiarFormulario();
                 }
