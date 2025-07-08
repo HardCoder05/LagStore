@@ -1,6 +1,9 @@
 ﻿using LagStoreWA.ServicesWS;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Web.UI.HtmlControls;
 
 namespace LagStoreWA
 {
@@ -30,6 +33,29 @@ namespace LagStoreWA
 
             if (!IsPostBack)
             {
+                if (Session["Administrador"] != null)
+                {
+                    // Accedemos al Master Page
+                    var liGestion = this.Master.FindControl("liGestion") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var liMasVendidos = this.Master.FindControl("liMasVendidos") as HtmlGenericControl;
+                    var liMayorCalificacion = this.Master.FindControl("liMayorCalificacion") as HtmlGenericControl;
+                    var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
+                    var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
+                    if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
+                    {
+                        // Mostrar menú gestión y cerrar sesión
+                        liGestion.Visible = true;
+                        liMasVendidos.Visible = true;
+                        liMayorCalificacion.Visible = true;
+                        liCerrarSesion.Visible = true;
+
+                        // Ocultar iniciar sesión y crear cuenta
+                        lnkIniciarSesion.Visible = false;
+                        liCrearCuenta.Visible = false;
+                    }
+                }
+
                 CargarDatosUsuario();
             }
         }
@@ -78,6 +104,7 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = jugadorActual.fotoDePerfil;
+                        txtFotoPerfil.Text = jugadorActual.fotoDePerfil;
                     }
                 }
                 else if (rolUsuario == rol.Desarrollador)
@@ -119,7 +146,8 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = desarrolladorActual.fotoDePerfil;
-
+                        txtFotoPerfil.Text = desarrolladorActual.fotoDePerfil;
+                        //lo comente solo por el chistee
                         //Atributos específicos del desarrollador
                         NumCuenta.Visible = true;
                         lblNumCuenta.Text = desarrolladorActual.numeroCuenta;
@@ -166,6 +194,9 @@ namespace LagStoreWA
 
                         // Cargar foto de perfil
                         imgPerfil.ImageUrl = administradorActual.fotoDePerfil;
+                        txtFotoPerfil.Text = administradorActual.fotoDePerfil;
+
+                        // Atributos específicos del administrador
                         RolAdministrativo.Visible = true;
                         lblRolAdministrativo.Text = administradorActual.rolAdministrativo;
                     }
@@ -209,6 +240,13 @@ namespace LagStoreWA
                 if (!string.IsNullOrEmpty(txtTelefono.Text.Trim()) && !ValidarTelefono(txtTelefono.Text.Trim()))
                 {
                     MostrarMensaje("El formato del teléfono no es válido", "alert-warning");
+                    return;
+                }
+
+                // Verificar la cantidad de caracteres del nombre
+                if (txtNombre.Text.Trim().Length < 3 || txtNombre.Text.Trim().Length > 50)
+                {
+                    MostrarMensaje("El nombre debe tener entre 3 y 50 caracteres", "alert-warning");
                     return;
                 }
 
@@ -257,6 +295,8 @@ namespace LagStoreWA
 
         private bool ActualizarJugador(bool cambiarContrasena)
         {
+            jugadorActual = (jugador)Session["Jugador"];
+
             jugador jugadorActualizado = new jugador
             {
                 idJugador = jugadorActual.idJugador,
@@ -266,10 +306,12 @@ namespace LagStoreWA
                 telefono = txtTelefono.Text.Trim(),
                 contrasena = cambiarContrasena ? txtNuevaContrasena.Text : jugadorActual.contrasena,
                 fechaRegistro = jugadorActual.fechaRegistro,
-                fotoDePerfil = jugadorActual.fotoDePerfil,
+                fotoDePerfil = txtFotoPerfil.Text.Trim(),
                 rolUsuario = jugadorActual.rolUsuario,
                 activo = jugadorActual.activo
             };
+
+            jugadorActualizado.fechaRegistroSpecified = true;
 
             int resultado = wsJugador.modificarJugador(jugadorActualizado);
 
@@ -284,6 +326,8 @@ namespace LagStoreWA
 
         private bool ActualizarDesarrollador(bool cambiarContrasena)
         {
+            desarrolladorActual = (desarrollador)Session["Desarrollador"];
+
             desarrollador desarrolladorActualizado = new desarrollador
             {
                 idDesarrollador = desarrolladorActual.idDesarrollador,
@@ -292,12 +336,14 @@ namespace LagStoreWA
                 telefono = txtTelefono.Text.Trim(),
                 contrasena = cambiarContrasena ? txtNuevaContrasena.Text : desarrolladorActual.contrasena,
                 fechaRegistro = desarrolladorActual.fechaRegistro,
-                fotoDePerfil = desarrolladorActual.fotoDePerfil,
+                fotoDePerfil = txtFotoPerfil.Text.Trim(),
                 rolUsuario = desarrolladorActual.rolUsuario,
                 numeroCuenta = desarrolladorActual.numeroCuenta,
                 ingresoTotal = desarrolladorActual.ingresoTotal,
                 activo = desarrolladorActual.activo
             };
+
+            desarrolladorActualizado.fechaRegistroSpecified = true;
 
             int resultado = wsDesarrollador.modificarDesarrollador(desarrolladorActualizado);
 
@@ -312,6 +358,8 @@ namespace LagStoreWA
 
         private bool ActualizarAdministrador(bool cambiarContrasena)
         {
+            administradorActual = (administrador)Session["Administrador"];
+
             administrador administradorActualizado = new administrador
             {
                 idAdministrador = administradorActual.idAdministrador,
@@ -320,11 +368,13 @@ namespace LagStoreWA
                 telefono = txtTelefono.Text.Trim(),
                 contrasena = cambiarContrasena ? txtNuevaContrasena.Text : administradorActual.contrasena,
                 fechaRegistro = administradorActual.fechaRegistro,
-                fotoDePerfil = administradorActual.fotoDePerfil,
+                fotoDePerfil = txtFotoPerfil.Text.Trim(),
                 rolUsuario = administradorActual.rolUsuario,
                 rolAdministrativo = administradorActual.rolAdministrativo,
                 activo = administradorActual.activo
             };
+
+            administradorActualizado.fechaRegistroSpecified = true;
 
             int resultado = wsAdministrador.modificarAdministrador(administradorActualizado);
 
@@ -335,6 +385,21 @@ namespace LagStoreWA
                 return true;
             }
             return false;
+        }
+
+        private string ObtenerMD5(string texto)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(texto);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in hashBytes)
+                    sb.Append(b.ToString("x2")); // formato hexadecimal
+
+                return sb.ToString();
+            }
         }
 
         private bool ValidarCambioContrasena()
@@ -366,7 +431,9 @@ namespace LagStoreWA
                 contrasenaActual = administradorActual.contrasena;
             }
 
-            if (txtContrasenaActual.Text != contrasenaActual)
+            string hashIngresado = ObtenerMD5(txtContrasenaActual.Text);
+
+            if (hashIngresado != contrasenaActual)
             {
                 MostrarMensaje("La contraseña actual no es correcta", "alert-warning");
                 return false;

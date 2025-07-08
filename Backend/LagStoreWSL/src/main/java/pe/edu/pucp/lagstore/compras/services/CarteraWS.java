@@ -23,4 +23,16 @@ public class CarteraWS {
         carteraBO = new CarteraBO();
         return carteraBO.obtenerPorId(idCartera);
     }
+    
+    @WebMethod(operationName = "obenerCarteraPorIdUauario")
+    public Cartera obenerCarteraPorIdUauario(@WebParam(name = "idUsuario") int idUsuario) {
+        carteraBO = new CarteraBO();
+        return carteraBO.obtenerPorIdUusario(idUsuario);
+    }
+    
+    @WebMethod(operationName = "insertarCartera")
+    public int insertarCartera(@WebParam(name = "cartera") Cartera cartera) {
+        carteraBO = new CarteraBO();
+        return carteraBO.insertar(cartera);
+    }
 }

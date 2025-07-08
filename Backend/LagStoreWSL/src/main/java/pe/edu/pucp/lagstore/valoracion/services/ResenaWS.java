@@ -4,6 +4,7 @@ package pe.edu.pucp.lagstore.valoracion.services;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import java.util.ArrayList;
 
 import pe.edu.pucp.lagstore.valoracion.model.Resena;
 import pe.edu.pucp.lagstore.valoracion.model.ResenaBO;
@@ -38,6 +39,14 @@ public class ResenaWS {
     public Resena obtenerResenaPorId(@WebParam(name = "idResena") int idResena) {
         resenaBO = new ResenaBO();
         return resenaBO.obtenerPorId(idResena);
+    }
+    
+    @WebMethod(operationName = "listarPorJuego")
+    public ArrayList<Resena> listarPorJuego(@WebParam(name = "idJuego") int idJuego) {
+        ArrayList<Resena> resenas = null;
+        resenaBO = new ResenaBO();
+        resenas= resenaBO.listarPorJuego(idJuego);
+        return resenas;
     }
     
 }

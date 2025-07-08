@@ -87,7 +87,7 @@
                                     <div class="col-6">
                                         <p class="text-light mb-1"><strong>Género:</strong> <%# Eval("juego.genero") %></p>
                                         <p class="text-light mb-1"><strong>Modelo:</strong> <%# Eval("juego.modeloNegocio") %></p>
-                                        <p class="text-light mb-1"><strong>Precio:</strong> $<%# Eval("juego.precio", "{0:F2}") %></p>
+                                        <p class="text-light mb-1"><strong>Precio:</strong> S/<%# Eval("juego.precio", "{0:N2}") %></p>
                                     </div>
                                     <div class="col-6">
                                         <p class="text-light mb-1"><strong>Adquirido:</strong> <%# Eval("fechaAdquisicion", "{0:dd/MM/yyyy}") %></p>
@@ -99,17 +99,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="badge fs-6 <%# Convert.ToInt32(Eval("activo")) == 1 ? "bg-success" : "bg-warning text-dark" %>">
-                                <%# Convert.ToInt32(Eval("activo")) == 1 ? "Visible" : "Oculto" %>
+                            <!-- CAMBIO: Usar 'actualizado' en lugar de 'activo' -->
+                            <div class="badge fs-6 <%# Convert.ToBoolean(Eval("actualizado")) ? "bg-success" : "bg-warning text-dark" %>">
+                                <%# Convert.ToBoolean(Eval("actualizado")) ? "Visible" : "Oculto" %>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 text-end">
                         <div class="btn-group-vertical gap-2" role="group">
+                            <!-- CAMBIO: Usar 'actualizado' en lugar de 'activo' -->
                             <asp:Button ID="btnOcultar" runat="server"
                                 CommandArgument='<%# Eval("juego.idJuego") + "," + Eval("biblioteca.idBiblioteca") %>'
-                                Text='<%# (Convert.ToInt32(Eval("activo")) == 1) ? "Ocultar" : "Mostrar" %>'
-                                CssClass='<%# (Convert.ToInt32(Eval("activo")) == 1) ? "btn btn-outline-warning" : "btn btn-outline-success" %>'
+                                Text='<%# Convert.ToBoolean(Eval("actualizado")) ? "Ocultar" : "Mostrar" %>'
+                                CssClass='<%# Convert.ToBoolean(Eval("actualizado")) ? "btn btn-outline-warning" : "btn btn-outline-success" %>'
                                 OnClick="btnOcultar_Click" />
                             <asp:Button ID="btnEliminar" runat="server"
                                 CommandArgument='<%# Eval("juego.idJuego") + "," + Eval("biblioteca.idBiblioteca") %>'

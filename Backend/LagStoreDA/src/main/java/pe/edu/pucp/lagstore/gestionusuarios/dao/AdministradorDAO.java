@@ -7,4 +7,5 @@ import pe.edu.pucp.lagstore.gestusuarios.model.Administrador;
 
 public interface AdministradorDAO extends ICrud<Administrador>{
     ArrayList<Juego> listarJuegosMasVendidos();
+    ArrayList<Juego> listarJuegosCalificacionAltas();
 }

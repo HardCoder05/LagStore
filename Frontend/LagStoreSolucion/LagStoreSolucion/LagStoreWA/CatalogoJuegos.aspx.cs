@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace LagStoreWA
@@ -18,6 +19,29 @@ namespace LagStoreWA
 
             if (!IsPostBack)
             {
+                if (Session["Administrador"] != null)
+                {
+                    // Accedemos al Master Page
+                    var liGestion = this.Master.FindControl("liGestion") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var liMasVendidos = this.Master.FindControl("liMasVendidos") as HtmlGenericControl;
+                    var liMayorCalificacion = this.Master.FindControl("liMayorCalificacion") as HtmlGenericControl;
+                    var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
+                    var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
+                    if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
+                    {
+                        // Mostrar menú gestión y cerrar sesión
+                        liGestion.Visible = true;
+                        liMayorCalificacion.Visible = true;
+                        liMasVendidos.Visible = true;
+                        liCerrarSesion.Visible = true;
+
+                        // Ocultar iniciar sesión y crear cuenta
+                        lnkIniciarSesion.Visible = false;
+                        liCrearCuenta.Visible = false;
+                    }
+                }
+
                 CargarFiltros();
                 CargarJuegos();
             }
@@ -31,11 +55,12 @@ namespace LagStoreWA
                 ddlGenero.Items.Clear();
                 ddlGenero.Items.Add(new ListItem("Todos los géneros", ""));
                 ddlGenero.Items.Add(new ListItem("Accion", "Accion"));
-                ddlGenero.Items.Add(new ListItem("Aventura", "Aventura"));
-                ddlGenero.Items.Add(new ListItem("RPG", "RPG"));
+                ddlGenero.Items.Add(new ListItem("Shooter", "Shooter"));
+                ddlGenero.Items.Add(new ListItem("Rol", "Rol"));
                 ddlGenero.Items.Add(new ListItem("Estrategia", "Estrategia"));
                 ddlGenero.Items.Add(new ListItem("Deportes", "Deportes"));
                 ddlGenero.Items.Add(new ListItem("Simulación", "Simulacion"));
+                ddlGenero.Items.Add(new ListItem("Carreras", "Carreras"));
 
                 // Cargar modelos de negocio
                 ddlModeloNegocio.Items.Clear();
@@ -227,13 +252,13 @@ namespace LagStoreWA
         }
 
         // Métodos auxiliares para el binding de datos
-        protected string GetImageUrl(object rutaImagen)
-        {
-            if (rutaImagen == null || string.IsNullOrEmpty(rutaImagen.ToString()))
-                return "~/Assets/default-game.jpg"; // Imagen por defecto
+        //protected string GetImageUrl(object rutaImagen)
+        //{
+        //    if (rutaImagen == null || string.IsNullOrEmpty(rutaImagen.ToString()))
+        //        return "~/Assets/default-game.jpg"; // Imagen por defecto
 
-            return "~/Assets/Games/" + rutaImagen.ToString();
-        }
+        //    return "~/Assets/Games/" + rutaImagen.ToString();
+        //}
 
         protected string GetPriceTag(object precio, object modeloNegocio)
         {
@@ -294,11 +319,12 @@ namespace LagStoreWA
             var generoMap = new Dictionary<string, string>
             {
                 ["ACCION"] = "Accion",
-                ["AVENTURA"] = "Aventura",
-                ["RPG"] = "RPG",
+                ["SHOOTER"] = "Shooter",
+                ["ROL"] = "Rol",
                 ["ESTRATEGIA"] = "Estrategia",
                 ["DEPORTES"] = "Deportes",
-                ["SIMULACION"] = "Simulacion"
+                ["SIMULACION"] = "Simulacion",
+                ["CARRERAS"] = "Carreras"
             };
 
             string generoTexto = genero.ToString().ToUpper();

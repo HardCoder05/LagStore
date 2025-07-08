@@ -13,12 +13,18 @@ namespace LagStoreWA
         private JugadorWSClient jugadorWSClient;
         private DesarrolladorWSClient desarrolladorWSClient;
         private AdministradorWSClient administradorWSCLient;
+        private BibliotecaWSClient bibliotecaWSClient;
+        private CarroCompraWSClient carroCompraWSClient;
+        private CarteraWSClient carteraWSClient;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             jugadorWSClient = new JugadorWSClient();
             desarrolladorWSClient = new DesarrolladorWSClient();
             administradorWSCLient = new AdministradorWSClient();
+            bibliotecaWSClient = new BibliotecaWSClient();
+            carroCompraWSClient = new CarroCompraWSClient();
+            carteraWSClient = new CarteraWSClient();
         }
 
         protected void ddlTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,6 +78,8 @@ namespace LagStoreWA
             {
                 RegistrarAdministrador();
             }
+
+            Response.Redirect("InicioSesion.aspx");
         }
 
         private bool ValidarCamposComunes()
@@ -130,6 +138,54 @@ namespace LagStoreWA
                 if (resultado > 0)
                 {
                     MostrarMensajeExito("Registro exitoso del jugador.");
+
+                    Session["JugadorNuevo"] = jugadorNuevo; // Guardar el jugador en la sesión
+
+                    try
+                    {
+                        // Crear Biblioteca
+                        biblioteca nuevaBiblioteca = new biblioteca
+                        {
+                            usuario = jugadorNuevo,
+                            ingresoTotal = 0,
+                            cantidadDeJuegos = 0,
+                            activo = 1
+                        };
+
+                        nuevaBiblioteca.usuario.idUsuario = resultado;
+
+                        bibliotecaWSClient.insertarBiblioteca(nuevaBiblioteca);
+
+                        // Crear Carro de Compra
+                        carroCompra nuevoCarro = new carroCompra
+                        {
+                            jugador = jugadorNuevo,
+                            totalEstimado = 0,
+                            activo = 1
+                        };
+
+                        nuevoCarro.jugador.idJugador = resultado; // Asignar el ID del jugador recién creado
+
+                        carroCompraWSClient.insertarCarroCompra(nuevoCarro);
+
+                        // Crear Cartera con monto inicial
+                        cartera nuevaCartera = new cartera
+                        {
+                            jugador = jugadorNuevo,
+                            saldoActual = 100.0,
+                            activo = 1
+                        };
+
+                        nuevaCartera.jugador.idJugador = resultado;
+
+                        carteraWSClient.insertarCartera(nuevaCartera);
+                    }
+                    catch(Exception ex)
+                    {
+                        MostrarMensajeError("Error al crear biblioteca, carro de compra o cartera: " + ex.Message);
+                        return; // Detener el proceso si hay un error
+                    }
+
                     LimpiarFormulario();
                 }
                 else

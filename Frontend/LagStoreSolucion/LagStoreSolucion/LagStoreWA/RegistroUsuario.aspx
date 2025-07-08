@@ -18,33 +18,6 @@
             <div class="card p-4 w-100" style="max-width: 500px;">
                 <h3 class="card-title text-center mb-4">Registro de Usuario</h3>
 
-
-                <div class="form-group mb-3">
-                    <label for="txtNombre">Nombre completo</label>
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="txtEmail">Correo electrónico</label>
-                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" />
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="txtContrasena">Contraseña</label>
-                    <asp:TextBox ID="txtContrasena" runat="server" CssClass="form-control" TextMode="Password" />
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="txtTelefono">Teléfono</label>
-                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" />
-                </div>
-
-
-                <div class="form-group mb-3">
-                    <label for="txtFoto">Foto de perfil</label>
-                    <asp:TextBox ID="txtFoto" runat="server" CssClass="form-control" />
-                </div>
-
                 <div class="form-group mb-3">
                     <label for="ddlTipoUsuario">Tipo de usuario</label>
                     <asp:DropDownList ID="ddlTipoUsuario" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlTipoUsuario_SelectedIndexChanged">
@@ -55,31 +28,72 @@
                     </asp:DropDownList>
                 </div>
 
+                <div class="form-group mb-3">
+                    <label for="txtNombre">Nombre completo<strong class="text-danger">*</strong></label>
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Luis Perez"/>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="txtEmail">Correo electrónico<strong class="text-danger">*</strong></label>
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" placeholder="correo@email.com"/>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="txtContrasena">Contraseña<strong class="text-danger">*</strong></label>
+                    <asp:TextBox ID="txtContrasena" runat="server" CssClass="form-control" TextMode="Password" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="txtTelefono">Teléfono<strong class="text-danger">*</strong></label>
+                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" placeholder="987654321"/>
+                </div>
+
+
+                <div class="form-group mb-3">
+                    <label for="txtFoto">Foto de perfil (URL)<strong class="text-danger">*</strong></label>
+                    <asp:TextBox ID="txtFoto" runat="server" CssClass="form-control" />
+                </div>
+
+
+                <%--<div class="form-group mb-3">
+                    <label for="ddlTipoUsuario">Tipo de usuario</label>
+=======
+                <div class="form-group mb-3">
+                    <label for="ddlTipoUsuario">Tipo de usuario<strong class="text-danger">*</strong></label>
+>>>>>>> 8c9027bf97565f084fba51067306ff424c4f6a8e
+                    <asp:DropDownList ID="ddlTipoUsuario" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlTipoUsuario_SelectedIndexChanged">
+                        <asp:ListItem Text="Seleccionar" Value="" />
+                        <asp:ListItem Text="Desarrollador" Value="Desarrollador" />
+                        <asp:ListItem Text="Jugador" Value="Jugador" />
+                        <asp:ListItem Text="Administrador" Value="Administrador" />
+                    </asp:DropDownList>
+                </div>--%>
+
                 <!-- Panel Desarrollador -->
                 <asp:Panel ID="pnlDesarrollador" runat="server" Visible="false">
                     <div class="form-group mb-3">
-                        <label for="txtNumeroCuenta">Número de cuenta</label>
-                        <asp:TextBox ID="txtNumeroCuenta" runat="server" CssClass="form-control" />
+                        <label for="txtNumeroCuenta">Número de cuenta<strong class="text-danger">*</strong></label>
+                        <asp:TextBox ID="txtNumeroCuenta" runat="server" CssClass="form-control" placeholder="01826693009783244336"/>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="txtIngresoTotal">Ingreso total</label>
-                        <asp:TextBox ID="txtIngresoTotal" runat="server" CssClass="form-control" TextMode="Number" />
+                        <label for="txtIngresoTotal">Ingreso total<strong class="text-danger">*</strong></label>
+                        <asp:TextBox ID="txtIngresoTotal" runat="server" CssClass="form-control" TextMode="Number" Text="0"/>
                     </div>
                 </asp:Panel>
 
                 <!-- Panel Jugador -->
                 <asp:Panel ID="pnlJugador" runat="server" Visible="false">
                     <div class="form-group mb-3">
-                        <label for="txtNickname">Nickname</label>
-                        <asp:TextBox ID="txtNickname" runat="server" CssClass="form-control" />
+                        <label for="txtNickname">Nickname<strong class="text-danger">*</strong></label>
+                        <asp:TextBox ID="txtNickname" runat="server" CssClass="form-control" placeholder="Crack25"/>
                     </div>
                 </asp:Panel>
 
                 <!-- Panel Administrador -->
                 <asp:Panel ID="pnlAdministrador" runat="server" Visible="false">
                     <div class="form-group mb-3">
-                        <label for="txtRolAdmin">Rol del administrador</label>
-                        <asp:TextBox ID="txtRolAdmin" runat="server" CssClass="form-control" />
+                        <label for="txtRolAdmin">Rol del administrador<strong class="text-danger">*</strong></label>
+                        <asp:TextBox ID="txtRolAdmin" runat="server" CssClass="form-control" placeholder="Supervisor"/>
                     </div>
                 </asp:Panel>
 

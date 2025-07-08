@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,19 +16,19 @@ namespace LagStoreWA
         // Atributo accesible para el carro de compra actual
         protected object carroCompraActual;
 
-        protected GridView gvCarro; // Asegúrate de que gvCarro esté correctamente definido en el markup
-        protected Label lblMensaje;  // Asegúrate de que lblMensaje esté definido en el markup
+        protected GridView gvCarro; 
+        protected Label lblMensaje; 
         protected int usuarioId;
-        protected Panel pnlProcesando;     // Asegúrate de que pnlProcesando esté definido en el markup
-        protected Image imgEstadoCompra;   // Asegúrate de que imgEstadoCompra esté definido en el markup
-        protected Label lblProcesando;     // Asegúrate de que lblProcesando esté definido en el markup
+        protected Panel pnlProcesando;     
+        protected Image imgEstadoCompra;   
+        protected Label lblProcesando;     
 
         protected void Page_Load(object sender, EventArgs e)
         {
             boJugador = new JugadorWSClient();
             boCarro = new CarroCompraWSClient();
 
-            // Inicializar usuarioId usando la sesión
+            // Inicializar usuarioId usando la sesiÃ³n
             if (Session["UsuarioId"] != null)
             {
                 usuarioId = Convert.ToInt32(Session["UsuarioId"]);
@@ -42,7 +42,7 @@ namespace LagStoreWA
                 }
                 else
                 {
-                    // Redirigir a la página de inicio de sesión si no hay un usuario válido
+                    // Redirigir a la pÃ¡gina de inicio de sesiÃ³n si no hay un usuario vÃ¡lido
                     Response.Redirect("InicioSesion.aspx");
                 }
             }
@@ -52,7 +52,7 @@ namespace LagStoreWA
         {
             try
             {
-                // Recuperar la lista de juegos del carrito desde sesión; si no existe, se inicializa vacía
+                // Recuperar la lista de juegos del carrito desde sesiÃ³n; si no existe, se inicializa vacÃ­a
                 List<juego> listaJuegos = Session["ListaJuegosCarro"] as List<juego> ?? new List<juego>();
 
                 var carro = boCarro.otenerCarroPorUsuario(usuarioId);
@@ -68,13 +68,13 @@ namespace LagStoreWA
 
 
                 double total = listaJuegos.Sum(j => j.precio);
-                lblTotal.Text = "Total: " + total.ToString("C");
+                lblTotal.Text = "Total:S/ " + total.ToString("N2"); //para que salga en soles
 
-                // Mostrar mensaje según la existencia de juegos en el carrito
+                // Mostrar mensaje segÃºn la existencia de juegos en el carrito
                 if (listaJuegos.Any())
                 {   
                 
-                    //lblMensaje.Text = "Si deseas agregar más juegos a tu carro, selecciónalos desde la tienda.";
+                    //lblMensaje.Text = "Si deseas agregar mÃ¡s juegos a tu carro, selecciÃ³nalos desde la tienda.";
                 }
                 else
                 {
@@ -104,7 +104,7 @@ namespace LagStoreWA
                 }
                 else
                 {
-                    lblMensaje.Text = "No se encontró el juego para eliminar.";
+                    lblMensaje.Text = "No se encontrÃ³ el juego para eliminar.";
                 }
 
                 // Actualizar el contador en el Master
@@ -127,38 +127,112 @@ namespace LagStoreWA
             try
             {
                 pnlProcesando.Visible = true;
+                imgEstadoCompra.Visible = true;
                 imgEstadoCompra.ImageUrl = "~/Content/processing.png";
-                lblProcesando.Text = "Procesando su compra con su método de pago predeterminado...";
+                lblProcesando.Text = "Procesando su compra con su mÃ©todo de pago predeterminado...";
                 lblProcesando.ForeColor = System.Drawing.Color.Black;
 
-                // Se simula la finalización de la compra; aquí podrías llamar a un método real del servicio
-                bool exito = true; // boCarro.finalizarCompra(usuarioId);
+                // Se simula la finalizaciÃ³n de la compra; aquÃ­ podrÃ­as llamar a un mÃ©todo real del servicio
+                bool exito = ProcesarCompra(); // boCarro.finalizarCompra(usuarioId);
 
                 if (exito)
                 {
-                    imgEstadoCompra.ImageUrl = "~/Content/success.png";
-                    lblProcesando.Text = "¡Compra finalizada con éxito!";
-                    lblProcesando.ForeColor = System.Drawing.Color.Green;
-                    lblMensaje.Text = "";
-                    // Si es necesario, puedes limpiar la lista del carrito después de la compra
-                    Session["ListaJuegosCarro"] = new List<juego>();
-                    CargaCarroCompra(usuarioId);
+                    if (AnhadirJuegosBiblioteca())
+                    {
+
+                        mostrarCompraCorrecta();
+                        Session["ListaJuegosCarro"] = new List<juego>();
+                        Response.Redirect(Request.RawUrl);
+
+                    }
+                    else
+                    {
+                        mostrarErrorCompra();
+                    }
                 }
                 else
                 {
-                    imgEstadoCompra.ImageUrl = "~/Content/processing.png";
-                    lblProcesando.Text = "No se pudo finalizar la compra.";
-                    lblProcesando.ForeColor = System.Drawing.Color.Red;
-                    lblMensaje.Text = "No se pudo finalizar la compra.";
+                    mostrarErrorCompra();
                 }
             }
             catch (Exception ex)
             {
-                imgEstadoCompra.ImageUrl = "~/Content/processing.png";
-                lblProcesando.Text = "Error al finalizar la compra: " + ex.Message;
-                lblProcesando.ForeColor = System.Drawing.Color.Red;
-                lblMensaje.Text = "Error al finalizar la compra: " + ex.Message;
+                mostrarErrorCompra();
             }
         }
+
+        protected bool ProcesarCompra()
+        {
+            try
+            {
+                bool exito = true; 
+
+                if (exito)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {    
+                return false;
+            }
+        }
+
+        protected bool AnhadirJuegosBiblioteca()
+        {
+            try
+            {
+                List<juego> listaJuegos = Session["ListaJuegosCarro"] as List<juego> ?? new List<juego>();
+
+                var boBilioteca = new BibliotecaWSClient();
+                var biblotecaUsuario = boBilioteca.obtenerBibliotecaPorUsuario(usuarioId);
+                var boJuegoAdquirido = new JuegoAdquiridoWSClient();
+
+                foreach (var juego in listaJuegos)
+                {
+                    var juegoAdq = new juegoAdquirido
+                    {
+                        biblioteca = biblotecaUsuario,
+                        juego = juego,
+                        fechaAdquisicion = DateTime.Now,
+                        ultimaSesion = DateTime.Now,
+                        tiempoJuego = 0.0,
+                        actualizado = true
+                    };
+
+                    boJuegoAdquirido.insertarJuegoAdquirido(juegoAdq);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
+        }
+
+        protected void mostrarCompraCorrecta()
+        {
+            imgEstadoCompra.Visible = true;
+            imgEstadoCompra.ImageUrl = "~/Content/Imagenes_de_carga/success.png";
+            lblProcesando.Text = "Â¡Compra finalizada con Ã©xito!";
+            lblProcesando.ForeColor = System.Drawing.Color.Green;
+            lblMensaje.Text = "";
+        }
+
+        protected void mostrarErrorCompra()
+        {
+            imgEstadoCompra.Visible = true;
+            imgEstadoCompra.ImageUrl = "~/Content/Imagenes_de_carga/processing.png";
+            lblProcesando.Text = "No se pudo finalizar la compra.";
+            lblProcesando.ForeColor = System.Drawing.Color.Red;
+            lblMensaje.Text = "No se pudo finalizar la compra.";
+        }
+
+
     }
 }

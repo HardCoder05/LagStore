@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace LagStoreWA
@@ -15,14 +16,39 @@ namespace LagStoreWA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*if (Session["usuarioId"] == null)
+            
+
+            if (Session["usuarioId"] == null)
             {
                 Response.Redirect("InicioSesion.aspx");
                 return;
-            }*/
+            }
 
             if (!IsPostBack)
             {
+
+                if (Session["Administrador"] != null)
+                {
+                    // Accedemos al Master Page
+                    var liGestion = this.Master.FindControl("liGestion") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var liMasVendidos = this.Master.FindControl("liMasVendidos") as HtmlGenericControl;
+                    var liMayorCalificacion = this.Master.FindControl("liMayorCalificacion") as HtmlGenericControl;
+                    var lnkIniciarSesion = this.Master.FindControl("lnkIniciarSesion") as System.Web.UI.WebControls.LinkButton;
+                    var liCrearCuenta = this.Master.FindControl("liCrearCuenta") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                    var liCerrarSesion = this.Master.FindControl("liCerrarSesion") as HtmlGenericControl;
+                    if (liGestion != null && lnkIniciarSesion != null && liCrearCuenta != null && liCerrarSesion != null)
+                    {
+                        // Mostrar menú gestión y cerrar sesión
+                        liGestion.Visible = true;
+                        liMasVendidos.Visible = true;
+                        liMayorCalificacion.Visible = true;
+                        liCerrarSesion.Visible = true;
+                        // Ocultar iniciar sesión y crear cuenta
+                        lnkIniciarSesion.Visible = false;
+                        liCrearCuenta.Visible = false;
+                    }
+                }
+
                 InicializarBiblioteca();
                 CargarBiblioteca();
                 ActualizarEstadisticas();
@@ -32,7 +58,7 @@ namespace LagStoreWA
 
         private void InicializarBiblioteca()
         {
-            int idUsuario = (int)Session["id"];
+            int idUsuario = (int)Session["usuarioId"];
 
             try
             {
@@ -65,6 +91,7 @@ namespace LagStoreWA
             }
         }
 
+        // Método CargarBiblioteca actualizado para usar 'actualizado' en lugar de 'activo'
         private void CargarBiblioteca(string filtro = "todos", string busqueda = "")
         {
             int idUsuario = (int)Session["usuarioId"];
@@ -90,14 +117,14 @@ namespace LagStoreWA
                     return;
                 }
 
-                // Aplicar filtro por estado
+                // Aplicar filtro por estado usando 'actualizado'
                 switch (filtro)
                 {
                     case "mostrados":
-                        juegosAdquiridos = juegosAdquiridos.Where(ja => ja.activo == 1).ToArray();
+                        juegosAdquiridos = juegosAdquiridos.Where(ja => ja.actualizado == true).ToArray();
                         break;
                     case "ocultos":
-                        juegosAdquiridos = juegosAdquiridos.Where(ja => ja.activo == 0).ToArray();
+                        juegosAdquiridos = juegosAdquiridos.Where(ja => ja.actualizado == false).ToArray();
                         break;
                         // "todos" no necesita filtro adicional
                 }
@@ -113,7 +140,6 @@ namespace LagStoreWA
 
                 rptBiblioteca.DataSource = juegosAdquiridos;
                 rptBiblioteca.DataBind();
-                
                 if (juegosAdquiridos.Length == 0)
                 {
                     string mensaje = !string.IsNullOrEmpty(busqueda) ?
@@ -134,6 +160,7 @@ namespace LagStoreWA
             }
         }
 
+        // Método ActualizarEstadisticas actualizado para usar 'actualizado'
         private void ActualizarEstadisticas()
         {
             int idUsuario = (int)Session["usuarioId"];
@@ -153,7 +180,7 @@ namespace LagStoreWA
                     }
 
                     int totalJuegos = todosJuegos.Length;
-                    int juegosMostrados = todosJuegos.Count(ja => ja.activo == 1);
+                    int juegosMostrados = todosJuegos.Count(ja => ja.actualizado == true);
                     double tiempoTotal = todosJuegos.Sum(ja => ja.tiempoJuego);
 
                     lblTotalJuegos.InnerText = totalJuegos.ToString();
@@ -172,6 +199,7 @@ namespace LagStoreWA
             }
         }
 
+        // Método btnOcultar_Click actualizado para usar 'actualizado'
         protected void btnOcultar_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -184,11 +212,13 @@ namespace LagStoreWA
                 var juegoAdquirido = juegoAdquiridoWS.obtenerJuegoAdquiridoPorBibliotecaYJuego(idBiblioteca, idJuego);
                 if (juegoAdquirido != null)
                 {
-                    juegoAdquirido.activo = juegoAdquirido.activo == 1 ? 0 : 1;
-                    juegoAdquirido.actualizado = true;
+                    // Cambiar el estado usando 'actualizado' en lugar de 'activo'
+                    juegoAdquirido.actualizado = !juegoAdquirido.actualizado;
+
+                    // Llamar al servicio para persistir los cambios
                     juegoAdquiridoWS.modificarJuegoAdquirido(juegoAdquirido);
 
-                    string accion = juegoAdquirido.activo == 1 ? "mostrado" : "ocultado";
+                    string accion = juegoAdquirido.actualizado ? "mostrado" : "ocultado";
                     MostrarMensaje($"Juego {accion} correctamente.", "success");
 
                     CargarBiblioteca(rblFiltro.SelectedValue, txtBuscar.Text);
@@ -209,7 +239,7 @@ namespace LagStoreWA
 
             try
             {
-                //juegoAdquiridoWS.eliminarJuegoAdquiridoPorBibliotecaYJuego(idBiblioteca, idJuego);
+                juegoAdquiridoWS.eliminarJuegoAdquiridoPorBibliotecaYJuego(idBiblioteca, idJuego);
                 MostrarMensaje("Juego eliminado de tu biblioteca correctamente.", "success");
                 CargarBiblioteca(rblFiltro.SelectedValue, txtBuscar.Text);
             }

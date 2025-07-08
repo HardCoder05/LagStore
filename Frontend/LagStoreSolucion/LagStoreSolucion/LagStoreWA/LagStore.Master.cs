@@ -35,6 +35,27 @@ namespace LagStoreWA
                 lnkIniciarSesion.Visible = true;
                 liCerrarSesion.Visible = false;
             }
+
+            if (Session["Jugador"] != null)
+            {
+                liRecarga.Visible = true;
+            }
+
+            if (Session["Desarrollador"] != null)
+            {
+                liOrdenaJuego.Visible = true;
+                liSubirJuego.Visible = true;
+                liCarrito.Visible = false;
+                liTienda.Visible = false;
+                liBiblioteca.Visible = false;
+            }
+
+            if (Session["Administrador"] != null)
+            {
+                liBiblioteca.Visible = false;
+                liTienda.Visible = false;
+                liCarrito.Visible = false;
+            }
         }
 
         public void ActualizarContadorCarrito()

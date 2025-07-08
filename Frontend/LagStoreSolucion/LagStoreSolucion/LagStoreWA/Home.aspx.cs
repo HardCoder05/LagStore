@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace LagStoreWA
@@ -24,6 +25,15 @@ namespace LagStoreWA
 
                 CargarJuegoDestacado(1);
                 CargarJuegos();
+                btnAgregarCarrito.Visible = !EsDesarrollador;
+            }
+        }
+
+        public bool EsDesarrollador
+        {
+            get
+            {
+                return Session["Desarrollador"] != null;
             }
         }
 
@@ -49,6 +59,7 @@ namespace LagStoreWA
             }
         }
 
+
         private void CargarJuegos()
         {
             try
@@ -60,6 +71,76 @@ namespace LagStoreWA
             catch (Exception ex)
             {
                 // Puedes registrar el error si es necesario
+            }
+        }
+
+        protected void btnVerDetallesDestacado_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"DetalleJuego.aspx?id={1}");
+        }
+
+        protected void btnAgregarCarrito_Command(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "AgregarCarrito")
+            {
+                int idJuego = Convert.ToInt32(e.CommandArgument);
+                // Obtener la información completa del juego a través del servicio web
+                juego juegoSeleccionado = juegoWS.obtenerJuegoPorId(idJuego); // Cambiar 'wsJuego' por 'juegoWS'
+                if (juegoSeleccionado != null)
+                {
+                    // Recuperar o crear la lista de juegos para el carrito
+                    List<juego> listaJuegos = Session["ListaJuegosCarro"] as List<juego>;
+                    if (listaJuegos == null)
+                    {
+                        listaJuegos = new List<juego>();
+                    }
+
+                    // Agregar el juego seleccionado a la lista
+                    listaJuegos.Add(juegoSeleccionado);
+                    Session["ListaJuegosCarro"] = listaJuegos;
+
+                    // Actualizar el contador en el master
+                    var master = this.Master as LagStoreWA.LagStore;
+                    if (master != null)
+                    {
+                        master.ActualizarContadorCarrito();
+                    }
+
+                    // Mostrar mensaje de éxito en la misma página (o mediante AJAX)
+                    MostrarMensaje("Juego agregado al carrito exitosamente", "alert-success");
+
+                    // (Opcional) Puedes redireccionar tras unos segundos o permitir que el usuario siga navegando
+                    // Response.Redirect("CarroCompra.aspx");
+                }
+                else
+                {
+                    MostrarMensaje("No se pudo obtener el juego", "alert-danger");
+                }
+            }
+        }
+
+        protected void rptJuegosDestacados_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                var btnAgregar = e.Item.FindControl("btnAgregarCarrito") as Button;
+                if (btnAgregar != null && EsDesarrollador)
+                {
+                    btnAgregar.Visible = false;
+                }
+            }
+        }
+        private void MostrarMensaje(string mensaje, string cssClass)
+        {
+            // Crear un control literal para mostrar el mensaje
+            Literal litMensaje = new Literal();
+            litMensaje.Text = $"<div class='alert {cssClass}' role='alert'>{mensaje}</div>";
+
+            // Buscar un contenedor en la página para agregar el mensaje (puedes ajustar esto según tu diseño)
+            var contenedorMensajes = this.FindControl("contenedorMensajes") as PlaceHolder;
+            if (contenedorMensajes != null)
+            {
+                contenedorMensajes.Controls.Add(litMensaje);
             }
         }
     }

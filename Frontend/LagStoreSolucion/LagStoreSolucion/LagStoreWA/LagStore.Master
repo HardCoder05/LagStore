@@ -33,11 +33,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="Home.aspx"><i class="fas fa-home me-1"></i>Inicio</a>
                         </li>
-                        <li class="nav-item">
+                        <li id="liTienda" class="nav-item" runat="server">
                             <a class="nav-link text-white" href="CatalogoJuegos.aspx"><i class="fas fa-cube me-1"></i>Tienda</a>
                         </li>
-                        <li class="nav-item">
+                        <li id="liBiblioteca" class="nav-item" runat="server">
                             <a class="nav-link text-white" href="Biblioteca.aspx"><i class="fas fa-shopping-basket me-1"></i>Biblioteca</a>
+                        </li>
+                        <li id="liRecarga" class="nav-item" runat="server" visible="false">
+                            <a class="nav-link text-white" href="ListarRecargas.aspx"><i class="fa-solid fa-wallet me-1"></i>Recargas</a>
+                        </li>
+                        <li id="liOrdenaJuego" class="nav-item" runat="server" visible="false">
+                            <a class="nav-link text-white" href="OrdenaJuego.aspx"><i class="fas fa-shopping-basket me-1"></i>Lista de Juegos</a>
+                        </li>
+                        <li id="liSubirJuego" class="nav-item" runat="server" visible="false">
+                            <a class="nav-link text-white" href="SubirJuego.aspx"><i class="fa-solid fa-upload me-1"></i>Subir Juego</a>
                         </li>
 
                         <li class="nav-item dropdown" runat="server" id="liGestion" Visible="false">
@@ -55,10 +64,29 @@
                                 <i class="fas fa-chart-line me-1"></i>Juegos Más Vendidos
                             </a>
                         </li>
+                        <li class="nav-item" runat="server" id="liMayorCalificacion" visible="false">
+                            <a class="nav-link text-white" href="JuegosMayorCalificacion.aspx">
+                                <i class="fas fa-star me-1"></i>Juegos Mejor Calificados
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown" runat="server" id="liReportes" Visible="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-file-alt me-1"></i>Reportes
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ReporteJugador.aspx">Ver Reporte de Juegos del Jugador</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item" runat="server" id="liReporteUsuarios" visible="false">
+                            <a class="nav-link text-white" href="ReporteUsuarios.aspx">
+                                <i class="fas fa-chart-bar me-1"></i>Reporte de Usuarios
+                            </a>
+                        </li>
+
                     </ul>
 
                     <ul class="navbar-nav align-items-center">
-                        <li class="nav-item me-3 position-relative">
+                        <li id="liCarrito" class="nav-item me-3 position-relative" runat="server">
                             <a class="nav-link text-white" href="CarroCompra.aspx">
                                 <i class="fas fa-shopping-cart"></i>
                                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">

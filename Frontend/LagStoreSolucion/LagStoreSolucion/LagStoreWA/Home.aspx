@@ -12,6 +12,7 @@
             position: relative;
             color: white;
             margin-bottom: 10px;
+            border-radius: 35px;
         }
 
         .hero-overlay {
@@ -159,8 +160,12 @@
                         </p>
                         <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2">
                             <span class="price me-2">S/<asp:Label ID="lblPrecioDestacado" runat="server" Text="0.00"></asp:Label></span>
-                            <asp:Button ID="btnAgregarDestacado" runat="server" CssClass="btn btn-add-cart" Text="Agregar al carrito" />
-                            <asp:Button ID="btnVerDetallesDestacado" runat="server" CssClass="btn btn-details" Text="Ver detalles" />
+                            <asp:Button ID="btnAgregarCarrito" runat="server" 
+                               Text="Agregar" 
+                               CssClass="btn btn-add-cart btn-sm"
+                               CommandName="AgregarCarrito"
+                               CommandArgument='1'
+                               OnCommand="btnAgregarCarrito_Command" />    
                         </div>
                     </div>
                 </div>
@@ -174,11 +179,11 @@
         <!-- Sección Explorar Juegos -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="section-title">Explorar juegos</h2>
-            <a href="#" class="explore-all">Ver todos</a>
+            <a href="CatalogoJuegos.aspx" class="explore-all">Ver todos</a>
         </div>
 
         <div class="row">
-            <asp:Repeater ID="rptJuegosDestacados" runat="server">
+            <asp:Repeater ID="rptJuegosDestacados" runat="server" OnItemDataBound="rptJuegosDestacados_ItemDataBound">
                 <ItemTemplate>
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card game-card">
@@ -189,9 +194,12 @@
                                 <h5 class="card-title"><%# Eval("titulo") %></h5>
                                 <div class="price-section">
                                     <span class="price">S/<%# Eval("precio", "{0:F2}") %></span>
-                                    <button class="btn btn-add-cart btn-sm">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
+                                    <asp:Button ID="btnAgregarCarrito" runat="server" 
+                                       Text="Agregar" 
+                                       CssClass="btn btn-add-cart btn-sm"
+                                       CommandName="AgregarCarrito"
+                                       CommandArgument='<%# Eval("idJuego") %>'
+                                       OnCommand="btnAgregarCarrito_Command" />
                                 </div>
                             </div>
                         </div>

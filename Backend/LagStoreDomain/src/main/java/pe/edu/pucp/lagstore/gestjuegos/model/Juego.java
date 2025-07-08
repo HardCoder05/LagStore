@@ -21,9 +21,14 @@ public class Juego {
     private Desarrollador desarrollador;
     private int activo;
     private int cantidadVentas;
+    private double promedioCalificacion;
+    private int cantidadCalificaciones;
+
     
     public Juego() {
         cantidadVentas=0;
+        promedioCalificacion=1;
+        cantidadCalificaciones=0;
     }
 
     public Juego(String titulo, String descripcion, double precio, double version, String imagenJuego,
@@ -45,6 +50,8 @@ public class Juego {
         this.desarrollador = desarrollador;
         this.activo = 1;
         this.cantidadVentas=0;
+        this.promedioCalificacion=1;
+        this.cantidadCalificaciones=0;
     }
 
     public int getIdJuego() { return idJuego; }
@@ -94,4 +101,20 @@ public class Juego {
     
     public int getCantidadVentas() {return cantidadVentas;}
     public void setCantidadVentas(int cantidadVentas) {this.cantidadVentas = cantidadVentas;}
+    
+    public double getPromedioCalificacion() {
+        return promedioCalificacion;
+    }
+
+    public void setPromedioCalificacion(double promedioCalificacion) {
+        this.promedioCalificacion = promedioCalificacion;
+    }
+
+    public int getCantidadCalificaciones() {
+        return cantidadCalificaciones;
+    }
+
+    public void setCantidadCalificaciones(int cantidadCalificaciones) {
+        this.cantidadCalificaciones = cantidadCalificaciones;
+    }
 }
